@@ -12,6 +12,8 @@ export default function Base() {
 	const [zVal, setZval] = useState(0);
 	const [x, setX] = useState(0);
 	const [z, setZ] = useState(0);
+	const [selectedTile, setSelectedTile] = useState(null);
+
 	const canvasRef = useRef(null);
 
 	let numbers = [];
@@ -75,6 +77,7 @@ export default function Base() {
 		const tileX = ~~(x1 / tileSize);
 		const tileY = ~~(y1 / tileSize);
 		const tileNum = Math.round(tileX + (canvas.width / tileSize) * tileY);
+		setSelectedTile(tileNum)
 
 		if (tileNum !== lastTile) {
 			lastTile = tileNum;
@@ -137,7 +140,7 @@ export default function Base() {
 				<canvas className="canvas" ref={canvasRef} />
                 
 			</div>
-            <Window1 />
+            <Window1 selection={selectedTile} />
 		</div>
 	);
 }
