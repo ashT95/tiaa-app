@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
-import Window1 from "./window1/window1"
+import Window1 from "./windows/window1"
 
 let average = 0;
 let average2 = 0;
@@ -135,10 +135,9 @@ export default function Base() {
 	}, [draw]);
 
 	return (
-		<div>
-			<div className="point">
+		<div className="background">
+			<div className="track">
 				<canvas className="canvas" ref={canvasRef} />
-                
 			</div>
             <Window1 selection={selectedTile} />
 		</div>

@@ -1,7 +1,119 @@
+.track {
+	position: absolute;
+}
+
 .canvas {
-    background-color: white;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    opacity: 0.2;
+	
+    opacity: 0.3;
+}
+
+
+#celebrateVid {
+	width: 600px;
+	height: 600px;
+	transform: translate(690px, 504px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#teachers0 {
+	width: 600px;
+	height: 600px;
+	transform: translate(1054px, 124px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#mission0 {
+	width: 600px;
+	height: 600px;
+	transform: translate(1195px, 434px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#principle0 {
+	width: 600px;
+	height: 600px;
+	transform: translate(170px, 254px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#ecology {
+	width: 600px;
+	height: 600px;
+	transform: translate(260px, 184px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#friendship {
+	width: 600px;
+	height: 600px;
+	transform: translate(310px, 484px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#conserving {
+	width: 600px;
+	height: 600px;
+	transform: translate(692px, 301px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#responsibleRealEstate {
+	width: 600px;
+	height: 600px;
+	transform: translate(980px, 44px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#grapeInvestments {
+	width: 600px;
+	height: 600px;
+	transform: translate(1110px, 404px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#empoweringAbilities {
+	width: 600px;
+	height: 600px;
+	transform: translate(620px, 324px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#financialLiteracy {
+	width: 600px;
+	height: 600px;
+	transform: translate(1030px, 64px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
 }

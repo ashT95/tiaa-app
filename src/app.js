@@ -3,11 +3,5 @@ import React from "react";
 import Base from "./components/base"
 
 export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Base />} />
-      </Routes>
-    </Router>
-  );
+  return (<Base />);
 }
