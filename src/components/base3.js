@@ -69,8 +69,8 @@ export default function Base3() {
 
 		// converting to canvas x and y ranges
 
-		let x1 = convertCoordinates(1600, -1500, 0, canvas.width, x);
-		let y1 = convertCoordinates(500, 3500, 0, canvas.height, z);
+		let x1 = convertCoordinates(1800, -1500, 0, canvas.width, x);
+		let y1 = convertCoordinates(1000, 3500, 0, canvas.height, z);
 
 		drawGrid(canvas, ctx, tileSize);
 
