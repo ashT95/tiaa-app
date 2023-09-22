@@ -27,7 +27,7 @@ export default function Base3() {
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 
-		if (String(result).startsWith("HAND:")) {
+		if (String(result).startsWith("WINDOWTWO:")) {
 			numbers = String(result).match(/-?\d+/g).map(Number);
 
 			setXval(numbers[0]);
@@ -69,8 +69,8 @@ export default function Base3() {
 
 		// converting to canvas x and y ranges
 
-		let x1 = convertCoordinates(250, -250, 0, canvas.width, x);
-		let y1 = convertCoordinates(900, 1250, 0, canvas.height, z);
+		let x1 = convertCoordinates(1600, -1500, 0, canvas.width, x);
+		let y1 = convertCoordinates(500, 3500, 0, canvas.height, z);
 
 		drawGrid(canvas, ctx, tileSize);
 

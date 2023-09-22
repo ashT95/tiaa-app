@@ -12,8 +12,8 @@ export default function Window3(props) {
 	const [financialLiteracy, setFinancialLiteracy] = useState(false);
 	const [empoweringAbilities, setEmpoweringAbilities] = useState(false);
 
-	let blocks1 = [13, 14, 15, 22, 23, 24];
-	let blocks2 = [36, 37, 38, 46, 47, 48];
+	let blocks1 = [16, 17, 25, 26];
+	let blocks2 = [22, 23, 24, 32, 33, 34];
 	let blocks3 = [21, 22, 23, 31, 32, 33];
 	let blocks4 = [21, 22, 23, 31, 32, 33];
 	let blocks5 = [21, 22, 23, 31, 32, 33];
@@ -35,7 +35,7 @@ export default function Window3(props) {
 		if (empoweringAbilities) {
 			videoRefs.current[1].play();
 		}
-	});
+	}, [selection, financialLiteracy, empoweringAbilities]);
 
 	function handleVideo(value) {
 		switch (value) {
@@ -50,6 +50,19 @@ export default function Window3(props) {
 		}
 	}
 
+	function handleEnd(value) {
+		switch (value) {
+			case 0: {
+				setFinancialLiteracy(false);
+				break;
+			}
+			case 1: {
+				setEmpoweringAbilities(false);
+				break;
+			}
+		}
+	}
+
 	return (
 		<div className="wall3">
 			<video
@@ -57,9 +70,9 @@ export default function Window3(props) {
 				key={financialLiteracy0}
 				id={"financialLiteracy"}
 				preload="auto"
-				autoPlay
+				autoPlay={true}
 				muted
-				loop
+				loop={true}
 				hidden={financialLiteracy ? true : false}
 			/>
 			<video
@@ -72,16 +85,16 @@ export default function Window3(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[0] = el)}
 				hidden={financialLiteracy ? false : true}
-				onEnded={() => setFinancialLiteracy(false)}
+				onEnded={() => handleEnd(0)}
 			/>
 			<video
 				src={empoweringAbilities0}
 				key={empoweringAbilities0}
 				id={"empoweringAbilities"}
 				preload="auto"
-				autoPlay
+				autoPlay={true}
 				muted
-				loop
+				loop={true}
 				hidden={empoweringAbilities ? true : false}
 			/>
 			<video
@@ -94,7 +107,7 @@ export default function Window3(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[1] = el)}
 				hidden={empoweringAbilities ? false : true}
-				onEnded={() => setEmpoweringAbilities(false)}
+				onEnded={() => handleEnd(1)}
 			/>
 		</div>
 	);

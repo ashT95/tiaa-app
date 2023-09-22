@@ -7,9 +7,9 @@ import wall1 from "../../assets/images/wall-1-print.png";
 export default function Window1(props) {
 	const { selection } = props;
 
-	let blocks1 = [13, 14, 15, 22, 23, 24];
-	let blocks2 = [36, 37, 38, 46, 47, 48];
-	let blocks3 = [21, 22, 23, 31, 32, 33];
+	let blocks1 = [16, 17, 25, 26];
+	let blocks2 = [35, 36, 37, 44, 45, 46];
+	let blocks3 = [20, 21, 22, 30, 31, 32];
 
 	const videoRefs = useRef([]);
 
@@ -23,7 +23,7 @@ export default function Window1(props) {
 		if (blocks3.includes(selection)) {
 			videoRefs.current[2].play();
 		}
-	});
+	}, [selection]);
 
 	return (
 		<div className="wall1">

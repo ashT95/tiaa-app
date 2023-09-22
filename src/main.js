@@ -12,7 +12,7 @@ let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
 
 // ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
-let shell = new PythonShell("backend/yolov5/main_api.py", {
+let shell = new PythonShell("backend/yolov5/main_api_2.py", {
 	// The '-u' tells Python to flush every time
 	pythonOptions: ["-u"],
 	args: [],
@@ -77,7 +77,7 @@ const createWindow = () => {
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools();
+	//mainWindow.webContents.openDevTools();
 
 	mainWindow2.once("ready-to-show", () => {
 		mainWindow2.show();
@@ -88,7 +88,7 @@ const createWindow = () => {
 	mainWindow2.loadURL(MAIN_WINDOW2_WEBPACK_ENTRY);
 
 	// Open the DevTools.
-	mainWindow3.webContents.openDevTools();
+	//mainWindow3.webContents.openDevTools();
 
   mainWindow3.once("ready-to-show", () => {
 		mainWindow3.show();
@@ -99,7 +99,7 @@ const createWindow = () => {
 	mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
 
 	// Open the DevTools.
-	mainWindow3.webContents.openDevTools();
+	//mainWindow3.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished

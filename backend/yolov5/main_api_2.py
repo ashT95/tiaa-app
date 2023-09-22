@@ -141,24 +141,6 @@ def getPipeline():
 
     return pipeline
 
-def worker(device_info, stack, devices):
-    # openvino_version = dai.OpenVINO.Version.VERSION_2021_4
-    openvino_version = dai.OpenVINO.Version.VERSION_2022_1
-
-    usb2_mode = False
-    device = stack.enter_context(dai.Device(openvino_version, device_info, usb2_mode))
-
-    # Note: currently on POE, DeviceInfo.getMxId() and Device.getMxId() are different!
-    print("=== Connected to " + device_info.getMxId())
-    device.startPipeline(getPipeline())
-
-    # Output queue will be used to get the rgb frames from the output defined above
-    devices[device.getMxId()] = {
-        'rgb': device.getOutputQueue(name="rgb"),
-        'nn': device.getOutputQueue(name="nn"),
-        'depth': device.getOutputQueue(name="depth"),
-        'network': device.getOutputQueue(name="nnNetwork"),
-    }
 
 with contextlib.ExitStack() as stack:
     device_infos = dai.Device.getAllAvailableDevices()
@@ -167,30 +149,67 @@ with contextlib.ExitStack() as stack:
     else:
         print("Found", len(device_infos), "devices")
     devices = {}
-    threads = []
 
     for device_info in device_infos:
-        time.sleep(1) # Currently required due to XLink race issues
-        thread = threading.Thread(target=worker, args=(device_info, stack, devices))
-        thread.start()
-        threads.append(thread)
+        # Note: the pipeline isn't set here, as we don't know yet what device it is.
+        # The extra arguments passed are required by the existing overload variants
+        openvino_version = dai.OpenVINO.Version.VERSION_2021_4
+        usb2_mode = False
+        device = stack.enter_context(dai.Device(openvino_version, device_info, usb2_mode))
 
-    for t in threads:
-        t.join() # Wait for all threads to finish (to connect to devices)
+        # Note: currently on POE, DeviceInfo.getMxId() and Device.getMxId() are different!
+        print("=== Connected to " + device_info.getMxId())
+        mxid = device.getMxId()
+        cameras = device.getConnectedCameras()
+        usb_speed = device.getUsbSpeed()
+
+        # Get a customized pipeline based on identified device type
+        pipeline = getPipeline()
+        device.startPipeline(pipeline)
+
+        # Output queue will be used to get the rgb frames from the output defined above
+        devices[mxid] = {
+            'rgb': device.getOutputQueue(name="rgb", maxSize=4, blocking=False),
+            'nn': device.getOutputQueue(name="nn", maxSize=4, blocking=False),
+            'depth':device.getOutputQueue(name="depth", maxSize=4, blocking=False),
+            'nnNetwork': device.getOutputQueue(name="nnNetwork", maxSize=4, blocking=False)
+        }
+
+    startTime = time.monotonic()
+    counter = 0
+    fps = 0
+    color = (255, 255, 255)
+    printOutputLayersOnce = False
 
     while True:
         for mxid, q in devices.items():
             if q['nn'].has():
-                inDet = q['nn'].get()
                 inPreview = q['rgb'].get()
-
-                color = (255, 255, 255)
-                frame = inPreview.getCvFrame()
-                detections = inDet.detections
+                inDet = q['nn'].get()
+                depth = q['depth'].get()
+                inNN = q['nnNetwork'].get()
                 
+                frame = inPreview.getCvFrame()
+                depthFrame = depth.getFrame()  # depthFrame values are in millimeters
+
+                depthFrameColor = cv2.normalize(
+                    depthFrame, None, 255, 0, cv2.NORM_INF, cv2.CV_8UC1
+                )
+                depthFrameColor = cv2.equalizeHist(depthFrameColor)
+                depthFrameColor = cv2.applyColorMap(depthFrameColor, cv2.COLORMAP_HOT)
+
+                counter += 1
+                current_time = time.monotonic()
+                if (current_time - startTime) > 1:
+                    fps = counter / (current_time - startTime)
+                    counter = 0
+                    startTime = current_time
+
+                detections = inDet.detections
+
+                # If the frame is available, draw bounding boxes on it and show the frame
                 height = frame.shape[0]
                 width = frame.shape[1]
-                
                 for detection in detections:
                     try:
                         label = labels[detection.label]
@@ -199,6 +218,16 @@ with contextlib.ExitStack() as stack:
                     
 
                     if (label == "hand") :
+                        roiData = detection.boundingBoxMapping
+                        roi = roiData.roi
+                        roi = roi.denormalize(depthFrameColor.shape[1], depthFrameColor.shape[0])
+                        topLeft = roi.topLeft()
+                        bottomRight = roi.bottomRight()
+                        xmin = int(topLeft.x)
+                        ymin = int(topLeft.y)
+                        xmax = int(bottomRight.x)
+                        ymax = int(bottomRight.y)
+                        cv2.rectangle(depthFrameColor, (xmin, ymin), (xmax, ymax), color, cv2.FONT_HERSHEY_SCRIPT_SIMPLEX)
 
                         # Denormalize bounding box
                         x1 = int(detection.xmin * width)
@@ -213,14 +242,20 @@ with contextlib.ExitStack() as stack:
                         cv2.putText(frame, f"Z: {int(detection.spatialCoordinates.z)}" , (x1 + 10, y1 + 80), cv2.FONT_HERSHEY_TRIPLEX, 0.5, 255)
                         cv2.rectangle(frame, (x1, y1), (x2, y2), color, cv2.FONT_HERSHEY_SIMPLEX)
 
-
                     # --------------------------------------SENDING COORDINATES TO ELECTRON MAIN---------------------------------------------------- #
-                        print(f"HAND:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
-                        sys.stdout.flush()
-
+                        if (mxid == '1844301081158F0F00'):
+                            print(f"WINDOWONE:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
+                            sys.stdout.flush()
+                        if (mxid == '18443010010F8F0F00'):
+                            print(f"WINDOWTWO:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
+                            sys.stdout.flush()
+                        if (mxid == '18443010A1017C0E00'):
+                            print(f"WINDOWTHREE:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
+                            sys.stdout.flush()
                     # ------------------------------------------------------------------------------------------------------------------------------- #
 
-                cv2.imshow("rgb", frame)
+                cv2.imshow(f"Preview - {mxid}", frame)
+
 
         if cv2.waitKey(1) == ord('q'):
             break
