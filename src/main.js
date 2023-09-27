@@ -12,7 +12,7 @@ let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
 
 // ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
-let shell = new PythonShell("backend/yolov5/main_api.py", {
+let shell = new PythonShell("backend/yolov5/main_api_2.py", {
 	// The '-u' tells Python to flush every time
 	pythonOptions: ["-u"],
 	args: [],
@@ -23,12 +23,12 @@ shell.on("message", function (message) {
 	if (mainWindow) {
 		mainWindow.webContents.send("main-to-render", message);
 	}
-	if (mainWindow2) {
-		mainWindow2.webContents.send("main-to-render", message);
-	}
-	if (mainWindow3) {
-		mainWindow3.webContents.send("main-to-render", message);
-	}
+	// if (mainWindow2) {
+	// 	mainWindow2.webContents.send("main-to-render", message);
+	// }
+	// if (mainWindow3) {
+	// 	mainWindow3.webContents.send("main-to-render", message);
+	// }
 });
 //-------------------------------------------------------------------------------------- //
 
@@ -45,27 +45,27 @@ const createWindow = () => {
 		},
 	});
 
-	mainWindow2 = new BrowserWindow({
-		x: 1920,
-		y: 0,
-		width: 800,
-		height: 600,
-		show: false,
-		webPreferences: {
-			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-		},
-	});
+	// mainWindow2 = new BrowserWindow({
+	// 	x: 1920,
+	// 	y: 0,
+	// 	width: 800,
+	// 	height: 600,
+	// 	show: false,
+	// 	webPreferences: {
+	// 		preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+	// 	},
+	// });
 
-	mainWindow3 = new BrowserWindow({
-		x: 1920,
-		y: 0,
-		width: 800,
-		height: 600,
-		show: false,
-		webPreferences: {
-			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-		},
-	});
+	// mainWindow3 = new BrowserWindow({
+	// 	x: 1920,
+	// 	y: 0,
+	// 	width: 800,
+	// 	height: 600,
+	// 	show: false,
+	// 	webPreferences: {
+	// 		preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+	// 	},
+	// });
 
 	mainWindow.once("ready-to-show", () => {
 		mainWindow.show();

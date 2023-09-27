@@ -243,15 +243,15 @@ with contextlib.ExitStack() as stack:
                         cv2.rectangle(frame, (x1, y1), (x2, y2), color, cv2.FONT_HERSHEY_SIMPLEX)
 
                     # --------------------------------------SENDING COORDINATES TO ELECTRON MAIN---------------------------------------------------- #
-                        if (mxid == '1844301081158F0F00'):
+                        if (mxid == '18443010010F8F0F00'):
                             print(f"WINDOWONE:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
                             sys.stdout.flush()
-                        if (mxid == '18443010010F8F0F00'):
-                            print(f"WINDOWTWO:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
-                            sys.stdout.flush()
-                        if (mxid == '18443010A1017C0E00'):
-                            print(f"WINDOWTHREE:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
-                            sys.stdout.flush()
+                        # if (mxid == '18443010010F8F0F00'):
+                        #     print(f"WINDOWTWO:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
+                        #     sys.stdout.flush()
+                        # if (mxid == '18443010A1017C0E00'):
+                        #     print(f"WINDOWTHREE:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
+                        #     sys.stdout.flush()
                     # ------------------------------------------------------------------------------------------------------------------------------- #
 
                 cv2.imshow(f"Preview - {mxid}", frame)

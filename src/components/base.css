@@ -1,13 +1,10 @@
 .canvas1 {
-	position: absolute;
+	
 }
 
 .background1 {
-	position: absolute;
-	width: 1920px;
-	height: 1200px;
-	background-color: black;
-	opacity: 0.5;
+
+	opacity: 1;
 }
 
 .canvas2 {
@@ -37,6 +34,7 @@
 .wall1 {
 	width: 1920px;
 	height: 1200px;
+	background-color: darkgray;
 	mix-blend-mode: screen;
 	position: absolute;
 }
@@ -75,7 +73,7 @@
 	opacity: 1;
 }
 
-#teachers0 {
+#notJustForTeachers {
 	width: 600px;
 	height: 600px;
 	transform: translate(1054px, 124px);
@@ -85,10 +83,20 @@
 	opacity: 1;
 }
 
-#mission0 {
+#mission {
 	width: 600px;
 	height: 600px;
 	transform: translate(1195px, 434px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#ratedHighest {
+	width: 600px;
+	height: 600px;
+	transform: translate(640px, 79px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -99,6 +107,16 @@
 	width: 600px;
 	height: 600px;
 	transform: translate(170px, 254px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#ecology {
+	width: 600px;
+	height: 600px;
+	transform: translate(260px, 184px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -205,7 +223,6 @@
 	opacity: 1;
 }
 
-
 #title-image {
 	transform: translate(1230px, 95px);
 	position: absolute;
@@ -216,8 +233,8 @@
 .done-button {
 	position: absolute;
 	width: 100px;
-	height: 100px;
-	transform: translate(900px, 1000px);
+	height: 50px;
+	transform: translate(1600px, 100px);
 }
 
 @keyframes fade {

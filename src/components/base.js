@@ -33,7 +33,7 @@ export default function Base() {
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 
-		if (String(result).startsWith("HAND:")) {
+		if (String(result).startsWith("WINDOWONE:")) {
 			numbers = String(result).match(/-?\d+/g).map(Number);
 
 			setXval(numbers[0]);
@@ -48,30 +48,36 @@ export default function Base() {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 
+		let x0 = 350;
+		let y0 = 320;
+		let x1 = 1270;
+		let y1 = 740;
+
+		ctx.strokeStyle = "white";
+		ctx.fillStyle = "white";
+		ctx.stroke();
+		ctx.strokeRect(x0, y0, x1, y1)
+		ctx.fillText(`${xVal}, ${zVal}`, 1670, 600 )
+
+		// left line is (x0, y0) to (x0, y1)
+		let midLeft = y0 + (y1 / 2)
+		let midTop = x0 + (x1 / 2)
+		drawCircle(350, 230, 5, ctx)
+		drawCircle(1620, 230, 5, ctx)
+		drawCircle(350, 970, 5, ctx)
+		drawCircle(1620, 970, 5, ctx)
 		// converting to canvas x and y ranges
 
-		let pX = convertCoordinates(250, -250, 0, canvas.width, xVal);
-		let pY = convertCoordinates(900, 1250, 0, canvas.height, zVal);
-		setPointX(pX);
-		setPointY(pY);
+		// let pX = convertCoordinates(250, -250, 0, canvas.width, xVal);
+		// let pY = convertCoordinates(900, 1250, 0, canvas.height, zVal);
 
-		drawCircle(pX, pY, 250, ctx);
 
-		if (coords1) {
-			drawCircle(coords1[0], coords1[1], 250, ctx);
-		}
-		if (coords2) {
-			drawCircle(coords2[0], coords2[1], 250, ctx);
-		}
-		if (coords3) {
-			drawCircle(coords3[0], coords3[1], 250, ctx);
-		}
-		if (coords4) {
-			drawCircle(coords4[0], coords4[1], 250, ctx);
-		}
-		if (coords5) {
-			drawCircle(coords5[0], coords5[1], 250, ctx);
-		}
+		// setPointX(pX);
+		// setPointY(pY);
+
+		// drawCircle(pX, pY, 20, ctx);
+
+
 	};
 
 	function check_a_point(a, b, x, y, r) {
@@ -170,19 +176,23 @@ export default function Base() {
 		render();
 		return () => {
 			window.cancelAnimationFrame(animationFrameId);
-			setOne(false)
+
 		};
-	}, [draw, coords1, coords2, coords3, coords4, coords5]);
+	}, [draw]);
 
 	return (
 		<div className="background1">
+
 			<Window1 play1={one} play2={two} play3={three} play4={four} play5={five} />
 			<div>
-				<canvas className="canvas1" ref={canvasRef} />
 				<button className="done-button" onClick={() => handleClick()}>
 					Done
 				</button>
+				<canvas className="canvas1" ref={canvasRef} />
+
 			</div>
+
+
 		</div>
 	);
 }

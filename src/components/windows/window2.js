@@ -2,7 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import "../base.css";
 import bg2 from "../../assets/images/wall-2-print.png";
 
-import friendship0 from "../../assets/Animations/Investing-in-Best-Friendship/BlkBG_BEST FRIENDSHIP_LOOP TAIL WAG_07312023.mp4";
+import img01 from "../../assets/Images/wall-2-title-animaiton-01.png";
+import img02 from "../../assets/Images/wall-2-title-animaiton-02.png";
+import img03 from "../../assets/Images/wall-2-title-animaiton-03.png";
+import img04 from "../../assets/Images/wall-2-title-animaiton-04.png";
+import img05 from "../../assets/Images/wall-2-title-animaiton-05.png";
+import img06 from "../../assets/Images/wall-2-title-animaiton-06.png";
+
+import friendship0 from "../../assets/Animations/Investing-in-Best-Friendship/BlkBG_BEST FRIENDSHIP_LOOP TAIL WAG_09262023.mp4";
 import friendship1 from "../../assets/Animations/Investing-in-Best-Friendship/BLACKBG_ANIMATION BEAT_07312023.mp4";
 
 import conserving0 from "../../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_Projection_07272023.mp4";
@@ -14,12 +21,6 @@ import responsibleRealEstate1 from "../../assets/Animations/Responsible-Real-Est
 import grapeInvestments0 from "../../assets/Animations/Cheers-to-Grape-Investments/BlkBG_Projection_grape_loop_08022023.mp4";
 import grapeInvestments1 from "../../assets/Animations/Cheers-to-Grape-Investments/BlkBG_ANIMATION BEATS_grape_loop_07202023.mp4";
 
-import img01 from "../../assets/Images/wall-2-title-animaiton-01.png";
-import img02 from "../../assets/Images/wall-2-title-animaiton-02.png";
-import img03 from "../../assets/Images/wall-2-title-animaiton-03.png";
-import img04 from "../../assets/Images/wall-2-title-animaiton-04.png";
-import img05 from "../../assets/Images/wall-2-title-animaiton-05.png";
-import img06 from "../../assets/Images/wall-2-title-animaiton-06.png";
 
 export default function Window2(props) {
 	const { selection } = props;
