@@ -12,7 +12,7 @@ let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
 
 // ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
-let shell = new PythonShell("backend/yolov5/main_api_2.py", {
+let shell = new PythonShell("backend/yolov5/main_api.py", {
 	// The '-u' tells Python to flush every time
 	pythonOptions: ["-u"],
 	args: [],
@@ -23,13 +23,12 @@ shell.on("message", function (message) {
 	if (mainWindow) {
 		mainWindow.webContents.send("main-to-render", message);
 	}
-  if (mainWindow2) {
+	if (mainWindow2) {
 		mainWindow2.webContents.send("main-to-render", message);
 	}
-  if (mainWindow3) {
+	if (mainWindow3) {
 		mainWindow3.webContents.send("main-to-render", message);
 	}
-
 });
 //-------------------------------------------------------------------------------------- //
 
@@ -57,7 +56,7 @@ const createWindow = () => {
 		},
 	});
 
-  mainWindow3 = new BrowserWindow({
+	mainWindow3 = new BrowserWindow({
 		x: 1920,
 		y: 0,
 		width: 800,
@@ -77,26 +76,26 @@ const createWindow = () => {
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
 	// Open the DevTools.
-	//mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools();
 
-	mainWindow2.once("ready-to-show", () => {
-		mainWindow2.show();
-		mainWindow2.focus();
-	});
+	// mainWindow2.once("ready-to-show", () => {
+	// 	mainWindow2.show();
+	// 	mainWindow2.focus();
+	// });
 
-	// and load the index.html of the app.
-	mainWindow2.loadURL(MAIN_WINDOW2_WEBPACK_ENTRY);
+	// // and load the index.html of the app.
+	// mainWindow2.loadURL(MAIN_WINDOW2_WEBPACK_ENTRY);
 
-	// Open the DevTools.
-	//mainWindow3.webContents.openDevTools();
+	// // Open the DevTools.
+	// //mainWindow3.webContents.openDevTools();
 
-  mainWindow3.once("ready-to-show", () => {
-		mainWindow3.show();
-		mainWindow3.focus();
-	});
+	// mainWindow3.once("ready-to-show", () => {
+	// 	mainWindow3.show();
+	// 	mainWindow3.focus();
+	// });
 
-	// and load the index.html of the app.
-	mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
+	// // and load the index.html of the app.
+	// mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
 
 	// Open the DevTools.
 	//mainWindow3.webContents.openDevTools();

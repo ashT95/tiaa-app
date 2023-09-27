@@ -1,56 +1,77 @@
 import React, { useState, useEffect, useRef } from "react";
-import ecology0 from "../../assets/videos/Ecology-Begins-at-Home/BlkBG_Bees Projection Loop_07212023.mp4";
-import ecology1 from "../../assets/videos/Ecology-Begins-at-Home/BlkBG_Bees Animation Beat_07212023.mp4";
+import "../base.css";
+import bg2 from "../../assets/images/wall-2-print.png";
 
-import friendship0 from "../../assets/videos/Investing-in-Best-Friendship/BlkBG_BEST FRIENDSHIP_LOOP TAIL WAG_07312023.mp4";
-import friendship1 from "../../assets/videos/Investing-in-Best-Friendship/BLACKBG_ANIMATION BEAT_07312023.mp4";
+import friendship0 from "../../assets/Animations/Investing-in-Best-Friendship/BlkBG_BEST FRIENDSHIP_LOOP TAIL WAG_07312023.mp4";
+import friendship1 from "../../assets/Animations/Investing-in-Best-Friendship/BLACKBG_ANIMATION BEAT_07312023.mp4";
 
-import conserving0 from "../../assets/videos/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_Projection_07272023.mp4";
-import conserving1 from "../../assets/videos/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_AnimationBeats_07312023.mp4";
+import conserving0 from "../../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_Projection_07272023.mp4";
+import conserving1 from "../../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_AnimationBeats_07312023.mp4";
 
-import responsibleRealEstate0 from "../../assets/videos/Responsible-Real-Estate/BlkBG_Responsible Real Estate_Projection_07262023.mp4";
-import responsibleRealEstate1 from "../../assets/videos/Responsible-Real-Estate/BlkBG_Responsible Real Estate_AnimationBeat_07262023.mp4";
+import responsibleRealEstate0 from "../../assets/Animations/Responsible-Real-Estate/BlkBG_Responsible Real Estate_Projection_09222023.mp4";
+import responsibleRealEstate1 from "../../assets/Animations/Responsible-Real-Estate/BLACKBG_Responsible Real Estate_AnimationBeat_09222023.mp4";
 
-import grapeInvestments0 from "../../assets/videos/Cheers to Grape Investments/BlkBG_Projection_grape_loop_08022023.mp4";
-import grapeInvestments1 from "../../assets/videos/Cheers to Grape Investments/BlkBG_ANIMATION BEATS_grape_loop_07202023.mp4";
+import grapeInvestments0 from "../../assets/Animations/Cheers-to-Grape-Investments/BlkBG_Projection_grape_loop_08022023.mp4";
+import grapeInvestments1 from "../../assets/Animations/Cheers-to-Grape-Investments/BlkBG_ANIMATION BEATS_grape_loop_07202023.mp4";
+
+import img01 from "../../assets/Images/wall-2-title-animaiton-01.png";
+import img02 from "../../assets/Images/wall-2-title-animaiton-02.png";
+import img03 from "../../assets/Images/wall-2-title-animaiton-03.png";
+import img04 from "../../assets/Images/wall-2-title-animaiton-04.png";
+import img05 from "../../assets/Images/wall-2-title-animaiton-05.png";
+import img06 from "../../assets/Images/wall-2-title-animaiton-06.png";
 
 export default function Window2(props) {
 	const { selection } = props;
 
 	// Wall two state variables
-	const [ecology, setEcology] = useState(false);
 	const [friendship, setFriendship] = useState(false);
 	const [conserving, setConserving] = useState(false);
 	const [responsibleRealEstate, setResponsibleRealEstate] = useState(false);
 	const [grapeInvestments, setGrapeInvestments] = useState(false);
 
-	let blocks1 = [11, 12, 13, 20, 21, 22];
-	let blocks2 = [31, 32, 40, 41];
-	let blocks3 = [15, 16, 17, 25 ];
-	let blocks4 = [23, 24, 33, 34];
-	let blocks5 = [35, 36, 44, 45];
+	// Wall cycle animation constants
+	const [titleImage, setTitleImage] = useState(img01);
+	const [counter, setCounter] = useState(0);
 
 	const videoRefs = useRef([]);
 
 	useEffect(() => {
-		if (blocks1.includes(selection)) {
-			handleVideo(0)
-		}
-		if (blocks2.includes(selection)) {
-			handleVideo(1)
-		}
-		if (blocks3.includes(selection)) {
-			handleVideo(2)
-		}
-		if (blocks4.includes(selection)) {
-			handleVideo(3)
-		}
-		if (blocks5.includes(selection)) {
-			handleVideo(4)
+		let interval;
+
+		if (counter < 5) {
+			interval = setInterval(() => {
+				setCounter((counter) => counter + 1);
+			}, 5000);
+		} else if (counter == 5) {
+			setCounter(0);
 		}
 
-		if (ecology) {
-			videoRefs.current[0].play();
+		switch (counter) {
+			case 0: {
+				setTitleImage(img01);
+				break;
+			}
+			case 1: {
+				setTitleImage(img02);
+				break;
+			}
+			case 2: {
+				setTitleImage(img03);
+				break;
+			}
+			case 3: {
+				setTitleImage(img04);
+				break;
+			}
+			case 4: {
+				setTitleImage(img05);
+				break;
+			}
+			case 5: {
+				setTitleImage(img06);
+				break;
+			}
 		}
 
 		if (friendship) {
@@ -68,15 +89,20 @@ export default function Window2(props) {
 		if (grapeInvestments) {
 			videoRefs.current[4].play();
 		}
+		return () => {
+			clearInterval(interval);
+		};
+	}, [
+		titleImage,
+		counter,
+		friendship,
+		responsibleRealEstate,
+		conserving,
+		grapeInvestments,
+	]);
 
-	}, [selection, ecology, friendship, responsibleRealEstate, conserving, grapeInvestments]);
-
-	function handleVideo(value) {
-		switch (value) {
-			case 0: {
-				setEcology(true);
-				break;
-			}
+	function handleClick(num) {
+		switch (num) {
 			case 1: {
 				setFriendship(true);
 				break;
@@ -96,74 +122,19 @@ export default function Window2(props) {
 		}
 	}
 
-	function handleEnd(value) {
-		switch (value) {
-			case 0: {
-				setEcology(false);
-				videoRefs.current[0].currentTime = 0;
-				videoRefs.current[0].pause()
-				break;
-			}
-			case 1: {
-				setFriendship(false);
-				videoRefs.current[1].currentTime = 0;
-				videoRefs.current[1].pause()
-				break;
-			}
-			case 2: {
-				setResponsibleRealEstate(false);
-				videoRefs.current[2].currentTime = 0;
-				videoRefs.current[2].pause()
-				break;
-			}
-			case 3: {
-				setConserving(false);
-				videoRefs.current[3].currentTime = 0;
-				videoRefs.current[3].pause()
-				break;
-			}
-			case 4: {
-				setGrapeInvestments(false);
-				videoRefs.current[4].currentTime = 0;
-				videoRefs.current[4].pause()
-				break;
-			}
-		}
-	}
-
-
-
 	return (
-		<div className="wall2">
-			<video
-				src={ecology0}
-				key={ecology0}
-				id={"ecology"}
-				preload="auto"
-				autoPlay={true}
-				muted
-				loop={true}
-			/>
-			<video
-				src={ecology1}
-				key={ecology1}
-				id={"ecology"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[0] = el)}
-				hidden={ecology ? false : true}
-				onEnded={() => handleEnd(0)}
-			/>
+		<div>
+			<img src={bg2} className="wall2" />
+			<img src={titleImage} id="title-image" />
 			<video
 				src={friendship0}
 				key={friendship0}
 				id={"friendship"}
 				preload="auto"
-				autoPlay={true}
+				autoPlay
 				muted
-				loop={true}
+				loop
+				onClick={() => handleClick(1)}
 				hidden={friendship ? true : false}
 			/>
 			<video
@@ -176,16 +147,17 @@ export default function Window2(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[1] = el)}
 				hidden={friendship ? false : true}
-				onEnded={() => handleEnd(1)}
+				onEnded={() => setFriendship(false)}
 			/>
 			<video
 				src={responsibleRealEstate0}
 				key={responsibleRealEstate0}
 				id={"responsibleRealEstate"}
 				preload="auto"
-				autoPlay={true}
+				autoPlay
 				muted
-				loop={true}
+				loop
+				onClick={() => handleClick(2)}
 				hidden={responsibleRealEstate ? true : false}
 			/>
 			<video
@@ -198,17 +170,17 @@ export default function Window2(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[2] = el)}
 				hidden={responsibleRealEstate ? false : true}
-				onEnded={() => handleEnd(2)}
+				onEnded={() => setResponsibleRealEstate(false)}
 			/>
 			<video
 				src={conserving0}
 				key={conserving0}
 				id={"conserving"}
 				preload="auto"
-				autoPlay={true}
+				autoPlay
 				muted
-				loop={true}
-
+				loop
+				onClick={() => handleClick(3)}
 				hidden={conserving ? true : false}
 			/>
 			<video
@@ -221,16 +193,17 @@ export default function Window2(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[3] = el)}
 				hidden={conserving ? false : true}
-				onEnded={() => handleEnd(3)}
+				onEnded={() => setConserving(false)}
 			/>
 			<video
 				src={grapeInvestments0}
 				key={grapeInvestments0}
 				id={"grapeInvestments"}
 				preload="auto"
-				autoPlay={true}
+				autoPlay
 				muted
-				loop={true}
+				loop
+				onClick={() => handleClick(4)}
 				hidden={grapeInvestments ? true : false}
 			/>
 			<video
@@ -243,7 +216,7 @@ export default function Window2(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[4] = el)}
 				hidden={grapeInvestments ? false : true}
-				onEnded={() => handleEnd(4)}
+				onEnded={() => setGrapeInvestments(false)}
 			/>
 		</div>
 	);

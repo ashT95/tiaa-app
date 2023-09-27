@@ -1,14 +1,71 @@
-.track {
+.canvas1 {
 	position: absolute;
 }
 
-.canvas {
-	
-    opacity: 0.3;
+.background1 {
+	position: absolute;
+	width: 1920px;
+	height: 1200px;
+	background-color: black;
+	opacity: 0.5;
 }
 
+.canvas2 {
+	position: absolute;
+}
+
+.background2 {
+	position: absolute;
+	width: 1920px;
+	height: 1200px;
+	background-color: black;
+	opacity: 0.5;
+}
+
+.canvas3 {
+	position: absolute;
+}
+
+.background3 {
+	position: absolute;
+	width: 1920px;
+	height: 1200px;
+	background-color: black;
+	opacity: 0.5;
+}
+
+.wall1 {
+	width: 1920px;
+	height: 1200px;
+	mix-blend-mode: screen;
+	position: absolute;
+}
+
+.wall2 {
+	width: 1920px;
+	height: 1200px;
+	mix-blend-mode: screen;
+	position: absolute;
+}
+
+.wall3 {
+	width: 1920px;
+	height: 1200px;
+	mix-blend-mode: screen;
+	position: absolute;
+}
 
 #celebrateVid {
+	width: 600px;
+	height: 600px;
+	transform: translate(690px, 504px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#check {
 	width: 600px;
 	height: 600px;
 	transform: translate(690px, 504px);
@@ -48,20 +105,10 @@
 	opacity: 1;
 }
 
-#ecology {
-	width: 600px;
-	height: 600px;
-	transform: translate(260px, 184px);
-	position: absolute;
-	mix-blend-mode: screen;
-	visibility: visible;
-	opacity: 1;
-}
-
 #friendship {
 	width: 600px;
 	height: 600px;
-	transform: translate(310px, 484px);
+	transform: translate(695px, 477px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -71,7 +118,7 @@
 #conserving {
 	width: 600px;
 	height: 600px;
-	transform: translate(692px, 301px);
+	transform: translate(340px, 167px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -81,7 +128,7 @@
 #responsibleRealEstate {
 	width: 600px;
 	height: 600px;
-	transform: translate(980px, 44px);
+	transform: translate(840px, 82px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -101,7 +148,7 @@
 #empoweringAbilities {
 	width: 600px;
 	height: 600px;
-	transform: translate(620px, 324px);
+	transform: translate(598px, 324px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -117,3 +164,70 @@
 	visibility: visible;
 	opacity: 1;
 }
+
+#groundbreakingCEOs {
+	width: 600px;
+	height: 600px;
+	transform: translate(153px, 294px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#girlsInTech0 {
+	width: 600px;
+	height: 600px;
+	transform: translate(530px, 64px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#girlsInTech1 {
+	width: 2000px;
+	height: 1000px;
+	transform: translate(-49px, 24px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#retiringInequality {
+	width: 600px;
+	height: 600px;
+	transform: translate(1099px, 346px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+
+#title-image {
+	transform: translate(1230px, 95px);
+	position: absolute;
+	mix-blend-mode: screen;
+	animation: fade 5s ease-in-out infinite;
+}
+
+.done-button {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	transform: translate(900px, 1000px);
+}
+
+@keyframes fade {
+	0% {
+	  opacity: 0;
+	}
+	50% {
+	  opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+  }

@@ -1,9 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import empoweringAbilities0 from "../../assets/videos/Empowering-Abilities/BlackBG_EmpoweringAbilitirs_Projection_09112023.mp4";
-import empoweringAbilities1 from "../../assets/videos/Empowering-Abilities/BLACKBG_EmpoweringAbilitirs_Animation Beats_09112023.mp4";
+import "../base.css";
+import bg3 from "../../assets/images/wall-3-print.png";
 
-import financialLiteracy0 from "../../assets/videos/Financial-Literacy/BlkBG_Financial Literacy_Projection_07242023.mp4";
-import financialLiteracy1 from "../../assets/videos/Financial-Literacy/BlkBG_Financial Literacy_Animation Beat_07242023.mp4";
+import empoweringAbilities0 from "../../assets/Animations/Empowering-Abilities/BLACKBG_Empowering_PROJECTION_09222023_NEW.mp4";
+import empoweringAbilities1 from "../../assets/Animations/Empowering-Abilities/BlackBG_EmpoweringAbilitirs_Animation Beats_09112023_NEW.mp4";
+
+import financialLiteracy0 from "../../assets/Animations/Financial-Literacy/BlkBG_Financial Literacy_Projection_07242023.mp4";
+import financialLiteracy1 from "../../assets/Animations/Financial-Literacy/BlkBG_Financial Literacy_Animation Beat_07242023.mp4";
+
+import girlsInTech0 from "../../assets/Animations/Girls-in-Tech/BlackBG_GIRLS IN TECH_PROJECTION 09132023.mp4";
+import girlsInTech1 from "../../assets/Animations/Girls-in-Tech/BLACK_TEST 2_GIRLS IN TECH_wall-3-print.mp4";
+
+import groundbreakingCEOs0 from "../../assets/Animations/Groundbreaking-CEOs/BlackBG_CEOs_PROJECTION_09122023.mp4";
+import groundbreakingCEOs1 from "../../assets/Animations/Groundbreaking-CEOs/BlackBG_CEOs_ANIMATION BEATS-09142023.mp4";
+
+import retiringInequality0 from "../../assets/Animations/Retiring-Inequality/BLACKBG_Retiring Inequality_PROJECTION_09192023.mp4";
+import retiringInequality1 from "../../assets/Animations/Retiring-Inequality/BlackBG_Retiring Inequality_ANIMATION BEATS_09212023.mp4";
 
 export default function Window3(props) {
 	const { selection } = props;
@@ -11,68 +23,100 @@ export default function Window3(props) {
 	// Wall three state variables
 	const [financialLiteracy, setFinancialLiteracy] = useState(false);
 	const [empoweringAbilities, setEmpoweringAbilities] = useState(false);
-
-	let blocks1 = [16, 17, 25, 26];
-	let blocks2 = [22, 23, 24, 32, 33, 34];
-	let blocks3 = [21, 22, 23, 31, 32, 33];
-	let blocks4 = [21, 22, 23, 31, 32, 33];
-	let blocks5 = [21, 22, 23, 31, 32, 33];
+	const [groundbreakingCEOs, setGroundbreakingCEOs] = useState(false);
+	const [girlsInTech, setGirlsInTech] = useState(false);
+	const [retiringInequality, setRetiringInequality] = useState(false);
 
 	const videoRefs = useRef([]);
 
 	useEffect(() => {
-		if (blocks1.includes(selection)) {
-			handleVideo(0);
-		}
-		if (blocks2.includes(selection)) {
-			handleVideo(1);
+		if (girlsInTech) {
+			videoRefs.current[1].play();
 		}
 
 		if (financialLiteracy) {
-			videoRefs.current[0].play();
+			videoRefs.current[2].play();
 		}
 
 		if (empoweringAbilities) {
-			videoRefs.current[1].play();
+			videoRefs.current[3].play();
 		}
-	}, [selection, financialLiteracy, empoweringAbilities]);
 
-	function handleVideo(value) {
-		switch (value) {
-			case 0: {
+		if (groundbreakingCEOs) {
+			videoRefs.current[4].play();
+		}
+
+		if (retiringInequality) {
+			videoRefs.current[5].play();
+		}
+	}, [
+		financialLiteracy,
+		empoweringAbilities,
+		groundbreakingCEOs,
+		girlsInTech,
+		retiringInequality,
+	]);
+
+	function handleClick(num) {
+		switch (num) {
+			case 1: {
+				setGirlsInTech(true);
+				break;
+			}
+			case 2: {
 				setFinancialLiteracy(true);
 				break;
 			}
-			case 1: {
+			case 3: {
 				setEmpoweringAbilities(true);
 				break;
 			}
-		}
-	}
-
-	function handleEnd(value) {
-		switch (value) {
-			case 0: {
-				setFinancialLiteracy(false);
+			case 4: {
+				setGroundbreakingCEOs(true);
 				break;
 			}
-			case 1: {
-				setEmpoweringAbilities(false);
+			case 5: {
+				setRetiringInequality(true);
 				break;
 			}
 		}
 	}
 
 	return (
-		<div className="wall3">
+		<div>
+			<img src={bg3} className="wall3" />
+			<video
+				src={girlsInTech0}
+				key={girlsInTech0}
+				id={"girlsInTech0"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				onClick={() => handleClick(1)}
+				hidden={girlsInTech ? true : false}
+			/>
+			<video
+				src={girlsInTech1}
+				key={girlsInTech1}
+				id={"girlsInTech1"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[1] = el)}
+				hidden={girlsInTech ? false : true}
+				onEnded={() => setGirlsInTech(false)}
+			/>
 			<video
 				src={financialLiteracy0}
 				key={financialLiteracy0}
 				id={"financialLiteracy"}
 				preload="auto"
-				autoPlay={true}
+				autoPlay
 				muted
-				loop={true}
+				loop
+				onClick={() => handleClick(2)}
 				hidden={financialLiteracy ? true : false}
 			/>
 			<video
@@ -83,18 +127,19 @@ export default function Window3(props) {
 				autoPlay={false}
 				muted
 				loop={false}
-				ref={(el) => (videoRefs.current[0] = el)}
+				ref={(el) => (videoRefs.current[2] = el)}
 				hidden={financialLiteracy ? false : true}
-				onEnded={() => handleEnd(0)}
+				onEnded={() => setFinancialLiteracy(false)}
 			/>
 			<video
 				src={empoweringAbilities0}
 				key={empoweringAbilities0}
 				id={"empoweringAbilities"}
 				preload="auto"
-				autoPlay={true}
+				autoPlay
 				muted
-				loop={true}
+				loop
+				onClick={() => handleClick(3)}
 				hidden={empoweringAbilities ? true : false}
 			/>
 			<video
@@ -105,9 +150,55 @@ export default function Window3(props) {
 				autoPlay={false}
 				muted
 				loop={false}
-				ref={(el) => (videoRefs.current[1] = el)}
+				ref={(el) => (videoRefs.current[3] = el)}
 				hidden={empoweringAbilities ? false : true}
-				onEnded={() => handleEnd(1)}
+				onEnded={() => setEmpoweringAbilities(false)}
+			/>
+			<video
+				src={groundbreakingCEOs0}
+				key={groundbreakingCEOs0}
+				id={"groundbreakingCEOs"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				onClick={() => handleClick(4)}
+				hidden={groundbreakingCEOs ? true : false}
+			/>
+			<video
+				src={groundbreakingCEOs1}
+				key={groundbreakingCEOs1}
+				id={"groundbreakingCEOs"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[4] = el)}
+				hidden={groundbreakingCEOs ? false : true}
+				onEnded={() => setGroundbreakingCEOs(false)}
+			/>
+			<video
+				src={retiringInequality0}
+				key={retiringInequality0}
+				id={"retiringInequality"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				onClick={() => handleClick(5)}
+				hidden={retiringInequality ? true : false}
+			/>
+			<video
+				src={retiringInequality1}
+				key={retiringInequality1}
+				id={"retiringInequality"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[5] = el)}
+				hidden={retiringInequality ? false : true}
+				onEnded={() => setRetiringInequality(false)}
 			/>
 		</div>
 	);
