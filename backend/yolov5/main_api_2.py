@@ -167,6 +167,9 @@ with contextlib.ExitStack() as stack:
         pipeline = getPipeline()
         device.startPipeline(pipeline)
 
+        device.setIrLaserDotProjectorBrightness(500) # in mA, 0..1200
+        device.setIrFloodLightBrightness(500) # in mA, 0..1500
+
         # Output queue will be used to get the rgb frames from the output defined above
         devices[mxid] = {
             'rgb': device.getOutputQueue(name="rgb", maxSize=4, blocking=False),
@@ -253,8 +256,8 @@ with contextlib.ExitStack() as stack:
                         #     print(f"WINDOWTHREE:X:{int(detection.spatialCoordinates.x)},Y:{int(detection.spatialCoordinates.y)},Z:{int(detection.spatialCoordinates.z)}")
                         #     sys.stdout.flush()
                     # ------------------------------------------------------------------------------------------------------------------------------- #
-
-                cv2.imshow(f"Preview - {mxid}", frame)
+                if (mxid == '18443010010F8F0F00'):
+                    cv2.imshow(f"Preview - {mxid}", frame)
 
 
         if cv2.waitKey(1) == ord('q'):

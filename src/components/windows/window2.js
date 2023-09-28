@@ -23,13 +23,16 @@ import grapeInvestments1 from "../../assets/Animations/Cheers-to-Grape-Investmen
 
 
 export default function Window2(props) {
-	const { selection } = props;
-
-	// Wall two state variables
-	const [friendship, setFriendship] = useState(false);
-	const [conserving, setConserving] = useState(false);
-	const [responsibleRealEstate, setResponsibleRealEstate] = useState(false);
-	const [grapeInvestments, setGrapeInvestments] = useState(false);
+	const {
+		play1,
+		play2,
+		play3,
+		play4,
+		setPlay1,
+		setPlay2,
+		setPlay3,
+		setPlay4,
+	} = props;
 
 	// Wall cycle animation constants
 	const [titleImage, setTitleImage] = useState(img01);
@@ -74,105 +77,34 @@ export default function Window2(props) {
 				break;
 			}
 		}
-
-		if (friendship) {
+		if (play1) {
 			videoRefs.current[1].play();
 		}
-
-		if (responsibleRealEstate) {
+		if (play2) {
 			videoRefs.current[2].play();
 		}
-
-		if (conserving) {
+		if (play3) {
 			videoRefs.current[3].play();
 		}
-
-		if (grapeInvestments) {
+		if (play4) {
 			videoRefs.current[4].play();
 		}
+
+		
 		return () => {
 			clearInterval(interval);
 		};
 	}, [
 		titleImage,
 		counter,
-		friendship,
-		responsibleRealEstate,
-		conserving,
-		grapeInvestments,
+		play1, play2, play3, play4
 	]);
 
-	function handleClick(num) {
-		switch (num) {
-			case 1: {
-				setFriendship(true);
-				break;
-			}
-			case 2: {
-				setResponsibleRealEstate(true);
-				break;
-			}
-			case 3: {
-				setConserving(true);
-				break;
-			}
-			case 4: {
-				setGrapeInvestments(true);
-				break;
-			}
-		}
-	}
 
 	return (
 		<div>
 			<img src={bg2} className="wall2" />
 			<img src={titleImage} id="title-image" />
-			<video
-				src={friendship0}
-				key={friendship0}
-				id={"friendship"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				onClick={() => handleClick(1)}
-				hidden={friendship ? true : false}
-			/>
-			<video
-				src={friendship1}
-				key={friendship1}
-				id={"friendship"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[1] = el)}
-				hidden={friendship ? false : true}
-				onEnded={() => setFriendship(false)}
-			/>
-			<video
-				src={responsibleRealEstate0}
-				key={responsibleRealEstate0}
-				id={"responsibleRealEstate"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				onClick={() => handleClick(2)}
-				hidden={responsibleRealEstate ? true : false}
-			/>
-			<video
-				src={responsibleRealEstate1}
-				key={responsibleRealEstate1}
-				id={"responsibleRealEstate"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[2] = el)}
-				hidden={responsibleRealEstate ? false : true}
-				onEnded={() => setResponsibleRealEstate(false)}
-			/>
 			<video
 				src={conserving0}
 				key={conserving0}
@@ -181,8 +113,7 @@ export default function Window2(props) {
 				autoPlay
 				muted
 				loop
-				onClick={() => handleClick(3)}
-				hidden={conserving ? true : false}
+				hidden={play1 ? true : false}
 			/>
 			<video
 				src={conserving1}
@@ -192,9 +123,53 @@ export default function Window2(props) {
 				autoPlay={false}
 				muted
 				loop={false}
+				ref={(el) => (videoRefs.current[1] = el)}
+				hidden={play1 ? false : true}
+				onEnded={() => setPlay1(false)}
+			/>
+			<video
+				src={friendship0}
+				key={friendship0}
+				id={"friendship"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={play2 ? true : false}
+			/>
+			<video
+				src={friendship1}
+				key={friendship1}
+				id={"friendship"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[2] = el)}
+				hidden={play2 ? false : true}
+				onEnded={() => setPlay2(false)}
+			/>
+			<video
+				src={responsibleRealEstate0}
+				key={responsibleRealEstate0}
+				id={"responsibleRealEstate"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={play3 ? true : false}
+			/>
+			<video
+				src={responsibleRealEstate1}
+				key={responsibleRealEstate1}
+				id={"responsibleRealEstate"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
 				ref={(el) => (videoRefs.current[3] = el)}
-				hidden={conserving ? false : true}
-				onEnded={() => setConserving(false)}
+				hidden={play3 ? false : true}
+				onEnded={() => setPlay3(false)}
 			/>
 			<video
 				src={grapeInvestments0}
@@ -204,8 +179,7 @@ export default function Window2(props) {
 				autoPlay
 				muted
 				loop
-				onClick={() => handleClick(4)}
-				hidden={grapeInvestments ? true : false}
+				hidden={play4 ? true : false}
 			/>
 			<video
 				src={grapeInvestments1}
@@ -216,8 +190,8 @@ export default function Window2(props) {
 				muted
 				loop={false}
 				ref={(el) => (videoRefs.current[4] = el)}
-				hidden={grapeInvestments ? false : true}
-				onEnded={() => setGrapeInvestments(false)}
+				hidden={play4 ? false : true}
+				onEnded={() => setPlay4(false)}
 			/>
 		</div>
 	);
