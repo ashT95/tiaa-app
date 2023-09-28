@@ -18,69 +18,38 @@ import retiringInequality0 from "../../assets/Animations/Retiring-Inequality/BLA
 import retiringInequality1 from "../../assets/Animations/Retiring-Inequality/BlackBG_Retiring Inequality_ANIMATION BEATS_09212023.mp4";
 
 export default function Window3(props) {
-	const { selection } = props;
-
-	// Wall three state variables
-	const [financialLiteracy, setFinancialLiteracy] = useState(false);
-	const [empoweringAbilities, setEmpoweringAbilities] = useState(false);
-	const [groundbreakingCEOs, setGroundbreakingCEOs] = useState(false);
-	const [girlsInTech, setGirlsInTech] = useState(false);
-	const [retiringInequality, setRetiringInequality] = useState(false);
+	const {
+		play1,
+		play2,
+		play3,
+		play4,
+		play5,
+		setPlay1,
+		setPlay2,
+		setPlay3,
+		setPlay4,
+		setPlay5,
+	} = props;
 
 	const videoRefs = useRef([]);
 
 	useEffect(() => {
-		if (girlsInTech) {
+		if (play1) {
 			videoRefs.current[1].play();
 		}
-
-		if (financialLiteracy) {
+		if (play2) {
 			videoRefs.current[2].play();
 		}
-
-		if (empoweringAbilities) {
+		if (play3) {
 			videoRefs.current[3].play();
 		}
-
-		if (groundbreakingCEOs) {
+		if (play4) {
 			videoRefs.current[4].play();
 		}
-
-		if (retiringInequality) {
+		if (play5) {
 			videoRefs.current[5].play();
 		}
-	}, [
-		financialLiteracy,
-		empoweringAbilities,
-		groundbreakingCEOs,
-		girlsInTech,
-		retiringInequality,
-	]);
-
-	function handleClick(num) {
-		switch (num) {
-			case 1: {
-				setGirlsInTech(true);
-				break;
-			}
-			case 2: {
-				setFinancialLiteracy(true);
-				break;
-			}
-			case 3: {
-				setEmpoweringAbilities(true);
-				break;
-			}
-			case 4: {
-				setGroundbreakingCEOs(true);
-				break;
-			}
-			case 5: {
-				setRetiringInequality(true);
-				break;
-			}
-		}
-	}
+	}, [play1, play2, play3, play4, play5]);
 
 	return (
 		<div>
@@ -93,8 +62,7 @@ export default function Window3(props) {
 				autoPlay
 				muted
 				loop
-				onClick={() => handleClick(1)}
-				hidden={girlsInTech ? true : false}
+				hidden={play1 ? true : false}
 			/>
 			<video
 				src={girlsInTech1}
@@ -105,8 +73,8 @@ export default function Window3(props) {
 				muted
 				loop={false}
 				ref={(el) => (videoRefs.current[1] = el)}
-				hidden={girlsInTech ? false : true}
-				onEnded={() => setGirlsInTech(false)}
+				hidden={play1 ? false : true}
+				onEnded={() => setPlay1(false)}
 			/>
 			<video
 				src={financialLiteracy0}
@@ -116,8 +84,7 @@ export default function Window3(props) {
 				autoPlay
 				muted
 				loop
-				onClick={() => handleClick(2)}
-				hidden={financialLiteracy ? true : false}
+				hidden={play2 ? true : false}
 			/>
 			<video
 				src={financialLiteracy1}
@@ -128,8 +95,8 @@ export default function Window3(props) {
 				muted
 				loop={false}
 				ref={(el) => (videoRefs.current[2] = el)}
-				hidden={financialLiteracy ? false : true}
-				onEnded={() => setFinancialLiteracy(false)}
+				hidden={play2 ? false : true}
+				onEnded={() => setPlay2(false)}
 			/>
 			<video
 				src={empoweringAbilities0}
@@ -139,8 +106,7 @@ export default function Window3(props) {
 				autoPlay
 				muted
 				loop
-				onClick={() => handleClick(3)}
-				hidden={empoweringAbilities ? true : false}
+				hidden={play3 ? true : false}
 			/>
 			<video
 				src={empoweringAbilities1}
@@ -151,8 +117,8 @@ export default function Window3(props) {
 				muted
 				loop={false}
 				ref={(el) => (videoRefs.current[3] = el)}
-				hidden={empoweringAbilities ? false : true}
-				onEnded={() => setEmpoweringAbilities(false)}
+				hidden={play3 ? false : true}
+				onEnded={() => setPlay3(false)}
 			/>
 			<video
 				src={groundbreakingCEOs0}
@@ -162,8 +128,7 @@ export default function Window3(props) {
 				autoPlay
 				muted
 				loop
-				onClick={() => handleClick(4)}
-				hidden={groundbreakingCEOs ? true : false}
+				hidden={play4 ? true : false}
 			/>
 			<video
 				src={groundbreakingCEOs1}
@@ -174,8 +139,8 @@ export default function Window3(props) {
 				muted
 				loop={false}
 				ref={(el) => (videoRefs.current[4] = el)}
-				hidden={groundbreakingCEOs ? false : true}
-				onEnded={() => setGroundbreakingCEOs(false)}
+				hidden={play4 ? false : true}
+				onEnded={() => setPlay4(false)}
 			/>
 			<video
 				src={retiringInequality0}
@@ -185,8 +150,7 @@ export default function Window3(props) {
 				autoPlay
 				muted
 				loop
-				onClick={() => handleClick(5)}
-				hidden={retiringInequality ? true : false}
+				hidden={play5 ? true : false}
 			/>
 			<video
 				src={retiringInequality1}
@@ -197,8 +161,8 @@ export default function Window3(props) {
 				muted
 				loop={false}
 				ref={(el) => (videoRefs.current[5] = el)}
-				hidden={retiringInequality ? false : true}
-				onEnded={() => setRetiringInequality(false)}
+				hidden={play5 ? false : true}
+				onEnded={() => setPlay5(false)}
 			/>
 		</div>
 	);
