@@ -55,72 +55,6 @@ export default function Window3(props) {
 		<div>
 			<img src={bg3} className="wall3" />
 			<video
-				src={girlsInTech0}
-				key={girlsInTech0}
-				id={"girlsInTech0"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				hidden={play1 ? true : false}
-			/>
-			<video
-				src={girlsInTech1}
-				key={girlsInTech1}
-				id={"girlsInTech1"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[1] = el)}
-				hidden={play1 ? false : true}
-				onEnded={() => setPlay1(false)}
-			/>
-			<video
-				src={financialLiteracy0}
-				key={financialLiteracy0}
-				id={"financialLiteracy"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				hidden={play2 ? true : false}
-			/>
-			<video
-				src={financialLiteracy1}
-				key={financialLiteracy1}
-				id={"financialLiteracy"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[2] = el)}
-				hidden={play2 ? false : true}
-				onEnded={() => setPlay2(false)}
-			/>
-			<video
-				src={empoweringAbilities0}
-				key={empoweringAbilities0}
-				id={"empoweringAbilities"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				hidden={play3 ? true : false}
-			/>
-			<video
-				src={empoweringAbilities1}
-				key={empoweringAbilities1}
-				id={"empoweringAbilities"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[3] = el)}
-				hidden={play3 ? false : true}
-				onEnded={() => setPlay3(false)}
-			/>
-			<video
 				src={groundbreakingCEOs0}
 				key={groundbreakingCEOs0}
 				id={"groundbreakingCEOs"}
@@ -128,7 +62,7 @@ export default function Window3(props) {
 				autoPlay
 				muted
 				loop
-				hidden={play4 ? true : false}
+				hidden={play1 ? true : false}
 			/>
 			<video
 				src={groundbreakingCEOs1}
@@ -138,9 +72,53 @@ export default function Window3(props) {
 				autoPlay={false}
 				muted
 				loop={false}
-				ref={(el) => (videoRefs.current[4] = el)}
-				hidden={play4 ? false : true}
-				onEnded={() => setPlay4(false)}
+				ref={(el) => (videoRefs.current[1] = el)}
+				hidden={play1 ? false : true}
+				onEnded={() => setPlay1(false)}
+			/>
+			<video
+				src={empoweringAbilities0}
+				key={empoweringAbilities0}
+				id={"empoweringAbilities"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={play2 ? true : false}
+			/>
+			<video
+				src={empoweringAbilities1}
+				key={empoweringAbilities1}
+				id={"empoweringAbilities"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[2] = el)}
+				hidden={play2 ? false : true}
+				onEnded={() => setPlay2(false)}
+			/>
+			<video
+				src={girlsInTech0}
+				key={girlsInTech0}
+				id={"girlsInTech0"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={play3 ? true : false}
+			/>
+			<video
+				src={girlsInTech1}
+				key={girlsInTech1}
+				id={"girlsInTech1"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[3] = el)}
+				hidden={play3 ? false : true}
+				onEnded={() => setPlay3(false)}
 			/>
 			<video
 				src={retiringInequality0}
@@ -150,12 +128,34 @@ export default function Window3(props) {
 				autoPlay
 				muted
 				loop
-				hidden={play5 ? true : false}
+				hidden={play4 ? true : false}
 			/>
 			<video
 				src={retiringInequality1}
 				key={retiringInequality1}
 				id={"retiringInequality"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[4] = el)}
+				hidden={play4 ? false : true}
+				onEnded={() => setPlay4(false)}
+			/>
+			<video
+				src={financialLiteracy0}
+				key={financialLiteracy0}
+				id={"financialLiteracy"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={play5 ? true : false}
+			/>
+			<video
+				src={financialLiteracy1}
+				key={financialLiteracy1}
+				id={"financialLiteracy"}
 				preload="auto"
 				autoPlay={false}
 				muted

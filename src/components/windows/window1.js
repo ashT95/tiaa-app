@@ -17,56 +17,52 @@ import ratedOneOfTheHighest0 from "../../assets/Animations/Rated-One-of-the-High
 import ratedOneOfTheHighest1 from "../../assets/Animations/Rated-One-of-the-Highest/BlackBG_Rated One of the Highest_ANIMBEATS_09262023.mp4";
 
 export default function Window1(props) {
-	const { play1, play2, play3, play4, play5 } = props;
+	const {
+		play1,
+		play2,
+		play3,
+		play4,
+		play5,
+		setPlay1,
+		setPlay2,
+		setPlay3,
+		setPlay4,
+		setPlay5,
+	} = props;
 
-	// wall one state variables
-	const [notJustForTeachers, setNotJustForTeachers] = useState(false);
-	const [source2Play, setSource2Play] = useState(false);
-	const [check, setCheck] = useState(false);
-	const [mission, setMission] = useState(false);
-	const [ratedHighest, setRatedHighest] = useState(false);
 	const videoRefs = useRef([]);
 
 	useEffect(() => {
 		if (play1) {
-			videoRefs.current[0].play();
+			videoRefs.current[1].play();
 		}
-
-	}, [play1, play2, play3, play4]);
-
-	function handleClick(num) {
-		switch (num) {
-			case 3: {
-				setCheck(true);
-			}
+		if (play2) {
+			videoRefs.current[2].play();
 		}
-	}
+		if (play3) {
+			videoRefs.current[3].play();
+		}
+		if (play4) {
+			videoRefs.current[4].play();
+		}
+		if (play5) {
+			videoRefs.current[5].play();
+		}
+	}, [play1, play2, play3, play4, play5]);
 
 	return (
 		<div>
 			<img src={bg1} className="wall1" />
 			<video
-				src={notJustForTeachers0}
-				key={notJustForTeachers0}
-				id={"notJustForTeachers"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				hidden={notJustForTeachers ? true : false}
-				onClick={() => handleClick(0)}
-			/>
-			<video
-				src={notJustForTeachers1}
-				key={notJustForTeachers1}
-				id={"notJustForTeachers"}
+				src={foundedOnPrinciple}
+				key={foundedOnPrinciple}
+				id={"principle0"}
 				preload="auto"
 				autoPlay={false}
 				muted
 				loop={false}
-				ref={(el) => (videoRefs.current[0] = el)}
-				hidden={notJustForTeachers ? false : true}
-				onEnded={() => setNotJustForTeachers(false)}
+				ref={(el) => (videoRefs.current[1] = el)}
+				onEnded={() => setPlay1(false)}
 			/>
 			<video
 				src={ratedOneOfTheHighest0}
@@ -76,8 +72,7 @@ export default function Window1(props) {
 				autoPlay
 				muted
 				loop
-				hidden={ratedHighest ? true : false}
-				onClick={() => handleClick(1)}
+				hidden={play2 ? true : false}
 			/>
 			<video
 				src={ratedOneOfTheHighest1}
@@ -87,45 +82,9 @@ export default function Window1(props) {
 				autoPlay={false}
 				muted
 				loop={false}
-				ref={(el) => (videoRefs.current[1] = el)}
-				hidden={ratedHighest ? false : true}
-				onClick={() => setRatedHighest(true)}
-				onEnded={() => setRatedHighest(false)}
-			/>
-			<video
-				src={foundedOnPrinciple}
-				key={foundedOnPrinciple}
-				id={"principle0"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
 				ref={(el) => (videoRefs.current[2] = el)}
-				onClick={() => setSource2Play(true)}
-				onEnded={() => setSource2Play(false)}
-			/>
-			<video
-				src={wereOnAMission0}
-				key={wereOnAMission0}
-				id={"mission"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				hidden={mission ? true : false}
-				onClick={() => handleClick(3)}
-			/>
-			<video
-				src={wereOnAMission1}
-				key={wereOnAMission1}
-				id={"mission"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[3] = el)}
-				hidden={mission ? false : true}
-				onEnded={() => setMission(false)}
+				hidden={play2 ? false : true}
+				onEnded={() => setPlay2(false)}
 			/>
 			<video
 				src={neverMissACheck0}
@@ -135,8 +94,7 @@ export default function Window1(props) {
 				autoPlay
 				muted
 				loop
-				hidden={check ? true : false}
-				onClick={() => handleClick(4)}
+				hidden={play3 ? true : false}
 			/>
 			<video
 				src={neverMissACheck1}
@@ -146,9 +104,53 @@ export default function Window1(props) {
 				autoPlay={false}
 				muted
 				loop={false}
+				ref={(el) => (videoRefs.current[3] = el)}
+				hidden={play3 ? false : true}
+				onEnded={() => setPlay3(false)}
+			/>
+			<video
+				src={notJustForTeachers0}
+				key={notJustForTeachers0}
+				id={"notJustForTeachers"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={play4 ? true : false}
+			/>
+			<video
+				src={notJustForTeachers1}
+				key={notJustForTeachers1}
+				id={"notJustForTeachers"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
 				ref={(el) => (videoRefs.current[4] = el)}
-				hidden={check ? false : true}
-				onEnded={() => setCheck(false)}
+				hidden={play4 ? false : true}
+				onEnded={() => setPlay4(false)}
+			/>
+			<video
+				src={wereOnAMission0}
+				key={wereOnAMission0}
+				id={"mission"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={play5 ? true : false}
+			/>
+			<video
+				src={wereOnAMission1}
+				key={wereOnAMission1}
+				id={"mission"}
+				preload="auto"
+				autoPlay={false}
+				muted
+				loop={false}
+				ref={(el) => (videoRefs.current[5] = el)}
+				hidden={play5 ? false : true}
+				onEnded={() => setPlay5(false)}
 			/>
 		</div>
 	);

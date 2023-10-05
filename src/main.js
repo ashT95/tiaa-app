@@ -12,7 +12,9 @@ let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
 
 // ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
+
 let shell = new PythonShell("backend/demo/depthai_demo.py", {
+
 	// The '-u' tells Python to flush every time
 	pythonOptions: ["-u"],
 	args: [],
