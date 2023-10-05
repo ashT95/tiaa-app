@@ -12,7 +12,7 @@ let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
 
 // ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
-let shell = new PythonShell("backend/yolov5/main_api_2.py", {
+let shell = new PythonShell("backend/demo/depthai_demo.py", {
 	// The '-u' tells Python to flush every time
 	pythonOptions: ["-u"],
 	args: [],
@@ -21,6 +21,7 @@ let shell = new PythonShell("backend/yolov5/main_api_2.py", {
 shell.on("message", function (message) {
 	// sending data to frontend window
 	if (mainWindow) {
+		console.log(message)
 		mainWindow.webContents.send("main-to-render", message);
 	}
 	// if (mainWindow2) {
@@ -113,6 +114,9 @@ app.on("window-all-closed", () => {
 	if (process.platform !== "darwin") {
 		app.quit();
 	}
+	shell.end((err) => {
+		if (err) throw err
+	})
 });
 
 app.on("activate", () => {
