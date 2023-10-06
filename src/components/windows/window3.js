@@ -53,7 +53,7 @@ export default function Window3(props) {
 
 	return (
 		<div>
-			<img src={bg3} className="wall3" />
+			{/* <img src={bg3} className="wall3" /> */}
 			<video
 				src={groundbreakingCEOs0}
 				key={groundbreakingCEOs0}

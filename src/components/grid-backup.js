@@ -7,7 +7,7 @@ import Window1 from "./windows/window1"
 let average = 0;
 let average2 = 0;
 
-export default function Base() {
+export default function Grid() {
 	const [xVal, setXval] = useState(0);
 	const [zVal, setZval] = useState(0);
 	const [x, setX] = useState(0);
@@ -27,38 +27,18 @@ export default function Base() {
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 
-		if (String(result).startsWith("WINDOWTWO:")) {
+		if (String(result).startsWith("X:")) {
 			numbers = String(result).match(/-?\d+/g).map(Number);
 
 			setXval(numbers[0]);
 			setZval(numbers[2]);
 			// console.log(numbers)
-
-			for (let i = 0; i < 10; i++) {
-				vals.push(zVal);
-				vals2.push(xVal);
-			}
-
-			for (const val of vals) {
-				total += val;
-				let average = total / 10;
-				setZ(average);
-			}
-
-			for (const val of vals2) {
-				total2 += val;
-				let average2 = total2 / 10;
-				setX(average2);
-			}
-
-			vals = [];
-			total = 0;
-			average = 0;
-
-			vals2 = [];
-			total2 = 0;
-			average2 = 0;
+			setX(xVal)
+			setZ(zVal)
 		}
+
+	
+
 	});
 
 	const draw = (canvasRef) => {
@@ -69,21 +49,24 @@ export default function Base() {
 
 		// converting to canvas x and y ranges
 
-		let x1 = convertCoordinates(1800, -1500, 0, canvas.width, x);
-		let y1 = convertCoordinates(1000, 3500, 0, canvas.height, z);
-		drawGrid(canvas, ctx, tileSize);
+		let x1 = convertCoordinates(1900, -1900, 0, canvas.width, x);
+		let y1 = convertCoordinates(1000, 3000, 0, canvas.height, z);
+		// drawGrid(canvas, ctx, tileSize, tileNum);
 
-		const tileX = ~~(x1 / tileSize);
-		const tileY = ~~(y1 / tileSize);
-		const tileNum = Math.round(tileX + (canvas.width / tileSize) * tileY);
-		setSelectedTile(tileNum)
+		// const tileX = ~~(x1 / tileSize);
+		// const tileY = ~~(y1 / tileSize);
+		// const tileNum = Math.round(tileX + (canvas.width / tileSize) * tileY);
+		// setSelectedTile(tileNum)
 
-		if (tileNum !== lastTile) {
-			lastTile = tileNum;
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			drawGrid(canvas, ctx, tileSize, tileNum);
-		}
-		lastTile = -1;
+		// if (tileNum !== lastTile) {
+		// 	lastTile = tileNum;
+		// 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+		// 	drawGrid(canvas, ctx, tileSize, tileNum);
+		// }
+		// lastTile = -1;
+
+		ctx.strokeStyle = "red"
+		ctx.strokeRect(x1, y1, 200, 200)
 
         
 	};
@@ -138,7 +121,7 @@ export default function Base() {
 			<div className="track">
 				<canvas className="canvas" ref={canvasRef} />
 			</div>
-            <Window1 selection={selectedTile} />
+      
 		</div>
 	);
 }

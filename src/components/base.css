@@ -1,7 +1,10 @@
 .canvas1 {}
 
 .background1 {
-	opacity: 1;
+	position: absolute;
+	background-color: black;
+	overflow: hidden;
+	
 }
 
 .canvas2 {
@@ -10,25 +13,25 @@
 
 .background2 {
 	position: absolute;
-	width: 1920px;
-	height: 1200px;
+	width: 100vw;
+	height: 100vh;
 	background-color: black;
-
+	overflow: hidden;
 }
 
 .canvas3 {}
 
 .background3 {
-
+	background-color: black;
 	opacity: 1;
 }
 
 .wall1 {
-	width: 1920px;
-	height: 1200px;
-	background-color: darkgray;
+
+	overflow: hidden;
 	mix-blend-mode: screen;
 	position: absolute;
+	scrollbar-width: 0px;
 }
 
 .wall2 {
@@ -42,14 +45,14 @@
 .wall3 {
 	width: 1920px;
 	height: 1200px;
-	background-color: darkgray;
+
 	mix-blend-mode: screen;
 	position: absolute;
 }
 
 #celebrateVid {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(690px, 504px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -58,58 +61,83 @@
 }
 
 #check {
-	width: 600px;
-	height: 600px;
-	transform: translate(690px, 504px);
+	width: 672px;
+	height: 672px;
+	transform: translate(658px, 513px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+	overflow: hidden;
 }
 
 #notJustForTeachers {
-	width: 600px;
-	height: 600px;
-	transform: translate(1054px, 124px);
+	width: 672px;
+	height: 672px;
+	transform: translate(1066px, 86px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+	overflow: hidden;
 }
 
 #mission {
-	width: 600px;
-	height: 600px;
-	transform: translate(1195px, 434px);
+	width: 672px;
+	height: 672px;
+	transform: translate(1224px, 435px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+	overflow: hidden;
 }
 
 #ratedHighest {
-	width: 600px;
-	height: 600px;
-	transform: translate(640px, 79px);
+	width: 672px;
+	height: 672px;
+	transform: translate(602px, 37px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+	overflow: hidden;
+}
+
+#butterfly {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+	overflow: hidden;
+}
+
+#lawnMower {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+	overflow: hidden;
 }
 
 #principle0 {
-	width: 600px;
-	height: 600px;
-	transform: translate(170px, 254px);
+	width: 672px;
+	height: 672px;
+	transform: translate(74px, 233px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+	overflow: hidden;
 }
 
 #ecology {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(260px, 184px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -118,8 +146,8 @@
 }
 
 #friendship {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(695px, 477px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -128,8 +156,8 @@
 }
 
 #conserving {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(340px, 167px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -138,8 +166,8 @@
 }
 
 #responsibleRealEstate {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(840px, 82px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -148,8 +176,8 @@
 }
 
 #grapeInvestments {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(1110px, 404px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -158,8 +186,8 @@
 }
 
 #empoweringAbilities {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(598px, 324px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -168,8 +196,8 @@
 }
 
 #financialLiteracy {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(1030px, 64px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -178,8 +206,8 @@
 }
 
 #groundbreakingCEOs {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(153px, 294px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -188,8 +216,8 @@
 }
 
 #girlsInTech0 {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(530px, 64px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -208,8 +236,8 @@
 }
 
 #retiringInequality {
-	width: 600px;
-	height: 600px;
+	width: 672px;
+	height: 672px;
 	transform: translate(1099px, 346px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -224,12 +252,7 @@
 	animation: fade 5s ease-in-out infinite;
 }
 
-.done-button {
-	position: absolute;
-	width: 100px;
-	height: 50px;
-	transform: translate(1600px, 100px);
-}
+
 
 @keyframes fade {
 	0% {

@@ -23,7 +23,7 @@ let shell = new PythonShell("backend/demo/depthai_demo.py", {
 shell.on("message", function (message) {
 	// sending data to frontend window
 	if (mainWindow) {
-		console.log(message)
+		//console.log(message)
 		mainWindow.webContents.send("main-to-render", message);
 	}
 	// if (mainWindow2) {
@@ -38,11 +38,13 @@ shell.on("message", function (message) {
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		x: 1920,
+		x: 1920 + 1920,
 		y: 0,
-		width: 800,
-		height: 600,
+		width: 1920,
+		height: 1200,
+		frame: false,
 		show: false,
+		autoHideMenuBar: true,
 		webPreferences: {
 			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
@@ -77,9 +79,11 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+	mainWindow.setFullScreen(true);
 
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools();
+	//mainWindow.webContents.openDevTools();
+
 
 	// mainWindow2.once("ready-to-show", () => {
 	// 	mainWindow2.show();

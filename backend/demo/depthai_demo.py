@@ -411,7 +411,7 @@ class Demo:
 
                 for detection in data:
                     if (detection.label == 0):
-                        print(f"X: {int(detection.spatialCoordinates.x) / 1000} Y: {int(detection.spatialCoordinates.y) / 1000} Z: {int(detection.spatialCoordinates.z) / 1000}")
+                        print(f"X: {int(detection.spatialCoordinates.x) } Y: {int(detection.spatialCoordinates.y) } Z: {int(detection.spatialCoordinates.z) }")
                         sys.stdout.flush()
 
                 
