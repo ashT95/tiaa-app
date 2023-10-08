@@ -50,16 +50,6 @@
 	position: absolute;
 }
 
-#celebrateVid {
-	width: 672px;
-	height: 672px;
-	transform: translate(690px, 504px);
-	position: absolute;
-	mix-blend-mode: screen;
-	visibility: visible;
-	opacity: 1;
-}
-
 #check {
 	width: 672px;
 	height: 672px;
@@ -252,6 +242,105 @@
 	animation: fade 5s ease-in-out infinite;
 }
 
+#proximityLoop01 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 650px;
+	left: 350px;
+	animation: appear 0.75s ease-in forwards;
+}
+
+#proximityLeave01 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 650px;
+	left: 350px;
+	animation: disappear 0.75s ease-in forwards;
+}
+
+#proximityLoop02 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 450px;
+	left: 900px;
+	scale: 2;
+	
+}
+
+#proximityLoop03 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 850px;
+	left: 900px;
+	scale: 2;
+	animation: appear 0.75s ease-in forwards;
+}
+
+#proximityLoop04 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 300px;
+	left: 1350px;
+	scale: 2;
+	animation: appear 0.75s ease-in forwards;
+}
+
+#proximityLoop05 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 800px;
+	left: 1500px;
+	scale: 2;
+	animation: appear 0.75s ease-in forwards;
+}
+
+
+@keyframes appear {
+	0% {
+		scale: 0;
+		opacity: 0;
+	}
+
+	50% {
+		scale: 1;
+		opacity: 0.5;
+	}
+
+
+	100% {
+		scale: 2;
+		opacity: 1;
+	}
+}
+
+@keyframes disappear {
+	0% {
+		scale: 2;
+		opacity: 1;
+	}
+
+	50% {
+		scale: 1;
+		opacity: 0.5;
+	}
+
+	100% {
+		scale: 0;
+		opacity: 0;
+	}
+}
 
 
 @keyframes fade {

@@ -2,20 +2,23 @@ import React, { useState, useEffect, useRef } from "react";
 import "../base.css";
 import bg3 from "../../assets/images/wall-3-print.png";
 
-import empoweringAbilities0 from "../../assets/Animations/Empowering-Abilities/BLACKBG_Empowering_PROJECTION_09222023_NEW.mp4";
-import empoweringAbilities1 from "../../assets/Animations/Empowering-Abilities/BlackBG_EmpoweringAbilitirs_Animation Beats_09112023_NEW.mp4";
+import empoweringAbilities0 from "../../assets/Animations/Empowering-Abilities/BLACKBG_Empowering_PROJECTION_10032023.mp4";
+import empoweringAbilities1 from "../../assets/Animations/Empowering-Abilities/BlackBG_EmpoweringAbilitirs_Animation Beats_10032023.mp4";
 
-import financialLiteracy0 from "../../assets/Animations/Financial-Literacy/BlkBG_Financial Literacy_Projection_07242023.mp4";
-import financialLiteracy1 from "../../assets/Animations/Financial-Literacy/BlkBG_Financial Literacy_Animation Beat_07242023.mp4";
+import financialLiteracy0 from "../../assets/Animations/Financial-Literacy/BlackBG_Financial Literacy_Projection_10062023.mp4";
+import financialLiteracy1 from "../../assets/Animations/Financial-Literacy/BlackBG_Financial Literacy_Animation Beat_10062023.mp4";
 
-import girlsInTech0 from "../../assets/Animations/Girls-in-Tech/BlackBG_GIRLS IN TECH_PROJECTION 09132023.mp4";
-import girlsInTech1 from "../../assets/Animations/Girls-in-Tech/BLACK_TEST 2_GIRLS IN TECH_wall-3-print.mp4";
+import girlsInTech0 from "../../assets/Animations/Girls-in-Tech/BLACKBG_GIRLS IN TECH_ANIMATION BEATS_10032023.mp4";
+import girlsInTech1 from "../../assets/Animations/Girls-in-Tech/BLACKBG_GIRLS IN TECH_ANIMATION BEATS_10042023.mp4";
 
-import groundbreakingCEOs0 from "../../assets/Animations/Groundbreaking-CEOs/BlackBG_CEOs_PROJECTION_09122023.mp4";
-import groundbreakingCEOs1 from "../../assets/Animations/Groundbreaking-CEOs/BlackBG_CEOs_ANIMATION BEATS-09142023.mp4";
+import ceoLoop0 from "../../assets/Animations/Groundbreaking-CEOs/NEW_CEOs_CLIFTON SOLO LOOP_10052023.mp4";
+import ceoWipe0 from "../../assets/Animations/Groundbreaking-CEOs/NEW_CEOs_CLIFTON WIPE_10052023.mp4";
+import ceoLoop1 from "../../assets/Animations/Groundbreaking-CEOs/NEW_CEOs_THASUNDA LOOP_10052023.mp4";
+import ceoWipe1 from "../../assets/Animations/Groundbreaking-CEOs/NEW_CEOs_THASUNDA WIPE_10052023.mp4";
+import ceoGlowLoop from "../../assets/Animations/Groundbreaking-CEOs/BLACK BG_GLOWING CIRCLE FRAME LOOP_10052023.mp4";
 
 import retiringInequality0 from "../../assets/Animations/Retiring-Inequality/BLACKBG_Retiring Inequality_PROJECTION_09192023.mp4";
-import retiringInequality1 from "../../assets/Animations/Retiring-Inequality/BlackBG_Retiring Inequality_ANIMATION BEATS_09212023.mp4";
+import retiringInequality1 from "../../assets/Animations/Retiring-Inequality/BlackBG_Retiring Inequality_ANIMATION BEATS_10032023.mp4";
 
 export default function Window3(props) {
 	const {
@@ -54,28 +57,7 @@ export default function Window3(props) {
 	return (
 		<div>
 			{/* <img src={bg3} className="wall3" /> */}
-			<video
-				src={groundbreakingCEOs0}
-				key={groundbreakingCEOs0}
-				id={"groundbreakingCEOs"}
-				preload="auto"
-				autoPlay
-				muted
-				loop
-				hidden={play1 ? true : false}
-			/>
-			<video
-				src={groundbreakingCEOs1}
-				key={groundbreakingCEOs1}
-				id={"groundbreakingCEOs"}
-				preload="auto"
-				autoPlay={false}
-				muted
-				loop={false}
-				ref={(el) => (videoRefs.current[1] = el)}
-				hidden={play1 ? false : true}
-				onEnded={() => setPlay1(false)}
-			/>
+
 			<video
 				src={empoweringAbilities0}
 				key={empoweringAbilities0}

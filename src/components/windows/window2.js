@@ -13,10 +13,10 @@ import friendship0 from "../../assets/Animations/Investing-in-Best-Friendship/Bl
 import friendship1 from "../../assets/Animations/Investing-in-Best-Friendship/BLACKBG_ANIMATION BEAT_07312023.mp4";
 
 import conserving0 from "../../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_Projection_07272023.mp4";
-import conserving1 from "../../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_AnimationBeats_07312023.mp4";
+import conserving1 from "../../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_AnimationBeats_10042023.mp4";
 
 import responsibleRealEstate0 from "../../assets/Animations/Responsible-Real-Estate/BlkBG_Responsible Real Estate_Projection_09222023.mp4";
-import responsibleRealEstate1 from "../../assets/Animations/Responsible-Real-Estate/BLACKBG_Responsible Real Estate_AnimationBeat_09222023.mp4";
+import responsibleRealEstate1 from "../../assets/Animations/Responsible-Real-Estate/BlackBG_Responsible Real Estate_AnimationBeat_10062023.mp4";
 
 import grapeInvestments0 from "../../assets/Animations/Cheers-to-Grape-Investments/BlkBG_Projection_grape_loop_08022023.mp4";
 import grapeInvestments1 from "../../assets/Animations/Cheers-to-Grape-Investments/BlkBG_ANIMATION BEATS_grape_loop_07202023.mp4";
