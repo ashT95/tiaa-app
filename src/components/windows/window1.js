@@ -203,7 +203,7 @@ export default function Window1(props) {
 
 	function handleEnd(num) {
 		videoRefs.current[num].currentTime = 0;
-		
+
 	}
 
 	return (
@@ -360,13 +360,6 @@ export default function Window1(props) {
 				onClick={() => setPlay2(true)}
 				onMouseEnter={() => handlePresence(2)}
 			/>
-			<audio
-				src={animationAudio02}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (audioRefs.current[7] = el)}
-			/>
 			<video
 				src={ratedOneOfTheHighest1}
 				key={ratedOneOfTheHighest1}
@@ -378,6 +371,13 @@ export default function Window1(props) {
 				ref={(el) => (videoRefs.current[2] = el)}
 				hidden={play2 ? false : true}
 				onEnded={() => setPlay2(false)}
+			/>
+			<audio
+				src={animationAudio02}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (audioRefs.current[7] = el)}
 			/>
 			<video
 				src={neverMissACheck0}
@@ -442,7 +442,7 @@ export default function Window1(props) {
 				autoPlay={false}
 				loop={false}
 				ref={(el) => (audioRefs.current[9] = el)}
-				
+
 			/>
 			<video
 				src={wereOnAMission0}

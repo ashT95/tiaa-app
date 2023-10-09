@@ -73,21 +73,21 @@ export default function Base() {
 			setFive(true)
 		}
 
-		if (personX >= 800 && personX < 1500 && personZ >= 1700 && personZ < 2600) {
-			setPresence1(true)
-		}
-		if (personX >= 50 && personX < 200 && personZ >= 1200 && personZ < 2100) {
-			setPresence2(true)
-		}
-		if (personX >= -100 && personX < 150 && personZ >= 2100 && personZ < 2600) {
-			setPresence3(true)
-		}
-		if (personX >= -1000 && personX < -900 && personZ >= 1500 && personZ < 2200) {
-			setPresence4(true)
-		}
-		if (personX >= -1400 && personX < -1000 && personZ >= 2000 && personZ < 2600) {
-			setPresence5(true)
-		}
+		// if (personX >= 800 && personX < 1500 && personZ >= 1700 && personZ < 2600) {
+		// 	setPresence1(true)
+		// }
+		// if (personX >= 50 && personX < 200 && personZ >= 1200 && personZ < 2100) {
+		// 	setPresence2(true)
+		// }
+		// if (personX >= -100 && personX < 150 && personZ >= 2100 && personZ < 2600) {
+		// 	setPresence3(true)
+		// }
+		// if (personX >= -1000 && personX < -900 && personZ >= 1500 && personZ < 2200) {
+		// 	setPresence4(true)
+		// }
+		// if (personX >= -1400 && personX < -1000 && personZ >= 2000 && personZ < 2600) {
+		// 	setPresence5(true)
+		// }
 		
 	};
 
