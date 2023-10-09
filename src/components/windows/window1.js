@@ -148,6 +148,22 @@ export default function Window1(props) {
 		if (audio5) {
 			audioRefs.current[5].play();
 		}
+
+		if (presence1) {
+			handlePresence(1)
+		}
+		if (presence2) {
+			handlePresence(2)
+		}
+		if (presence3) {
+			handlePresence(3)
+		}
+		if (presence4) {
+			handlePresence(4)
+		}
+		if (presence5) {
+			handlePresence(5)
+		}
 	}, [
 		play1,
 		play2,

@@ -16,10 +16,6 @@ export default function Base() {
 	const [four, setFour] = useState(false);
 	const [five, setFive] = useState(false);
 
-	const [personX, setPersonX] = useState(0);
-	const [personY, setPersonY] = useState(0);
-	const [personZ, setPersonZ] = useState(0);
-
 	const [presence1, setPresence1] = useState(false);
 	const [presence2, setPresence2] = useState(false);
 	const [presence3, setPresence3] = useState(false);
@@ -32,23 +28,38 @@ export default function Base() {
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 
-		if (String(result).startsWith("HAND:")) {
-			numbers = String(result).match(/-?\d+/g).map(Number);
-
-			setXval(numbers[0]);
-			// setYval(numbers[1])
-			setZval(numbers[2]);
-			// console.log(numbers)
+		if (result == "play1") {
+			setOne(true)
+		}
+		if (result == "play2") {
+			setTwo(true)
+		}
+		if (result == "play3") {
+			setThree(true)
+		}
+		if (result == "play4") {
+			setFour(true)
+		}
+		if (result == "play5") {
+			setFive(true)
 		}
 
-		if (String(result).startsWith("PERSON:")) {
-			numbers = String(result).match(/-?\d+/g).map(Number);
-
-			setPersonX(numbers[0]);
-			// setPersonY(numbers[1])
-			setPersonZ(numbers[2]);
-
+		if (result == "prox1") {
+			setPresence1(true)
 		}
+		if (result == "prox2") {
+			setPresence2(true)
+		}
+		if (result == "prox3") {
+			setPresence3(true)
+		}
+		if (result == "prox4") {
+			setPresence4(true)
+		}
+		if (result == "prox5") {
+			setPresence5(true)
+		}
+		
 	});
 
 	const draw = (canvasRef) => {
@@ -56,39 +67,6 @@ export default function Base() {
 		let ctx = canvas.getContext("2d");
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-
-		if (xVal >= 800 && xVal < 1500 && zVal >= 1700 && zVal < 2600) {
-			setOne(true)
-		}
-		if (xVal >= 50 && xVal < 200 && zVal >= 1200 && zVal < 2100) {
-			setTwo(true)
-		}
-		if (xVal >= -100 && xVal < 150 && zVal >= 2100 && zVal < 2600) {
-			setThree(true)
-		}
-		if (xVal >= -1000 && xVal < -900 && zVal >= 1500 && zVal < 2200) {
-			setFour(true)
-		}
-		if (xVal >= -1400 && xVal < -1000 && zVal >= 2000 && zVal < 2600) {
-			setFive(true)
-		}
-
-		// if (personX >= 800 && personX < 1500 && personZ >= 1700 && personZ < 2600) {
-		// 	setPresence1(true)
-		// }
-		// if (personX >= 50 && personX < 200 && personZ >= 1200 && personZ < 2100) {
-		// 	setPresence2(true)
-		// }
-		// if (personX >= -100 && personX < 150 && personZ >= 2100 && personZ < 2600) {
-		// 	setPresence3(true)
-		// }
-		// if (personX >= -1000 && personX < -900 && personZ >= 1500 && personZ < 2200) {
-		// 	setPresence4(true)
-		// }
-		// if (personX >= -1400 && personX < -1000 && personZ >= 2000 && personZ < 2600) {
-		// 	setPresence5(true)
-		// }
-		
 	};
 
 	
