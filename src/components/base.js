@@ -16,19 +16,38 @@ export default function Base() {
 	const [four, setFour] = useState(false);
 	const [five, setFive] = useState(false);
 
+	const [personX, setPersonX] = useState(0);
+	const [personY, setPersonY] = useState(0);
+	const [personZ, setPersonZ] = useState(0);
+
+	const [presence1, setPresence1] = useState(false);
+	const [presence2, setPresence2] = useState(false);
+	const [presence3, setPresence3] = useState(false);
+	const [presence4, setPresence4] = useState(false);
+	const [presence5, setPresence5] = useState(false);
+
 	const canvasRef = useRef(null);
 	let numbers = [];
 
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 
-		if (String(result).startsWith("X:")) {
+		if (String(result).startsWith("HAND:")) {
 			numbers = String(result).match(/-?\d+/g).map(Number);
 
 			setXval(numbers[0]);
-			setYval(numbers[1])
+			// setYval(numbers[1])
 			setZval(numbers[2]);
 			// console.log(numbers)
+		}
+
+		if (String(result).startsWith("PERSON:")) {
+			numbers = String(result).match(/-?\d+/g).map(Number);
+
+			setPersonX(numbers[0]);
+			// setPersonY(numbers[1])
+			setPersonZ(numbers[2]);
+
 		}
 	});
 
@@ -54,6 +73,21 @@ export default function Base() {
 			setFive(true)
 		}
 
+		if (personX >= 800 && personX < 1500 && personZ >= 1700 && personZ < 2600) {
+			setPresence1(true)
+		}
+		if (personX >= 50 && personX < 200 && personZ >= 1200 && personZ < 2100) {
+			setPresence2(true)
+		}
+		if (personX >= -100 && personX < 150 && personZ >= 2100 && personZ < 2600) {
+			setPresence3(true)
+		}
+		if (personX >= -1000 && personX < -900 && personZ >= 1500 && personZ < 2200) {
+			setPresence4(true)
+		}
+		if (personX >= -1400 && personX < -1000 && personZ >= 2000 && personZ < 2600) {
+			setPresence5(true)
+		}
 		
 	};
 
@@ -86,6 +120,17 @@ export default function Base() {
 				setPlay4={setFour}
 				play5={five}
 				setPlay5={setFive}
+
+				presence1={presence1}
+				setPresence1={setPresence1}
+				presence2={presence2}
+				setPresence2={setPresence2}
+				presence3={presence3}
+				setPresence3={setPresence3}
+				presence4={presence4}
+				setPresence4={setPresence4}
+				presence5={presence5}
+				setPresence5={setPresence5}
 			/>
 			<div>
 				<canvas className="canvas1" ref={canvasRef} />

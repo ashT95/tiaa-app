@@ -27,6 +27,11 @@ import proximityAudio03 from "../../assets/Audio/Proximity Note_D.m4a";
 import proximityAudio04 from "../../assets/Audio/Proximity Note_E.m4a";
 import proximityAudio05 from "../../assets/Audio/Proximity Note_G.m4a";
 
+import animationAudio01 from "../../assets/Audio/Founded on Principle_SFX.wav";
+import animationAudio02 from "../../assets/Audio/One of the Highest_SFX.wav";
+import animationAudio03 from "../../assets/Audio/Never Miss a Check_SFX.wav";
+import animationAudio04 from "../../assets/Audio/Not Just Teachers_SFX.wav";
+
 export default function Window1(props) {
 	const {
 		play1,
@@ -39,6 +44,16 @@ export default function Window1(props) {
 		setPlay3,
 		setPlay4,
 		setPlay5,
+		presence1,
+		presence2,
+		presence3,
+		presence4,
+		presence5,
+		setPresence1,
+		setPresence2,
+		setPresence3,
+		setPresence4,
+		setPresence5,
 	} = props;
 
 	const videoRefs = useRef([]);
@@ -59,20 +74,26 @@ export default function Window1(props) {
 	useEffect(() => {
 		if (play1) {
 			setProx1(false);
-			videoRefs.current[1].play();
+			audioRefs.current[6].play();
+			setTimeout(() => videoRefs.current[1].play(), 1000);
 		}
 		if (play2) {
 			setProx2(false);
-			videoRefs.current[2].play();
+			audioRefs.current[7].play();
+			setTimeout(() => videoRefs.current[2].play(), 1000);
 		}
 		if (play3) {
 			setProx3(false);
-			videoRefs.current[6].play();
-			videoRefs.current[3].play();
+			audioRefs.current[8].play();
+			setTimeout(() => {
+				videoRefs.current[3].play();
+				videoRefs.current[6].play();
+			}, 1000);
 		}
 		if (play4) {
 			setProx4(false);
-			videoRefs.current[4].play();
+			audioRefs.current[9].play();
+			setTimeout(() => videoRefs.current[4].play(), 1800);
 		}
 		if (play5) {
 			setProx5(false);
@@ -80,6 +101,21 @@ export default function Window1(props) {
 		}
 
 		// proximity animations
+		if (presence1) {
+			handlePresence(1);
+		}
+		if (presence2) {
+			handlePresence(2);
+		}
+		if (presence3) {
+			handlePresence(3);
+		}
+		if (presence4) {
+			handlePresence(4);
+		}
+		if (presence5) {
+			handlePresence(5);
+		}
 
 		if (prox1) {
 			videoRefs.current[8].play();
@@ -90,11 +126,9 @@ export default function Window1(props) {
 		if (prox3) {
 			videoRefs.current[10].play();
 		}
-
 		if (prox4) {
 			videoRefs.current[11].play();
 		}
-
 		if (prox5) {
 			videoRefs.current[12].play();
 		}
@@ -130,6 +164,11 @@ export default function Window1(props) {
 		audio3,
 		audio4,
 		audio5,
+		presence1,
+		presence2,
+		presence3,
+		presence4,
+		presence5,
 	]);
 
 	function handlePresence(num) {
@@ -162,6 +201,11 @@ export default function Window1(props) {
 		}
 	}
 
+	function handleEnd(num) {
+		videoRefs.current[num].currentTime = 0;
+		
+	}
+
 	return (
 		<div>
 			{/* <img src={bg1} className="wall1" /> */}
@@ -174,7 +218,7 @@ export default function Window1(props) {
 					autoPlay={false}
 					muted
 					loop={false}
-					onEnded={() => setProx1(false)}
+					onEnded={() => setProx1(false) && setPresence1(false)}
 					hidden={prox1 ? false : true}
 					ref={(el) => (videoRefs.current[8] = el)}
 				/>
@@ -297,7 +341,13 @@ export default function Window1(props) {
 				hidden={play1 ? false : true}
 				onEnded={() => setPlay1(false)}
 			/>
-
+			<audio
+				src={animationAudio01}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (audioRefs.current[6] = el)}
+			/>
 			<video
 				src={ratedOneOfTheHighest0}
 				key={ratedOneOfTheHighest0}
@@ -309,6 +359,13 @@ export default function Window1(props) {
 				hidden={play2 ? true : false}
 				onClick={() => setPlay2(true)}
 				onMouseEnter={() => handlePresence(2)}
+			/>
+			<audio
+				src={animationAudio02}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (audioRefs.current[7] = el)}
 			/>
 			<video
 				src={ratedOneOfTheHighest1}
@@ -346,6 +403,13 @@ export default function Window1(props) {
 				hidden={play3 ? false : true}
 				onEnded={() => setPlay3(false)}
 			/>
+			<audio
+				src={animationAudio03}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (audioRefs.current[8] = el)}
+			/>
 			<video
 				src={notJustForTeachers0}
 				key={notJustForTeachers0}
@@ -368,7 +432,17 @@ export default function Window1(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[4] = el)}
 				hidden={play4 ? false : true}
-				onEnded={() => setPlay4(false)}
+				onEnded={() => setTimeout(() => {
+					setPlay4(false)
+				}, 1000)}
+			/>
+			<audio
+				src={animationAudio04}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (audioRefs.current[9] = el)}
+				
 			/>
 			<video
 				src={wereOnAMission0}

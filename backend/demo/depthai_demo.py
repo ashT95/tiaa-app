@@ -410,8 +410,10 @@ class Demo:
                 id1 = self._deviceInfo.mxid
 
                 for detection in data:
+                    if (detection.label == 1): 
+                        print(f"PERSON: X: {int(detection.spatialCoordinates.x) } Y: {int(detection.spatialCoordinates.y) } Z: {int(detection.spatialCoordinates.z)}")
                     if (detection.label == 0):
-                        print(f"X: {int(detection.spatialCoordinates.x) } Y: {int(detection.spatialCoordinates.y) } Z: {int(detection.spatialCoordinates.z) }")
+                        print(f"HAND: X: {int(detection.spatialCoordinates.x) } Y: {int(detection.spatialCoordinates.y) } Z: {int(detection.spatialCoordinates.z) }")
                         sys.stdout.flush()
 
                 
