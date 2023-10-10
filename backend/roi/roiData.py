@@ -4,7 +4,7 @@ import cv2
 import sys
 import depthai as dai
 
-stepSize = 0.05
+stepSize = 0.01
 
 newConfig = False
 
@@ -40,8 +40,8 @@ stereo.setLeftRightCheck(lrcheck)
 configList = [] * 10
 
 # Config
-topLeft = dai.Point2f(0.79, 0.39)
-bottomRight = dai.Point2f(0.81, 0.41)
+topLeft = dai.Point2f(0.67, 0.12)
+bottomRight = dai.Point2f(0.77, 0.32)
 
 config = dai.SpatialLocationCalculatorConfigData()
 config.depthThresholds.lowerThreshold = 1000
@@ -50,8 +50,8 @@ config.roi = dai.Rect(topLeft, bottomRight)
 
 configList.append(config)
 
-topLeft2 = dai.Point2f(0.54, 0.34)
-bottomRight2 = dai.Point2f(0.56, 0.36)
+topLeft2 = dai.Point2f(0.43, 0.12)
+bottomRight2 = dai.Point2f(0.53, 0.32)
 
 config2 = dai.SpatialLocationCalculatorConfigData()
 config2.depthThresholds.lowerThreshold = 1000
@@ -60,8 +60,8 @@ config2.roi = dai.Rect(topLeft2, bottomRight2)
 
 configList.append(config2)
 
-topLeft3 = dai.Point2f(0.54, 0.34)
-bottomRight3 = dai.Point2f(0.56, 0.36)
+topLeft3 = dai.Point2f(0.43, 0.12)
+bottomRight3 = dai.Point2f(0.53, 0.32)
 
 config3 = dai.SpatialLocationCalculatorConfigData()
 config3.depthThresholds.lowerThreshold = 1000
@@ -70,8 +70,8 @@ config3.roi = dai.Rect(topLeft3, bottomRight3)
 
 configList.append(config3)
 
-topLeft4 = dai.Point2f(0.29, 0.34)
-bottomRight4 = dai.Point2f(0.31, 0.36)
+topLeft4 = dai.Point2f(0.22, 0.12)
+bottomRight4 = dai.Point2f(0.32, 0.32)
 
 config4 = dai.SpatialLocationCalculatorConfigData()
 config4.depthThresholds.lowerThreshold = 1000
@@ -80,8 +80,8 @@ config4.roi = dai.Rect(topLeft4, bottomRight4)
 
 configList.append(config4)
 
-topLeft5 = dai.Point2f(0.19, 0.34)
-bottomRight5 = dai.Point2f(0.21, 0.36)
+topLeft5 = dai.Point2f(0.19, 0.12)
+bottomRight5 = dai.Point2f(0.29, 0.32)
 
 config5 = dai.SpatialLocationCalculatorConfigData()
 config5.depthThresholds.lowerThreshold = 1000
@@ -90,8 +90,8 @@ config5.roi = dai.Rect(topLeft5, bottomRight5)
 
 configList.append(config5)
 
-topLeft6 = dai.Point2f(0.84, 0.54)
-bottomRight6 = dai.Point2f(0.86, 0.56)
+topLeft6 = dai.Point2f(0.69, 0.49)
+bottomRight6 = dai.Point2f(0.85, 0.56)
 
 config6 = dai.SpatialLocationCalculatorConfigData()
 config6.depthThresholds.lowerThreshold = 1000
@@ -100,8 +100,8 @@ config6.roi = dai.Rect(topLeft6, bottomRight6)
 
 configList.append(config6)
 
-topLeft7 = dai.Point2f(0.49, 0.54)
-bottomRight7 = dai.Point2f(0.51, 0.56)
+topLeft7 = dai.Point2f(0.42, 0.49)
+bottomRight7 = dai.Point2f(0.58, 0.56)
 
 config7 = dai.SpatialLocationCalculatorConfigData()
 config7.depthThresholds.lowerThreshold = 1000
@@ -110,8 +110,8 @@ config7.roi = dai.Rect(topLeft7, bottomRight7)
 
 configList.append(config7)
 
-topLeft8 = dai.Point2f(0.49, 0.54)
-bottomRight8 = dai.Point2f(0.51, 0.56)
+topLeft8 = dai.Point2f(0.42, 0.49)
+bottomRight8 = dai.Point2f(0.58, 0.56)
 
 config8 = dai.SpatialLocationCalculatorConfigData()
 config8.depthThresholds.lowerThreshold = 1000
@@ -120,8 +120,8 @@ config8.roi = dai.Rect(topLeft8, bottomRight8)
 
 configList.append(config8)
 
-topLeft9 = dai.Point2f(0.24, 0.54)
-bottomRight9 = dai.Point2f(0.26, 0.56)
+topLeft9 = dai.Point2f(0.19, 0.49)
+bottomRight9 = dai.Point2f(0.35, 0.56)
 
 config9 = dai.SpatialLocationCalculatorConfigData()
 config9.depthThresholds.lowerThreshold = 1000
@@ -130,8 +130,8 @@ config9.roi = dai.Rect(topLeft9, bottomRight9)
 
 configList.append(config9)
 
-topLeft10 = dai.Point2f(0.24, 0.54)
-bottomRight10 = dai.Point2f(0.26, 0.56)
+topLeft10 = dai.Point2f(0.17, 0.49)
+bottomRight10 = dai.Point2f(0.33, 0.56)
 
 config10 = dai.SpatialLocationCalculatorConfigData()
 config10.depthThresholds.lowerThreshold = 1000
@@ -139,6 +139,7 @@ config10.depthThresholds.upperThreshold = 3500
 config10.roi = dai.Rect(topLeft10, bottomRight10)
 
 configList.append(config10)
+
 
 spatialLocationCalculator.initialConfig.setROIs(configList)
 spatialLocationCalculator.inputConfig.setWaitForMessage(False)
@@ -172,7 +173,7 @@ with dai.Device(pipeline) as device:
 
         depthFrameColor = cv2.normalize(depthFrame, None, 255, 0, cv2.NORM_INF, cv2.CV_8UC1)
         depthFrameColor = cv2.equalizeHist(depthFrameColor)
-        depthFrameColor = cv2.applyColorMap(depthFrameColor, cv2.COLORMAP_JET)
+        depthFrameColor = cv2.applyColorMap(depthFrameColor, cv2.COLORMAP_HOT)
 
         spatialData = spatialCalcQueue.get().getSpatialLocations()
         
@@ -209,13 +210,13 @@ with dai.Device(pipeline) as device:
                 sys.stdout.flush()
             
             #interaction
-            if (i == 5 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 3000):
+            if (i == 5 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2500):
                 print("play1")
                 sys.stdout.flush()
             if (i == 6 and int(spatialData[i].spatialCoordinates.z) >= 1000 and int(spatialData[i].spatialCoordinates.z) < 2000):
                 print("play2")
                 sys.stdout.flush()
-            if (i == 7 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 3000):
+            if (i == 7 and int(spatialData[i].spatialCoordinates.z) >= 2200 and int(spatialData[i].spatialCoordinates.z) < 3000):
                 print("play3")
                 sys.stdout.flush()
             if (i == 8 and int(spatialData[i].spatialCoordinates.z) >= 1000 and int(spatialData[i].spatialCoordinates.z) < 2000):
@@ -224,7 +225,6 @@ with dai.Device(pipeline) as device:
             if (i == 9 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 3000):
                 print("play5")
                 sys.stdout.flush()
-
         # Show the frame
         cv2.imshow("depth", depthFrameColor)
     
@@ -262,4 +262,5 @@ with dai.Device(pipeline) as device:
             newConfig = False
     
 
-        
+        # print("{:.2f}".format(topLeft.x), "{:.2f}".format(topLeft.y), "{:.2f}".format(bottomRight.x), "{:.2f}".format(bottomRight.y))
+        # sys.stdout.flush()

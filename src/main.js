@@ -22,7 +22,7 @@ let shell = new PythonShell("backend/roi/roiData.py", {
 shell.on("message", function (message) {
 	// sending data to frontend window
 	if (mainWindow) {
-		console.log(message)
+		// console.log(message)
 		mainWindow.webContents.send("main-to-render", message);
 	}
 	// if (mainWindow2) {

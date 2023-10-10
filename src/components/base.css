@@ -53,7 +53,7 @@
 #check {
 	width: 672px;
 	height: 672px;
-	transform: translate(658px, 513px);
+	transform: translate(660px, 520px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -64,7 +64,7 @@
 #notJustForTeachers {
 	width: 672px;
 	height: 672px;
-	transform: translate(1066px, 86px);
+	transform: translate(1080px, 95px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -75,7 +75,7 @@
 #mission {
 	width: 672px;
 	height: 672px;
-	transform: translate(1224px, 435px);
+	transform: translate(1240px, 460px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;

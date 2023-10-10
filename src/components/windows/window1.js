@@ -77,11 +77,28 @@ export default function Window1(props) {
 			audioRefs.current[6].play();
 			setTimeout(() => videoRefs.current[1].play(), 1000);
 		}
+		if (play1 === false) {
+			videoRefs.current[1].currentTime = 0;
+		}
+		if (play2 === false) {
+			videoRefs.current[2].currentTime = 0;
+		}
+		if (play3 === false) {
+			videoRefs.current[3].currentTime = 0;
+		}
+		if (play4 === false) {
+			videoRefs.current[4].currentTime = 0;
+		}
+		if (play5 === false) {
+			videoRefs.current[5].currentTime = 0;
+		}
+
 		if (play2) {
 			setProx2(false);
 			audioRefs.current[7].play();
 			setTimeout(() => videoRefs.current[2].play(), 1000);
 		}
+
 		if (play3) {
 			setProx3(false);
 			audioRefs.current[8].play();
@@ -90,11 +107,13 @@ export default function Window1(props) {
 				videoRefs.current[6].play();
 			}, 1000);
 		}
+
 		if (play4) {
 			setProx4(false);
 			audioRefs.current[9].play();
 			setTimeout(() => videoRefs.current[4].play(), 1800);
 		}
+
 		if (play5) {
 			setProx5(false);
 			videoRefs.current[5].play();
@@ -117,19 +136,19 @@ export default function Window1(props) {
 			handlePresence(5);
 		}
 
-		if (prox1) {
+		if (prox1 && videoRefs.current[1].currentTime === 0) {
 			videoRefs.current[8].play();
 		}
-		if (prox2) {
+		if (prox2 && videoRefs.current[2].currentTime === 0) {
 			videoRefs.current[9].play();
 		}
-		if (prox3) {
+		if (prox3 && videoRefs.current[3].currentTime === 0) {
 			videoRefs.current[10].play();
 		}
-		if (prox4) {
+		if (prox4 && videoRefs.current[4].currentTime === 0) {
 			videoRefs.current[11].play();
 		}
-		if (prox5) {
+		if (prox5 && videoRefs.current[5].currentTime === 0) {
 			videoRefs.current[12].play();
 		}
 
@@ -217,10 +236,6 @@ export default function Window1(props) {
 		}
 	}
 
-	function handleEnd(num) {
-		videoRefs.current[num].currentTime = 0;
-
-	}
 
 	return (
 		<div>
@@ -234,7 +249,7 @@ export default function Window1(props) {
 					autoPlay={false}
 					muted
 					loop={false}
-					onEnded={() => setProx1(false) && setPresence1(false)}
+					onEnded={() => setProx1(false)}
 					hidden={prox1 ? false : true}
 					ref={(el) => (videoRefs.current[8] = el)}
 				/>
@@ -448,9 +463,7 @@ export default function Window1(props) {
 				loop={false}
 				ref={(el) => (videoRefs.current[4] = el)}
 				hidden={play4 ? false : true}
-				onEnded={() => setTimeout(() => {
-					setPlay4(false)
-				}, 1000)}
+				onEnded={() => setPlay4(false)}
 			/>
 			<audio
 				src={animationAudio04}

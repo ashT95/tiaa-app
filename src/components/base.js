@@ -82,6 +82,11 @@ export default function Base() {
 		return () => {
 			window.cancelAnimationFrame(animationFrameId);
 
+			setPresence1(false)
+			setPresence2(false)
+			setPresence3(false)
+			setPresence4(false)
+			setPresence5(false)
 		};
 	}, [draw]);
 
