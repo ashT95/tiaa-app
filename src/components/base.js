@@ -6,10 +6,7 @@ import "./base.css";
 import Window1 from "./windows/window1";
 
 export default function Base() {
-	const [xVal, setXval] = useState(0);
-	const [yVal, setYval] = useState(0)
-	const [zVal, setZval] = useState(0);
-
+	const [counter, setCounter] = useState(0);
 	const [one, setOne] = useState(false);
 	const [two, setTwo] = useState(false);
 	const [three, setThree] = useState(false);
@@ -59,7 +56,7 @@ export default function Base() {
 		if (result == "prox5") {
 			setPresence5(true)
 		}
-		
+
 	});
 
 	const draw = (canvasRef) => {
@@ -69,9 +66,10 @@ export default function Base() {
 		canvas.height = window.innerHeight;
 	};
 
-	
+
 	useEffect(() => {
 		let animationFrameId;
+		let interval;
 
 		const render = () => {
 			draw(canvasRef);
@@ -80,13 +78,9 @@ export default function Base() {
 
 		render();
 		return () => {
+
 			window.cancelAnimationFrame(animationFrameId);
 
-			setPresence1(false)
-			setPresence2(false)
-			setPresence3(false)
-			setPresence4(false)
-			setPresence5(false)
 		};
 	}, [draw]);
 
