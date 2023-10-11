@@ -26,7 +26,6 @@ import proximityVideo03 from "../../assets/Videos/ProximityNoteD.mp4";
 import proximityVideo04 from "../../assets/Videos/ProximityNoteE.mp4";
 import proximityVideo05 from "../../assets/Videos/ProximityNoteG.mp4";
 
-
 export default function Window1(props) {
 	const {
 		play1,
@@ -52,7 +51,12 @@ export default function Window1(props) {
 	} = props;
 
 	const videoRefs = useRef([]);
-	const audioRefs = useRef([]);
+
+	const [class01, setClass01] = useState("visible");
+	const [class02, setClass02] = useState("visible");
+	const [class03, setClass03] = useState("visible");
+	const [class04, setClass04] = useState("visible");
+	const [class05, setClass05] = useState("visible");
 
 	useEffect(() => {
 		if (presence1 == true) {
@@ -69,6 +73,10 @@ export default function Window1(props) {
 		}
 		if (presence5 == true) {
 			videoRefs.current[12].play();
+
+			// setTimeout(() => {
+			// 	setClass05("hidden");
+			// }, 7000);
 		}
 
 		if (play1 == true) {
@@ -116,9 +124,10 @@ export default function Window1(props) {
 				muted={false}
 				loop={false}
 				onEnded={() => setPresence1(false)}
-				hidden={presence1 ? false : true}
 				ref={(el) => (videoRefs.current[8] = el)}
+				hidden={presence1 ? false : true}
 			/>
+
 			<video
 				src={proximityVideo02}
 				key={"proximityLoop02"}
@@ -128,9 +137,10 @@ export default function Window1(props) {
 				muted={false}
 				loop={false}
 				onEnded={() => setPresence2(false)}
-				hidden={presence2 ? false : true}
 				ref={(el) => (videoRefs.current[9] = el)}
+				hidden={presence2 ? false : true}
 			/>
+
 			<video
 				src={proximityVideo03}
 				key={"proximityLoop03"}
@@ -140,9 +150,10 @@ export default function Window1(props) {
 				muted={false}
 				loop={false}
 				onEnded={() => setPresence3(false)}
-				hidden={presence3 ? false : true}
 				ref={(el) => (videoRefs.current[10] = el)}
+				hidden={presence3 ? false : true}
 			/>
+
 			<video
 				src={proximityVideo04}
 				key={"proximityLoop04"}
@@ -152,9 +163,10 @@ export default function Window1(props) {
 				muted={false}
 				loop={false}
 				onEnded={() => setPresence4(false)}
-				hidden={presence4 ? false : true}
 				ref={(el) => (videoRefs.current[11] = el)}
+				hidden={presence4 ? false : true}
 			/>
+
 			<video
 				src={proximityVideo05}
 				key={"proximityLoop05"}
@@ -164,9 +176,10 @@ export default function Window1(props) {
 				muted={false}
 				loop={false}
 				onEnded={() => setPresence5(false)}
-				hidden={presence5 ? false : true}
 				ref={(el) => (videoRefs.current[12] = el)}
+				hidden={presence5 ? false : true}
 			/>
+
 			{/* interaction videos */}
 
 			<video

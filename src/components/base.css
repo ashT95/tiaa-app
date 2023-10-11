@@ -249,7 +249,7 @@
 	position: fixed;
 	top: 696px;
 	left: 348px;
-	animation: appear 0.75s ease-in forwards;
+	scale: 2;
 }
 
 
@@ -272,7 +272,7 @@
 	top: 850px;
 	left: 900px;
 	scale: 2;
-	animation: appear 0.75s ease-in forwards;
+
 }
 
 #proximityLoop04 {
@@ -283,7 +283,7 @@
 	top: 362px;
 	left: 1330px;
 	scale: 2;
-	animation: appear 0.75s ease-in forwards;
+	
 }
 
 #proximityLoop05 {
@@ -294,56 +294,49 @@
 	top: 820px;
 	left: 1476px;
 	scale: 2;
-	animation: appear 0.75s ease-in forwards;
+	
 }
 
+/* Fade-In Effect */
+.visible {
+	visibility: visible;
+	opacity: 1;
+  }
+  /* Fade-Out Effect */
+  .hidden {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 3s, opacity 3s ease-out;
+	-webkit-transition: visibility 0s 3s, opacity 3s ease-out;
+	-moz-transition: visibility 0s 3s, opacity 3s ease-out;
+	-ms-transition: visibility 0s 3s, opacity 3s ease-out;
+	-o-transition: visibility 0s 3s, opacity 3s ease-out;
+  }
 
-@keyframes appear {
-	0% {
-		scale: 0;
-		opacity: 0;
+
+@-webkit-keyframes fadeout {
+	90% {
+		opacity: 1;
 	}
-
-	50% {
-		scale: 1;
+	99% {
 		opacity: 0.5;
 	}
-
-
 	100% {
-		scale: 2;
-		opacity: 1;
+		opacity: 0;
+
 	}
 }
 
-@keyframes disappear {
-	0% {
-		scale: 2;
+@keyframes fadeout {
+	90% {
 		opacity: 1;
 	}
-
-	50% {
-		scale: 1;
+	99% {
 		opacity: 0.5;
+
 	}
-
-	100% {
-		scale: 0;
-		opacity: 0;
-	}
-}
-
-
-@keyframes fade {
-	0% {
-		opacity: 0;
-	}
-
-	50% {
-		opacity: 1;
-	}
-
 	100% {
 		opacity: 0;
+
 	}
 }
