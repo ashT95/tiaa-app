@@ -225,16 +225,6 @@ with dai.Device(pipeline) as device:
                     
         if ( int(spatialData[6].spatialCoordinates.z) >= 1500 and int(spatialData[6].spatialCoordinates.z) < 2100):
             print("play2")
-
-        # if (int(spatialData[7].spatialCoordinates.z)):
-        #     total = 0
-        #     t = int(spatialData[7].spatialCoordinates.z)
-        #     for i in range(5):
-        #         total += t
-        #     avg = total // 5
-        #     if ((avg >= 2100) and (avg < 2700)):
-        #         print("play3")
-
                     
         if ( int(spatialData[7].spatialCoordinates.z) >= 2100 and int(spatialData[7].spatialCoordinates.z) < 2700):
             print("play3")
