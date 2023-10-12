@@ -6,7 +6,7 @@ import "./base.css";
 import Window1 from "./windows/window1";
 
 export default function Base() {
-	const [counter, setCounter] = useState(0);
+	const [result, setResult] = useState("none");
 	const [one, setOne] = useState(false);
 	const [two, setTwo] = useState(false);
 	const [three, setThree] = useState(false);
@@ -25,38 +25,39 @@ export default function Base() {
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 
-		if (result == "play1") {
-			setOne(true)
+		if (result === "play1") {
+			!one ? setOne(true) : null
 		}
-		if (result == "play2") {
-			setTwo(true)
+		if (result === "play2") {
+			!two ? setTwo(true) : null
 		}
-		if (result == "play3") {
-			setThree(true)
+		if (result === "play3") {
+			!three ? setThree(true) : null
 		}
-		if (result == "play4") {
-			setFour(true)
+		if (result === "play4") {
+			!four ? setFour(true) : null
 		}
-		if (result == "play5") {
-			setFive(true)
-		}
-
-		if (result == "prox1") {
-			setPresence1(true)
-		}
-		if (result == "prox2") {
-			setPresence2(true)
-		}
-		if (result == "prox3") {
-			setPresence3(true)
-		}
-		if (result == "prox4") {
-			setPresence4(true)
-		}
-		if (result == "prox5") {
-			setPresence5(true)
+		if (result === "play5") {
+			!five ? setFive(true) : null
 		}
 
+		if (result === "prox1") {
+			!presence1 ? setPresence1(true) : null
+		}
+		if (result === "prox2") {
+			!presence2 ? setPresence2(true) : null
+		}
+		if (result === "prox3") {
+			!presence3 ? setPresence3(true) : null
+		}
+		if (result === "prox4") {
+			!presence4 ? setPresence4(true) : null
+		}
+		if (result === "prox5") {
+			!presence5 ? setPresence5(true) : null
+		}
+
+		
 	});
 
 	const draw = (canvasRef) => {
@@ -64,6 +65,8 @@ export default function Base() {
 		let ctx = canvas.getContext("2d");
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
+
+
 	};
 
 

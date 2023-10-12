@@ -1,2 +1,0 @@
-depthai_sdk
-depthai_sdk_console_scripts

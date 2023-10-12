@@ -203,40 +203,100 @@ with dai.Device(pipeline) as device:
             cv2.putText(depthFrameColor, f"Z{i}: {int(spatialData[i].spatialCoordinates.z)} mm", (xmin + 10, ymin + 50), fontType, 0.5, 255)
             
             # proximity 
-        if (int(spatialData[0].spatialCoordinates.z) >= 1500 and int(spatialData[0].spatialCoordinates.z) < 2700):
-            print("prox1")
+            if (i == 0 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 1500 and avg < 2700):
+                    print("prox1")
+                        
+            if (i == 1 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 1500 and avg < 2700):
+                    print("prox2")
                     
-        if ( int(spatialData[1].spatialCoordinates.z) >= 1500 and int(spatialData[1].spatialCoordinates.z) < 2700):
-            print("prox2")
-                   
-        if (int(spatialData[2].spatialCoordinates.z) >= 1500 and int(spatialData[2].spatialCoordinates.z) < 2700):
-            print("prox3")
+            if (i == 2 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 1500 and avg < 2700):
+                    print("prox3")
+                        
+            if (i == 3 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 1500 and avg < 2700):
+                    print("prox4")
                     
-        if ( int(spatialData[3].spatialCoordinates.z) >= 1500 and int(spatialData[3].spatialCoordinates.z) < 2700):
-            print("prox4")
-                   
-        if ( int(spatialData[4].spatialCoordinates.z) >= 1500 and int(spatialData[4].spatialCoordinates.z) < 2700):
-            print("prox5")
-                   
-                
-                #interaction
-        if ( int(spatialData[5].spatialCoordinates.z) >= 2000 and int(spatialData[5].spatialCoordinates.z) < 2500):
-            print("play1")
+            if (i == 4 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 1500 and avg < 2700):
+                    print("prox5")
                     
-        if ( int(spatialData[6].spatialCoordinates.z) >= 1500 and int(spatialData[6].spatialCoordinates.z) < 2100):
-            print("play2")
                     
-        if ( int(spatialData[7].spatialCoordinates.z) >= 2100 and int(spatialData[7].spatialCoordinates.z) < 2700):
-            print("play3")
-                 
-        if ( int(spatialData[8].spatialCoordinates.z) >= 1500 and int(spatialData[8].spatialCoordinates.z) < 2000):
-            print("play4")
-                
-        if ( int(spatialData[9].spatialCoordinates.z) >= 2000 and int(spatialData[9].spatialCoordinates.z) < 2700):
-            print("play5")
+                    #interaction
+            if (i == 5 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2500):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 2000 and avg < 2500):
+                    print("play1")
+                        
+            if (i == 6 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2100):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 1500 and avg < 2100):
+                    print("play2")
+                        
+            if (i == 7 and int(spatialData[i].spatialCoordinates.z) >= 2500 and int(spatialData[i].spatialCoordinates.z) < 2900):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 2100 and avg < 2700):
+                    print("play3")
+                    
+            if (i == 8 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2000):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 1500 and avg < 2000):
+                    print("play4")
+                    
+            if (i == 9 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2700):
+                total = 0
+                temp = int(spatialData[i].spatialCoordinates.z)
+                for i in range(10):
+                    total += temp 
+                avg = total / 10
+                if (avg >= 2300 and avg < 2700):
+                    print("play5")
 
 
-        print("none")
+
         sys.stdout.flush()
             
             

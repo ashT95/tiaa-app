@@ -51,55 +51,53 @@ export default function Window1(props) {
 	} = props;
 
 	const videoRefs = useRef([]);
+	const [counter, setCounter] = useState(0)
+	const [mute, setMute] = useState(true)
 
-	const [class01, setClass01] = useState("visible");
-	const [class02, setClass02] = useState("visible");
-	const [class03, setClass03] = useState("visible");
-	const [class04, setClass04] = useState("visible");
-	const [class05, setClass05] = useState("visible");
 
 	useEffect(() => {
-		if (presence1 == true) {
-			videoRefs.current[8].play();
-		}
-		if (presence2 == true) {
-			videoRefs.current[9].play();
-		}
-		if (presence3 == true) {
-			videoRefs.current[10].play();
-		}
-		if (presence4 == true) {
-			videoRefs.current[11].play();
-		}
-		if (presence5 == true) {
-			videoRefs.current[12].play();
+		let interval;
 
-			// setTimeout(() => {
-			// 	setClass05("hidden");
-			// }, 7000);
+		if (presence1 === true) {
+			if (!play1) videoRefs.current[8].play();
+		}
+		if (presence2 === true) {
+			if (!play2) videoRefs.current[9].play();
+		}
+		if (presence3 === true) {
+			if (!play3) videoRefs.current[10].play();
+		}
+		if (presence4 === true) {
+			if (!play4) videoRefs.current[11].play();
+		}
+		if (presence5 === true) {
+			if (!play5) videoRefs.current[12].play();
 		}
 
-		if (play1 == true) {
-			setPresence1(false);
+		if (play1 === true) {
+			setPresence1(false)
 			videoRefs.current[1].play();
 		}
-		if (play2 == true) {
+		if (play2 === true) {
 			setPresence2(false);
 			videoRefs.current[2].play();
 		}
-		if (play3 == true) {
+		if (play3 === true) {
 			setPresence3(false);
 			videoRefs.current[3].play();
 			videoRefs.current[6].play();
 		}
-		if (play4 == true) {
+		if (play4 === true) {
 			setPresence4(false);
 			videoRefs.current[4].play();
 		}
-		if (play5 == true) {
+		if (play5 === true) {
 			setPresence5(false);
 			videoRefs.current[5].play();
 		}
+
+
+	
 	}, [
 		presence1,
 		presence2,
@@ -110,8 +108,10 @@ export default function Window1(props) {
 		play2,
 		play3,
 		play4,
-		play5,
+		play5
 	]);
+
+
 
 	return (
 		<div>
@@ -121,50 +121,59 @@ export default function Window1(props) {
 				id={"proximityLoop01"}
 				preload="auto"
 				autoPlay={false}
-				muted={false}
+				muted={mute}
 				loop={false}
 				onEnded={() => setPresence1(false)}
 				ref={(el) => (videoRefs.current[8] = el)}
-				hidden={presence1 ? false : true}
+				style={{
+					opacity: `${presence1  ? 1 : 0} `,
+					transition: "opacity, 1s ease-out"
+				}}
 			/>
-
 			<video
 				src={proximityVideo02}
 				key={"proximityLoop02"}
 				id={"proximityLoop02"}
 				preload="auto"
 				autoPlay={false}
-				muted={false}
+				muted={mute}
 				loop={false}
 				onEnded={() => setPresence2(false)}
 				ref={(el) => (videoRefs.current[9] = el)}
-				hidden={presence2 ? false : true}
+				style={{
+					opacity: `${presence2? 1 : 0} `,
+					transition: "opacity, 1s ease-out"
+				}}
 			/>
-
 			<video
 				src={proximityVideo03}
 				key={"proximityLoop03"}
 				id={"proximityLoop03"}
 				preload="auto"
 				autoPlay={false}
-				muted={false}
+				muted={mute}
 				loop={false}
 				onEnded={() => setPresence3(false)}
 				ref={(el) => (videoRefs.current[10] = el)}
-				hidden={presence3 ? false : true}
+				style={{
+					opacity: `${presence3? 1 : 0} `,
+					transition: "opacity, 1s ease-out"
+				}}
 			/>
-
 			<video
 				src={proximityVideo04}
 				key={"proximityLoop04"}
 				id={"proximityLoop04"}
 				preload="auto"
 				autoPlay={false}
-				muted={false}
+				muted={mute}
 				loop={false}
 				onEnded={() => setPresence4(false)}
 				ref={(el) => (videoRefs.current[11] = el)}
-				hidden={presence4 ? false : true}
+				style={{
+					opacity: `${presence4? 1 : 0} `,
+					transition: "opacity, 1s ease-out"
+				}}
 			/>
 
 			<video
@@ -173,11 +182,14 @@ export default function Window1(props) {
 				id={"proximityLoop05"}
 				preload="auto"
 				autoPlay={false}
-				muted={false}
+				muted={mute}
 				loop={false}
 				onEnded={() => setPresence5(false)}
 				ref={(el) => (videoRefs.current[12] = el)}
-				hidden={presence5 ? false : true}
+				style={{
+					opacity: `${presence5 ? 1 : 0} `,
+					transition: "opacity, 1s ease-out"
+				}}
 			/>
 
 			{/* interaction videos */}

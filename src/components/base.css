@@ -297,28 +297,31 @@
 	
 }
 
+
+
 /* Fade-In Effect */
 .visible {
 	visibility: visible;
 	opacity: 1;
+
   }
   /* Fade-Out Effect */
   .hidden {
 	visibility: hidden;
 	opacity: 0;
-	transition: visibility 0s 3s, opacity 3s ease-out;
-	-webkit-transition: visibility 0s 3s, opacity 3s ease-out;
-	-moz-transition: visibility 0s 3s, opacity 3s ease-out;
-	-ms-transition: visibility 0s 3s, opacity 3s ease-out;
-	-o-transition: visibility 0s 3s, opacity 3s ease-out;
+	transition: visibility 1s 2s, opacity 1s ease-out;
+	-webkit-transition: visibility 1s 2s, opacity 1s ease-out;
+	-moz-transition: visibility 1s 2s, opacity 1s ease-out;
+	-ms-transition: visibility 1s 2s, opacity 1s ease-out;
+	-o-transition: visibility 1s 2s, opacity 1s ease-out;
   }
 
 
 @-webkit-keyframes fadeout {
-	90% {
+	0% {
 		opacity: 1;
 	}
-	99% {
+	50% {
 		opacity: 0.5;
 	}
 	100% {
