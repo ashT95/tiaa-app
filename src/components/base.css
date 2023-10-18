@@ -104,6 +104,15 @@
 	opacity: 1;
 }
 
+#canyonBird {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
 #rocket {
 	width: 1920px;
 	height: 1200px;
@@ -245,6 +254,7 @@
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+	z-index: 1;
 }
 
 #retiringInequality {

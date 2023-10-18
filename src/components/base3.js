@@ -58,34 +58,23 @@ export default function Base3() {
 
 	useEffect(() => {
 		if (presence1) {
-			videoRefs.current[10].play();
+			!wipe0 && !wipe1 ? videoRefs.current[10].play() : null
 		}
 		if (presence2) {
-			videoRefs.current[11].play();
+			!girlsInTech ? videoRefs.current[11].play() : null
 		}
 		if (presence3) {
-			videoRefs.current[12].play();
+			!empoweringAbilities ? videoRefs.current[12].play() : null
 		}
 		if (presence4) {
-			videoRefs.current[13].play();
+			!financialLiteracy ? videoRefs.current[13].play() : null
 		}
 		if (presence5) {
-			videoRefs.current[14].play();
+			!retiringInequality ? videoRefs.current[14].play() : null
 		}
 
-		if (financialLiteracy) {
-			videoRefs.current[1].play();
-		}
-		if (empoweringAbilities) {
-			videoRefs.current[2].play();
-		}
-		if (girlsInTech) {
-			videoRefs.current[3].play();
-		}
-		if (retiringInequality) {
-			videoRefs.current[4].play();
-		}
 		if (wipe0) {
+			setPresence1(false)
 			videoRefs.current[5].play();
 		}
 		if (loop1) {
@@ -95,11 +84,30 @@ export default function Base3() {
 			videoRefs.current[7].play();
 		}
 		if (wipe1) {
+			setPresence1(false)
 			videoRefs.current[8].play();
 		}
+		if (girlsInTech) {
+			setPresence2(false)
+			videoRefs.current[1].play();
+		}
+		if (empoweringAbilities) {
+			setPresence3(false)
+			videoRefs.current[2].play();
+		}
+		if (financialLiteracy) {
+			setPresence4(false)
+			videoRefs.current[3].play();
+		}
+		if (retiringInequality) {
+			setPresence5(false)
+			videoRefs.current[4].play();
+		}
+
 		if (rocket) {
 			videoRefs.current[9].play();
 		}
+
 	}, [
 		presence1,
 		presence2,
@@ -120,23 +128,23 @@ export default function Base3() {
 	function handleInteraction(name) {
 		switch (name) {
 			case "prox1": {
-				setPresence1(true);
+				!presence1 ? setPresence1(true) : null
 				break;
 			}
 			case "prox2": {
-				setPresence2(true);
+				!presence2 ? setPresence2(true) : null
 				break;
 			}
 			case "prox3": {
-				setPresence3(true);
+				!presence3 ? setPresence3(true) : null
 				break;
 			}
 			case "prox4": {
-				setPresence4(true);
+				!presence4 ? setPresence4(true) : null
 				break;
 			}
 			case "prox5": {
-				setPresence5(true);
+				!presence5 ? setPresence5(true) : null
 				break;
 			}
 
@@ -251,6 +259,7 @@ export default function Base3() {
 				hidden={rocket ? false : true}
 				onEnded={() => setRocket(false)}
 			/>
+
 			<video
 				src={canyonBird}
 				key={canyonBird}
@@ -260,6 +269,7 @@ export default function Base3() {
 				muted
 				loop
 			/>
+
 			<video
 				src={catLoop}
 				key={catLoop}
@@ -286,7 +296,7 @@ export default function Base3() {
 				preload="auto"
 				autoPlay={false}
 				loop={false}
-				ref={(el) => (videoRefs.current[2] = el)}
+				ref={(el) => (videoRefs.current[1] = el)}
 				hidden={girlsInTech ? false : true}
 				onEnded={() => setGirlsInTech(false)}
 			/>
@@ -308,7 +318,7 @@ export default function Base3() {
 				preload="auto"
 				autoPlay={false}
 				loop={false}
-				ref={(el) => (videoRefs.current[4] = el)}
+				ref={(el) => (videoRefs.current[3] = el)}
 				hidden={financialLiteracy ? false : true}
 				onEnded={() => setFinancialLiteracy(false)}
 			/>
@@ -330,7 +340,7 @@ export default function Base3() {
 				preload="auto"
 				autoPlay={false}
 				loop={false}
-				ref={(el) => (videoRefs.current[3] = el)}
+				ref={(el) => (videoRefs.current[2] = el)}
 				hidden={empoweringAbilities ? false : true}
 				onEnded={() => setEmpoweringAbilities(false)}
 			/>
@@ -425,7 +435,7 @@ export default function Base3() {
 				preload="auto"
 				autoPlay={false}
 				loop={false}
-				ref={(el) => (videoRefs.current[5] = el)}
+				ref={(el) => (videoRefs.current[4] = el)}
 				hidden={retiringInequality ? false : true}
 				onEnded={() => setRetiringInequality(false)}
 			/>

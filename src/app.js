@@ -6,5 +6,5 @@ import Base3 from "./components/base3";
 import Grid from "./components/grid-backup";
 
 export default function App() {
-  return (<Base />);
+  return (<Base2 />);
 }

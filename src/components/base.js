@@ -49,34 +49,39 @@ export default function Base() {
 
 	useEffect(() => {
 		if (presence1) {
-			videoRefs.current[8].play();
+			!foundedOnPrinciple ? videoRefs.current[8].play() : null 
 		}
 		if (presence2) {
-			videoRefs.current[9].play();
+			!ratedHighest ? videoRefs.current[9].play() : null
 		}
 		if (presence3) {
-			videoRefs.current[10].play();
+			!check ? videoRefs.current[10].play() : null
 		}
 		if (presence4) {
-			videoRefs.current[11].play();
+			!notJustForTeachers ? videoRefs.current[11].play() : null
 		}
 		if (presence5) {
-			videoRefs.current[12].play();
+			!mission ? videoRefs.current[12].play() : null
 		}
 
 		if (foundedOnPrinciple) {
+			setPresence1(false)
 			videoRefs.current[1].play();
 		}
 		if (ratedHighest) {
+			setPresence2(false)
 			videoRefs.current[2].play();
 		}
 		if (check) {
+			setPresence3(false)
 			videoRefs.current[3].play();
 		}
 		if (notJustForTeachers) {
+			setPresence4(false)
 			videoRefs.current[4].play();
 		}
 		if (mission) {
+			setPresence5(false)
 			videoRefs.current[5].play();
 		}
 		if (butterfly) {
@@ -99,23 +104,23 @@ export default function Base() {
 	function handleInteraction(name) {
 		switch (name) {
 			case "prox1": {
-				setPresence1(true);
+				!presence1 ? setPresence1(true) : null
 				break;
 			}
 			case "prox2": {
-				setPresence2(true);
+				!presence2 ? setPresence2(true) : null
 				break;
 			}
 			case "prox3": {
-				setPresence3(true);
+				!presence3 ? setPresence3(true) : null
 				break;
 			}
 			case "prox4": {
-				setPresence4(true);
+				!presence4 ? setPresence4(true): null
 				break;
 			}
 			case "prox5": {
-				setPresence5(true);
+				!presence5 ? setPresence5(true) : null
 				break;
 			}
 

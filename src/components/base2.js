@@ -44,31 +44,35 @@ export default function Base2() {
 
 	useEffect(() => {
 		if (presence1) {
-			videoRefs.current[5].play();
+			!conserving ? videoRefs.current[5].play() : null
 		}
 		if (presence2) {
-			videoRefs.current[6].play();
+			!friendship ? videoRefs.current[6].play() : null
 		}
 		if (presence3) {
-			videoRefs.current[7].play();
+			!responsibleRealEstate ? videoRefs.current[7].play() : null
 		}
 		if (presence4) {
-			videoRefs.current[8].play();
-		}
-
-		if (friendship) {
-			videoRefs.current[1].play();
-		}
-
-		if (responsibleRealEstate) {
-			videoRefs.current[2].play();
+			!grapeInvestments ? videoRefs.current[8].play() : null
 		}
 
 		if (conserving) {
+			setPresence1(false)
+			videoRefs.current[1].play();
+		}
+
+		if (friendship) {
+			setPresence2(false)
+			videoRefs.current[2].play();
+		}
+
+		if (responsibleRealEstate) {
+			setPresence3(false)
 			videoRefs.current[3].play();
 		}
 
 		if (grapeInvestments) {
+			setPresence4(false)
 			videoRefs.current[4].play();
 		}
 	}, [
@@ -85,19 +89,19 @@ export default function Base2() {
 	function handleInteraction(name) {
 		switch (name) {
 			case "prox1": {
-				setPresence1(true);
+				!presence1 ? setPresence1(true) : null
 				break;
 			}
 			case "prox2": {
-				setPresence2(true);
+				!presence2 ? setPresence2(true) : null
 				break;
 			}
 			case "prox3": {
-				setPresence3(true);
+				!presence3 ? setPresence3(true) : null
 				break;
 			}
 			case "prox4": {
-				setPresence4(true);
+				!presence4 ? setPresence4(true) : null
 				break;
 			}
 
