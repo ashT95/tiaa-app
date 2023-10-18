@@ -149,7 +149,6 @@ config9.roi = dai.Rect(topLeft9, bottomRight9)
 
 configList.append(config9)
 
-
 spatialLocationCalculator.initialConfig.setROIs(configList)
 spatialLocationCalculator.inputConfig.setWaitForMessage(False)
 # Linking
@@ -297,7 +296,7 @@ with dai.Device(pipeline) as device:
 
 
 
-        sys.stdout.flush()
+            sys.stdout.flush()
             
             
         # Show the frame

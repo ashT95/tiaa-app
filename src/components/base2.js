@@ -1,156 +1,290 @@
-// SIMPLE DRAWING TEST FOR TESTING THE HAND/PERSON TRACKING
-
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
-import Window2 from "./windows/window2";
+
+import friendship0 from "../assets/Animations/Investing-in-Best-Friendship/BlkBG_BEST FRIENDSHIP_LOOP TAIL WAG_09262023.mp4";
+import friendship1 from "../assets/Animations/_AnimationsWithSound/INVESTING WITH IMPACT_SOUND.mp4";
+
+import conserving0 from "../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_Projection_07272023.mp4";
+import conserving1 from "../assets/Animations/_AnimationsWithSound/CONSERVING NATURAL RESOURCES_SOUND.mp4";
+
+import responsibleRealEstate0 from "../assets/Animations/Responsible-Real-Estate/BlkBG_Responsible Real Estate_Projection_09222023.mp4";
+import responsibleRealEstate1 from "../assets/Animations/Responsible-Real-Estate/BlackBG_Responsible Real Estate_AnimationBeat_10062023.mp4";
+
+import grapeInvestments0 from "../assets/Animations/Cheers-to-Grape-Investments/BlkBG_Projection_grape_loop_08022023.mp4";
+import grapeInvestments1 from "../assets/Animations/_AnimationsWithSound/SUSTAINABLE VINEYARDS_SOUND.mp4";
+
+import shootingStar from "../assets/Animations/_Miscellaneous/BlackBG_Wall 2_ShootingStar_10162023.mp4";
+import titleAnimation from "../assets/Animations/_Miscellaneous/wall2-title-animation.mp4";
+import bgAnim2 from "../assets/Animations/_Miscellaneous/BlackBG_Wall 2_STARS AND PLANTS_10162023.mp4";
+
+import proxVid1 from "../assets/Animations/Proximity/proximity-popup_B.mp4";
+import proxVid2 from "../assets/Animations/Proximity/proximity-popup_C.mp4";
+import proxVid3 from "../assets/Animations/Proximity/proximity-popup_D.mp4";
+import proxVid4 from "../assets/Animations/Proximity/proximity-popup_E.mp4";
+import proxVid5 from "../assets/Animations/Proximity/proximity-popup_G.mp4";
 
 export default function Base2() {
-	const [xVal, setXval] = useState(0);
-	const [zVal, setZval] = useState(0);
+	const [friendship, setFriendship] = useState(false);
+	const [conserving, setConserving] = useState(false);
+	const [responsibleRealEstate, setResponsibleRealEstate] = useState(false);
+	const [grapeInvestments, setGrapeInvestments] = useState(false);
 
-	const [coords1, setCoords1] = useState([670, 1800]);
-	const [coords2, setCoords2] = useState([80, 2200]);
-	const [coords3, setCoords3] = useState([-570, 1800]);
-	const [coords4, setCoords4] = useState([-1300, 3300]);
-	const [coords5, setCoords5] = useState([-600, 2000]);
+	const [presence1, setPresence1] = useState(false);
+	const [presence2, setPresence2] = useState(false);
+	const [presence3, setPresence3] = useState(false);
+	const [presence4, setPresence4] = useState(false);
 
-	const [one, setOne] = useState(false);
-	const [two, setTwo] = useState(false);
-	const [three, setThree] = useState(false);
-	const [four, setFour] = useState(false);
-	const [five, setFive] = useState(false);
-
-	const canvasRef = useRef(null);
-	let numbers = [];
+	const videoRefs = useRef([]);
 
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 
-		if (String(result).startsWith("WINDOWONE:")) {
-			numbers = String(result).match(/-?\d+/g).map(Number);
-
-			setXval(numbers[0]);
-			setZval(numbers[2]);
-			// console.log(numbers)
-		}
+		handleInteraction(result);
 	});
 
-	const draw = (canvasRef) => {
-		const canvas = canvasRef.current;
-		let ctx = canvas.getContext("2d");
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-
-		let radius = 270; // radius of the mid-point circles
-
-		ctx.strokeStyle = "white";
-		// ctx.strokeRect(x0, y0, x1, y1)
-		ctx.strokeRect(430, 330, 350, 390)
-		ctx.strokeRect(740, 670, 350, 230)
-		ctx.strokeRect(1020, 320, 410, 250)
-		ctx.strokeRect(1270, 670, 330, 240)
-
-		// drawCircle(430 + (350 / 2), 330 + (390 / 2), 10, ctx)
-		// drawCircle(740 + (350 / 2), 670 + (230 / 2), 10, ctx)
-		// drawCircle(1020 + (410 / 2), 320 + (250 / 2), 10, ctx)
-		// drawCircle(1270 + (330 / 2), 670 + (240 / 2), 10, ctx)
-
-		// ctx.font = "41px courier";
-		// ctx.textBaseline = "top";
-		// let text = `${xVal}, ${zVal}`;
-		// ctx.strokeStyle = "red"
-		// ctx.lineWidth = 15
-		// ctx.fillText(text, 200, 400);
-
-		if (coords1 !== null) {
-			if (check_a_point(xVal, zVal, coords1[0], coords1[1], radius)) {
-				setOne(true);
-			}
-		}
-		if (coords2 !== null) {
-			if (check_a_point(xVal, zVal, coords2[0], coords2[1], radius)) {
-				setTwo(true);
-			}
-		}
-		if (coords3 !== null) {
-			if (check_a_point(xVal, zVal, coords3[0], coords3[1], radius)) {
-				setThree(true);
-			}
-		}
-		if (coords4 !== null) {
-			if (check_a_point(xVal, zVal, coords4[0], coords4[1], radius)) {
-				setFour(true);
-			}
-		}
-		if (coords5 !== null) {
-			if (check_a_point(xVal, zVal, coords5[0], coords5[1], radius)) {
-				setFive(true);
-			}
-		}
-	};
-
-	function drawCircle(x, y, radius, ctx) {
-		ctx.fillStyle = "#c82124";
-		ctx.beginPath();
-		ctx.arc(x, y, radius, 0, 2 * Math.PI);
-		ctx.closePath()
-		ctx.fill()
-
-		ctx.fillStyle = "";
-		ctx.strokeStyle = "red"
-		ctx.lineWidth = 5
-		ctx.beginPath();
-		ctx.arc(x, y, radius * 27, 0, 2 * Math.PI);
-		ctx.closePath()
-		ctx.stroke()
-
-
-		// ctx.font = "21px courier";
-		// ctx.textBaseline = "top";
-		// let text = `${x}, ${y}`;
-		// ctx.fillText(text, x, y);
-	}
-
-	function check_a_point(a, b, x, y, r) {
-		var dist_points = (a - x) * (a - x) + (b - y) * (b - y);
-		r *= r;
-		if (dist_points < r) {
-			return true;
-		}
-		return false;
-	}
-
 	useEffect(() => {
-		let animationFrameId;
+		if (presence1) {
+			videoRefs.current[5].play();
+		}
+		if (presence2) {
+			videoRefs.current[6].play();
+		}
+		if (presence3) {
+			videoRefs.current[7].play();
+		}
+		if (presence4) {
+			videoRefs.current[8].play();
+		}
 
-		const render = () => {
-			draw(canvasRef);
-			animationFrameId = window.requestAnimationFrame(render);
-		};
+		if (friendship) {
+			videoRefs.current[1].play();
+		}
 
-		render();
-		return () => {
-			window.cancelAnimationFrame(animationFrameId);
+		if (responsibleRealEstate) {
+			videoRefs.current[2].play();
+		}
 
-		};
-	}, [draw]);
+		if (conserving) {
+			videoRefs.current[3].play();
+		}
+
+		if (grapeInvestments) {
+			videoRefs.current[4].play();
+		}
+	}, [
+		presence1,
+		presence2,
+		presence3,
+		presence4,
+		friendship,
+		conserving,
+		responsibleRealEstate,
+		grapeInvestments,
+	]);
+
+	function handleInteraction(name) {
+		switch (name) {
+			case "prox1": {
+				setPresence1(true);
+				break;
+			}
+			case "prox2": {
+				setPresence2(true);
+				break;
+			}
+			case "prox3": {
+				setPresence3(true);
+				break;
+			}
+			case "prox4": {
+				setPresence4(true);
+				break;
+			}
+
+			case "play1": {
+				setPresence1(false);
+				setConserving(true);
+				break;
+			}
+			case "play2": {
+				setPresence2(false);
+				setFriendship(true);
+				break;
+			}
+			case "play3": {
+				setPresence3(false);
+				setResponsibleRealEstate(true);
+				break;
+			}
+			case "play4": {
+				setPresence4(false);
+				setGrapeInvestments(true);
+				break;
+			}
+		}
+	}
 
 	return (
 		<div className="background2">
-			<Window2
-				play1={one}
-				setPlay1={setOne}
-				play2={two}
-				setPlay2={setTwo}
-				play3={three}
-				setPlay3={setThree}
-				play4={four}
-				setPlay4={setFour}
+			<video
+				src={titleAnimation}
+				key={titleAnimation}
+				id={"titleAnimation"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
 			/>
-			<div>
-				<canvas className="canvas2" ref={canvasRef} />
-			</div>
 
+			<video
+				src={shootingStar}
+				key={shootingStar}
+				id={"shootingStar"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+			/>
+			<video
+				src={bgAnim2}
+				key={bgAnim2}
+				id={"bgAnim2"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+			/>
+			<video
+				src={proxVid1}
+				key="proximityLoop21"
+				id="proximityLoop21"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[5] = el)}
+				onEnded={() => setPresence1(false)}
+				hidden={presence1 ? false : true}
+			/>
+			<video
+				src={proxVid2}
+				key="proximityLoop22"
+				id="proximityLoop22"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[6] = el)}
+				onEnded={() => setPresence2(false)}
+				hidden={presence2 ? false : true}
+			/>
+			<video
+				src={proxVid3}
+				key="proximityLoop23"
+				id="proximityLoop23"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[7] = el)}
+				onEnded={() => setPresence3(false)}
+				hidden={presence3 ? false : true}
+			/>
+			<video
+				src={proxVid4}
+				key="proximityLoop24"
+				id="proximityLoop24"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[8] = el)}
+				onEnded={() => setPresence4(false)}
+				hidden={presence4 ? false : true}
+			/>
+
+			{/* interaction videos */}
+
+			<video
+				src={friendship0}
+				key={friendship0}
+				id={"friendship"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={friendship ? true : false}
+				onMouseEnter={() => setPresence2(true)}
+			/>
+			<video
+				src={friendship1}
+				key={friendship1}
+				id={"friendship"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[2] = el)}
+				hidden={friendship ? false : true}
+				onEnded={() => setFriendship(false)}
+			/>
+			<video
+				src={responsibleRealEstate0}
+				key={responsibleRealEstate0}
+				id={"responsibleRealEstate"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={responsibleRealEstate ? true : false}
+				onMouseEnter={() => setPresence3(true)}
+			/>
+			<video
+				src={responsibleRealEstate1}
+				key={responsibleRealEstate1}
+				id={"responsibleRealEstate"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[3] = el)}
+				hidden={responsibleRealEstate ? false : true}
+				onEnded={() => setResponsibleRealEstate(false)}
+			/>
+			<video
+				src={conserving0}
+				key={conserving0}
+				id={"conserving"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={conserving ? true : false}
+				onMouseEnter={() => setPresence1(true)}
+			/>
+			<video
+				src={conserving1}
+				key={conserving1}
+				id={"conserving"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[1] = el)}
+				hidden={conserving ? false : true}
+				onEnded={() => setConserving(false)}
+			/>
+			<video
+				src={grapeInvestments0}
+				key={grapeInvestments0}
+				id={"grapeInvestments"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={grapeInvestments ? true : false}
+				onMouseEnter={() => setPresence4(true)}
+			/>
+			<video
+				src={grapeInvestments1}
+				key={grapeInvestments1}
+				id={"grapeInvestments"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[4] = el)}
+				hidden={grapeInvestments ? false : true}
+				onEnded={() => setGrapeInvestments(false)}
+			/>
 		</div>
 	);
 }

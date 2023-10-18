@@ -1,53 +1,47 @@
-.canvas1 {}
-
 .background1 {
 	position: absolute;
 	background-color: black;
 	overflow: hidden;
-	
+	width: 1920px;
+	height: 1200px;
+	margin: 0px;
+	padding: 0px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
 }
 
-.canvas2 {
-	position: absolute;
+::-webkit-scrollbar {
+	display: none;
 }
 
 .background2 {
 	position: absolute;
-	width: 100vw;
-	height: 100vh;
 	background-color: black;
 	overflow: hidden;
+	width: 1920px;
+	height: 1200px;
+	margin: 0px;
+	padding: 0px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
 }
-
-.canvas3 {}
 
 .background3 {
+	position: absolute;
 	background-color: black;
-	opacity: 1;
-}
-
-.wall1 {
-
 	overflow: hidden;
-	mix-blend-mode: screen;
-	position: absolute;
-	scrollbar-width: 0px;
-}
-
-.wall2 {
 	width: 1920px;
 	height: 1200px;
-	background-color: darkgray;
-	mix-blend-mode: screen;
-	position: absolute;
-}
-
-.wall3 {
-	width: 1920px;
-	height: 1200px;
-
-	mix-blend-mode: screen;
-	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
 }
 
 #check {
@@ -83,6 +77,51 @@
 	overflow: hidden;
 }
 
+#shootingStar {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#lawnMower {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#catLoop {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#rocket {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
+#bgAnim2 {
+	width: 1920px;
+	height: 1200px;
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+}
+
 #ratedHighest {
 	width: 672px;
 	height: 672px;
@@ -104,17 +143,8 @@
 	overflow: hidden;
 }
 
-#lawnMower {
-	width: 1920px;
-	height: 1200px;
-	position: absolute;
-	mix-blend-mode: screen;
-	visibility: visible;
-	opacity: 1;
-	overflow: hidden;
-}
 
-#principle0 {
+#foundedOnPrinciple {
 	width: 672px;
 	height: 672px;
 	transform: translate(74px, 233px);
@@ -125,20 +155,10 @@
 	overflow: hidden;
 }
 
-#ecology {
-	width: 672px;
-	height: 672px;
-	transform: translate(260px, 184px);
-	position: absolute;
-	mix-blend-mode: screen;
-	visibility: visible;
-	opacity: 1;
-}
-
 #friendship {
 	width: 672px;
 	height: 672px;
-	transform: translate(695px, 477px);
+	transform: translate(663px, 483px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -148,7 +168,7 @@
 #conserving {
 	width: 672px;
 	height: 672px;
-	transform: translate(340px, 167px);
+	transform: translate(265px, 135px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -158,7 +178,7 @@
 #responsibleRealEstate {
 	width: 672px;
 	height: 672px;
-	transform: translate(840px, 82px);
+	transform: translate(825px, 39px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -168,7 +188,7 @@
 #grapeInvestments {
 	width: 672px;
 	height: 672px;
-	transform: translate(1110px, 404px);
+	transform: translate(1128px, 401px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -178,7 +198,7 @@
 #empoweringAbilities {
 	width: 672px;
 	height: 672px;
-	transform: translate(598px, 324px);
+	transform: translate(544px, 311px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -188,37 +208,39 @@
 #financialLiteracy {
 	width: 672px;
 	height: 672px;
-	transform: translate(1030px, 64px);
+	transform: translate(1038px, 20px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+}
+
+#ceoGlowLoop {
+	width: 672px;
+	height: 672px;
+	transform: translate(53.5px, 276px);
+	position: absolute;
+	mix-blend-mode: screen;
+	visibility: visible;
+	opacity: 1;
+
 }
 
 #groundbreakingCEOs {
 	width: 672px;
 	height: 672px;
-	transform: translate(153px, 294px);
+	transform: translate(55px, 277px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
+	
 }
 
-#girlsInTech0 {
+#girlsInTech {
 	width: 672px;
 	height: 672px;
-	transform: translate(530px, 64px);
-	position: absolute;
-	mix-blend-mode: screen;
-	visibility: visible;
-	opacity: 1;
-}
-
-#girlsInTech1 {
-	width: 2000px;
-	height: 1000px;
-	transform: translate(-49px, 24px);
+	transform: translate(477px, 19px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -228,19 +250,13 @@
 #retiringInequality {
 	width: 672px;
 	height: 672px;
-	transform: translate(1099px, 346px);
+	transform: translate(1116px, 336px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
 	opacity: 1;
 }
 
-#title-image {
-	transform: translate(1230px, 95px);
-	position: absolute;
-	mix-blend-mode: screen;
-	animation: fade 5s ease-in-out infinite;
-}
 
 #proximityLoop01 {
 	width: 150px;
@@ -249,9 +265,7 @@
 	position: fixed;
 	top: 696px;
 	left: 348px;
-	scale: 2;
 }
-
 
 #proximityLoop02 {
 	width: 150px;
@@ -260,8 +274,6 @@
 	position: fixed;
 	top: 525px;
 	left: 900px;
-	scale: 2;
-	
 }
 
 #proximityLoop03 {
@@ -269,10 +281,8 @@
 	height: 150px;
 	mix-blend-mode: screen;
 	position: fixed;
-	top: 850px;
-	left: 900px;
-	scale: 2;
-
+	top: 880px;
+	left: 910px;
 }
 
 #proximityLoop04 {
@@ -282,8 +292,6 @@
 	position: fixed;
 	top: 362px;
 	left: 1330px;
-	scale: 2;
-	
 }
 
 #proximityLoop05 {
@@ -293,20 +301,102 @@
 	position: fixed;
 	top: 820px;
 	left: 1476px;
-	scale: 2;
-	
 }
 
+#proximityLoop21 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 396px;
+	left: 525px;
+}
 
+#proximityLoop22 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 776px;
+	left: 876px;
+}
+
+#proximityLoop23 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 475px;
+	left: 1094px;
+}
+
+#proximityLoop24 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 784px;
+	left: 1334px;
+}
+
+#proximityLoop31 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 587px;
+	left: 315px;
+}
+
+#proximityLoop32 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 356px;
+	left: 792px;
+}
+
+#proximityLoop33 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 744px;
+	left: 792px;
+}
+
+#proximityLoop34 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 280px;
+	left: 1277px;
+}
+
+#proximityLoop35 {
+	width: 150px;
+	height: 150px;
+	mix-blend-mode: screen;
+	position: fixed;
+	top: 616px;
+	left: 1386px;
+}
+
+#titleAnimation {
+	transform: translate(1260px, 52px);
+	position: absolute;
+	mix-blend-mode: screen;
+}
 
 /* Fade-In Effect */
 .visible {
 	visibility: visible;
 	opacity: 1;
-
-  }
-  /* Fade-Out Effect */
-  .hidden {
+}
+/* Fade-Out Effect */
+.hidden {
 	visibility: hidden;
 	opacity: 0;
 	transition: visibility 1s 2s, opacity 1s ease-out;
@@ -314,8 +404,7 @@
 	-moz-transition: visibility 1s 2s, opacity 1s ease-out;
 	-ms-transition: visibility 1s 2s, opacity 1s ease-out;
 	-o-transition: visibility 1s 2s, opacity 1s ease-out;
-  }
-
+}
 
 @-webkit-keyframes fadeout {
 	0% {
@@ -326,7 +415,6 @@
 	}
 	100% {
 		opacity: 0;
-
 	}
 }
 
@@ -336,10 +424,8 @@
 	}
 	99% {
 		opacity: 0.5;
-
 	}
 	100% {
 		opacity: 0;
-
 	}
 }

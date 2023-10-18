@@ -1,17 +1,38 @@
-// SIMPLE DRAWING TEST FOR TESTING THE HAND/PERSON TRACKING
-
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
 
-import Window1 from "./windows/window1";
+import notJustForTeachers0 from "../assets/Animations/Not-Just-for-Teachers/BlkBG_Teachers_Projection_09262023.mp4";
+import notJustForTeachers1 from "../assets/Animations/_AnimationsWithSound/NOT JUST TEACHERS_SOUND.mp4";
+
+import foundedOnPrinciple0 from "../assets/Animations/Founded-on-Principle/BLACKBG_Andrew Carnegie_PROJECTION_09282023_NEW.mp4";
+import foundedOnPrinciple1 from "../assets/Animations/_AnimationsWithSound/FOUNDED ON PRINCIPLE_SOUND.mp4";
+
+import ratedOneOfTheHighest0 from "../assets/Animations/Rated-One-of-the-Highest/BlackBG_Rated One of the Highest_PROJECTION_09262023.mp4";
+import ratedOneOfTheHighest1 from "../assets/Animations/_AnimationsWithSound/RATED ONE OF THE HIGHEST_SOUND.mp4";
+
+import wereOnAMission0 from "../assets/Animations/We're-on-a-Mission/BlackBG_We're on a Mission_PROJECTION_09282023.mp4";
+import wereOnAMission1 from "../assets/Animations/_AnimationsWithSound/WE R ON A MISSION_SOUND.mp4";
+
+import neverMissACheck0 from "../assets/Animations/Never-Miss-a-Check/BLACK BG_CHECKS_PROJECTION_10022023.mp4";
+import neverMissACheck1 from "../assets/Animations/_AnimationsWithSound/NEVER MISS A CHECK_SOUND.mp4";
+
+import butterfly1 from "../assets/Animations/_Miscellaneous/BLACK BG_WALL 1_CHCK_BUTTERFLY_10162023.mp4";
+import lawnMower1 from "../assets/Animations/_Miscellaneous/BLACK BG_WALL 1_TEACHERS_LAWNMOWER_10162023.mp4";
+
+import proxVid1 from "../assets/Animations/Proximity/proximity-popup_B.mp4";
+import proxVid2 from "../assets/Animations/Proximity/proximity-popup_C.mp4";
+import proxVid3 from "../assets/Animations/Proximity/proximity-popup_D.mp4";
+import proxVid4 from "../assets/Animations/Proximity/proximity-popup_E.mp4";
+import proxVid5 from "../assets/Animations/Proximity/proximity-popup_G.mp4";
 
 export default function Base() {
-	const [result, setResult] = useState("none");
-	const [one, setOne] = useState(false);
-	const [two, setTwo] = useState(false);
-	const [three, setThree] = useState(false);
-	const [four, setFour] = useState(false);
-	const [five, setFive] = useState(false);
+	const [notJustForTeachers, setNotJustForTeachers] = useState(false);
+	const [foundedOnPrinciple, setFoundedOnPrinciple] = useState(false);
+	const [check, setCheck] = useState(false);
+	const [mission, setMission] = useState(false);
+	const [ratedHighest, setRatedHighest] = useState(false);
+
+	const [butterfly, setButterfly] = useState(false);
 
 	const [presence1, setPresence1] = useState(false);
 	const [presence2, setPresence2] = useState(false);
@@ -19,103 +40,294 @@ export default function Base() {
 	const [presence4, setPresence4] = useState(false);
 	const [presence5, setPresence5] = useState(false);
 
-	const canvasRef = useRef(null);
-	let numbers = [];
+	const videoRefs = useRef([]);
 
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
-
-		if (result === "play1") {
-			!one ? setOne(true) : null
-		}
-		if (result === "play2") {
-			!two ? setTwo(true) : null
-		}
-		if (result === "play3") {
-			!three ? setThree(true) : null
-		}
-		if (result === "play4") {
-			!four ? setFour(true) : null
-		}
-		if (result === "play5") {
-			!five ? setFive(true) : null
-		}
-
-		if (result === "prox1") {
-			!presence1 ? setPresence1(true) : null
-		}
-		if (result === "prox2") {
-			!presence2 ? setPresence2(true) : null
-		}
-		if (result === "prox3") {
-			!presence3 ? setPresence3(true) : null
-		}
-		if (result === "prox4") {
-			!presence4 ? setPresence4(true) : null
-		}
-		if (result === "prox5") {
-			!presence5 ? setPresence5(true) : null
-		}
-
-		
+		handleInteraction(result);
 	});
 
-	const draw = (canvasRef) => {
-		const canvas = canvasRef.current;
-		let ctx = canvas.getContext("2d");
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-
-
-	};
-
-
 	useEffect(() => {
-		let animationFrameId;
-		let interval;
+		if (presence1) {
+			videoRefs.current[8].play();
+		}
+		if (presence2) {
+			videoRefs.current[9].play();
+		}
+		if (presence3) {
+			videoRefs.current[10].play();
+		}
+		if (presence4) {
+			videoRefs.current[11].play();
+		}
+		if (presence5) {
+			videoRefs.current[12].play();
+		}
 
-		const render = () => {
-			draw(canvasRef);
-			animationFrameId = window.requestAnimationFrame(render);
-		};
+		if (foundedOnPrinciple) {
+			videoRefs.current[1].play();
+		}
+		if (ratedHighest) {
+			videoRefs.current[2].play();
+		}
+		if (check) {
+			videoRefs.current[3].play();
+		}
+		if (notJustForTeachers) {
+			videoRefs.current[4].play();
+		}
+		if (mission) {
+			videoRefs.current[5].play();
+		}
+		if (butterfly) {
+			videoRefs.current[6].play();
+		}
+	}, [
+		presence1,
+		presence2,
+		presence3,
+		presence4,
+		presence5,
+		notJustForTeachers,
+		check,
+		mission,
+		foundedOnPrinciple,
+		butterfly,
+		ratedHighest,
+	]);
 
-		render();
-		return () => {
+	function handleInteraction(name) {
+		switch (name) {
+			case "prox1": {
+				setPresence1(true);
+				break;
+			}
+			case "prox2": {
+				setPresence2(true);
+				break;
+			}
+			case "prox3": {
+				setPresence3(true);
+				break;
+			}
+			case "prox4": {
+				setPresence4(true);
+				break;
+			}
+			case "prox5": {
+				setPresence5(true);
+				break;
+			}
 
-			window.cancelAnimationFrame(animationFrameId);
-
-		};
-	}, [draw]);
+			case "play1": {
+				setPresence1(false);
+				setFoundedOnPrinciple(true);
+				break;
+			}
+			case "play2": {
+				setPresence2(false);
+				setRatedHighest(true);
+				break;
+			}
+			case "play3": {
+				setPresence3(false);
+				setCheck(true);
+				setButterfly(true);
+				break;
+			}
+			case "play4": {
+				setPresence4(false);
+				setNotJustForTeachers(true);
+				break;
+			}
+			case "play5": {
+				setPresence5(false);
+				setMission(true);
+				break;
+			}
+		}
+	}
 
 	return (
 		<div className="background1">
-			<Window1
-				play1={one}
-				setPlay1={setOne}
-				play2={two}
-				setPlay2={setTwo}
-				play3={three}
-				setPlay3={setThree}
-				play4={four}
-				setPlay4={setFour}
-				play5={five}
-				setPlay5={setFive}
-
-				presence1={presence1}
-				setPresence1={setPresence1}
-				presence2={presence2}
-				setPresence2={setPresence2}
-				presence3={presence3}
-				setPresence3={setPresence3}
-				presence4={presence4}
-				setPresence4={setPresence4}
-				presence5={presence5}
-				setPresence5={setPresence5}
+			<video
+				src={proxVid1}
+				key="proximityLoop01"
+				id="proximityLoop01"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[8] = el)}
+				onEnded={() => setPresence1(false)}
+				hidden={presence1 ? false : true}
 			/>
-			<div>
-				<canvas className="canvas1" ref={canvasRef} />
-			</div>
+			<video
+				src={proxVid2}
+				key="proximityLoop02"
+				id="proximityLoop02"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[9] = el)}
+				onEnded={() => setPresence2(false)}
+				hidden={presence2 ? false : true}
+			/>
+			<video
+				src={proxVid3}
+				key="proximityLoop03"
+				id="proximityLoop03"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[10] = el)}
+				onEnded={() => setPresence3(false)}
+				hidden={presence3 ? false : true}
+			/>
+			<video
+				src={proxVid4}
+				key="proximityLoop04"
+				id="proximityLoop04"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[11] = el)}
+				onEnded={() => setPresence4(false)}
+				hidden={presence4 ? false : true}
+			/>
+			<video
+				src={proxVid5}
+				key="proximityLoop05"
+				id="proximityLoop05"
+				preload="auto"
+				muted="false"
+				ref={(el) => (videoRefs.current[12] = el)}
+				onEnded={() => setPresence5(false)}
+				hidden={presence5 ? false : true}
+			/>
 
+			{/* interaction videos */}
+
+			<video
+				src={butterfly1}
+				key={butterfly1}
+				id={"butterfly"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[6] = el)}
+				hidden={butterfly ? false : true}
+				onEnded={() => setButterfly(false)}
+			/>
+
+			<video
+				src={foundedOnPrinciple0}
+				key={foundedOnPrinciple0}
+				id={"foundedOnPrinciple"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={foundedOnPrinciple ? true : false}
+				onMouseEnter={() => setPresence1(true)}
+			/>
+			<video
+				src={foundedOnPrinciple1}
+				key={foundedOnPrinciple1}
+				id={"foundedOnPrinciple"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[1] = el)}
+				hidden={foundedOnPrinciple ? false : true}
+				onEnded={() => setFoundedOnPrinciple(false)}
+			/>
+
+			<video
+				src={notJustForTeachers0}
+				key={notJustForTeachers0}
+				id={"notJustForTeachers"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={notJustForTeachers ? true : false}
+				onMouseEnter={() => setPresence4(true)}
+			/>
+			<video
+				src={notJustForTeachers1}
+				key={notJustForTeachers1}
+				id={"notJustForTeachers"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[4] = el)}
+				hidden={notJustForTeachers ? false : true}
+				onEnded={() => setNotJustForTeachers(false)}
+			/>
+			<video
+				src={ratedOneOfTheHighest0}
+				key={ratedOneOfTheHighest0}
+				id={"ratedHighest"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={ratedHighest ? true : false}
+				onMouseEnter={() => setPresence2(true)}
+			/>
+			<video
+				src={ratedOneOfTheHighest1}
+				key={ratedOneOfTheHighest1}
+				id={"ratedHighest"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[2] = el)}
+				hidden={ratedHighest ? false : true}
+				onEnded={() => setRatedHighest(false)}
+			/>
+
+			<video
+				src={wereOnAMission0}
+				key={wereOnAMission0}
+				id={"mission"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={mission ? true : false}
+				onMouseEnter={() => setPresence5(true)}
+			/>
+			<video
+				src={wereOnAMission1}
+				key={wereOnAMission1}
+				id={"mission"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[5] = el)}
+				hidden={mission ? false : true}
+				onEnded={() => setMission(false)}
+			/>
+
+			<video
+				src={neverMissACheck0}
+				key={neverMissACheck0}
+				id={"check"}
+				preload="auto"
+				autoPlay
+				muted
+				loop
+				hidden={check ? true : false}
+				onMouseEnter={() => setPresence3(true)}
+			/>
+			<video
+				src={neverMissACheck1}
+				key={neverMissACheck1}
+				id={"check"}
+				preload="auto"
+				autoPlay={false}
+				loop={false}
+				ref={(el) => (videoRefs.current[3] = el)}
+				hidden={check ? false : true}
+				onEnded={() => setCheck(false)}
+			/>
 		</div>
 	);
 }

@@ -37,8 +37,8 @@ shell.on("message", function (message) {
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		x: 1920 + 1920,
-		y: 0,
+		// x: 1920 + 1920,
+		// y: 0,
 		width: 1920,
 		height: 1200,
 		frame: false,
@@ -78,7 +78,7 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-	mainWindow.setFullScreen(true);
+	// mainWindow.setFullScreen(true);
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
