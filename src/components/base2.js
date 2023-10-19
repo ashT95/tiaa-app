@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
 
-import friendship0 from "../assets/Animations/Investing-in-Best-Friendship/BlkBG_BEST FRIENDSHIP_LOOP TAIL WAG_09262023.mp4";
+import friendship0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_INVESTING WITH IMPACT_PROJECTION_SMALLER_10182023.mp4";
 import friendship1 from "../assets/Animations/_AnimationsWithSound/INVESTING WITH IMPACT_SOUND.mp4";
 
-import conserving0 from "../assets/Animations/Conserving-Natural-Resources/BlkBG_Conserving Natural Resources_Projection_07272023.mp4";
+import conserving0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_CONSERVING NATURAL RESOURCES_PROJECTION_SMALLER_10182023.mp4";
 import conserving1 from "../assets/Animations/_AnimationsWithSound/CONSERVING NATURAL RESOURCES_SOUND.mp4";
 
 import responsibleRealEstate0 from "../assets/Animations/Responsible-Real-Estate/BlkBG_Responsible Real Estate_Projection_09222023.mp4";
 import responsibleRealEstate1 from "../assets/Animations/Responsible-Real-Estate/BlackBG_Responsible Real Estate_AnimationBeat_10062023.mp4";
 
-import grapeInvestments0 from "../assets/Animations/Cheers-to-Grape-Investments/BlkBG_Projection_grape_loop_08022023.mp4";
+import grapeInvestments0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_VINEYARDS_PROJECTION_SMALLER_10182023.mp4";
 import grapeInvestments1 from "../assets/Animations/_AnimationsWithSound/SUSTAINABLE VINEYARDS_SOUND.mp4";
 
 import shootingStar from "../assets/Animations/_Miscellaneous/BlackBG_Wall 2_ShootingStar_10162023.mp4";
@@ -21,7 +21,7 @@ import proxVid1 from "../assets/Animations/Proximity/proximity-popup_B.mp4";
 import proxVid2 from "../assets/Animations/Proximity/proximity-popup_C.mp4";
 import proxVid3 from "../assets/Animations/Proximity/proximity-popup_D.mp4";
 import proxVid4 from "../assets/Animations/Proximity/proximity-popup_E.mp4";
-import proxVid5 from "../assets/Animations/Proximity/proximity-popup_G.mp4";
+
 
 export default function Base2() {
 	const [friendship, setFriendship] = useState(false);

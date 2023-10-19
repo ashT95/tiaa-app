@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
 
-import empoweringAbilities0 from "../assets/Animations/Empowering-Abilities/BLACKBG_Empowering_PROJECTION_10032023.mp4";
+import empoweringAbilities0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_EMPOWERING ABILITIES_PROJECTION_SMALLER_10182023.mp4";
 import empoweringAbilities1 from "../assets/Animations/_AnimationsWithSound/EMPOWERING ABILITIES_SOUND.mp4";
 
-import financialLiteracy0 from "../assets/Animations/Financial-Literacy/BlackBG_Financial Literacy_Projection_10062023.mp4";
+import financialLiteracy0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_FINANCIAL WELLNESS_PROJECTION_SMALLER_10182023.mp4";
 import financialLiteracy1 from "../assets/Animations/_AnimationsWithSound/FINANCIAL WELLNESS_SOUND.mp4";
 
-import girlsInTech0 from "../assets/Animations/Girls-in-Tech/BLACKBG_GIRLS IN TECH_ANIMATION BEATS_10032023.mp4";
+import girlsInTech0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_FUTURE LEADERS_PROJECTION_SMALLER_10182023.mp4";
 import girlsInTech1 from "../assets/Animations/_AnimationsWithSound/FUTURE LEADERS_SOUND.mp4";
 
-import ceoLoop0 from "../assets/Animations/Groundbreaking-CEOs/NEW_CEOs_CLIFTON SOLO LOOP_10052023.mp4";
+import ceoLoop0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_CEO_CLIFTON LOOP_PROJECTION_SMALLER_10182023.mp4";
 import ceoWipe0 from "../assets/Animations/_AnimationsWithSound/CEOs1_SOUND.mp4";
-import ceoLoop1 from "../assets/Animations/Groundbreaking-CEOs/NEW_CEOs_THASUNDA LOOP_10052023.mp4";
+import ceoLoop1 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_CEO_THASUNDA LOOP_PROJECTION_SMALLER_10182023.mp4";
 import ceoWipe1 from "../assets/Animations/_AnimationsWithSound/CEOs2_SOUND.mp4";
 import ceoGlowLoop from "../assets/Animations/Groundbreaking-CEOs/Masked_BLACK BG_GLOWING CIRCLE FRAME LOOP_10052023.mp4";
 
-import retiringInequality0 from "../assets/Animations/Retiring-Inequality/BLACKBG_Retiring Inequality_PROJECTION_09192023.mp4";
+import retiringInequality0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_RETIRING INEQUALITY_PROJECTION_SMALLER_10182023.mp4";
 import retiringInequality1 from "../assets/Animations/_AnimationsWithSound/RETIRING INEQUALITY_SOUND.mp4";
 import retiringInequalityLoop1 from "../assets/Animations/_Miscellaneous/BlackBG_RETIREMENT SIGN_Retiring Inequality Loops_10032023.mp4";
 import retiringInequalityLoop2 from "../assets/Animations/_Miscellaneous/BLACKBG_ROCKS FALL_Retiring INequaltiy_10032023.mp4";

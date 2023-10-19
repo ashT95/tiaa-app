@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
 
-import notJustForTeachers0 from "../assets/Animations/Not-Just-for-Teachers/BlkBG_Teachers_Projection_09262023.mp4";
+import notJustForTeachers0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_NOT JUST TEACHERS_PROJECTION_SMALLER_10182023.mp4";
 import notJustForTeachers1 from "../assets/Animations/_AnimationsWithSound/NOT JUST TEACHERS_SOUND.mp4";
 
-import foundedOnPrinciple0 from "../assets/Animations/Founded-on-Principle/BLACKBG_Andrew Carnegie_PROJECTION_09282023_NEW.mp4";
+import foundedOnPrinciple0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_FOUNDED ON PRINCIPLE_PROJECTION_SMALLER_10182023.mp4";
 import foundedOnPrinciple1 from "../assets/Animations/_AnimationsWithSound/FOUNDED ON PRINCIPLE_SOUND.mp4";
 
-import ratedOneOfTheHighest0 from "../assets/Animations/Rated-One-of-the-Highest/BlackBG_Rated One of the Highest_PROJECTION_09262023.mp4";
+import ratedOneOfTheHighest0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_RATED ONE OF THE HIGHEST_PROJECTION_SMALLER_10182023.mp4";
 import ratedOneOfTheHighest1 from "../assets/Animations/_AnimationsWithSound/RATED ONE OF THE HIGHEST_SOUND.mp4";
 
-import wereOnAMission0 from "../assets/Animations/We're-on-a-Mission/BlackBG_We're on a Mission_PROJECTION_09282023.mp4";
+import wereOnAMission0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_WE ARE ON A MISSION_PROJECTION_SMALLER_10182023.mp4";
 import wereOnAMission1 from "../assets/Animations/_AnimationsWithSound/WE R ON A MISSION_SOUND.mp4";
 
-import neverMissACheck0 from "../assets/Animations/Never-Miss-a-Check/BLACK BG_CHECKS_PROJECTION_10022023.mp4";
+import neverMissACheck0 from "../assets/Animations/_ProjectionLoopsSmaller/BLACKBG_NEVER MISS A CHECK_PROJECTION_SMALLER_10182023.mp4";
 import neverMissACheck1 from "../assets/Animations/_AnimationsWithSound/NEVER MISS A CHECK_SOUND.mp4";
 
 import butterfly1 from "../assets/Animations/_Miscellaneous/BLACK BG_WALL 1_CHCK_BUTTERFLY_10162023.mp4";
@@ -160,7 +160,7 @@ export default function Base() {
 				key="proximityLoop01"
 				id="proximityLoop01"
 				preload="auto"
-				muted="false"
+				// muted="false"
 				ref={(el) => (videoRefs.current[8] = el)}
 				onEnded={() => setPresence1(false)}
 				hidden={presence1 ? false : true}
@@ -170,7 +170,7 @@ export default function Base() {
 				key="proximityLoop02"
 				id="proximityLoop02"
 				preload="auto"
-				muted="false"
+				// muted="false"
 				ref={(el) => (videoRefs.current[9] = el)}
 				onEnded={() => setPresence2(false)}
 				hidden={presence2 ? false : true}
@@ -180,7 +180,7 @@ export default function Base() {
 				key="proximityLoop03"
 				id="proximityLoop03"
 				preload="auto"
-				muted="false"
+				// muted="false"
 				ref={(el) => (videoRefs.current[10] = el)}
 				onEnded={() => setPresence3(false)}
 				hidden={presence3 ? false : true}
@@ -190,7 +190,7 @@ export default function Base() {
 				key="proximityLoop04"
 				id="proximityLoop04"
 				preload="auto"
-				muted="false"
+				// muted="false"
 				ref={(el) => (videoRefs.current[11] = el)}
 				onEnded={() => setPresence4(false)}
 				hidden={presence4 ? false : true}
@@ -200,7 +200,7 @@ export default function Base() {
 				key="proximityLoop05"
 				id="proximityLoop05"
 				preload="auto"
-				muted="false"
+				// muted="false"
 				ref={(el) => (videoRefs.current[12] = el)}
 				onEnded={() => setPresence5(false)}
 				hidden={presence5 ? false : true}

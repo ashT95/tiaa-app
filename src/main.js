@@ -22,7 +22,7 @@ let shell = new PythonShell("backend/roi/roiData.py", {
 shell.on("message", function (message) {
 	// sending data to frontend window
 	if (mainWindow) {
-		console.log(message)
+		// console.log(message)
 		mainWindow.webContents.send("main-to-render", message);
 	}
 	// if (mainWindow2) {
@@ -37,7 +37,7 @@ shell.on("message", function (message) {
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		x: 1920 + 1920,
+		// x: 1920 + 1920,
 		y: 0,
 		width: 1920,
 		height: 1200,
@@ -78,7 +78,7 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-	mainWindow.setFullScreen(true);
+	// mainWindow.setFullScreen(true);
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();

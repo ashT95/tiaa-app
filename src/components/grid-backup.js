@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
-import Window1 from "./windows/window1"
+
 
 let average = 0;
 let average2 = 0;

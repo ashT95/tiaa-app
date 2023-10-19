@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import "./base.css";
-import Window1 from "./windows/window1";
-import Window2 from "./windows/window2";
-import Window3 from "./windows/window3";
+
 
 export default function Calibration() {
 	const [xVal, setXval] = useState(0);
