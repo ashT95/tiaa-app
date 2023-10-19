@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, session } = require("electron");
 const path = require("path");
 
 let mainWindow, mainWindow2, mainWindow3;
@@ -10,37 +10,15 @@ if (require("electron-squirrel-startup")) {
 
 let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
+let shell;
 
-// ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
-
-let shell = new PythonShell("backend/roi/roiData.py", {
-	// The '-u' tells Python to flush every time
-	pythonOptions: ["-u"],
-	args: [],
-});
-
-shell.on("message", function (message) {
-	// sending data to frontend window
-	if (mainWindow) {
-		// console.log(message)
-		mainWindow.webContents.send("main-to-render", message);
-	}
-	// if (mainWindow2) {
-	// 	mainWindow2.webContents.send("main-to-render", message);
-	// }
-	// if (mainWindow3) {
-	// 	mainWindow3.webContents.send("main-to-render", message);
-	// }
-});
 //-------------------------------------------------------------------------------------- //
 
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		// x: 1920 + 1920,
+		x: 1920 + 1920,
 		y: 0,
-		width: 1920,
-		height: 1200,
 		frame: false,
 		show: false,
 		autoHideMenuBar: true,
@@ -78,7 +56,33 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-	// mainWindow.setFullScreen(true);
+	mainWindow.setFullScreen(true);
+
+	// ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
+
+	shell = new PythonShell("backend/roi/roiData.py", {
+		// The '-u' tells Python to flush every time
+		pythonOptions: ["-u"],
+		args: [],
+	});
+
+	shell.on("message", function (message) {
+		// sending data to frontend window
+
+		// console.log(message)
+		if (mainWindow) {
+			mainWindow.webContents.send("main-to-render", message);
+		}
+
+
+		// if (mainWindow2) {
+		// 	mainWindow2.webContents.send("main-to-render", message);
+		// }
+		// if (mainWindow3) {
+		// 	mainWindow3.webContents.send("main-to-render", message);
+		// }
+	});
+
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
@@ -115,7 +119,8 @@ app.on("ready", createWindow);
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on("window-all-closed", () => {
+app.on("window-all-closed", async () => {
+	session.defaultSession.clearStorageData();
 	if (process.platform !== "darwin") {
 		app.quit();
 	}

@@ -45,50 +45,75 @@ export default function Base() {
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 		handleInteraction(result);
+		// setResult(result)
 	});
 
 	useEffect(() => {
-		if (presence1) {
-			!foundedOnPrinciple ? videoRefs.current[8].play() : null 
-		}
-		if (presence2) {
-			!ratedHighest ? videoRefs.current[9].play() : null
-		}
-		if (presence3) {
-			!check ? videoRefs.current[10].play() : null
-		}
-		if (presence4) {
-			!notJustForTeachers ? videoRefs.current[11].play() : null
-		}
-		if (presence5) {
-			!mission ? videoRefs.current[12].play() : null
-		}
+		let animationFrameId;
+		const render = () => {
 
-		if (foundedOnPrinciple) {
-			setPresence1(false)
-			videoRefs.current[1].play();
-		}
-		if (ratedHighest) {
-			setPresence2(false)
-			videoRefs.current[2].play();
-		}
-		if (check) {
-			setPresence3(false)
-			videoRefs.current[3].play();
-		}
-		if (notJustForTeachers) {
-			setPresence4(false)
-			videoRefs.current[4].play();
-		}
-		if (mission) {
-			setPresence5(false)
-			videoRefs.current[5].play();
-		}
-		if (butterfly) {
-			videoRefs.current[6].play();
-		}
-	}, [
-		presence1,
+			if (presence1) {
+				!foundedOnPrinciple ? videoRefs.current[8].play() : null
+			}
+			if (presence2) {
+				!ratedHighest ? videoRefs.current[9].play() : null
+			}
+			if (presence3) {
+				!check ? videoRefs.current[10].play() : null
+			}
+			if (presence4) {
+				!notJustForTeachers ? videoRefs.current[11].play() : null
+			}
+			if (presence5) {
+				!mission ? videoRefs.current[12].play() : null
+			}
+
+			if (foundedOnPrinciple) {
+				setPresence1(false)
+				videoRefs.current[1].play()
+			} else if (!foundedOnPrinciple) {
+				videoRefs.current[1].currentTime = 0
+			}
+			if (ratedHighest) {
+				setPresence2(false)
+				videoRefs.current[2].play()
+			} else if (!ratedHighest) {
+				videoRefs.current[2].currentTime = 0
+			}
+			if (check) {
+				setPresence3(false)
+				videoRefs.current[3].play()
+			} else if (!check) {
+				videoRefs.current[3].currentTime = 0
+			}
+			if (notJustForTeachers) {
+				setPresence4(false)
+				videoRefs.current[4].play()
+			} else if (!notJustForTeachers) {
+				videoRefs.current[4].currentTime = 0
+			}
+			if (mission) {
+				setPresence5(false)
+				videoRefs.current[5].play()
+			} else if (!mission) {
+				videoRefs.current[5].currentTime = 0
+			}
+			if (butterfly) {
+				videoRefs.current[6].play();
+			} else if (!butterfly) {
+				videoRefs.current[6].currentTime = 0
+			}
+
+			animationFrameId = window.requestAnimationFrame(render);
+		};
+
+		render();
+		return () => {
+			window.cancelAnimationFrame(animationFrameId);
+
+		};
+
+	}, [presence1,
 		presence2,
 		presence3,
 		presence4,
@@ -98,8 +123,9 @@ export default function Base() {
 		mission,
 		foundedOnPrinciple,
 		butterfly,
-		ratedHighest,
-	]);
+		ratedHighest]);
+
+
 
 	function handleInteraction(name) {
 		switch (name) {
@@ -116,7 +142,7 @@ export default function Base() {
 				break;
 			}
 			case "prox4": {
-				!presence4 ? setPresence4(true): null
+				!presence4 ? setPresence4(true) : null
 				break;
 			}
 			case "prox5": {
@@ -160,7 +186,7 @@ export default function Base() {
 				key="proximityLoop01"
 				id="proximityLoop01"
 				preload="auto"
-				// muted="false"
+				muted="false"
 				ref={(el) => (videoRefs.current[8] = el)}
 				onEnded={() => setPresence1(false)}
 				hidden={presence1 ? false : true}
@@ -170,7 +196,7 @@ export default function Base() {
 				key="proximityLoop02"
 				id="proximityLoop02"
 				preload="auto"
-				// muted="false"
+				muted="false"
 				ref={(el) => (videoRefs.current[9] = el)}
 				onEnded={() => setPresence2(false)}
 				hidden={presence2 ? false : true}
@@ -180,7 +206,7 @@ export default function Base() {
 				key="proximityLoop03"
 				id="proximityLoop03"
 				preload="auto"
-				// muted="false"
+				muted="false"
 				ref={(el) => (videoRefs.current[10] = el)}
 				onEnded={() => setPresence3(false)}
 				hidden={presence3 ? false : true}
@@ -190,7 +216,7 @@ export default function Base() {
 				key="proximityLoop04"
 				id="proximityLoop04"
 				preload="auto"
-				// muted="false"
+				muted="false"
 				ref={(el) => (videoRefs.current[11] = el)}
 				onEnded={() => setPresence4(false)}
 				hidden={presence4 ? false : true}
@@ -200,11 +226,12 @@ export default function Base() {
 				key="proximityLoop05"
 				id="proximityLoop05"
 				preload="auto"
-				// muted="false"
+				muted="false"
 				ref={(el) => (videoRefs.current[12] = el)}
 				onEnded={() => setPresence5(false)}
 				hidden={presence5 ? false : true}
 			/>
+
 
 			{/* interaction videos */}
 
@@ -333,6 +360,7 @@ export default function Base() {
 				hidden={check ? false : true}
 				onEnded={() => setCheck(false)}
 			/>
+
 		</div>
 	);
 }

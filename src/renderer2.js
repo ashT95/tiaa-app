@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import App2 from "./app2";
+import Base2 from "./components/base2";
 
 const root = ReactDOM.createRoot(document.getElementById("root2"));
-root.render(<App2 />); 
+root.render(<Base2 />); 
