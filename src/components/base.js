@@ -51,69 +51,84 @@ export default function Base() {
 	useEffect(() => {
 		let animationFrameId;
 		const render = () => {
-
 			if (presence1) {
-				!foundedOnPrinciple ? videoRefs.current[8].play() : null
+				!foundedOnPrinciple ? videoRefs.current[8].play() : null;
 			}
 			if (presence2) {
-				!ratedHighest ? videoRefs.current[9].play() : null
+				!ratedHighest ? videoRefs.current[9].play() : null;
 			}
 			if (presence3) {
-				!check ? videoRefs.current[10].play() : null
+				!check ? videoRefs.current[10].play() : null;
 			}
 			if (presence4) {
-				!notJustForTeachers ? videoRefs.current[11].play() : null
+				!notJustForTeachers ? videoRefs.current[11].play() : null;
 			}
 			if (presence5) {
-				!mission ? videoRefs.current[12].play() : null
+				!mission ? videoRefs.current[12].play() : null;
 			}
 
 			if (foundedOnPrinciple) {
-				setPresence1(false)
-				videoRefs.current[1].play()
+				setPresence1(false);
+				if (!videoRefs.current[1].isPlaying) {
+					videoRefs.current[1].play();
+					console.log("play1");
+				}
+				console.log("play1");
 			} else if (!foundedOnPrinciple) {
-				videoRefs.current[1].currentTime = 0
+				videoRefs.current[1].currentTime = 0;
 			}
 			if (ratedHighest) {
-				setPresence2(false)
-				videoRefs.current[2].play()
+				setPresence2(false);
+				if (!videoRefs.current[2].isPlaying) {
+					videoRefs.current[2].play();
+					console.log("play2");
+				}
 			} else if (!ratedHighest) {
-				videoRefs.current[2].currentTime = 0
+				videoRefs.current[2].currentTime = 0;
 			}
 			if (check) {
-				setPresence3(false)
-				videoRefs.current[3].play()
+				setPresence3(false);
+				if (!videoRefs.current[3].isPlaying) {
+					videoRefs.current[3].play();
+					console.log("play3");
+				}
 			} else if (!check) {
-				videoRefs.current[3].currentTime = 0
+				videoRefs.current[3].currentTime = 0;
 			}
 			if (notJustForTeachers) {
-				setPresence4(false)
-				videoRefs.current[4].play()
+				setPresence4(false);
+				if (!videoRefs.current[4].isPlaying) {
+					videoRefs.current[4].play();
+					console.log("play4");
+				}
 			} else if (!notJustForTeachers) {
-				videoRefs.current[4].currentTime = 0
+				videoRefs.current[4].currentTime = 0;
 			}
 			if (mission) {
-				setPresence5(false)
-				videoRefs.current[5].play()
+				setPresence5(false);
+				if (!videoRefs.current[5].isPlaying) {
+					videoRefs.current[5].play();
+					console.log("play5");
+				}
 			} else if (!mission) {
-				videoRefs.current[5].currentTime = 0
+				videoRefs.current[5].currentTime = 0;
 			}
 			if (butterfly) {
 				videoRefs.current[6].play();
 			} else if (!butterfly) {
-				videoRefs.current[6].currentTime = 0
+				videoRefs.current[6].currentTime = 0;
 			}
 
 			animationFrameId = window.requestAnimationFrame(render);
 		};
 
 		render();
+
 		return () => {
 			window.cancelAnimationFrame(animationFrameId);
-
 		};
-
-	}, [presence1,
+	}, [
+		presence1,
 		presence2,
 		presence3,
 		presence4,
@@ -123,30 +138,29 @@ export default function Base() {
 		mission,
 		foundedOnPrinciple,
 		butterfly,
-		ratedHighest]);
-
-
+		ratedHighest,
+	]);
 
 	function handleInteraction(name) {
 		switch (name) {
 			case "prox1": {
-				!presence1 ? setPresence1(true) : null
+				!presence1 ? setPresence1(true) : null;
 				break;
 			}
 			case "prox2": {
-				!presence2 ? setPresence2(true) : null
+				!presence2 ? setPresence2(true) : null;
 				break;
 			}
 			case "prox3": {
-				!presence3 ? setPresence3(true) : null
+				!presence3 ? setPresence3(true) : null;
 				break;
 			}
 			case "prox4": {
-				!presence4 ? setPresence4(true) : null
+				!presence4 ? setPresence4(true) : null;
 				break;
 			}
 			case "prox5": {
-				!presence5 ? setPresence5(true) : null
+				!presence5 ? setPresence5(true) : null;
 				break;
 			}
 
@@ -232,7 +246,6 @@ export default function Base() {
 				hidden={presence5 ? false : true}
 			/>
 
-
 			{/* interaction videos */}
 
 			<video
@@ -257,6 +270,7 @@ export default function Base() {
 				loop
 				hidden={foundedOnPrinciple ? true : false}
 				onMouseEnter={() => setPresence1(true)}
+				onClick={() => handleInteraction("play1")}
 			/>
 			<video
 				src={foundedOnPrinciple1}
@@ -280,6 +294,7 @@ export default function Base() {
 				loop
 				hidden={notJustForTeachers ? true : false}
 				onMouseEnter={() => setPresence4(true)}
+				onClick={() => handleInteraction("play4")}
 			/>
 			<video
 				src={notJustForTeachers1}
@@ -302,6 +317,7 @@ export default function Base() {
 				loop
 				hidden={ratedHighest ? true : false}
 				onMouseEnter={() => setPresence2(true)}
+				onClick={() => handleInteraction("play2")}
 			/>
 			<video
 				src={ratedOneOfTheHighest1}
@@ -325,6 +341,7 @@ export default function Base() {
 				loop
 				hidden={mission ? true : false}
 				onMouseEnter={() => setPresence5(true)}
+				onClick={() => handleInteraction("play5")}
 			/>
 			<video
 				src={wereOnAMission1}
@@ -348,6 +365,7 @@ export default function Base() {
 				loop
 				hidden={check ? true : false}
 				onMouseEnter={() => setPresence3(true)}
+				onClick={() => handleInteraction("play3")}
 			/>
 			<video
 				src={neverMissACheck1}
@@ -360,7 +378,6 @@ export default function Base() {
 				hidden={check ? false : true}
 				onEnded={() => setCheck(false)}
 			/>
-
 		</div>
 	);
 }

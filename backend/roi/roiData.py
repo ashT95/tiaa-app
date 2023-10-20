@@ -26,9 +26,6 @@ xoutSpatialData.setStreamName("spatialData")
 xinSpatialCalcConfig.setStreamName("spatialCalcConfig")
 
 # Properties
-monoLeft.setIsp3aFps(15)
-monoRight.setIsp3aFps(15)
-
 monoLeft.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
 monoLeft.setBoardSocket(dai.CameraBoardSocket.LEFT)
 monoRight.setResolution(dai.MonoCameraProperties.SensorResolution.THE_400_P)
@@ -40,6 +37,21 @@ subpixel = False
 stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
 stereo.setLeftRightCheck(lrcheck)
 
+# DEBUGGING 
+camConfig = dai.Device.Config()
+camConfig.board.network.mtu = 9000 # Jumbo frames. Default 1500
+camConfig.board.network.xlinkTcpNoDelay = False # Default True
+camConfig.board.sysctl.append("net.inet.tcp.delayed_ack=1") # configure sysctl settings. 0 by default.
+
+monoLeft.setIsp3aFps(5)
+monoRight.setIsp3aFps(5)
+
+monoLeft.setFps(10)
+monoRight.setFps(10)
+
+f1 = monoLeft.getFps()
+f2 = monoRight.getFps()
+print(f"{f1} {f2}")
 
 stereoConfig = stereo.initialConfig.get()
 stereoConfig.postProcessing.speckleFilter.enable = True

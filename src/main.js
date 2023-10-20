@@ -17,9 +17,9 @@ let shell;
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		x: 1920 + 1920,
+		// x: 1920 + 1920,
 		y: 0,
-		frame: false,
+		// frame: false,
 		show: false,
 		autoHideMenuBar: true,
 		webPreferences: {
@@ -56,7 +56,7 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-	mainWindow.setFullScreen(true);
+	// mainWindow.setFullScreen(true);
 
 	// ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
 
@@ -85,7 +85,7 @@ const createWindow = () => {
 
 
 	// Open the DevTools.
-	// mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools();
 
 
 	// mainWindow2.once("ready-to-show", () => {
@@ -120,8 +120,8 @@ app.on("ready", createWindow);
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on("window-all-closed", async () => {
-	session.defaultSession.clearStorageData();
 	if (process.platform !== "darwin") {
+		session.defaultSession.clearStorageData();
 		app.quit();
 	}
 	shell.end((err) => {
