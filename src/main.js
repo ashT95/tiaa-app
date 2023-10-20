@@ -60,7 +60,7 @@ const createWindow = () => {
 
 	// ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
 
-	shell = new PythonShell("backend/roi/roiData.py", {
+	shell = new PythonShell("backend/roi/roiData2.py", {
 		// The '-u' tells Python to flush every time
 		pythonOptions: ["-u"],
 		args: [],
