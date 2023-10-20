@@ -170,209 +170,209 @@ def getPipeline():
 
     configList.append(config9)
 
-    # # WALL 2
-    # # PROXIMITY WALL 2
-    # #conserving
-    # topLeft10 = dai.Point2f(0.62, 0.12)
-    # bottomRight10 = dai.Point2f(0.72, 0.32)
+    # WALL 2
+    # PROXIMITY WALL 2
+    #conserving
+    topLeft10 = dai.Point2f(0.62, 0.12)
+    bottomRight10 = dai.Point2f(0.72, 0.32)
 
-    # config10 = dai.SpatialLocationCalculatorConfigData()
-    # config10.depthThresholds.lowerThreshold = 1000
-    # config10.depthThresholds.upperThreshold = 3500
-    # config10.roi = dai.Rect(topLeft10, bottomRight10)
+    config10 = dai.SpatialLocationCalculatorConfigData()
+    config10.depthThresholds.lowerThreshold = 1000
+    config10.depthThresholds.upperThreshold = 3500
+    config10.roi = dai.Rect(topLeft10, bottomRight10)
 
-    # configList.append(config10)
+    configList.append(config10)
 
-    # # friendship
-    # topLeft11 = dai.Point2f(0.47, 0.12)
-    # bottomRight11 = dai.Point2f(0.57, 0.32)
+    # friendship
+    topLeft11 = dai.Point2f(0.47, 0.12)
+    bottomRight11 = dai.Point2f(0.57, 0.32)
 
-    # config11 = dai.SpatialLocationCalculatorConfigData()
-    # config11.depthThresholds.lowerThreshold = 1000
-    # config11.depthThresholds.upperThreshold = 3500
-    # config11.roi = dai.Rect(topLeft11, bottomRight11)
+    config11 = dai.SpatialLocationCalculatorConfigData()
+    config11.depthThresholds.lowerThreshold = 1000
+    config11.depthThresholds.upperThreshold = 3500
+    config11.roi = dai.Rect(topLeft11, bottomRight11)
 
-    # configList.append(config11)
+    configList.append(config11)
 
-    # # real estate
-    # topLeft12 = dai.Point2f(0.32, 0.12)
-    # bottomRight12 = dai.Point2f(0.42, 0.32)
+    # real estate
+    topLeft12 = dai.Point2f(0.32, 0.12)
+    bottomRight12 = dai.Point2f(0.42, 0.32)
 
-    # config12 = dai.SpatialLocationCalculatorConfigData()
-    # config12.depthThresholds.lowerThreshold = 1000
-    # config12.depthThresholds.upperThreshold = 3500
-    # config12.roi = dai.Rect(topLeft12, bottomRight12)
+    config12 = dai.SpatialLocationCalculatorConfigData()
+    config12.depthThresholds.lowerThreshold = 1000
+    config12.depthThresholds.upperThreshold = 3500
+    config12.roi = dai.Rect(topLeft12, bottomRight12)
 
-    # configList.append(config12)
+    configList.append(config12)
 
-    # # grape investments
-    # topLeft13 = dai.Point2f(0.22, 0.12)
-    # bottomRight13 = dai.Point2f(0.32, 0.32)
+    # grape investments
+    topLeft13 = dai.Point2f(0.22, 0.12)
+    bottomRight13 = dai.Point2f(0.32, 0.32)
 
-    # config13 = dai.SpatialLocationCalculatorConfigData()
-    # config13.depthThresholds.lowerThreshold = 1000
-    # config13.depthThresholds.upperThreshold = 3500
-    # config13.roi = dai.Rect(topLeft13, bottomRight13)
+    config13 = dai.SpatialLocationCalculatorConfigData()
+    config13.depthThresholds.lowerThreshold = 1000
+    config13.depthThresholds.upperThreshold = 3500
+    config13.roi = dai.Rect(topLeft13, bottomRight13)
 
-    # configList.append(config13)
+    configList.append(config13)
 
-    # # ANIMATIONS WALL 2
-    # #conserving 
-    # topLeft14 = dai.Point2f(0.61, 0.49)
-    # bottomRight14 = dai.Point2f(0.77, 0.56)
+    # ANIMATIONS WALL 2
+    #conserving 
+    topLeft14 = dai.Point2f(0.61, 0.49)
+    bottomRight14 = dai.Point2f(0.77, 0.56)
 
-    # config14 = dai.SpatialLocationCalculatorConfigData()
-    # config14.depthThresholds.lowerThreshold = 1000
-    # config14.depthThresholds.upperThreshold = 3500
-    # config14.roi = dai.Rect(topLeft14, bottomRight14)
+    config14 = dai.SpatialLocationCalculatorConfigData()
+    config14.depthThresholds.lowerThreshold = 1000
+    config14.depthThresholds.upperThreshold = 3500
+    config14.roi = dai.Rect(topLeft14, bottomRight14)
 
-    # configList.append(config14)
+    configList.append(config14)
 
-    # #friendship
-    # topLeft15 = dai.Point2f(0.47, 0.49)
-    # bottomRight15 = dai.Point2f(0.63, 0.56)
+    #friendship
+    topLeft15 = dai.Point2f(0.47, 0.49)
+    bottomRight15 = dai.Point2f(0.63, 0.56)
 
-    # config15 = dai.SpatialLocationCalculatorConfigData()
-    # config15.depthThresholds.lowerThreshold = 1000
-    # config15.depthThresholds.upperThreshold = 3500
-    # config15.roi = dai.Rect(topLeft15, bottomRight15)
+    config15 = dai.SpatialLocationCalculatorConfigData()
+    config15.depthThresholds.lowerThreshold = 1000
+    config15.depthThresholds.upperThreshold = 3500
+    config15.roi = dai.Rect(topLeft15, bottomRight15)
 
-    # configList.append(config15)
+    configList.append(config15)
 
-    # #real estate
-    # topLeft16 = dai.Point2f(0.26, 0.49)
-    # bottomRight16 = dai.Point2f(0.42, 0.56)
+    #real estate
+    topLeft16 = dai.Point2f(0.26, 0.49)
+    bottomRight16 = dai.Point2f(0.42, 0.56)
 
-    # config16 = dai.SpatialLocationCalculatorConfigData()
-    # config16.depthThresholds.lowerThreshold = 1000
-    # config16.depthThresholds.upperThreshold = 3500
-    # config16.roi = dai.Rect(topLeft16, bottomRight16)
+    config16 = dai.SpatialLocationCalculatorConfigData()
+    config16.depthThresholds.lowerThreshold = 1000
+    config16.depthThresholds.upperThreshold = 3500
+    config16.roi = dai.Rect(topLeft16, bottomRight16)
 
-    # configList.append(config16)
+    configList.append(config16)
 
-    # # grape investments
-    # topLeft17 = dai.Point2f(0.16, 0.49)
-    # bottomRight17 = dai.Point2f(0.32, 0.56)
+    # grape investments
+    topLeft17 = dai.Point2f(0.16, 0.49)
+    bottomRight17 = dai.Point2f(0.32, 0.56)
 
-    # config17 = dai.SpatialLocationCalculatorConfigData()
-    # config17.depthThresholds.lowerThreshold = 1000
-    # config17.depthThresholds.upperThreshold = 3500
-    # config17.roi = dai.Rect(topLeft17, bottomRight17)
+    config17 = dai.SpatialLocationCalculatorConfigData()
+    config17.depthThresholds.lowerThreshold = 1000
+    config17.depthThresholds.upperThreshold = 3500
+    config17.roi = dai.Rect(topLeft17, bottomRight17)
 
-    # configList.append(config17)
+    configList.append(config17)
 
-    # # WALL 3
-    # # PROXIMITY WALL 3
-    # # ceos
-    # topLeft18 = dai.Point2f(0.70, 0.12)
-    # bottomRight18 = dai.Point2f(0.80, 0.32)
+    # WALL 3
+    # PROXIMITY WALL 3
+    # ceos
+    topLeft18 = dai.Point2f(0.70, 0.12)
+    bottomRight18 = dai.Point2f(0.80, 0.32)
 
-    # config18 = dai.SpatialLocationCalculatorConfigData()
-    # config18.depthThresholds.lowerThreshold = 1000
-    # config18.depthThresholds.upperThreshold = 3500
-    # config18.roi = dai.Rect(topLeft18, bottomRight18)
+    config18 = dai.SpatialLocationCalculatorConfigData()
+    config18.depthThresholds.lowerThreshold = 1000
+    config18.depthThresholds.upperThreshold = 3500
+    config18.roi = dai.Rect(topLeft18, bottomRight18)
 
-    # configList.append(config18)
+    configList.append(config18)
 
-    # # girls in tech
-    # topLeft19 = dai.Point2f(0.53, 0.12)
-    # bottomRight19 = dai.Point2f(0.63, 0.32)
+    # girls in tech
+    topLeft19 = dai.Point2f(0.53, 0.12)
+    bottomRight19 = dai.Point2f(0.63, 0.32)
 
-    # config19 = dai.SpatialLocationCalculatorConfigData()
-    # config19.depthThresholds.lowerThreshold = 1000
-    # config19.depthThresholds.upperThreshold = 3500
-    # config19.roi = dai.Rect(topLeft19, bottomRight19)
+    config19 = dai.SpatialLocationCalculatorConfigData()
+    config19.depthThresholds.lowerThreshold = 1000
+    config19.depthThresholds.upperThreshold = 3500
+    config19.roi = dai.Rect(topLeft19, bottomRight19)
 
-    # configList.append(config19)
+    configList.append(config19)
 
-    # # empowering abilities
-    # topLeft20 = dai.Point2f(0.48, 0.12)
-    # bottomRight20 = dai.Point2f(0.58, 0.32)
+    # empowering abilities
+    topLeft20 = dai.Point2f(0.48, 0.12)
+    bottomRight20 = dai.Point2f(0.58, 0.32)
 
-    # config20 = dai.SpatialLocationCalculatorConfigData()
-    # config20.depthThresholds.lowerThreshold = 1000
-    # config20.depthThresholds.upperThreshold = 3500
-    # config20.roi = dai.Rect(topLeft20, bottomRight20)
+    config20 = dai.SpatialLocationCalculatorConfigData()
+    config20.depthThresholds.lowerThreshold = 1000
+    config20.depthThresholds.upperThreshold = 3500
+    config20.roi = dai.Rect(topLeft20, bottomRight20)
 
-    # configList.append(config20)
+    configList.append(config20)
 
-    # # financial literacy
-    # topLeft21 = dai.Point2f(0.29, 0.12)
-    # bottomRight21 = dai.Point2f(0.39, 0.32)
+    # financial literacy
+    topLeft21 = dai.Point2f(0.29, 0.12)
+    bottomRight21 = dai.Point2f(0.39, 0.32)
 
-    # config21 = dai.SpatialLocationCalculatorConfigData()
-    # config21.depthThresholds.lowerThreshold = 1000
-    # config21.depthThresholds.upperThreshold = 3500
-    # config21.roi = dai.Rect(topLeft21, bottomRight21)
+    config21 = dai.SpatialLocationCalculatorConfigData()
+    config21.depthThresholds.lowerThreshold = 1000
+    config21.depthThresholds.upperThreshold = 3500
+    config21.roi = dai.Rect(topLeft21, bottomRight21)
 
-    # configList.append(config21)
+    configList.append(config21)
 
-    # # retiring inequality
-    # topLeft22 = dai.Point2f(0.21, 0.12)
-    # bottomRight22 = dai.Point2f(0.31, 0.32)
+    # retiring inequality
+    topLeft22 = dai.Point2f(0.21, 0.12)
+    bottomRight22 = dai.Point2f(0.31, 0.32)
 
-    # config22 = dai.SpatialLocationCalculatorConfigData()
-    # config22.depthThresholds.lowerThreshold = 1000
-    # config22.depthThresholds.upperThreshold = 3500
-    # config22.roi = dai.Rect(topLeft22, bottomRight22)
+    config22 = dai.SpatialLocationCalculatorConfigData()
+    config22.depthThresholds.lowerThreshold = 1000
+    config22.depthThresholds.upperThreshold = 3500
+    config22.roi = dai.Rect(topLeft22, bottomRight22)
 
-    # configList.append(config22)
+    configList.append(config22)
 
-    # # ANIMATIONS WALL 3
-    # #ceos
-    # topLeft23 = dai.Point2f(0.72, 0.49)
-    # bottomRight23 = dai.Point2f(0.88, 0.56)
+    # ANIMATIONS WALL 3
+    #ceos
+    topLeft23 = dai.Point2f(0.72, 0.49)
+    bottomRight23 = dai.Point2f(0.88, 0.56)
 
-    # config23 = dai.SpatialLocationCalculatorConfigData()
-    # config23.depthThresholds.lowerThreshold = 1000
-    # config23.depthThresholds.upperThreshold = 3500
-    # config23.roi = dai.Rect(topLeft23, bottomRight23)
+    config23 = dai.SpatialLocationCalculatorConfigData()
+    config23.depthThresholds.lowerThreshold = 1000
+    config23.depthThresholds.upperThreshold = 3500
+    config23.roi = dai.Rect(topLeft23, bottomRight23)
 
-    # configList.append(config23)
+    configList.append(config23)
 
-    # # girls in tech
-    # topLeft24 = dai.Point2f(0.47, 0.49)
-    # bottomRight24 = dai.Point2f(0.63, 0.56)
+    # girls in tech
+    topLeft24 = dai.Point2f(0.47, 0.49)
+    bottomRight24 = dai.Point2f(0.63, 0.56)
 
-    # config24 = dai.SpatialLocationCalculatorConfigData()
-    # config24.depthThresholds.lowerThreshold = 1000
-    # config24.depthThresholds.upperThreshold = 3500
-    # config24.roi = dai.Rect(topLeft24, bottomRight24)
+    config24 = dai.SpatialLocationCalculatorConfigData()
+    config24.depthThresholds.lowerThreshold = 1000
+    config24.depthThresholds.upperThreshold = 3500
+    config24.roi = dai.Rect(topLeft24, bottomRight24)
 
-    # configList.append(config24)
+    configList.append(config24)
 
-    # # empowering abilities
-    # topLeft25 = dai.Point2f(0.44, 0.49)
-    # bottomRight25 = dai.Point2f(0.60, 0.56)
+    # empowering abilities
+    topLeft25 = dai.Point2f(0.44, 0.49)
+    bottomRight25 = dai.Point2f(0.60, 0.56)
 
-    # config25 = dai.SpatialLocationCalculatorConfigData()
-    # config25.depthThresholds.lowerThreshold = 1000
-    # config25.depthThresholds.upperThreshold = 3500
-    # config25.roi = dai.Rect(topLeft25, bottomRight25)
+    config25 = dai.SpatialLocationCalculatorConfigData()
+    config25.depthThresholds.lowerThreshold = 1000
+    config25.depthThresholds.upperThreshold = 3500
+    config25.roi = dai.Rect(topLeft25, bottomRight25)
 
-    # configList.append(config25)
+    configList.append(config25)
 
-    # # financial literacy
-    # topLeft26 = dai.Point2f(0.14, 0.49)
-    # bottomRight26 = dai.Point2f(0.30, 0.56)
+    # financial literacy
+    topLeft26 = dai.Point2f(0.14, 0.49)
+    bottomRight26 = dai.Point2f(0.30, 0.56)
 
-    # config26 = dai.SpatialLocationCalculatorConfigData()
-    # config26.depthThresholds.lowerThreshold = 1000
-    # config26.depthThresholds.upperThreshold = 3500
-    # config26.roi = dai.Rect(topLeft26, bottomRight26)
+    config26 = dai.SpatialLocationCalculatorConfigData()
+    config26.depthThresholds.lowerThreshold = 1000
+    config26.depthThresholds.upperThreshold = 3500
+    config26.roi = dai.Rect(topLeft26, bottomRight26)
 
-    # configList.append(config26)
+    configList.append(config26)
 
-    # # retiring inequality 
-    # topLeft27 = dai.Point2f(0.15, 0.49)
-    # bottomRight27 = dai.Point2f(0.31, 0.56)
+    # retiring inequality 
+    topLeft27 = dai.Point2f(0.15, 0.49)
+    bottomRight27 = dai.Point2f(0.31, 0.56)
 
-    # config27 = dai.SpatialLocationCalculatorConfigData()
-    # config27.depthThresholds.lowerThreshold = 1000
-    # config27.depthThresholds.upperThreshold = 3500
-    # config27.roi = dai.Rect(topLeft27, bottomRight27)
+    config27 = dai.SpatialLocationCalculatorConfigData()
+    config27.depthThresholds.lowerThreshold = 1000
+    config27.depthThresholds.upperThreshold = 3500
+    config27.roi = dai.Rect(topLeft27, bottomRight27)
 
-    # configList.append(config27)
+    configList.append(config27)
 
     spatialLocationCalculator.initialConfig.setROIs(configList)
     spatialLocationCalculator.inputConfig.setWaitForMessage(False)
@@ -389,23 +389,33 @@ def getPipeline():
     return pipeline
 
 with contextlib.ExitStack() as stack:
-    device_infos = dai.Device.getAllAvailableDevices()
-    if len(device_infos) == 0:
-        raise RuntimeError("No devices found!")
-    else:
-        print("Found", len(device_infos), "devices")
+
     devices = {}
+    device_infos = [] 
+    
+    device_infos.append(dai.DeviceInfo("192.168.1.112"))
+    device_infos.append(dai.DeviceInfo("192.168.1.113"))
+    device_infos.append(dai.DeviceInfo("192.168.1.114"))
+
+    # device_infos.append(dai.DeviceInfo("18443010010F8F0F00"))
+    # device_infos.append(dai.DeviceInfo("18443010C10C580F00"))
+    # device_infos.append(dai.DeviceInfo("1844301081158F0F00"))
+
+    # print(device_infos[0])
 
     for device_info in device_infos:
+       
         # Note: the pipeline isn't set here, as we don't know yet what device it is.
         # The extra arguments passed are required by the existing overload variants
         openvino_version = dai.OpenVINO.Version.VERSION_2021_4
         usb2_mode = False
-        device = stack.enter_context(dai.Device(openvino_version, device_info, usb2_mode))
+        device = stack.enter_context(dai.Device(openvino_version, device_info, False))
 
         # Note: currently on POE, DeviceInfo.getMxId() and Device.getMxId() are different!
-        print("=== Connected to " + device_info.getMxId())
-        mxid = device.getMxId()
+        # print("=== Connected to " + device_info.getMxId())
+        print("=== Connected to " + device_info.name)
+        mxid = device_info.name
+        name = device_info.name
         cameras = device.getConnectedCameras()
         usb_speed = device.getUsbSpeed()
 
@@ -421,170 +431,361 @@ with contextlib.ExitStack() as stack:
             'depth': device.getOutputQueue(name="depth", maxSize=4, blocking=False),
             'spatialData': device.getOutputQueue(name="spatialData", maxSize=4, blocking=False),
             'spatialCalcConfig': device.getInputQueue("spatialCalcConfig")
-        }
+            }
 
         color = (255, 255, 255)
 
-        while True:
-            for mxid, q in devices.items():
-                    depth = q['depth'].get()
-                    depthFrame = depth.getFrame()
-                    depthFrameColor = cv2.normalize(depthFrame, None, 255, 0, cv2.NORM_INF, cv2.CV_8UC1)
-                    depthFrameColor = cv2.equalizeHist(depthFrameColor) 
-                    depthFrameColor = cv2.applyColorMap(depthFrameColor, cv2.COLORMAP_HOT)
+    while True:
+        for mxid, q in devices.items():
+            # if (mxid == "1844301081158F0F00"):
+            depth = q['depth'].get()
+            depthFrame = depth.getFrame()
+            depthFrameColor = cv2.normalize(depthFrame, None, 255, 0, cv2.NORM_INF, cv2.CV_8UC1)
+            depthFrameColor = cv2.equalizeHist(depthFrameColor) 
+            depthFrameColor = cv2.applyColorMap(depthFrameColor, cv2.COLORMAP_HOT)
 
-                    spatialData = q['spatialData'].get().getSpatialLocations()
+            spatialData = q['spatialData'].get().getSpatialLocations()
                 
-                    for i in range(len(spatialData)):
-                        roi = spatialData[i].config.roi
-                        roi = roi.denormalize(width=depthFrameColor.shape[1], height=depthFrameColor.shape[0])
-                        xmin = int(roi.topLeft().x)
-                        ymin = int(roi.topLeft().y)
-                        xmax = int(roi.bottomRight().x)
-                        ymax = int(roi.bottomRight().y)
+            for i in range(len(spatialData)):
+                roi = spatialData[i].config.roi
+                roi = roi.denormalize(width=depthFrameColor.shape[1], height=depthFrameColor.shape[0])
+                xmin = int(roi.topLeft().x)
+                ymin = int(roi.topLeft().y)
+                xmax = int(roi.bottomRight().x)
+                ymax = int(roi.bottomRight().y)
 
-                        depthMin = spatialData[i].depthMin
-                        depthMax = spatialData[i].depthMax
+                depthMin = spatialData[i].depthMin
+                depthMax = spatialData[i].depthMax
 
-                        fontType = cv2.FONT_HERSHEY_TRIPLEX
-                        cv2.rectangle(depthFrameColor, (xmin, ymin), (xmax, ymax), color, cv2.FONT_HERSHEY_SCRIPT_SIMPLEX)
-                        cv2.putText(depthFrameColor, f"Z{i}: {int(spatialData[i].spatialCoordinates.z)} mm", (xmin + 10, ymin + 50), fontType, 0.5, 255)
-                        
-                        # WALL1
-                        # proximity 
-                        if (mxid):
-                            if (i == 0 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 1500 and avg < 2700):
-                                    print("prox1")
-                                        
-                            if (i == 1 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 1500 and avg < 2700):
-                                    print("prox2")
-                                    
-                            if (i == 2 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 1500 and avg < 2700):
-                                    print("prox3")
-                                        
-                            if (i == 3 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 1500 and avg < 2700):
-                                    print("prox4")
-                                    
-                            if (i == 4 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2700):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 1500 and avg < 2700):
-                                    print("prox5")
-                                    
-                                    
-                                    #interaction
-                            if (i == 5 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2600):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 2000 and avg < 2600):
-                                    print("play1")
-                                        
-                            if (i == 6 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2100):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 1500 and avg < 2100):
-                                    print("play2")
-                                        
-                            if (i == 7 and int(spatialData[i].spatialCoordinates.z) >= 2500 and int(spatialData[i].spatialCoordinates.z) < 2900):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 2100 and avg < 2700):
-                                    print("play3")
-                                    
-                            if (i == 8 and int(spatialData[i].spatialCoordinates.z) >= 1500 and int(spatialData[i].spatialCoordinates.z) < 2000):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 1500 and avg < 2000):
-                                    print("play4")
-                                    
-                            if (i == 9 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2700):
-                                total = 0
-                                temp = int(spatialData[i].spatialCoordinates.z)
-                                for i in range(10):
-                                    total += temp 
-                                avg = total / 10
-                                if (avg >= 2300 and avg < 2700):
-                                    print("play5")
+                fontType = cv2.FONT_HERSHEY_TRIPLEX
+                cv2.rectangle(depthFrameColor, (xmin, ymin), (xmax, ymax), color, cv2.FONT_HERSHEY_SCRIPT_SIMPLEX)
+                cv2.putText(depthFrameColor, f"Z{i}: {int(spatialData[i].spatialCoordinates.z)} mm", (xmin + 10, ymin + 50), fontType, 0.5, 255)
+                
+            # WALL1
+            # proximity 
+            if (mxid == '192.168.1.112'):
+                if (int(spatialData[0].spatialCoordinates.z) >= 1500 and int(spatialData[0].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[0].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 1500 and avg < 2800):
+                        print("prox1")
 
+                                
+                if (int(spatialData[1].spatialCoordinates.z) >= 1500 and int(spatialData[1].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[1].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 1500 and avg < 2800):
+                        print("prox2")
+                            
+                if (int(spatialData[2].spatialCoordinates.z) >= 1500 and int(spatialData[2].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[2].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 1500 and avg < 2800):
+                        print("prox3")
+                                
+                if (int(spatialData[3].spatialCoordinates.z) >= 1500 and int(spatialData[3].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[3].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 1500 and avg < 2800):
+                        print("prox4")
+                            
+                if (int(spatialData[4].spatialCoordinates.z) >= 1500 and int(spatialData[4].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[4].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 1500 and avg < 2800):
+                        print("prox5")
+                            
+                            
+                #interaction
+                if (int(spatialData[5].spatialCoordinates.z) >= 2000 and int(spatialData[5].spatialCoordinates.z) < 2600):
+                    total = 0
+                    temp = int(spatialData[5].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 2000 and avg < 2600):
+                        print("play1")
+                                
+                if (int(spatialData[6].spatialCoordinates.z) >= 1500 and int(spatialData[6].spatialCoordinates.z) < 2100):
+                    total = 0
+                    temp = int(spatialData[6].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 1500 and avg < 2100):
+                        print("play2")
+                                
+                if (int(spatialData[7].spatialCoordinates.z) >= 2500 and int(spatialData[7].spatialCoordinates.z) < 2900):
+                    total = 0
+                    temp = int(spatialData[7].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 2100 and avg < 2800):
+                        print("play3")
+                            
+                if (int(spatialData[8].spatialCoordinates.z) >= 1500 and int(spatialData[8].spatialCoordinates.z) < 2000):
+                    total = 0
+                    temp = int(spatialData[8].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 1500 and avg < 2000):
+                        print("play4")
+                            
+                if (int(spatialData[9].spatialCoordinates.z) >= 2000 and int(spatialData[9].spatialCoordinates.z) < 2550):
+                    total = 0
+                    temp = int(spatialData[9].spatialCoordinates.z)
+                    for i in range(30):
+                        total += temp 
+                    avg = total / 30
+                    if (avg >= 2300 and avg < 2600):
+                        print("play5")
 
-                    sys.stdout.flush()
-            
-            
-                    # Show the frame
-                    cv2.imshow("depth", depthFrameColor)
+        
+            # WALL 2
+            # PROXIMITY
+            #conserving
+            if (mxid == '192.168.1.113'):
+                if (i == 10 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox6")
+
+                # friendship
+                if (i == 11 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox7")
+
+                # real estate
+                if (i == 12 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox8")
+                
+                # grape investments
+                if (i == 13 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox9")
+                
+                # ANIMATIONS
+                # conserving
+                if (i == 14 and int(spatialData[i].spatialCoordinates.z) >= 1900 and int(spatialData[i].spatialCoordinates.z) < 2400):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 1900 and avg < 2400):
+                        print("play6")
+
+                # friendship
+                if (i == 15 and int(spatialData[i].spatialCoordinates.z) >= 2400 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2400 and avg < 2800):
+                        print("play7")
+
+                # real estate
+                if (i == 16 and int(spatialData[i].spatialCoordinates.z) >= 1900 and int(spatialData[i].spatialCoordinates.z) < 2500):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 1900 and avg < 2500):
+                        print("play8")
+                
+                # grape investments
+                if (i == 17 and int(spatialData[i].spatialCoordinates.z) >= 2500 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2500 and avg < 2800):
+                        print("play9")
+
+            if (mxid == '192.168.1.114'):
+                # WALL 3
+                # PROXIMITY
+                # ceos
+                if (i == 18 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox10")
+                
+                # girls in tech
+                if (i == 19 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox11")
+
+                # empowering abilities
+                if (i == 20 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox12")
+                
+                # financial literacy
+                if (i == 21 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox13")
+                
+                # retiring inequality
+                if (i == 22 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("prox14")
+
+                # ANIMATIONS
+                # ceos 
+                if (i == 23 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2800):
+                        print("play10")
+                        print(f"{int(spatialData[i].spatialCoordinates.z)}")
+                
+                # girls in tech
+                if (i == 24 and int(spatialData[i].spatialCoordinates.z) >= 1900 and int(spatialData[i].spatialCoordinates.z) < 2400):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 1900 and avg < 2400):
+                        print("play11")
+                
+                # empoweing abilities
+                if (i == 25 and int(spatialData[i].spatialCoordinates.z) >= 2400 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2400 and avg < 2800):
+                        print("play12")
+                
+                # financial literacy
+                if (i == 26 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2500):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2000 and avg < 2500):
+                        print("play13")
+                
+                # retiring inequality
+                if (i == 27 and int(spatialData[i].spatialCoordinates.z) >= 2500 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                    total = 0
+                    temp = int(spatialData[i].spatialCoordinates.z)
+                    for i in range(10):
+                        total += temp 
+                    avg = total / 10
+                    if (avg >= 2500 and avg < 2800):
+                        print("play14")
+
+            sys.stdout.flush()
+        
+            # Show the frame
+            cv2.imshow("depth" + mxid, depthFrameColor)
     
 
-                    key = cv2.waitKey(1)
-                    if key == ord('q'):
-                        break
-                    # elif key == ord('w'):
-                    #     if topLeft.y - stepSize >= 0:
-                    #         topLeft.y -= stepSize
-                    #         bottomRight.y -= stepSize
-                    #         newConfig = True
-                    # elif key == ord('a'):
-                    #     if topLeft.x - stepSize >= 0:
-                    #         topLeft.x -= stepSize
-                    #         bottomRight.x -= stepSize
-                    #         newConfig = True
-                    # elif key == ord('s'):
-                    #     if bottomRight.y + stepSize <= 1:
-                    #         topLeft.y += stepSize
-                    #         bottomRight.y += stepSize
-                    #         newConfig = True
-                    # elif key == ord('d'):
-                    #     if bottomRight.x + stepSize <= 1:
-                    #         topLeft.x += stepSize
-                    #         bottomRight.x += stepSize
-                    #         newConfig = True
+            key = cv2.waitKey(1)
+            if key == ord('q'):
+                break
+                        # elif key == ord('w'):
+                        #     if topLeft.y - stepSize >= 0:
+                        #         topLeft.y -= stepSize
+                        #         bottomRight.y -= stepSize
+                        #         newConfig = True
+                        # elif key == ord('a'):
+                        #     if topLeft.x - stepSize >= 0:
+                        #         topLeft.x -= stepSize
+                        #         bottomRight.x -= stepSize
+                        #         newConfig = True
+                        # elif key == ord('s'):
 
-                    # if newConfig:
-                    #     config.roi = dai.Rect(topLeft, bottomRight)
-                    #     config.calculationAlgorithm = dai.SpatialLocationCalculatorAlgorithm.AVERAGE
-                    #     cfg = dai.SpatialLocationCalculatorConfig()
-                    #     cfg.addROI(config)
-                    #     spatialCalcConfigInQueue.send(cfg)
-                    #     newConfig = False
-                
+                        #     if bottomRight.y + stepSize <= 1:
+                        #         topLeft.y += stepSize
+                        #         bottomRight.y += stepSize
+                        #         newConfig = True
+                        # elif key == ord('d'):
+                        #     if bottomRight.x + stepSize <= 1:
+                        #         topLeft.x += stepSize
+                        #         bottomRight.x += stepSize
+                        #         newConfig = True
+
+                        # if newConfig:
+                        #     config.roi = dai.Rect(topLeft, bottomRight)
+                        #     config.calculationAlgorithm = dai.SpatialLocationCalculatorAlgorithm.AVERAGE
+                        #     cfg = dai.SpatialLocationCalculatorConfig()
+                        #     cfg.addROI(config)
+                        #     spatialCalcConfigInQueue.send(cfg)
+                        #     newConfig = False
+                    
 
                     # print("{:.2f}".format(topLeft.x), "{:.2f}".format(topLeft.y), "{:.2f}".format(bottomRight.x), "{:.2f}".format(bottomRight.y))
                     # sys.stdout.flush()

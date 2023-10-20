@@ -88,39 +88,39 @@ export default function Base2() {
 
 	function handleInteraction(name) {
 		switch (name) {
-			case "prox1": {
+			case "prox6": {
 				!presence1 ? setPresence1(true) : null
 				break;
 			}
-			case "prox2": {
+			case "prox7": {
 				!presence2 ? setPresence2(true) : null
 				break;
 			}
-			case "prox3": {
+			case "prox8": {
 				!presence3 ? setPresence3(true) : null
 				break;
 			}
-			case "prox4": {
+			case "prox9": {
 				!presence4 ? setPresence4(true) : null
 				break;
 			}
 
-			case "play1": {
+			case "play6": {
 				setPresence1(false);
 				setConserving(true);
 				break;
 			}
-			case "play2": {
+			case "play7": {
 				setPresence2(false);
 				setFriendship(true);
 				break;
 			}
-			case "play3": {
+			case "play8": {
 				setPresence3(false);
 				setResponsibleRealEstate(true);
 				break;
 			}
-			case "play4": {
+			case "play9": {
 				setPresence4(false);
 				setGrapeInvestments(true);
 				break;

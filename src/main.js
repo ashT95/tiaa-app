@@ -27,27 +27,27 @@ const createWindow = () => {
 		},
 	});
 
-	// mainWindow2 = new BrowserWindow({
-	// 	x: 1920,
-	// 	y: 0,
-	// 	width: 800,
-	// 	height: 600,
-	// 	show: false,
-	// 	webPreferences: {
-	// 		preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-	// 	},
-	// });
+	mainWindow2 = new BrowserWindow({
+		x: 1920,
+		y: 0,
+		width: 800,
+		height: 600,
+		show: false,
+		webPreferences: {
+			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+		},
+	});
 
-	// mainWindow3 = new BrowserWindow({
-	// 	x: 1920,
-	// 	y: 0,
-	// 	width: 800,
-	// 	height: 600,
-	// 	show: false,
-	// 	webPreferences: {
-	// 		preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-	// 	},
-	// });
+	mainWindow3 = new BrowserWindow({
+		x: 1920,
+		y: 0,
+		width: 800,
+		height: 600,
+		show: false,
+		webPreferences: {
+			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+		},
+	});
 
 	mainWindow.once("ready-to-show", () => {
 		mainWindow.show();
@@ -57,6 +57,23 @@ const createWindow = () => {
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 	// mainWindow.setFullScreen(true);
+
+	mainWindow2.once("ready-to-show", () => {
+		mainWindow2.show();
+		mainWindow2.focus();
+	});
+
+	// and load the index.html of the app.
+	mainWindow2.loadURL(MAIN_WINDOW2_WEBPACK_ENTRY);
+
+	mainWindow3.once("ready-to-show", () => {
+		mainWindow3.show();
+		mainWindow3.focus();
+	});
+
+	// and load the index.html of the app.
+	mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
+
 
 	// ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
 
@@ -73,39 +90,20 @@ const createWindow = () => {
 		if (mainWindow) {
 			mainWindow.webContents.send("main-to-render", message);
 		}
-
-
-		// if (mainWindow2) {
-		// 	mainWindow2.webContents.send("main-to-render", message);
-		// }
-		// if (mainWindow3) {
-		// 	mainWindow3.webContents.send("main-to-render", message);
-		// }
+		if (mainWindow2) {
+			mainWindow2.webContents.send("main-to-render", message);
+		}
+		if (mainWindow3) {
+			mainWindow3.webContents.send("main-to-render", message);
+		}
 	});
 
 
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools();
+	// mainWindow.webContents.openDevTools();
 
-
-	// mainWindow2.once("ready-to-show", () => {
-	// 	mainWindow2.show();
-	// 	mainWindow2.focus();
-	// });
-
-	// // and load the index.html of the app.
-	// mainWindow2.loadURL(MAIN_WINDOW2_WEBPACK_ENTRY);
-
-	// // Open the DevTools.
-	// //mainWindow3.webContents.openDevTools();
-
-	// mainWindow3.once("ready-to-show", () => {
-	// 	mainWindow3.show();
-	// 	mainWindow3.focus();
-	// });
-
-	// // and load the index.html of the app.
-	// mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
+	// Open the DevTools.
+	//mainWindow3.webContents.openDevTools();
 
 	// Open the DevTools.
 	//mainWindow3.webContents.openDevTools();

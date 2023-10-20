@@ -127,28 +127,28 @@ export default function Base3() {
 
 	function handleInteraction(name) {
 		switch (name) {
-			case "prox1": {
+			case "prox10": {
 				!presence1 ? setPresence1(true) : null
 				break;
 			}
-			case "prox2": {
+			case "prox11": {
 				!presence2 ? setPresence2(true) : null
 				break;
 			}
-			case "prox3": {
+			case "prox12": {
 				!presence3 ? setPresence3(true) : null
 				break;
 			}
-			case "prox4": {
+			case "prox13": {
 				!presence4 ? setPresence4(true) : null
 				break;
 			}
-			case "prox5": {
+			case "prox14": {
 				!presence5 ? setPresence5(true) : null
 				break;
 			}
 
-			case "play1": {
+			case "play10": {
 				setPresence1(false);
 				if (loop0) {
 					setWipe0(true);
@@ -160,32 +160,32 @@ export default function Base3() {
 				}
 				break;
 			}
-			case "play11": {
+			case "play111": {
 				setLoop1(true);
 				setWipe0(false);
 				break;
 			}
-			case "play12": {
+			case "play112": {
 				setLoop0(true);
 				setWipe1(false);
 			}
-			case "play2": {
+			case "play11": {
 				setPresence2(false);
 				setGirlsInTech(true);
 				setRocket(true);
 				break;
 			}
-			case "play3": {
+			case "play12": {
 				setPresence3(false);
 				setEmpoweringAbilities(true);
 				break;
 			}
-			case "play4": {
+			case "play13": {
 				setPresence4(false);
 				setFinancialLiteracy(true);
 				break;
 			}
-			case "play5": {
+			case "play14": {
 				setPresence5(false);
 				setRetiringInequality(true);
 				break;
@@ -374,7 +374,7 @@ export default function Base3() {
 				loop={false}
 				ref={(el) => (videoRefs.current[5] = el)}
 				hidden={wipe0 ? false : true}
-				onEnded={() => handleInteraction("play11")}
+				onEnded={() => handleInteraction("play111")}
 			/>
 			<video
 				src={ceoLoop1}
@@ -397,7 +397,7 @@ export default function Base3() {
 				loop={false}
 				ref={(el) => (videoRefs.current[8] = el)}
 				hidden={wipe1 ? false : true}
-				onEnded={() => handleInteraction("play12")}
+				onEnded={() => handleInteraction("play112")}
 			/>
 			<video
 				src={retiringInequalityLoop1}
