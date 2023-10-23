@@ -4,6 +4,7 @@ import cv2
 import sys
 import depthai as dai
 import contextlib
+import json
 
 stepSize = 0.01
 
@@ -392,9 +393,11 @@ with contextlib.ExitStack() as stack:
     devices = {}
     device_infos = [] 
     
-    device_infos.append(dai.DeviceInfo("192.168.1.112"))
-    device_infos.append(dai.DeviceInfo("192.168.1.113"))
-    device_infos.append(dai.DeviceInfo("192.168.1.114"))
+    f = open('../ipData.json')
+    data = json.load(f)
+    for i in data["ip_addresses"]:
+        device_infos.append(dai.DeviceInfo(str(i)))
+
 
     # device_infos.append(dai.DeviceInfo("18443010010F8F0F00"))
     # device_infos.append(dai.DeviceInfo("18443010C10C580F00"))

@@ -3,6 +3,7 @@
 import cv2
 import sys
 import depthai as dai
+import json
 
 stepSize = 0.05
 

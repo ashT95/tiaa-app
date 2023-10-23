@@ -76,7 +76,7 @@ const createWindow = () => {
 
 	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
 
-	shell = new PythonShell("backend/roi/roiData.py", {
+	shell = new PythonShell("OAKscripts/roi/roiData2.py", {
 		// The '-u' tells Python to flush every time
 		pythonOptions: ["-u"],
 		args: [],
