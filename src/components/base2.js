@@ -147,31 +147,6 @@ export default function Base2() {
 	return (
 		<div className="background2">
 			<video
-				src={titleAnimation}
-				key={titleAnimation}
-				id={"titleAnimation"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
-
-			<video
-				src={shootingStar}
-				key={shootingStar}
-				id={"shootingStar"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
-			<video
-				src={bgAnim2}
-				key={bgAnim2}
-				id={"bgAnim2"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
-			<video
 				src={proxVid1}
 				key="proximityLoop21"
 				id="proximityLoop21"
@@ -206,6 +181,32 @@ export default function Base2() {
 				ref={(el) => (videoRefs.current[8] = el)}
 				onEnded={() => setPresence4(false)}
 				hidden={presence4 ? false : true}
+			/>
+
+			<video
+				src={titleAnimation}
+				key={titleAnimation}
+				id={"titleAnimation"}
+				preload="auto"
+				autoPlay
+				loop
+			/>
+
+			<video
+				src={shootingStar}
+				key={shootingStar}
+				id={"shootingStar"}
+				preload="auto"
+				autoPlay
+				loop
+			/>
+			<video
+				src={bgAnim2}
+				key={bgAnim2}
+				id={"bgAnim2"}
+				preload="auto"
+				autoPlay
+				loop
 			/>
 
 			{/* interaction videos */}

@@ -393,11 +393,9 @@ with contextlib.ExitStack() as stack:
     devices = {}
     device_infos = [] 
     
-    f = open('../ipData.json')
-    data = json.load(f)
-    for i in data["ip_addresses"]:
-        device_infos.append(dai.DeviceInfo(str(i)))
-
+    device_infos.append(dai.DeviceInfo("192.168.1.112"))
+    device_infos.append(dai.DeviceInfo("192.168.1.113"))
+    device_infos.append(dai.DeviceInfo("192.168.1.114"))
 
     # device_infos.append(dai.DeviceInfo("18443010010F8F0F00"))
     # device_infos.append(dai.DeviceInfo("18443010C10C580F00"))
@@ -465,7 +463,7 @@ with contextlib.ExitStack() as stack:
                 
             # WALL1
             # proximity 
-            if (mxid == '192.168.1.112'):
+            if (mxid == '192.168.1.114'):
                 if (int(spatialData[0].spatialCoordinates.z) >= 1500 and int(spatialData[0].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[0].spatialCoordinates.z)
@@ -564,188 +562,187 @@ with contextlib.ExitStack() as stack:
             # PROXIMITY
             #conserving
             if (mxid == '192.168.1.113'):
-                if (i == 10 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[10].spatialCoordinates.z) >= 2000 and int(spatialData[10].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[10].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox6")
 
                 # friendship
-                if (i == 11 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[11].spatialCoordinates.z) >= 2000 and int(spatialData[11].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[11].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox7")
 
                 # real estate
-                if (i == 12 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[12].spatialCoordinates.z) >= 2000 and int(spatialData[12].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[12].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox8")
                 
                 # grape investments
-                if (i == 13 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[13].spatialCoordinates.z) >= 2000 and int(spatialData[13].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[13].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox9")
                 
                 # ANIMATIONS
                 # conserving
-                if (i == 14 and int(spatialData[i].spatialCoordinates.z) >= 1900 and int(spatialData[i].spatialCoordinates.z) < 2400):
+                if (int(spatialData[14].spatialCoordinates.z) >= 1900 and int(spatialData[14].spatialCoordinates.z) < 2400):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[14].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1900 and avg < 2400):
                         print("play6")
 
                 # friendship
-                if (i == 15 and int(spatialData[i].spatialCoordinates.z) >= 2400 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[15].spatialCoordinates.z) >= 2400 and int(spatialData[15].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[15].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2400 and avg < 2800):
                         print("play7")
 
                 # real estate
-                if (i == 16 and int(spatialData[i].spatialCoordinates.z) >= 1900 and int(spatialData[i].spatialCoordinates.z) < 2500):
+                if (int(spatialData[16].spatialCoordinates.z) >= 1900 and int(spatialData[16].spatialCoordinates.z) < 2500):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[16].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1900 and avg < 2500):
                         print("play8")
                 
                 # grape investments
-                if (i == 17 and int(spatialData[i].spatialCoordinates.z) >= 2500 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[17].spatialCoordinates.z) >= 2500 and int(spatialData[17].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[17].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2500 and avg < 2800):
                         print("play9")
 
-            if (mxid == '192.168.1.114'):
+            if (mxid == '192.168.1.112'):
                 # WALL 3
                 # PROXIMITY
                 # ceos
-                if (i == 18 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[18].spatialCoordinates.z) >= 2000 and int(spatialData[18].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[18].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox10")
                 
                 # girls in tech
-                if (i == 19 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[19].spatialCoordinates.z) >= 2000 and int(spatialData[19].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[19].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox11")
 
                 # empowering abilities
-                if (i == 20 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[20].spatialCoordinates.z) >= 2000 and int(spatialData[20].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[20].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox12")
                 
                 # financial literacy
-                if (i == 21 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[21].spatialCoordinates.z) >= 2000 and int(spatialData[21].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[21].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox13")
                 
                 # retiring inequality
-                if (i == 22 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[22].spatialCoordinates.z) >= 2000 and int(spatialData[22].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[22].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox14")
 
                 # ANIMATIONS
                 # ceos 
-                if (i == 23 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[23].spatialCoordinates.z) >= 2000 and int(spatialData[23].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[23].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("play10")
-                        print(f"{int(spatialData[i].spatialCoordinates.z)}")
                 
                 # girls in tech
-                if (i == 24 and int(spatialData[i].spatialCoordinates.z) >= 1900 and int(spatialData[i].spatialCoordinates.z) < 2400):
+                if (int(spatialData[24].spatialCoordinates.z) >= 1900 and int(spatialData[24].spatialCoordinates.z) < 2400):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[24].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1900 and avg < 2400):
                         print("play11")
                 
                 # empoweing abilities
-                if (i == 25 and int(spatialData[i].spatialCoordinates.z) >= 2400 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[25].spatialCoordinates.z) >= 2400 and int(spatialData[25].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[25].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2400 and avg < 2800):
                         print("play12")
                 
                 # financial literacy
-                if (i == 26 and int(spatialData[i].spatialCoordinates.z) >= 2000 and int(spatialData[i].spatialCoordinates.z) < 2500):
+                if (int(spatialData[26].spatialCoordinates.z) >= 2000 and int(spatialData[26].spatialCoordinates.z) < 2500):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[26].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2500):
                         print("play13")
                 
                 # retiring inequality
-                if (i == 27 and int(spatialData[i].spatialCoordinates.z) >= 2500 and int(spatialData[i].spatialCoordinates.z) < 2800):
+                if (int(spatialData[27].spatialCoordinates.z) >= 2500 and int(spatialData[27].spatialCoordinates.z) < 2800):
                     total = 0
-                    temp = int(spatialData[i].spatialCoordinates.z)
-                    for i in range(10):
+                    temp = int(spatialData[27].spatialCoordinates.z)
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2500 and avg < 2800):
                         print("play14")
 

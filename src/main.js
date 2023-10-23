@@ -12,14 +12,13 @@ let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
 let shell;
 
-//-------------------------------------------------------------------------------------- //
 
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		// x: 1920 + 1920,
+		x: 1920 + 1920,
 		y: 0,
-		// frame: false,
+		frame: false,
 		show: false,
 		autoHideMenuBar: true,
 		webPreferences: {
@@ -49,6 +48,34 @@ const createWindow = () => {
 		},
 	});
 
+	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
+
+	shell = new PythonShell("OAKscripts/roi/roiData2.py", {
+		// The '-u' tells Python to flush every time
+		pythonOptions: ["-u"],
+		args: [],
+	});
+
+	shell.on("message", function (message) {
+		// sending data to frontend window
+		// console.log(message)
+
+		if (mainWindow) {
+			mainWindow.webContents.send("main-to-render", message);
+		}
+		if (mainWindow2) {
+			mainWindow2.webContents.send("main-to-render", message);
+		}
+		
+		if (mainWindow3) {
+			mainWindow3.webContents.send("main-to-render", message);
+		} 
+
+	});
+
+	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
+
+
 	mainWindow.once("ready-to-show", () => {
 		mainWindow.show();
 		mainWindow.focus();
@@ -56,7 +83,7 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-	// mainWindow.setFullScreen(true);
+	mainWindow.setFullScreen(true);
 
 	mainWindow2.once("ready-to-show", () => {
 		mainWindow2.show();
@@ -74,31 +101,8 @@ const createWindow = () => {
 	// and load the index.html of the app.
 	mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
 
-	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
 
-	shell = new PythonShell("OAKscripts/roi/roiData2.py", {
-		// The '-u' tells Python to flush every time
-		pythonOptions: ["-u"],
-		args: [],
-	});
 
-	shell.on("message", function (message) {
-		// sending data to frontend window
-
-		// console.log(message)
-		if (mainWindow) {
-			mainWindow.webContents.send("main-to-render", message);
-		}
-		if (mainWindow2) {
-			mainWindow2.webContents.send("main-to-render", message);
-		}
-		if (mainWindow3) {
-			mainWindow3.webContents.send("main-to-render", message);
-		}
-	});
-
-	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
-	
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
 

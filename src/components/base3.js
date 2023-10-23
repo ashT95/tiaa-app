@@ -64,7 +64,7 @@ export default function Base3() {
 		videoRefs.current[14].volume = 0;
 
 		if (presence1) {
-			!wipe0 && !wipe1 ? videoRefs.current[10].play() : null;
+			!wipe1 && !wipe0 ? videoRefs.current[10].play() : null;
 		}
 		if (presence2) {
 			!girlsInTech ? videoRefs.current[11].play() : null;
@@ -81,34 +81,19 @@ export default function Base3() {
 
 		if (wipe0) {
 			setPresence1(false);
-			if (!videoRefs.current[5].isPlaying) {
-				videoRefs.current[5].play();
-			}
-		} else if (!wipe0) {
-			videoRefs.current[5].currentTime = 0;
+			videoRefs.current[5].play();
 		}
 		if (loop1) {
-			if (!videoRefs.current[6].isPlaying) {
-				videoRefs.current[6].play();
-			}
-		} else if (!loop1) {
-			videoRefs.current[6].currentTime = 0;
+			videoRefs.current[6].play();
 		}
 		if (loop0) {
-			if (!videoRefs.current[7].isPlaying) {
-				videoRefs.current[7].play();
-			}
-		} else if (!loop0) {
-			videoRefs.current[7].currentTime = 0;
+			videoRefs.current[7].play();
 		}
 		if (wipe1) {
 			setPresence1(false);
-			if (!videoRefs.current[8].isPlaying) {
-				videoRefs.current[8].play();
-			}
-		} else if (!wipe1) {
-			videoRefs.current[8].currentTime = 0;
+			videoRefs.current[8].play();
 		}
+
 
 		if (girlsInTech) {
 			setPresence2(false);
@@ -192,24 +177,25 @@ export default function Base3() {
 
 			case "play10": {
 				setPresence1(false);
-				if (loop0) {
-					setWipe0(true);
+				if (loop0) { //loop 0
 					setLoop0(false);
-				}
-				if (loop1) {
-					setWipe1(true);
+					setWipe0(true);
+				} else if (loop1) { // loop 1
 					setLoop1(false);
+					setWipe1(true);
 				}
 				break;
 			}
 			case "play111": {
-				setLoop1(true);
 				setWipe0(false);
+				setLoop1(true);
+				
 				break;
 			}
 			case "play112": {
-				setLoop0(true);
 				setWipe1(false);
+				setLoop0(true);
+				
 			}
 			case "play11": {
 				setPresence2(false);
@@ -389,11 +375,12 @@ export default function Base3() {
 				key={ceoLoop0}
 				id={"groundbreakingCEOs"}
 				preload="auto"
-				autoPlay
+				autoPlay={false}
 				loop
 				ref={(el) => (videoRefs.current[7] = el)}
 				hidden={loop0 ? false : true}
 				onMouseEnter={() => setPresence1(true)}
+				onClick={() => handleInteraction("play10")}
 			/>
 			<video
 				src={ceoWipe0}
@@ -411,11 +398,12 @@ export default function Base3() {
 				key={ceoLoop1}
 				id={"groundbreakingCEOs"}
 				preload="auto"
-				autoPlay
+				autoPlay={false}
 				loop
 				ref={(el) => (videoRefs.current[6] = el)}
-				hidden={loop1 ? false : true}
+				hidden={loop1  ? false : true}
 				onMouseEnter={() => setPresence1(true)}
+				onClick={() => handleInteraction("play10")}
 			/>
 			<video
 				src={ceoWipe1}
