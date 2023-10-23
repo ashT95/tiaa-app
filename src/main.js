@@ -28,22 +28,22 @@ const createWindow = () => {
 	});
 
 	mainWindow2 = new BrowserWindow({
-		x: 1920,
+		// x: 1920 + 1920,
 		y: 0,
-		width: 800,
-		height: 600,
+		// frame: false,
 		show: false,
+		autoHideMenuBar: true,
 		webPreferences: {
 			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
 	});
 
 	mainWindow3 = new BrowserWindow({
-		x: 1920,
+		// x: 1920 + 1920,
 		y: 0,
-		width: 800,
-		height: 600,
+		// frame: false,
 		show: false,
+		autoHideMenuBar: true,
 		webPreferences: {
 			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
 		},
@@ -74,10 +74,9 @@ const createWindow = () => {
 	// and load the index.html of the app.
 	mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
 
+	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
 
-	// ---------------TRAINED YOLOv5 TRACKING SCRIPT-------------------------------------------- //
-
-	shell = new PythonShell("backend/roi/roiData2.py", {
+	shell = new PythonShell("backend/roi/roiData.py", {
 		// The '-u' tells Python to flush every time
 		pythonOptions: ["-u"],
 		args: [],
@@ -98,7 +97,8 @@ const createWindow = () => {
 		}
 	});
 
-
+	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
+	
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
 
@@ -123,8 +123,8 @@ app.on("window-all-closed", async () => {
 		app.quit();
 	}
 	shell.end((err) => {
-		if (err) throw err
-	})
+		if (err) throw err;
+	});
 });
 
 app.on("activate", () => {

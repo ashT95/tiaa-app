@@ -57,57 +57,99 @@ export default function Base3() {
 	});
 
 	useEffect(() => {
+		videoRefs.current[10].volume = 0;
+		videoRefs.current[11].volume = 0;
+		videoRefs.current[12].volume = 0;
+		videoRefs.current[13].volume = 0;
+		videoRefs.current[14].volume = 0;
+
 		if (presence1) {
-			!wipe0 && !wipe1 ? videoRefs.current[10].play() : null
+			!wipe0 && !wipe1 ? videoRefs.current[10].play() : null;
 		}
 		if (presence2) {
-			!girlsInTech ? videoRefs.current[11].play() : null
+			!girlsInTech ? videoRefs.current[11].play() : null;
 		}
 		if (presence3) {
-			!empoweringAbilities ? videoRefs.current[12].play() : null
+			!empoweringAbilities ? videoRefs.current[12].play() : null;
 		}
 		if (presence4) {
-			!financialLiteracy ? videoRefs.current[13].play() : null
+			!financialLiteracy ? videoRefs.current[13].play() : null;
 		}
 		if (presence5) {
-			!retiringInequality ? videoRefs.current[14].play() : null
+			!retiringInequality ? videoRefs.current[14].play() : null;
 		}
 
 		if (wipe0) {
-			setPresence1(false)
-			videoRefs.current[5].play();
+			setPresence1(false);
+			if (!videoRefs.current[5].isPlaying) {
+				videoRefs.current[5].play();
+			}
+		} else if (!wipe0) {
+			videoRefs.current[5].currentTime = 0;
 		}
 		if (loop1) {
-			videoRefs.current[6].play();
+			if (!videoRefs.current[6].isPlaying) {
+				videoRefs.current[6].play();
+			}
+		} else if (!loop1) {
+			videoRefs.current[6].currentTime = 0;
 		}
 		if (loop0) {
-			videoRefs.current[7].play();
+			if (!videoRefs.current[7].isPlaying) {
+				videoRefs.current[7].play();
+			}
+		} else if (!loop0) {
+			videoRefs.current[7].currentTime = 0;
 		}
 		if (wipe1) {
-			setPresence1(false)
-			videoRefs.current[8].play();
+			setPresence1(false);
+			if (!videoRefs.current[8].isPlaying) {
+				videoRefs.current[8].play();
+			}
+		} else if (!wipe1) {
+			videoRefs.current[8].currentTime = 0;
 		}
+
 		if (girlsInTech) {
-			setPresence2(false)
-			videoRefs.current[1].play();
+			setPresence2(false);
+			if (!videoRefs.current[1].isPlaying) {
+				videoRefs.current[1].play();
+			}
+		} else if (!girlsInTech) {
+			videoRefs.current[1].currentTime = 0;
 		}
 		if (empoweringAbilities) {
-			setPresence3(false)
-			videoRefs.current[2].play();
+			setPresence3(false);
+			if (!videoRefs.current[2].isPlaying) {
+				videoRefs.current[2].play();
+			}
+		} else if (!empoweringAbilities) {
+			videoRefs.current[2].currentTime = 0;
 		}
 		if (financialLiteracy) {
-			setPresence4(false)
-			videoRefs.current[3].play();
+			setPresence4(false);
+			if (!videoRefs.current[3].isPlaying) {
+				videoRefs.current[3].play();
+			}
+		} else if (!financialLiteracy) {
+			videoRefs.current[3].currentTime = 0;
 		}
 		if (retiringInequality) {
-			setPresence5(false)
-			videoRefs.current[4].play();
+			setPresence5(false);
+			if (!videoRefs.current[4].isPlaying) {
+				videoRefs.current[4].play();
+			}
+		} else if (!retiringInequality) {
+			videoRefs.current[4].currentTime = 0;
 		}
 
 		if (rocket) {
-			videoRefs.current[9].play();
+			if (!videoRefs.current[9].isPlaying) {
+				videoRefs.current[9].play();
+			}
+		} else if (!rocket) {
+			videoRefs.current[9].currentTime = 0;
 		}
-
 	}, [
 		presence1,
 		presence2,
@@ -128,23 +170,23 @@ export default function Base3() {
 	function handleInteraction(name) {
 		switch (name) {
 			case "prox10": {
-				!presence1 ? setPresence1(true) : null
+				!presence1 ? setPresence1(true) : null;
 				break;
 			}
 			case "prox11": {
-				!presence2 ? setPresence2(true) : null
+				!presence2 ? setPresence2(true) : null;
 				break;
 			}
 			case "prox12": {
-				!presence3 ? setPresence3(true) : null
+				!presence3 ? setPresence3(true) : null;
 				break;
 			}
 			case "prox13": {
-				!presence4 ? setPresence4(true) : null
+				!presence4 ? setPresence4(true) : null;
 				break;
 			}
 			case "prox14": {
-				!presence5 ? setPresence5(true) : null
+				!presence5 ? setPresence5(true) : null;
 				break;
 			}
 
@@ -200,7 +242,6 @@ export default function Base3() {
 				key="proximityLoop31"
 				id="proximityLoop31"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[10] = el)}
 				onEnded={() => setPresence1(false)}
 				hidden={presence1 ? false : true}
@@ -210,7 +251,6 @@ export default function Base3() {
 				key="proximityLoop32"
 				id="proximityLoop32"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[11] = el)}
 				onEnded={() => setPresence2(false)}
 				hidden={presence2 ? false : true}
@@ -220,7 +260,6 @@ export default function Base3() {
 				key="proximityLoop33"
 				id="proximityLoop33"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[12] = el)}
 				onEnded={() => setPresence3(false)}
 				hidden={presence3 ? false : true}
@@ -230,7 +269,6 @@ export default function Base3() {
 				key="proximityLoop34"
 				id="proximityLoop34"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[13] = el)}
 				onEnded={() => setPresence4(false)}
 				hidden={presence4 ? false : true}
@@ -240,7 +278,6 @@ export default function Base3() {
 				key="proximityLoop35"
 				id="proximityLoop35"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[14] = el)}
 				onEnded={() => setPresence5(false)}
 				hidden={presence5 ? false : true}
@@ -266,7 +303,6 @@ export default function Base3() {
 				id={"canyonBird"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 
@@ -276,7 +312,6 @@ export default function Base3() {
 				id={"catLoop"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 			<video
@@ -285,7 +320,6 @@ export default function Base3() {
 				id={"girlsInTech"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				onMouseEnter={() => setPresence2(true)}
 			/>
@@ -306,7 +340,6 @@ export default function Base3() {
 				id={"financialLiteracy"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={financialLiteracy ? true : false}
 				onMouseEnter={() => setPresence4(true)}
@@ -328,7 +361,6 @@ export default function Base3() {
 				id={"empoweringAbilities"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={empoweringAbilities ? true : false}
 				onMouseEnter={() => setPresence3(true)}
@@ -350,7 +382,6 @@ export default function Base3() {
 				id={"ceoGlowLoop"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 			<video
@@ -359,7 +390,6 @@ export default function Base3() {
 				id={"groundbreakingCEOs"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				ref={(el) => (videoRefs.current[7] = el)}
 				hidden={loop0 ? false : true}
@@ -382,7 +412,6 @@ export default function Base3() {
 				id={"groundbreakingCEOs"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				ref={(el) => (videoRefs.current[6] = el)}
 				hidden={loop1 ? false : true}
@@ -405,7 +434,6 @@ export default function Base3() {
 				id={"retiringInequality"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 			<video
@@ -414,7 +442,6 @@ export default function Base3() {
 				id={"retiringInequality"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 			<video
@@ -423,7 +450,6 @@ export default function Base3() {
 				id={"retiringInequality"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={retiringInequality ? true : false}
 				onMouseEnter={() => setPresence5(true)}

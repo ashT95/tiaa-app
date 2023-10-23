@@ -54,7 +54,6 @@ def getPipeline():
     # f2 = monoRight.getFps()
     # print(f"{f1} {f2}")
 
-
     stereoConfig = stereo.initialConfig.get()
     stereoConfig.postProcessing.speckleFilter.enable = True
     stereoConfig.postProcessing.speckleFilter.speckleRange = 50
@@ -750,7 +749,7 @@ with contextlib.ExitStack() as stack:
             sys.stdout.flush()
         
             # Show the frame
-            cv2.imshow("depth" + mxid, depthFrameColor)
+            cv2.imshow("depth-" + mxid, depthFrameColor)
     
 
             key = cv2.waitKey(1)

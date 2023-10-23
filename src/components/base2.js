@@ -22,7 +22,6 @@ import proxVid2 from "../assets/Animations/Proximity/proximity-popup_C.mp4";
 import proxVid3 from "../assets/Animations/Proximity/proximity-popup_D.mp4";
 import proxVid4 from "../assets/Animations/Proximity/proximity-popup_E.mp4";
 
-
 export default function Base2() {
 	const [friendship, setFriendship] = useState(false);
 	const [conserving, setConserving] = useState(false);
@@ -38,50 +37,67 @@ export default function Base2() {
 
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
-
 		handleInteraction(result);
 	});
 
 	useEffect(() => {
+		videoRefs.current[5].volume = 0;
+		videoRefs.current[6].volume = 0;
+		videoRefs.current[7].volume = 0;
+		videoRefs.current[8].volume = 0;
+
 		if (presence1) {
-			!conserving ? videoRefs.current[5].play() : null
+			!conserving ? videoRefs.current[5].play() : null;
 		}
 		if (presence2) {
-			!friendship ? videoRefs.current[6].play() : null
+			!friendship ? videoRefs.current[6].play() : null;
 		}
 		if (presence3) {
-			!responsibleRealEstate ? videoRefs.current[7].play() : null
+			!responsibleRealEstate ? videoRefs.current[7].play() : null;
 		}
 		if (presence4) {
-			!grapeInvestments ? videoRefs.current[8].play() : null
+			!grapeInvestments ? videoRefs.current[8].play() : null;
 		}
 
 		if (conserving) {
-			setPresence1(false)
-			videoRefs.current[1].play();
+			setPresence1(false);
+			if (!videoRefs.current[1].isPlaying) {
+				videoRefs.current[1].play();
+			}
+		} else if (!conserving) {
+			videoRefs.current[1].currentTime = 0;
 		}
-
 		if (friendship) {
-			setPresence2(false)
-			videoRefs.current[2].play();
+			setPresence2(false);
+			if (!videoRefs.current[2].isPlaying) {
+				videoRefs.current[2].play();
+			}
+		} else if (!friendship) {
+			videoRefs.current[2].currentTime = 0;
 		}
-
 		if (responsibleRealEstate) {
-			setPresence3(false)
-			videoRefs.current[3].play();
+			setPresence3(false);
+			if (!videoRefs.current[3].isPlaying) {
+				videoRefs.current[3].play();
+			}
+		} else if (!responsibleRealEstate) {
+			videoRefs.current[3].currentTime = 0;
 		}
-
 		if (grapeInvestments) {
-			setPresence4(false)
-			videoRefs.current[4].play();
+			setPresence4(false);
+			if (!videoRefs.current[4].isPlaying) {
+				videoRefs.current[4].play();
+			}
+		} else if (!grapeInvestments) {
+			videoRefs.current[4].currentTime = 0;
 		}
 	}, [
 		presence1,
 		presence2,
 		presence3,
 		presence4,
-		friendship,
 		conserving,
+		friendship,
 		responsibleRealEstate,
 		grapeInvestments,
 	]);
@@ -89,19 +105,19 @@ export default function Base2() {
 	function handleInteraction(name) {
 		switch (name) {
 			case "prox6": {
-				!presence1 ? setPresence1(true) : null
+				!presence1 ? setPresence1(true) : null;
 				break;
 			}
 			case "prox7": {
-				!presence2 ? setPresence2(true) : null
+				!presence2 ? setPresence2(true) : null;
 				break;
 			}
 			case "prox8": {
-				!presence3 ? setPresence3(true) : null
+				!presence3 ? setPresence3(true) : null;
 				break;
 			}
 			case "prox9": {
-				!presence4 ? setPresence4(true) : null
+				!presence4 ? setPresence4(true) : null;
 				break;
 			}
 
@@ -136,7 +152,6 @@ export default function Base2() {
 				id={"titleAnimation"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 
@@ -146,7 +161,6 @@ export default function Base2() {
 				id={"shootingStar"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 			<video
@@ -155,7 +169,6 @@ export default function Base2() {
 				id={"bgAnim2"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 			/>
 			<video
@@ -163,7 +176,6 @@ export default function Base2() {
 				key="proximityLoop21"
 				id="proximityLoop21"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[5] = el)}
 				onEnded={() => setPresence1(false)}
 				hidden={presence1 ? false : true}
@@ -173,7 +185,6 @@ export default function Base2() {
 				key="proximityLoop22"
 				id="proximityLoop22"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[6] = el)}
 				onEnded={() => setPresence2(false)}
 				hidden={presence2 ? false : true}
@@ -183,7 +194,6 @@ export default function Base2() {
 				key="proximityLoop23"
 				id="proximityLoop23"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[7] = el)}
 				onEnded={() => setPresence3(false)}
 				hidden={presence3 ? false : true}
@@ -193,7 +203,6 @@ export default function Base2() {
 				key="proximityLoop24"
 				id="proximityLoop24"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[8] = el)}
 				onEnded={() => setPresence4(false)}
 				hidden={presence4 ? false : true}
@@ -207,10 +216,10 @@ export default function Base2() {
 				id={"friendship"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={friendship ? true : false}
 				onMouseEnter={() => setPresence2(true)}
+				onClick={() => handleInteraction("play7")}
 			/>
 			<video
 				src={friendship1}
@@ -229,10 +238,10 @@ export default function Base2() {
 				id={"responsibleRealEstate"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={responsibleRealEstate ? true : false}
 				onMouseEnter={() => setPresence3(true)}
+				onClick={() => handleInteraction("play8")}
 			/>
 			<video
 				src={responsibleRealEstate1}
@@ -251,10 +260,10 @@ export default function Base2() {
 				id={"conserving"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={conserving ? true : false}
 				onMouseEnter={() => setPresence1(true)}
+				onClick={() => handleInteraction("play6")}
 			/>
 			<video
 				src={conserving1}
@@ -273,10 +282,10 @@ export default function Base2() {
 				id={"grapeInvestments"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={grapeInvestments ? true : false}
 				onMouseEnter={() => setPresence4(true)}
+				onClick={() => handleInteraction("play9")}
 			/>
 			<video
 				src={grapeInvestments1}

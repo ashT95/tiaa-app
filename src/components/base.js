@@ -49,84 +49,73 @@ export default function Base() {
 	});
 
 	useEffect(() => {
-		let animationFrameId;
-		const render = () => {
-			if (presence1) {
-				!foundedOnPrinciple ? videoRefs.current[8].play() : null;
-			}
-			if (presence2) {
-				!ratedHighest ? videoRefs.current[9].play() : null;
-			}
-			if (presence3) {
-				!check ? videoRefs.current[10].play() : null;
-			}
-			if (presence4) {
-				!notJustForTeachers ? videoRefs.current[11].play() : null;
-			}
-			if (presence5) {
-				!mission ? videoRefs.current[12].play() : null;
-			}
+		videoRefs.current[8].volume = 0;
+		videoRefs.current[9].volume = 0;
+		videoRefs.current[10].volume = 0;
+		videoRefs.current[11].volume = 0;
+		videoRefs.current[12].volume = 0;
 
-			if (foundedOnPrinciple) {
-				setPresence1(false);
-				if (!videoRefs.current[1].isPlaying) {
-					videoRefs.current[1].play();
-					console.log("play1");
-				}
-				console.log("play1");
-			} else if (!foundedOnPrinciple) {
-				videoRefs.current[1].currentTime = 0;
-			}
-			if (ratedHighest) {
-				setPresence2(false);
-				if (!videoRefs.current[2].isPlaying) {
-					videoRefs.current[2].play();
-					console.log("play2");
-				}
-			} else if (!ratedHighest) {
-				videoRefs.current[2].currentTime = 0;
-			}
-			if (check) {
-				setPresence3(false);
-				if (!videoRefs.current[3].isPlaying) {
-					videoRefs.current[3].play();
-					console.log("play3");
-				}
-			} else if (!check) {
-				videoRefs.current[3].currentTime = 0;
-			}
-			if (notJustForTeachers) {
-				setPresence4(false);
-				if (!videoRefs.current[4].isPlaying) {
-					videoRefs.current[4].play();
-					console.log("play4");
-				}
-			} else if (!notJustForTeachers) {
-				videoRefs.current[4].currentTime = 0;
-			}
-			if (mission) {
-				setPresence5(false);
-				if (!videoRefs.current[5].isPlaying) {
-					videoRefs.current[5].play();
-					console.log("play5");
-				}
-			} else if (!mission) {
-				videoRefs.current[5].currentTime = 0;
-			}
-			if (butterfly) {
-				videoRefs.current[6].play();
-			} else if (!butterfly) {
-				videoRefs.current[6].currentTime = 0;
-			}
+		if (presence1) {
+			!foundedOnPrinciple ? videoRefs.current[8].play() : null;
+		}
+		if (presence2) {
+			!ratedHighest ? videoRefs.current[9].play() : null;
+		}
+		if (presence3) {
+			!check ? videoRefs.current[10].play() : null;
+		}
+		if (presence4) {
+			!notJustForTeachers ? videoRefs.current[11].play() : null;
+		}
+		if (presence5) {
+			!mission ? videoRefs.current[12].play() : null;
+		}
 
-			animationFrameId = window.requestAnimationFrame(render);
-		};
-
-		render();
-
-		return () => {
-			window.cancelAnimationFrame(animationFrameId);
-		};
+		if (foundedOnPrinciple) {
+			setPresence1(false);
+			if (!videoRefs.current[1].isPlaying) {
+				videoRefs.current[1].play();
+			}
+		} else if (!foundedOnPrinciple) {
+			videoRefs.current[1].currentTime = 0;
+		}
+		if (ratedHighest) {
+			setPresence2(false);
+			if (!videoRefs.current[2].isPlaying) {
+				videoRefs.current[2].play();
+			}
+		} else if (!ratedHighest) {
+			videoRefs.current[2].currentTime = 0;
+		}
+		if (check) {
+			setPresence3(false);
+			if (!videoRefs.current[3].isPlaying) {
+				videoRefs.current[3].play();
+			}
+		} else if (!check) {
+			videoRefs.current[3].currentTime = 0;
+		}
+		if (notJustForTeachers) {
+			setPresence4(false);
+			if (!videoRefs.current[4].isPlaying) {
+				videoRefs.current[4].play();
+			}
+		} else if (!notJustForTeachers) {
+			videoRefs.current[4].currentTime = 0;
+		}
+		if (mission) {
+			setPresence5(false);
+			if (!videoRefs.current[5].isPlaying) {
+				videoRefs.current[5].play();
+			}
+		} else if (!mission) {
+			videoRefs.current[5].currentTime = 0;
+		}
+		if (butterfly) {
+			videoRefs.current[6].play();
+		} else if (!butterfly) {
+			videoRefs.current[6].currentTime = 0;
+		}
 	}, [
 		presence1,
 		presence2,
@@ -200,7 +189,6 @@ export default function Base() {
 				key="proximityLoop01"
 				id="proximityLoop01"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[8] = el)}
 				onEnded={() => setPresence1(false)}
 				hidden={presence1 ? false : true}
@@ -210,7 +198,6 @@ export default function Base() {
 				key="proximityLoop02"
 				id="proximityLoop02"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[9] = el)}
 				onEnded={() => setPresence2(false)}
 				hidden={presence2 ? false : true}
@@ -220,7 +207,6 @@ export default function Base() {
 				key="proximityLoop03"
 				id="proximityLoop03"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[10] = el)}
 				onEnded={() => setPresence3(false)}
 				hidden={presence3 ? false : true}
@@ -230,7 +216,6 @@ export default function Base() {
 				key="proximityLoop04"
 				id="proximityLoop04"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[11] = el)}
 				onEnded={() => setPresence4(false)}
 				hidden={presence4 ? false : true}
@@ -240,7 +225,6 @@ export default function Base() {
 				key="proximityLoop05"
 				id="proximityLoop05"
 				preload="auto"
-				muted="false"
 				ref={(el) => (videoRefs.current[12] = el)}
 				onEnded={() => setPresence5(false)}
 				hidden={presence5 ? false : true}
@@ -266,7 +250,6 @@ export default function Base() {
 				id={"foundedOnPrinciple"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={foundedOnPrinciple ? true : false}
 				onMouseEnter={() => setPresence1(true)}
@@ -290,7 +273,6 @@ export default function Base() {
 				id={"notJustForTeachers"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={notJustForTeachers ? true : false}
 				onMouseEnter={() => setPresence4(true)}
@@ -313,7 +295,6 @@ export default function Base() {
 				id={"ratedHighest"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={ratedHighest ? true : false}
 				onMouseEnter={() => setPresence2(true)}
@@ -337,7 +318,6 @@ export default function Base() {
 				id={"mission"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={mission ? true : false}
 				onMouseEnter={() => setPresence5(true)}
@@ -361,7 +341,6 @@ export default function Base() {
 				id={"check"}
 				preload="auto"
 				autoPlay
-				muted
 				loop
 				hidden={check ? true : false}
 				onMouseEnter={() => setPresence3(true)}

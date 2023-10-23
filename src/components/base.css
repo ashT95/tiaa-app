@@ -47,7 +47,7 @@
 #check {
 	width: 672px;
 	height: 672px;
-	transform: translate(660px, 520px);
+	transform: translate(658px, 513px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -58,7 +58,7 @@
 #notJustForTeachers {
 	width: 672px;
 	height: 672px;
-	transform: translate(1080px, 95px);
+	transform: translate(1066px, 86px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -69,7 +69,7 @@
 #mission {
 	width: 672px;
 	height: 672px;
-	transform: translate(1240px, 460px);
+	transform: translate(1224px, 435px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -227,7 +227,7 @@
 #ceoGlowLoop {
 	width: 672px;
 	height: 672px;
-	transform: translate(53.5px, 276px);
+	transform: translate(55px, 277px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
