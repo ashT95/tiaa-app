@@ -1,0 +1,58 @@
+{
+  "Wall1Animation1": {
+    "left": "74",
+    "top": "233"
+  },
+  "Wall1Animation2": {
+    "left": "602",
+    "top": "37"
+  },
+  "Wall1Animation3": {
+    "left": "658",
+    "top": "513"
+  },
+  "Wall1Animation4": {
+    "left": "1066",
+    "top": "86"
+  },
+  "Wall1Animation5": {
+    "left": "1224",
+    "top": "435"
+  },
+  "Wall2Animation1": {
+    "left": "265",
+    "top": "135"
+  },
+  "Wall2Animation2": {
+    "left": "663",
+    "top": "483"
+  },
+  "Wall2Animation3": {
+    "left": "825",
+    "top": "39"
+  },
+  "Wall2Animation4": {
+    "left": "1128",
+    "top": "401"
+  },
+  "Wall3Animation1": {
+    "left": "55",
+    "top": "277"
+  },
+  "Wall3Animation2": {
+    "left": "477",
+    "top": "19"
+  },
+  "Wall3Animation3": {
+    "left": "554",
+    "top": "311"
+  },
+  "Wall3Animation4": {
+    "left": "1038",
+    "top": "20"
+  },
+  "Wall3Animation5": {
+    "left": "1116",
+    "top": "336"
+  }
+}

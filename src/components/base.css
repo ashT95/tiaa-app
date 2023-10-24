@@ -44,6 +44,20 @@
 	bottom: 0px;
 }
 
+.layout {
+	position: absolute;
+	background-color: white;
+	overflow: hidden;
+	width: 1920px;
+	height: 1200px;
+	margin: 0px;
+	padding: 0px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
 #check {
 	width: 672px;
 	height: 672px;

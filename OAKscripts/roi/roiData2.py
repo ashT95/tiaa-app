@@ -6,6 +6,7 @@ import depthai as dai
 import contextlib
 import json
 
+
 stepSize = 0.01
 
 newConfig = False
@@ -390,12 +391,14 @@ def getPipeline():
 
 with contextlib.ExitStack() as stack:
 
+    ips = ["192.168.1.114", "192.168.1.113","192.168.1.112"]
+
     devices = {}
     device_infos = [] 
     
-    device_infos.append(dai.DeviceInfo("192.168.1.112"))
-    device_infos.append(dai.DeviceInfo("192.168.1.113"))
-    device_infos.append(dai.DeviceInfo("192.168.1.114"))
+    device_infos.append(dai.DeviceInfo(ips[0]))
+    device_infos.append(dai.DeviceInfo(ips[1]))
+    device_infos.append(dai.DeviceInfo(ips[2]))
 
     # device_infos.append(dai.DeviceInfo("18443010010F8F0F00"))
     # device_infos.append(dai.DeviceInfo("18443010C10C580F00"))
@@ -463,7 +466,7 @@ with contextlib.ExitStack() as stack:
                 
             # WALL1
             # proximity 
-            if (mxid == '192.168.1.114'):
+            if (mxid == ips[0]):
                 if (int(spatialData[0].spatialCoordinates.z) >= 1500 and int(spatialData[0].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[0].spatialCoordinates.z)
@@ -561,7 +564,7 @@ with contextlib.ExitStack() as stack:
             # WALL 2
             # PROXIMITY
             #conserving
-            if (mxid == '192.168.1.113'):
+            if (mxid == ips[1]):
                 if (int(spatialData[10].spatialCoordinates.z) >= 2000 and int(spatialData[10].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[10].spatialCoordinates.z)
@@ -642,7 +645,7 @@ with contextlib.ExitStack() as stack:
                     if (avg >= 2500 and avg < 2800):
                         print("play9")
 
-            if (mxid == '192.168.1.112'):
+            if (mxid == ips[2]):
                 # WALL 3
                 # PROXIMITY
                 # ceos
@@ -755,35 +758,45 @@ with contextlib.ExitStack() as stack:
             key = cv2.waitKey(1)
             if key == ord('q'):
                 break
-                        # elif key == ord('w'):
-                        #     if topLeft.y - stepSize >= 0:
-                        #         topLeft.y -= stepSize
-                        #         bottomRight.y -= stepSize
-                        #         newConfig = True
-                        # elif key == ord('a'):
-                        #     if topLeft.x - stepSize >= 0:
-                        #         topLeft.x -= stepSize
-                        #         bottomRight.x -= stepSize
-                        #         newConfig = True
-                        # elif key == ord('s'):
+            # elif key == ord('1'):
+            #     cv2.imshow("depth-" + ips[0], depthFrameColor)
+                
+            # elif key == ord('2'):
+            #     cv2.imshow("depth-" + ips[1], depthFrameColor)
+                
+            # elif key == ord('3'):
+            #     cv2.imshow("depth-" + ips[2], depthFrameColor)
+                
 
-                        #     if bottomRight.y + stepSize <= 1:
-                        #         topLeft.y += stepSize
-                        #         bottomRight.y += stepSize
-                        #         newConfig = True
-                        # elif key == ord('d'):
-                        #     if bottomRight.x + stepSize <= 1:
-                        #         topLeft.x += stepSize
-                        #         bottomRight.x += stepSize
-                        #         newConfig = True
+            # elif key == ord('w'):
+            #     if topLeft.y - stepSize >= 0:
+            #         topLeft.y -= stepSize
+            #         bottomRight.y -= stepSize
+            #         newConfig = True
+            # elif key == ord('a'):
+            #     if topLeft.x - stepSize >= 0:
+            #         topLeft.x -= stepSize
+            #         bottomRight.x -= stepSize
+            #         newConfig = True
+            # elif key == ord('s'):
 
-                        # if newConfig:
-                        #     config.roi = dai.Rect(topLeft, bottomRight)
-                        #     config.calculationAlgorithm = dai.SpatialLocationCalculatorAlgorithm.AVERAGE
-                        #     cfg = dai.SpatialLocationCalculatorConfig()
-                        #     cfg.addROI(config)
-                        #     spatialCalcConfigInQueue.send(cfg)
-                        #     newConfig = False
+            #     if bottomRight.y + stepSize <= 1:
+            #         topLeft.y += stepSize
+            #         bottomRight.y += stepSize
+            #         newConfig = True
+            # elif key == ord('d'):
+            #     if bottomRight.x + stepSize <= 1:
+            #         topLeft.x += stepSize
+            #         bottomRight.x += stepSize
+            #         newConfig = True
+
+            # if newConfig:
+            #     config.roi = dai.Rect(topLeft, bottomRight)
+            #     config.calculationAlgorithm = dai.SpatialLocationCalculatorAlgorithm.AVERAGE
+            #     cfg = dai.SpatialLocationCalculatorConfig()
+            #     cfg.addROI(config)
+            #     spatialCalcConfigInQueue.send(cfg)
+            #     newConfig = False
                     
 
                     # print("{:.2f}".format(topLeft.x), "{:.2f}".format(topLeft.y), "{:.2f}".format(bottomRight.x), "{:.2f}".format(bottomRight.y))

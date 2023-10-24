@@ -31,6 +31,8 @@ import proxVid3 from "../assets/Animations/Proximity/proximity-popup_D.mp4";
 import proxVid4 from "../assets/Animations/Proximity/proximity-popup_E.mp4";
 import proxVid5 from "../assets/Animations/Proximity/proximity-popup_G.mp4";
 
+import layout3 from "../assets/Images/wall-3-print.png";
+
 export default function Base3() {
 	const [financialLiteracy, setFinancialLiteracy] = useState(false);
 	const [empoweringAbilities, setEmpoweringAbilities] = useState(false);
@@ -48,6 +50,25 @@ export default function Base3() {
 	const [presence3, setPresence3] = useState(false);
 	const [presence4, setPresence4] = useState(false);
 	const [presence5, setPresence5] = useState(false);
+
+	let data = require("../../config.json");
+
+	const [l1, setL1] = useState(Number(data["Wall3Animation1"]["left"]));
+	const [l2, setL2] = useState(Number(data["Wall3Animation2"]["left"]));
+	const [l3, setL3] = useState(Number(data["Wall3Animation3"]["left"]));
+	const [l4, setL4] = useState(Number(data["Wall3Animation4"]["left"]));
+	const [l5, setL5] = useState(Number(data["Wall3Animation5"]["left"]));
+
+	const [t1, setT1] = useState(Number(data["Wall3Animation1"]["top"]));
+	const [t2, setT2] = useState(Number(data["Wall3Animation2"]["top"]));
+	const [t3, setT3] = useState(Number(data["Wall3Animation3"]["top"]));
+	const [t4, setT4] = useState(Number(data["Wall3Animation4"]["top"]));
+	const [t5, setT5] = useState(Number(data["Wall3Animation5"]["top"]));
+
+	const defaultVals = [55, 277, 477, 19, 554, 311, 1038, 20, 1116, 336];
+
+	const [count, setCount] = useState(1);
+	const [showBg, setShowBg] = useState(false);
 
 	const videoRefs = useRef([]);
 
@@ -93,7 +114,6 @@ export default function Base3() {
 			setPresence1(false);
 			videoRefs.current[8].play();
 		}
-
 
 		if (girlsInTech) {
 			setPresence2(false);
@@ -177,10 +197,12 @@ export default function Base3() {
 
 			case "play10": {
 				setPresence1(false);
-				if (loop0) { //loop 0
+				if (loop0) {
+					//loop 0
 					setLoop0(false);
 					setWipe0(true);
-				} else if (loop1) { // loop 1
+				} else if (loop1) {
+					// loop 1
 					setLoop1(false);
 					setWipe1(true);
 				}
@@ -189,13 +211,12 @@ export default function Base3() {
 			case "play111": {
 				setWipe0(false);
 				setLoop1(true);
-				
+
 				break;
 			}
 			case "play112": {
 				setWipe1(false);
 				setLoop0(true);
-				
 			}
 			case "play11": {
 				setPresence2(false);
@@ -221,238 +242,472 @@ export default function Base3() {
 		}
 	}
 
+	window.addEventListener(
+		"keydown",
+		function (event) {
+			const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+
+			switch (key) {
+				case "Tab": {
+					if (count == 1) setCount(2);
+					if (count == 2) setCount(3);
+					if (count == 3) setCount(4);
+					if (count == 4) setCount(5);
+					if (count == 5) setCount(1);
+					break;
+				}
+				case "ArrowLeft": {
+					if (count == 1) {
+						let temp = l1 - 1;
+						setL1(temp);
+					}
+					if (count == 2) {
+						let temp = l2 - 1;
+						setL2(temp);
+					}
+					if (count == 3) {
+						let temp = l3 - 1;
+						setL3(temp);
+					}
+					if (count == 4) {
+						let temp = l4 - 1;
+						setL4(temp);
+					}
+					if (count == 5) {
+						let temp = l5 - 1;
+						setL5(temp);
+					}
+					break;
+				}
+				case "ArrowRight": {
+					if (count == 1) {
+						let temp = l1 + 1;
+						setL1(temp);
+					}
+					if (count == 2) {
+						let temp = l2 + 1;
+						setL2(temp);
+					}
+					if (count == 3) {
+						let temp = l3 + 1;
+						setL3(temp);
+					}
+					if (count == 4) {
+						let temp = l4 + 1;
+						setL4(temp);
+					}
+					if (count == 5) {
+						let temp = l5 + 1;
+						setL5(temp);
+					}
+					break;
+				}
+				case "ArrowUp": {
+					if (count == 1) {
+						let temp = t1 - 1;
+						setT1(temp);
+					}
+					if (count == 2) {
+						let temp = t2 - 1;
+						setT2(temp);
+					}
+					if (count == 3) {
+						let temp = t3 - 1;
+						setT3(temp);
+					}
+					if (count == 4) {
+						let temp = t4 - 1;
+						setT4(temp);
+					}
+					if (count == 5) {
+						let temp = t5 - 1;
+						setT5(temp);
+					}
+					break;
+				}
+				case "ArrowDown": {
+					if (count == 1) {
+						let temp = t1 + 1;
+						setT1(temp);
+					}
+					if (count == 2) {
+						let temp = t2 + 1;
+						setT2(temp);
+					}
+					if (count == 3) {
+						let temp = t3 + 1;
+						setT3(temp);
+					}
+					if (count == 4) {
+						let temp = t4 + 1;
+						setT4(temp);
+					}
+					if (count == 5) {
+						let temp = t5 + 1;
+						setT5(temp);
+					}
+					break;
+				}
+				case "ArrowDown": {
+					if (count == 1) {
+						let temp = t1 + 1;
+						setT1(temp);
+					}
+					if (count == 2) {
+						let temp = t2 + 1;
+						setT2(temp);
+					}
+					if (count == 3) {
+						let temp = t3 + 1;
+						setT3(temp);
+					}
+					if (count == 4) {
+						let temp = t4 + 1;
+						setT4(temp);
+					}
+					if (count == 5) {
+						let temp = t5 + 1;
+						setT5(temp);
+					}
+					break;
+				}
+				case " ": {
+					setShowBg(!showBg);
+					break;
+				}
+				case "Enter": {
+					window.ipcRender.send("render-to-main", [
+						"wall3",
+						l1,
+						t1,
+						l2,
+						t2,
+						l3,
+						t3,
+						l4,
+						t4,
+						l5,
+						t5,
+					]);
+					break;
+				}
+				case "7": {
+					setL1(defaultVals[0]);
+					setT1(defaultVals[1]);
+					setL2(defaultVals[2]);
+					setT2(defaultVals[3]);
+					setL3(defaultVals[4]);
+					setT3(defaultVals[5]);
+					setL4(defaultVals[6]);
+					setT4(defaultVals[7]);
+					setL5(defaultVals[8]);
+					setT5(defaultVals[9]);
+					window.ipcRender.send("render-to-main", [
+						"wall3",
+						l1,
+						t1,
+						l2,
+						t2,
+						l3,
+						t3,
+						l4,
+						t4,
+						l5,
+						t5,
+					]);
+					break;
+				}
+			}
+		},
+		{ once: true }
+	);
+
 	return (
 		<div className="background3">
-			<video
-				src={proxVid1}
-				key="proximityLoop31"
-				id="proximityLoop31"
-				preload="auto"
-				ref={(el) => (videoRefs.current[10] = el)}
-				onEnded={() => setPresence1(false)}
-				hidden={presence1 ? false : true}
-			/>
-			<video
-				src={proxVid2}
-				key="proximityLoop32"
-				id="proximityLoop32"
-				preload="auto"
-				ref={(el) => (videoRefs.current[11] = el)}
-				onEnded={() => setPresence2(false)}
-				hidden={presence2 ? false : true}
-			/>
-			<video
-				src={proxVid3}
-				key="proximityLoop33"
-				id="proximityLoop33"
-				preload="auto"
-				ref={(el) => (videoRefs.current[12] = el)}
-				onEnded={() => setPresence3(false)}
-				hidden={presence3 ? false : true}
-			/>
-			<video
-				src={proxVid4}
-				key="proximityLoop34"
-				id="proximityLoop34"
-				preload="auto"
-				ref={(el) => (videoRefs.current[13] = el)}
-				onEnded={() => setPresence4(false)}
-				hidden={presence4 ? false : true}
-			/>
-			<video
-				src={proxVid5}
-				key="proximityLoop35"
-				id="proximityLoop35"
-				preload="auto"
-				ref={(el) => (videoRefs.current[14] = el)}
-				onEnded={() => setPresence5(false)}
-				hidden={presence5 ? false : true}
-			/>
+			{showBg && (
+				<div className="layout">
+					<img src={layout3} alt="bg" />
+				</div>
+			)}
+			{!showBg && (
+				<div>
+					<video
+						src={proxVid1}
+						key="proximityLoop31"
+						id="proximityLoop31"
+						preload="auto"
+						ref={(el) => (videoRefs.current[10] = el)}
+						onEnded={() => setPresence1(false)}
+						hidden={presence1 ? false : true}
+					/>
+					<video
+						src={proxVid2}
+						key="proximityLoop32"
+						id="proximityLoop32"
+						preload="auto"
+						ref={(el) => (videoRefs.current[11] = el)}
+						onEnded={() => setPresence2(false)}
+						hidden={presence2 ? false : true}
+					/>
+					<video
+						src={proxVid3}
+						key="proximityLoop33"
+						id="proximityLoop33"
+						preload="auto"
+						ref={(el) => (videoRefs.current[12] = el)}
+						onEnded={() => setPresence3(false)}
+						hidden={presence3 ? false : true}
+					/>
+					<video
+						src={proxVid4}
+						key="proximityLoop34"
+						id="proximityLoop34"
+						preload="auto"
+						ref={(el) => (videoRefs.current[13] = el)}
+						onEnded={() => setPresence4(false)}
+						hidden={presence4 ? false : true}
+					/>
+					<video
+						src={proxVid5}
+						key="proximityLoop35"
+						id="proximityLoop35"
+						preload="auto"
+						ref={(el) => (videoRefs.current[14] = el)}
+						onEnded={() => setPresence5(false)}
+						hidden={presence5 ? false : true}
+					/>
 
-			{/* interaction videos */}
+					{/* interaction videos */}
 
-			<video
-				src={rocket1}
-				key={rocket1}
-				id={"rocket"}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (videoRefs.current[9] = el)}
-				hidden={rocket ? false : true}
-				onEnded={() => setRocket(false)}
-			/>
+					<video
+						src={rocket1}
+						key={rocket1}
+						id={"rocket"}
+						preload="auto"
+						autoPlay={false}
+						loop={false}
+						ref={(el) => (videoRefs.current[9] = el)}
+						hidden={rocket ? false : true}
+						onEnded={() => setRocket(false)}
+					/>
 
-			<video
-				src={canyonBird}
-				key={canyonBird}
-				id={"canyonBird"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
+					<video
+						src={canyonBird}
+						key={canyonBird}
+						id={"canyonBird"}
+						preload="auto"
+						autoPlay
+						loop
+					/>
 
-			<video
-				src={catLoop}
-				key={catLoop}
-				id={"catLoop"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
-			<video
-				src={girlsInTech0}
-				key={girlsInTech0}
-				id={"girlsInTech"}
-				preload="auto"
-				autoPlay
-				loop
-				onMouseEnter={() => setPresence2(true)}
-			/>
-			<video
-				src={girlsInTech1}
-				key={girlsInTech1}
-				id={"girlsInTech"}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (videoRefs.current[1] = el)}
-				hidden={girlsInTech ? false : true}
-				onEnded={() => setGirlsInTech(false)}
-			/>
-			<video
-				src={financialLiteracy0}
-				key={financialLiteracy0}
-				id={"financialLiteracy"}
-				preload="auto"
-				autoPlay
-				loop
-				hidden={financialLiteracy ? true : false}
-				onMouseEnter={() => setPresence4(true)}
-			/>
-			<video
-				src={financialLiteracy1}
-				key={financialLiteracy1}
-				id={"financialLiteracy"}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (videoRefs.current[3] = el)}
-				hidden={financialLiteracy ? false : true}
-				onEnded={() => setFinancialLiteracy(false)}
-			/>
-			<video
-				src={empoweringAbilities0}
-				key={empoweringAbilities0}
-				id={"empoweringAbilities"}
-				preload="auto"
-				autoPlay
-				loop
-				hidden={empoweringAbilities ? true : false}
-				onMouseEnter={() => setPresence3(true)}
-			/>
-			<video
-				src={empoweringAbilities1}
-				key={empoweringAbilities1}
-				id={"empoweringAbilities"}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (videoRefs.current[2] = el)}
-				hidden={empoweringAbilities ? false : true}
-				onEnded={() => setEmpoweringAbilities(false)}
-			/>
-			<video
-				src={ceoGlowLoop}
-				key={ceoGlowLoop}
-				id={"ceoGlowLoop"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
-			<video
-				src={ceoLoop0}
-				key={ceoLoop0}
-				id={"groundbreakingCEOs"}
-				preload="auto"
-				autoPlay={false}
-				loop
-				ref={(el) => (videoRefs.current[7] = el)}
-				hidden={loop0 ? false : true}
-				onMouseEnter={() => setPresence1(true)}
-				onClick={() => handleInteraction("play10")}
-			/>
-			<video
-				src={ceoWipe0}
-				key={ceoWipe0}
-				id={"groundbreakingCEOs"}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (videoRefs.current[5] = el)}
-				hidden={wipe0 ? false : true}
-				onEnded={() => handleInteraction("play111")}
-			/>
-			<video
-				src={ceoLoop1}
-				key={ceoLoop1}
-				id={"groundbreakingCEOs"}
-				preload="auto"
-				autoPlay={false}
-				loop
-				ref={(el) => (videoRefs.current[6] = el)}
-				hidden={loop1  ? false : true}
-				onMouseEnter={() => setPresence1(true)}
-				onClick={() => handleInteraction("play10")}
-			/>
-			<video
-				src={ceoWipe1}
-				key={ceoWipe1}
-				id={"groundbreakingCEOs"}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (videoRefs.current[8] = el)}
-				hidden={wipe1 ? false : true}
-				onEnded={() => handleInteraction("play112")}
-			/>
-			<video
-				src={retiringInequalityLoop1}
-				key={retiringInequalityLoop1}
-				id={"retiringInequality"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
-			<video
-				src={retiringInequalityLoop2}
-				key={retiringInequalityLoop2}
-				id={"retiringInequality"}
-				preload="auto"
-				autoPlay
-				loop
-			/>
-			<video
-				src={retiringInequality0}
-				key={retiringInequality0}
-				id={"retiringInequality"}
-				preload="auto"
-				autoPlay
-				loop
-				hidden={retiringInequality ? true : false}
-				onMouseEnter={() => setPresence5(true)}
-			/>
-			<video
-				src={retiringInequality1}
-				key={retiringInequality1}
-				id={"retiringInequality"}
-				preload="auto"
-				autoPlay={false}
-				loop={false}
-				ref={(el) => (videoRefs.current[4] = el)}
-				hidden={retiringInequality ? false : true}
-				onEnded={() => setRetiringInequality(false)}
-			/>
+					<video
+						src={catLoop}
+						key={catLoop}
+						id={"catLoop"}
+						preload="auto"
+						autoPlay
+						loop
+					/>
+					<video
+						src={girlsInTech0}
+						key={girlsInTech0}
+						id={"girlsInTech"}
+						preload="auto"
+						autoPlay
+						loop
+						onMouseEnter={() => setPresence2(true)}
+						style={{
+							transform: `translate(${l2}px, ${t2}px)`,
+						}}
+					/>
+					<video
+						src={girlsInTech1}
+						key={girlsInTech1}
+						id={"girlsInTech"}
+						preload="auto"
+						autoPlay={false}
+						loop={false}
+						ref={(el) => (videoRefs.current[1] = el)}
+						hidden={girlsInTech ? false : true}
+						onEnded={() => setGirlsInTech(false)}
+						style={{
+							transform: `translate(${l2}px, ${t2}px)`,
+						}}
+					/>
+					<video
+						src={financialLiteracy0}
+						key={financialLiteracy0}
+						id={"financialLiteracy"}
+						preload="auto"
+						autoPlay
+						loop
+						hidden={financialLiteracy ? true : false}
+						onMouseEnter={() => setPresence4(true)}
+						style={{
+							transform: `translate(${l4}px, ${t4}px)`,
+						}}
+					/>
+					<video
+						src={financialLiteracy1}
+						key={financialLiteracy1}
+						id={"financialLiteracy"}
+						preload="auto"
+						autoPlay={false}
+						loop={false}
+						ref={(el) => (videoRefs.current[3] = el)}
+						hidden={financialLiteracy ? false : true}
+						onEnded={() => setFinancialLiteracy(false)}
+						style={{
+							transform: `translate(${l4}px, ${t4}px)`,
+						}}
+					/>
+					<video
+						src={empoweringAbilities0}
+						key={empoweringAbilities0}
+						id={"empoweringAbilities"}
+						preload="auto"
+						autoPlay
+						loop
+						hidden={empoweringAbilities ? true : false}
+						onMouseEnter={() => setPresence3(true)}
+						style={{
+							transform: `translate(${l3}px, ${t3}px)`,
+						}}
+					/>
+					<video
+						src={empoweringAbilities1}
+						key={empoweringAbilities1}
+						id={"empoweringAbilities"}
+						preload="auto"
+						autoPlay={false}
+						loop={false}
+						ref={(el) => (videoRefs.current[2] = el)}
+						hidden={empoweringAbilities ? false : true}
+						onEnded={() => setEmpoweringAbilities(false)}
+						style={{
+							transform: `translate(${l3}px, ${t3}px)`,
+						}}
+					/>
+					<video
+						src={ceoGlowLoop}
+						key={ceoGlowLoop}
+						id={"ceoGlowLoop"}
+						preload="auto"
+						autoPlay
+						loop
+						style={{
+							transform: `translate(${l1}px, ${t1}px)`,
+						}}
+					/>
+					<video
+						src={ceoLoop0}
+						key={ceoLoop0}
+						id={"groundbreakingCEOs"}
+						preload="auto"
+						autoPlay={false}
+						loop
+						ref={(el) => (videoRefs.current[7] = el)}
+						hidden={loop0 ? false : true}
+						onMouseEnter={() => setPresence1(true)}
+						onClick={() => handleInteraction("play10")}
+						style={{
+							transform: `translate(${l1}px, ${t1}px)`,
+						}}
+					/>
+					<video
+						src={ceoWipe0}
+						key={ceoWipe0}
+						id={"groundbreakingCEOs"}
+						preload="auto"
+						autoPlay={false}
+						loop={false}
+						ref={(el) => (videoRefs.current[5] = el)}
+						hidden={wipe0 ? false : true}
+						onEnded={() => handleInteraction("play111")}
+						style={{
+							transform: `translate(${l1}px, ${t1}px)`,
+						}}
+					/>
+					<video
+						src={ceoLoop1}
+						key={ceoLoop1}
+						id={"groundbreakingCEOs"}
+						preload="auto"
+						autoPlay={false}
+						loop
+						ref={(el) => (videoRefs.current[6] = el)}
+						hidden={loop1 ? false : true}
+						onMouseEnter={() => setPresence1(true)}
+						onClick={() => handleInteraction("play10")}
+						style={{
+							transform: `translate(${l1}px, ${t1}px)`,
+						}}
+					/>
+					<video
+						src={ceoWipe1}
+						key={ceoWipe1}
+						id={"groundbreakingCEOs"}
+						preload="auto"
+						autoPlay={false}
+						loop={false}
+						ref={(el) => (videoRefs.current[8] = el)}
+						hidden={wipe1 ? false : true}
+						onEnded={() => handleInteraction("play112")}
+						style={{
+							transform: `translate(${l1}px, ${t1}px)`,
+						}}
+					/>
+					<video
+						src={retiringInequalityLoop1}
+						key={retiringInequalityLoop1}
+						id={"retiringInequality"}
+						preload="auto"
+						autoPlay
+						loop
+						style={{
+							transform: `translate(${l5}px, ${t5}px)`,
+						}}
+					/>
+					<video
+						src={retiringInequalityLoop2}
+						key={retiringInequalityLoop2}
+						id={"retiringInequality"}
+						preload="auto"
+						autoPlay
+						loop
+						style={{
+							transform: `translate(${l5}px, ${t5}px)`,
+						}}
+					/>
+					<video
+						src={retiringInequality0}
+						key={retiringInequality0}
+						id={"retiringInequality"}
+						preload="auto"
+						autoPlay
+						loop
+						hidden={retiringInequality ? true : false}
+						onMouseEnter={() => setPresence5(true)}
+						style={{
+							transform: `translate(${l5}px, ${t5}px)`,
+						}}
+					/>
+					<video
+						src={retiringInequality1}
+						key={retiringInequality1}
+						id={"retiringInequality"}
+						preload="auto"
+						autoPlay={false}
+						loop={false}
+						ref={(el) => (videoRefs.current[4] = el)}
+						hidden={retiringInequality ? false : true}
+						onEnded={() => setRetiringInequality(false)}
+						style={{
+							transform: `translate(${l5}px, ${t5}px)`,
+						}}
+					/>
+				</div>
+			)}
 		</div>
 	);
 }

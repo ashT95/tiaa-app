@@ -1,0 +1,14 @@
+{
+  "prox_topLeft1_y": "0.12",
+  "prox_bottomRight1_y": "0.32",
+  "prox_topLeft2_y": "0.12",
+  "prox_bottomRight2_y": "0.32",
+  "prox_topLeft3_y": "0.12",
+  "prox_bottomRight3_y": "0.32",
+  "anim_topLeft1_y": "0.40",
+  "anim_bottomRight1_y": "0.56",
+  "anim_topLeft2_y": "0.49",
+  "anim_bottomRight2_y": "0.56",
+  "anim_topLeft3_y": "0.49",
+  "anim_bottomRight3_y": "0.56"
+}

@@ -1,5 +1,6 @@
-const { app, BrowserWindow, session } = require("electron");
+const { app, BrowserWindow, session, ipcMain } = require("electron");
 const path = require("path");
+const fs = require("fs");
 
 let mainWindow, mainWindow2, mainWindow3;
 
@@ -12,17 +13,20 @@ let PythonShellLibrary = require("python-shell");
 let { PythonShell } = PythonShellLibrary;
 let shell;
 
+const file = require("../config.json");
+const file2 = require("../camConfig.json")
 
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		x: 1920 + 1920,
+		// x: 1920 + 1920,
 		y: 0,
-		frame: false,
+		// frame: false,
 		show: false,
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+			nodeIntegration: true
 		},
 	});
 
@@ -50,15 +54,18 @@ const createWindow = () => {
 
 	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
 
-	shell = new PythonShell("OAKscripts/roi/roiData2.py", {
+	shell = new PythonShell("OAKscripts/roi/roiData.py", {
 		// The '-u' tells Python to flush every time
 		pythonOptions: ["-u"],
 		args: [],
 	});
 
+	// shell.send(JSON.stringify(file2))
+
+
 	shell.on("message", function (message) {
 		// sending data to frontend window
-		// console.log(message)
+		console.log(message)
 
 		if (mainWindow) {
 			mainWindow.webContents.send("main-to-render", message);
@@ -66,15 +73,13 @@ const createWindow = () => {
 		if (mainWindow2) {
 			mainWindow2.webContents.send("main-to-render", message);
 		}
-		
+
 		if (mainWindow3) {
 			mainWindow3.webContents.send("main-to-render", message);
-		} 
-
+		}
 	});
 
 	// ---------------------------------------TRACKING SCRIPT-------------------------------------------- //
-
 
 	mainWindow.once("ready-to-show", () => {
 		mainWindow.show();
@@ -83,7 +88,7 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-	mainWindow.setFullScreen(true);
+	// mainWindow.setFullScreen(true);
 
 	mainWindow2.once("ready-to-show", () => {
 		mainWindow2.show();
@@ -101,8 +106,6 @@ const createWindow = () => {
 	// and load the index.html of the app.
 	mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
 
-
-
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
 
@@ -117,6 +120,92 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", createWindow);
+
+ipcMain.on("render-to-main", (event, arg) => {
+	const msgTemplate = (pingPong) => `${pingPong}`;
+
+
+	if (msgTemplate(arg[0]) === "wall1") {
+		file.Wall1Animation1.left = msgTemplate(arg[1]);
+		file.Wall1Animation1.top = msgTemplate(arg[2]);
+		file.Wall1Animation2.left = msgTemplate(arg[3]);
+		file.Wall1Animation2.top = msgTemplate(arg[4]);
+		file.Wall1Animation3.left = msgTemplate(arg[5]);
+		file.Wall1Animation3.top = msgTemplate(arg[6]);
+		file.Wall1Animation4.left = msgTemplate(arg[7]);
+		file.Wall1Animation4.top = msgTemplate(arg[8]);
+		file.Wall1Animation5.left = msgTemplate(arg[9]);
+		file.Wall1Animation5.top = msgTemplate(arg[10]);
+
+		fs.writeFileSync(
+			"./config.json",
+			JSON.stringify(file, null, 2),
+			function writeJSON(err) {
+				if (err) return console.log(err);
+				console.log(JSON.stringify(file));
+			}
+		);
+	}
+	if (msgTemplate(arg[0]) === "wall2") {
+		file.Wall2Animation1.left = msgTemplate(arg[1]);
+		file.Wall2Animation1.top = msgTemplate(arg[2]);
+		file.Wall2Animation2.left = msgTemplate(arg[3]);
+		file.Wall2Animation2.top = msgTemplate(arg[4]);
+		file.Wall2Animation3.left = msgTemplate(arg[5]);
+		file.Wall2Animation3.top = msgTemplate(arg[6]);
+		file.Wall2Animation4.left = msgTemplate(arg[7]);
+		file.Wall2Animation4.top = msgTemplate(arg[8]);
+
+		fs.writeFileSync(
+			"./config.json",
+			JSON.stringify(file, null, 2),
+			function writeJSON(err) {
+				if (err) return console.log(err);
+				console.log(JSON.stringify(file));
+			}
+		);
+	}
+	if (msgTemplate(arg[0]) === "wall3") {
+		file.Wall3Animation1.left = msgTemplate(arg[1]);
+		file.Wall3Animation1.top = msgTemplate(arg[2]);
+		file.Wall3Animation2.left = msgTemplate(arg[3]);
+		file.Wall3Animation2.top = msgTemplate(arg[4]);
+		file.Wall3Animation3.left = msgTemplate(arg[5]);
+		file.Wall3Animation3.top = msgTemplate(arg[6]);
+		file.Wall3Animation4.left = msgTemplate(arg[7]);
+		file.Wall3Animation4.top = msgTemplate(arg[8]);
+		file.Wall3Animation5.left = msgTemplate(arg[9]);
+		file.Wall3Animation5.top = msgTemplate(arg[10]);
+
+		fs.writeFile(
+			"./config.json",
+			JSON.stringify(file, null, 2),
+			function writeJSON(err) {
+				if (err) return console.log(err);
+				// console.log(JSON.stringify(file));
+			}
+		);
+	}
+	
+	// if (msgTemplate(arg[0] === "cam1")) {
+	// 	file2.anim_topLeft1_y = msgTemplate(arg[1])
+	// 	file2.anim_bottomRight1_y = msgTemplate(arg[2])
+
+
+	// 	fs.writeFile(
+	// 		"./camConfig.json",
+	// 		JSON.stringify(file2, null, 2),
+	// 		function writeJSON(err) {
+	// 			if (err) return console.log(err);
+	// 			console.log(JSON.stringify(file2));
+	// 		}
+	// 	);
+		
+	// }
+
+	
+	//   event.reply('ipc-example', msgTemplate('pong'));
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
