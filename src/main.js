@@ -14,7 +14,7 @@ let { PythonShell } = PythonShellLibrary;
 let shell;
 
 const file = require("../config.json");
-const file2 = require("../camConfig.json")
+const file2 = require("../camConfig.json");
 
 const createWindow = () => {
 	// Create the browser window.
@@ -26,7 +26,6 @@ const createWindow = () => {
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-			nodeIntegration: true
 		},
 	});
 
@@ -60,12 +59,11 @@ const createWindow = () => {
 		args: [],
 	});
 
-	// shell.send(JSON.stringify(file2))
-
+	shell.send(JSON.stringify(file2));
 
 	shell.on("message", function (message) {
 		// sending data to frontend window
-		// console.log(message)
+		// console.log(message);
 
 		if (mainWindow) {
 			mainWindow.webContents.send("main-to-render", message);
@@ -108,12 +106,8 @@ const createWindow = () => {
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();
-
-	// Open the DevTools.
-	//mainWindow3.webContents.openDevTools();
-
-	// Open the DevTools.
-	//mainWindow3.webContents.openDevTools();
+	// mainWindow2.webContents.openDevTools();
+	// mainWindow3.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -123,7 +117,6 @@ app.on("ready", createWindow);
 
 ipcMain.on("render-to-main", (event, arg) => {
 	const msgTemplate = (pingPong) => `${pingPong}`;
-
 
 	if (msgTemplate(arg[0]) === "wall1") {
 		file.Wall1Animation1.left = msgTemplate(arg[1]);
@@ -137,7 +130,7 @@ ipcMain.on("render-to-main", (event, arg) => {
 		file.Wall1Animation5.left = msgTemplate(arg[9]);
 		file.Wall1Animation5.top = msgTemplate(arg[10]);
 
-		fs.writeFileSync(
+		fs.writeFile(
 			"./config.json",
 			JSON.stringify(file, null, 2),
 			function writeJSON(err) {
@@ -156,7 +149,7 @@ ipcMain.on("render-to-main", (event, arg) => {
 		file.Wall2Animation4.left = msgTemplate(arg[7]);
 		file.Wall2Animation4.top = msgTemplate(arg[8]);
 
-		fs.writeFileSync(
+		fs.writeFile(
 			"./config.json",
 			JSON.stringify(file, null, 2),
 			function writeJSON(err) {
@@ -186,24 +179,52 @@ ipcMain.on("render-to-main", (event, arg) => {
 			}
 		);
 	}
-	
-	// if (msgTemplate(arg[0] === "cam1")) {
-	// 	file2.anim_topLeft1_y = msgTemplate(arg[1])
-	// 	file2.anim_bottomRight1_y = msgTemplate(arg[2])
 
+	if (msgTemplate(arg[0] === "cam1")) {
+		file2.anim_topLeft1_y = msgTemplate(arg[1]);
+		file2.anim_bottomRight1_y = msgTemplate(arg[2]);
 
-	// 	fs.writeFile(
-	// 		"./camConfig.json",
-	// 		JSON.stringify(file2, null, 2),
-	// 		function writeJSON(err) {
-	// 			if (err) return console.log(err);
-	// 			console.log(JSON.stringify(file2));
-	// 		}
-	// 	);
-		
-	// }
+		fs.writeFile(
+			"./camConfig.json",
+			JSON.stringify(file2, null, 2),
+			function writeJSON(err) {
+				if (err) return console.log(err);
+				console.log(JSON.stringify(file2));
+			}
+		);
+		shell.send(JSON.stringify(file2));
+	}
 
-	
+	if (msgTemplate(arg[0] === "cam2")) {
+		file2.anim_topLeft2_y = msgTemplate(arg[1]);
+		file2.anim_bottomRight2_y = msgTemplate(arg[2]);
+
+		fs.writeFile(
+			"./camConfig.json",
+			JSON.stringify(file2, null, 2),
+			function writeJSON(err) {
+				if (err) return console.log(err);
+				console.log(JSON.stringify(file2));
+			}
+		);
+		shell.send(JSON.stringify(file2));
+	}
+
+	if (msgTemplate(arg[0] === "cam3")) {
+		file2.anim_topLeft3_y = msgTemplate(arg[1]);
+		file2.anim_bottomRight3_y = msgTemplate(arg[2]);
+
+		fs.writeFile(
+			"./camConfig.json",
+			JSON.stringify(file2, null, 2),
+			function writeJSON(err) {
+				if (err) return console.log(err);
+				console.log(JSON.stringify(file2));
+			}
+		);
+		shell.send(JSON.stringify(file2));
+	}
+
 	//   event.reply('ipc-example', msgTemplate('pong'));
 });
 

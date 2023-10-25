@@ -11,24 +11,6 @@ stepSize = 0.01
 
 newConfig = False
 
-prox_topLeft1_y = 0.12
-prox_bottomRight1_y = 0.32
-
-prox_topLeft2_y = 0.12
-prox_bottomRight2_y = 0.32
-
-prox_topLeft3_y = 0.12
-prox_bottomRight3_y = 0.32
-
-anim_topLeft1_y = 0.49
-anim_bottomRight1_y = 0.56
-
-anim_topLeft2_y = 0.49
-anim_bottomRight2_y = 0.56
-
-anim_topLeft3_y = 0.49
-anim_bottomRight3_y = 0.56
-
 
 def getPipeline():
     # Create pipeline
@@ -85,6 +67,26 @@ def getPipeline():
     stereoConfig.postProcessing.decimationFilter.decimationFactor = 1
 
     configList = [] * 28
+
+    prox_topLeft1_y = proxTL1y[0]
+    prox_bottomRight1_y = proxBR1y[0]
+
+    prox_topLeft2_y = proxTL2y[0]
+    prox_bottomRight2_y = proxBR2y[0]
+
+    prox_topLeft3_y = proxTL3y[0]
+    prox_bottomRight3_y = proxBR3y[0]
+
+    
+    anim_topLeft1_y = animTL1y[0]
+    anim_bottomRight1_y = animBR1y[0]
+
+    anim_topLeft2_y = animTL2y[0]
+    anim_bottomRight2_y = animBR2y[0]
+
+    anim_topLeft3_y = animTL3y[0]
+    anim_bottomRight3_y = animBR3y[0]
+    
 
     # Config
     # WALL 1
@@ -408,6 +410,50 @@ def getPipeline():
 
     return pipeline
 
+line = sys.stdin.readline()
+values = json.loads(line)
+
+proxTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft1_y"])
+proxTL1y = [float(i) for i in proxTL1y_str.split()]
+
+proxBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight1_y"])
+proxBR1y = [float(i) for i in proxBR1y_str.split()]
+
+proxTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft2_y"])
+proxTL2y = [float(i) for i in proxTL2y_str.split()]
+
+proxBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight2_y"])
+proxBR2y = [float(i) for i in proxBR2y_str.split()]
+
+proxTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft3_y"])
+proxTL3y = [float(i) for i in proxTL3y_str.split()]
+
+proxBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight3_y"])
+proxBR3y = [float(i) for i in proxBR3y_str.split()]
+
+
+animTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft1_y"])
+animTL1y = [float(i) for i in animTL1y_str.split()]
+
+animBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight1_y"])
+animBR1y = [float(i) for i in animBR1y_str.split()]
+
+animTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft2_y"])
+animTL2y = [float(i) for i in animTL2y_str.split()]
+
+animBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight2_y"])
+animBR2y = [float(i) for i in animBR2y_str.split()]
+
+animTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft3_y"])
+animTL3y = [float(i) for i in animTL3y_str.split()]
+
+animBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight3_y"])
+animBR3y = [float(i) for i in animBR3y_str.split()]
+
+if (values):
+    pipeline = getPipeline()
+
+
 with contextlib.ExitStack() as stack:
 
     ips = ["192.168.71.201", "192.168.71.202","192.168.71.203"]
@@ -442,7 +488,7 @@ with contextlib.ExitStack() as stack:
         usb_speed = device.getUsbSpeed()
 
         # Get a customized pipeline based on identified device type
-        pipeline = getPipeline()
+        
         device.startPipeline(pipeline)
 
         device.setIrLaserDotProjectorBrightness(765)
@@ -534,13 +580,13 @@ with contextlib.ExitStack() as stack:
                             
                             
                 #interaction
-                if (int(spatialData[5].spatialCoordinates.z) >= 2000 and int(spatialData[5].spatialCoordinates.z) < 2600):
+                if (int(spatialData[5].spatialCoordinates.z) >= 2000 and int(spatialData[5].spatialCoordinates.z) < 2700):
                     total = 0
                     temp = int(spatialData[5].spatialCoordinates.z)
                     for i in range(30):
                         total += temp 
                     avg = total / 30
-                    if (avg >= 2000 and avg < 2600):
+                    if (avg >= 2000 and avg < 2700):
                         print("play1")
                                 
                 if (int(spatialData[6].spatialCoordinates.z) >= 1500 and int(spatialData[6].spatialCoordinates.z) < 2100):
@@ -771,7 +817,7 @@ with contextlib.ExitStack() as stack:
             sys.stdout.flush()
         
             # Show the frame
-            cv2.imshow("depth-" + mxid, depthFrameColor)
+            # cv2.imshow("depth-" + mxid, depthFrameColor)
     
 
             key = cv2.waitKey(1)

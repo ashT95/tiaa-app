@@ -27,7 +27,6 @@ import proxVid5 from "../assets/Animations/Proximity/proximity-popup_G.mp4";
 
 import layout1 from "../assets/Images/wall-1-print.png";
 
-
 export default function Base() {
 	const [notJustForTeachers, setNotJustForTeachers] = useState(false);
 	const [foundedOnPrinciple, setFoundedOnPrinciple] = useState(false);
@@ -42,6 +41,8 @@ export default function Base() {
 	const [presence3, setPresence3] = useState(false);
 	const [presence4, setPresence4] = useState(false);
 	const [presence5, setPresence5] = useState(false);
+
+	const [audioOutput, setAudioOutput] = useState(null);
 
 	let data = require("../../config.json");
 	let camData = require("../../camConfig.json");
@@ -58,12 +59,6 @@ export default function Base() {
 	const [t4, setT4] = useState(Number(data["Wall1Animation4"]["top"]));
 	const [t5, setT5] = useState(Number(data["Wall1Animation5"]["top"]));
 
-	const [prox1topLeft, setProx1topLeft] = useState(
-		Number(camData["prox_topLeft1_y"])
-	);
-	const [prox1bottomRight, setProx1bottomRight] = useState(
-		Number(camData["prox_bottomRight1_y"])
-	);
 
 	const [anim1topLeft, setAnim1topLeft] = useState(
 		Number(camData["anim_topLeft1_y"].replace(/[^0-9\.]+/g, ""))
@@ -80,21 +75,25 @@ export default function Base() {
 
 	const videoRefs = useRef([]);
 
-
 	const getAudioDevs = async () => {
 		await navigator.mediaDevices
 			.enumerateDevices()
 			.then((devices) => {
 				devices.forEach((device) => {
-					console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+					// console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+					if (device.label == "Speakers (Bose Revolve SoundLink) (05a7:40fa)") {
+						setAudioOutput(device.deviceId);
+						console.log(audioOutput);
+						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d
+					}
 				});
 			})
 			.catch((err) => {
 				console.error(`${err.name}: ${err.message}`);
 			});
-	}
+	};
 
-	getAudioDevs()
+	getAudioDevs();
 
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
@@ -108,12 +107,6 @@ export default function Base() {
 		videoRefs.current[10].volume = 0;
 		videoRefs.current[11].volume = 0;
 		videoRefs.current[12].volume = 0;
-
-		videoRefs.current[1].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
-		videoRefs.current[2].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
-		videoRefs.current[3].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
-		videoRefs.current[4].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
-		videoRefs.current[5].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
 
 		if (presence1) {
 			!foundedOnPrinciple ? videoRefs.current[8].play() : null;
@@ -189,6 +182,16 @@ export default function Base() {
 		butterfly,
 		ratedHighest,
 	]);
+
+	useEffect(() => {
+		if (audioOutput) {
+			videoRefs.current[1].setSinkId(audioOutput);
+			videoRefs.current[2].setSinkId(audioOutput);
+			videoRefs.current[3].setSinkId(audioOutput);
+			videoRefs.current[4].setSinkId(audioOutput);
+			videoRefs.current[5].setSinkId(audioOutput);
+		}
+	}, [audioOutput]);
 
 	function handleInteraction(name) {
 		switch (name) {
@@ -391,7 +394,7 @@ export default function Base() {
 					]);
 					break;
 				}
-				case "7": {
+				case "p": {
 					setL1(defaultVals[0]);
 					setT1(defaultVals[1]);
 					setL2(defaultVals[2]);
@@ -442,8 +445,8 @@ export default function Base() {
 					break;
 				}
 				case "8": {
-					setAnim1topLeft(defaultCamVals[2])
-					setAnim1bottomRight(defaultCamVals[3])
+					setAnim1topLeft(defaultCamVals[2]);
+					setAnim1bottomRight(defaultCamVals[3]);
 					window.ipcRender.send("render-to-main", [
 						"cam1",
 						anim1topLeft,

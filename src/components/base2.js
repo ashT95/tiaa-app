@@ -35,7 +35,10 @@ export default function Base2() {
 	const [presence3, setPresence3] = useState(false);
 	const [presence4, setPresence4] = useState(false);
 
+	const [audioOutput, setAudioOutput] = useState(null);
+
 	let data = require("../../config.json");
+	let camData = require("../../camConfig.json");
 
 	const [l1, setL1] = useState(Number(data["Wall2Animation1"]["left"]));
 	const [l2, setL2] = useState(Number(data["Wall2Animation2"]["left"]));
@@ -47,12 +50,40 @@ export default function Base2() {
 	const [t3, setT3] = useState(Number(data["Wall2Animation3"]["top"]));
 	const [t4, setT4] = useState(Number(data["Wall2Animation4"]["top"]));
 
+	const [anim2topLeft, setAnim2topLeft] = useState(
+		Number(camData["anim_topLeft2_y"].replace(/[^0-9\.]+/g, ""))
+	);
+	const [anim2bottomRight, setAnim2bottomRight] = useState(
+		Number(camData["anim_bottomRight2_y"].replace(/[^0-9\.]+/g, ""))
+	);
+
 	const defaultVals = [265, 135, 663, 483, 825, 39, 1128, 401];
+	const defaultCamVals = [0.12, 0.32, 0.49, 0.56];
 
 	const [count, setCount] = useState(1);
 	const [showBg, setShowBg] = useState(false);
 
 	const videoRefs = useRef([]);
+
+	const getAudioDevs = async () => {
+		await navigator.mediaDevices
+			.enumerateDevices()
+			.then((devices) => {
+				devices.forEach((device) => {
+					// console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+					if (device.label == "Speakers (Razer Kraken X USB) (1532:0526)") {
+						setAudioOutput(device.deviceId);
+						console.log(audioOutput);
+						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d
+					}
+				});
+			})
+			.catch((err) => {
+				console.error(`${err.name}: ${err.message}`);
+			});
+	};
+
+	getAudioDevs();
 
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
@@ -120,6 +151,15 @@ export default function Base2() {
 		responsibleRealEstate,
 		grapeInvestments,
 	]);
+
+	useEffect(() => {
+		if (audioOutput) {
+			videoRefs.current[1].setSinkId(audioOutput);
+			videoRefs.current[2].setSinkId(audioOutput);
+			videoRefs.current[3].setSinkId(audioOutput);
+			videoRefs.current[4].setSinkId(audioOutput);
+		}
+	}, [audioOutput]);
 
 	function handleInteraction(name) {
 		switch (name) {
@@ -294,7 +334,7 @@ export default function Base2() {
 					]);
 					break;
 				}
-				case "7": {
+				case "p": {
 					setL1(defaultVals[0]);
 					setT1(defaultVals[1]);
 					setL2(defaultVals[2]);
@@ -314,6 +354,40 @@ export default function Base2() {
 						t3,
 						l4,
 						t4,
+					]);
+					break;
+				}
+				case "w": {
+					let temp1 = anim2topLeft - 0.01;
+					let temp2 = anim2bottomRight - 0.01;
+					setAnim2topLeft(temp1);
+					setAnim2bottomRight(temp2);
+					window.ipcRender.send("render-to-main", [
+						"cam2",
+						anim2topLeft,
+						anim2bottomRight,
+					]);
+					break;
+				}
+				case "s": {
+					let temp1 = anim2topLeft + 0.01;
+					let temp2 = anim2bottomRight + 0.01;
+					setAnim2topLeft(temp1);
+					setAnim2bottomRight(temp2);
+					window.ipcRender.send("render-to-main", [
+						"cam2",
+						anim2topLeft,
+						anim2bottomRight,
+					]);
+					break;
+				}
+				case "8": {
+					setAnim2topLeft(defaultCamVals[2]);
+					setAnim2bottomRight(defaultCamVals[3]);
+					window.ipcRender.send("render-to-main", [
+						"cam2",
+						anim2topLeft,
+						anim2bottomRight,
 					]);
 					break;
 				}
