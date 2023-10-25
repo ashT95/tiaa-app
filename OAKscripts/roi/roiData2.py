@@ -817,7 +817,7 @@ with contextlib.ExitStack() as stack:
             sys.stdout.flush()
         
             # Show the frame
-            # cv2.imshow("depth-" + mxid, depthFrameColor)
+            cv2.imshow("depth-" + mxid, depthFrameColor)
     
 
             key = cv2.waitKey(1)

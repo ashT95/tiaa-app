@@ -94,7 +94,7 @@ export default function Base3() {
 			.then((devices) => {
 				devices.forEach((device) => {
 					// console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-					if (device.label == "Speakers (Razer Kraken X USB) (1532:0526)") {
+					if (device.deviceId == 'e5c10d868b2c6b3118ff27f9b9ad7e1c34ad2e524692088b2e15ee3d455ba4c2') {
 						setAudioOutput(device.deviceId);
 						console.log(audioOutput);
 						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d
@@ -594,6 +594,7 @@ export default function Base3() {
 						style={{
 							transform: `translate(${l2}px, ${t2}px)`,
 						}}
+						onClick={() => handleInteraction("play11")}
 					/>
 					<video
 						src={girlsInTech1}

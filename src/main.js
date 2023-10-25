@@ -180,51 +180,7 @@ ipcMain.on("render-to-main", (event, arg) => {
 		);
 	}
 
-	if (msgTemplate(arg[0] === "cam1")) {
-		file2.anim_topLeft1_y = msgTemplate(arg[1]);
-		file2.anim_bottomRight1_y = msgTemplate(arg[2]);
-
-		fs.writeFile(
-			"./camConfig.json",
-			JSON.stringify(file2, null, 2),
-			function writeJSON(err) {
-				if (err) return console.log(err);
-				console.log(JSON.stringify(file2));
-			}
-		);
-		shell.send(JSON.stringify(file2));
-	}
-
-	if (msgTemplate(arg[0] === "cam2")) {
-		file2.anim_topLeft2_y = msgTemplate(arg[1]);
-		file2.anim_bottomRight2_y = msgTemplate(arg[2]);
-
-		fs.writeFile(
-			"./camConfig.json",
-			JSON.stringify(file2, null, 2),
-			function writeJSON(err) {
-				if (err) return console.log(err);
-				console.log(JSON.stringify(file2));
-			}
-		);
-		shell.send(JSON.stringify(file2));
-	}
-
-	if (msgTemplate(arg[0] === "cam3")) {
-		file2.anim_topLeft3_y = msgTemplate(arg[1]);
-		file2.anim_bottomRight3_y = msgTemplate(arg[2]);
-
-		fs.writeFile(
-			"./camConfig.json",
-			JSON.stringify(file2, null, 2),
-			function writeJSON(err) {
-				if (err) return console.log(err);
-				console.log(JSON.stringify(file2));
-			}
-		);
-		shell.send(JSON.stringify(file2));
-	}
-
+	
 	//   event.reply('ipc-example', msgTemplate('pong'));
 });
 

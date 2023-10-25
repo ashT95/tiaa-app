@@ -71,7 +71,7 @@ export default function Base2() {
 			.then((devices) => {
 				devices.forEach((device) => {
 					// console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-					if (device.label == "Speakers (Razer Kraken X USB) (1532:0526)") {
+					if (device.deviceId == '8ce06869c5d454244c3ed5f627c1f7fabb708e0dacf890c0ddcb1419494a80fe') {
 						setAudioOutput(device.deviceId);
 						console.log(audioOutput);
 						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d

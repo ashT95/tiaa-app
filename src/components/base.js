@@ -80,8 +80,8 @@ export default function Base() {
 			.enumerateDevices()
 			.then((devices) => {
 				devices.forEach((device) => {
-					// console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-					if (device.label == "Speakers (Bose Revolve SoundLink) (05a7:40fa)") {
+					console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+					if (device.deviceId == '5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a') {
 						setAudioOutput(device.deviceId);
 						console.log(audioOutput);
 						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d
@@ -92,6 +92,7 @@ export default function Base() {
 				console.error(`${err.name}: ${err.message}`);
 			});
 	};
+
 
 	getAudioDevs();
 
