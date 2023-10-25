@@ -27,6 +27,7 @@ import proxVid5 from "../assets/Animations/Proximity/proximity-popup_G.mp4";
 
 import layout1 from "../assets/Images/wall-1-print.png";
 
+
 export default function Base() {
 	const [notJustForTeachers, setNotJustForTeachers] = useState(false);
 	const [foundedOnPrinciple, setFoundedOnPrinciple] = useState(false);
@@ -79,6 +80,22 @@ export default function Base() {
 
 	const videoRefs = useRef([]);
 
+
+	const getAudioDevs = async () => {
+		await navigator.mediaDevices
+			.enumerateDevices()
+			.then((devices) => {
+				devices.forEach((device) => {
+					console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+				});
+			})
+			.catch((err) => {
+				console.error(`${err.name}: ${err.message}`);
+			});
+	}
+
+	getAudioDevs()
+
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 		handleInteraction(result);
@@ -91,6 +108,12 @@ export default function Base() {
 		videoRefs.current[10].volume = 0;
 		videoRefs.current[11].volume = 0;
 		videoRefs.current[12].volume = 0;
+
+		videoRefs.current[1].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
+		videoRefs.current[2].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
+		videoRefs.current[3].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
+		videoRefs.current[4].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
+		videoRefs.current[5].setSinkId('5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a')
 
 		if (presence1) {
 			!foundedOnPrinciple ? videoRefs.current[8].play() : null;

@@ -11,6 +11,25 @@ stepSize = 0.01
 
 newConfig = False
 
+prox_topLeft1_y = 0.12
+prox_bottomRight1_y = 0.32
+
+prox_topLeft2_y = 0.12
+prox_bottomRight2_y = 0.32
+
+prox_topLeft3_y = 0.12
+prox_bottomRight3_y = 0.32
+
+anim_topLeft1_y = 0.49
+anim_bottomRight1_y = 0.56
+
+anim_topLeft2_y = 0.49
+anim_bottomRight2_y = 0.56
+
+anim_topLeft3_y = 0.49
+anim_bottomRight3_y = 0.56
+
+
 def getPipeline():
     # Create pipeline
     pipeline = dai.Pipeline()
@@ -70,8 +89,8 @@ def getPipeline():
     # Config
     # WALL 1
     # PROXIMITY WALL 1
-    topLeft = dai.Point2f(0.67, 0.12)
-    bottomRight = dai.Point2f(0.77, 0.32)
+    topLeft = dai.Point2f(0.67, prox_topLeft1_y)
+    bottomRight = dai.Point2f(0.77, prox_bottomRight1_y)
 
     config = dai.SpatialLocationCalculatorConfigData()
     config.depthThresholds.lowerThreshold = 1000
@@ -80,8 +99,8 @@ def getPipeline():
 
     configList.append(config)
 
-    topLeft1 = dai.Point2f(0.43, 0.12)
-    bottomRight1 = dai.Point2f(0.53, 0.32)
+    topLeft1 = dai.Point2f(0.43, prox_topLeft1_y)
+    bottomRight1 = dai.Point2f(0.53, prox_bottomRight1_y)
 
     config1 = dai.SpatialLocationCalculatorConfigData()
     config1.depthThresholds.lowerThreshold = 1000
@@ -90,8 +109,8 @@ def getPipeline():
 
     configList.append(config1)
 
-    topLeft2 = dai.Point2f(0.42, 0.12)
-    bottomRight2 = dai.Point2f(0.52, 0.32)
+    topLeft2 = dai.Point2f(0.42, prox_topLeft1_y)
+    bottomRight2 = dai.Point2f(0.52, prox_bottomRight1_y)
 
     config2 = dai.SpatialLocationCalculatorConfigData()
     config2.depthThresholds.lowerThreshold = 1000
@@ -100,8 +119,8 @@ def getPipeline():
 
     configList.append(config2)
 
-    topLeft3 = dai.Point2f(0.22, 0.12)
-    bottomRight3 = dai.Point2f(0.32, 0.32)
+    topLeft3 = dai.Point2f(0.22, prox_topLeft1_y)
+    bottomRight3 = dai.Point2f(0.32, prox_bottomRight1_y)
 
     config3 = dai.SpatialLocationCalculatorConfigData()
     config3.depthThresholds.lowerThreshold = 1000
@@ -110,8 +129,8 @@ def getPipeline():
 
     configList.append(config3)
 
-    topLeft4 = dai.Point2f(0.19, 0.12)
-    bottomRight4 = dai.Point2f(0.29, 0.32)
+    topLeft4 = dai.Point2f(0.19, prox_topLeft1_y)
+    bottomRight4 = dai.Point2f(0.29, prox_bottomRight1_y)
 
     config4 = dai.SpatialLocationCalculatorConfigData()
     config4.depthThresholds.lowerThreshold = 1000
@@ -121,8 +140,8 @@ def getPipeline():
     configList.append(config4)
 
     # ANIMATIONS WALL 1
-    topLeft5 = dai.Point2f(0.69, 0.49)
-    bottomRight5 = dai.Point2f(0.85, 0.56)
+    topLeft5 = dai.Point2f(0.69, anim_topLeft1_y)
+    bottomRight5 = dai.Point2f(0.85, anim_bottomRight1_y)
 
     config5 = dai.SpatialLocationCalculatorConfigData()
     config5.depthThresholds.lowerThreshold = 1000
@@ -131,8 +150,8 @@ def getPipeline():
 
     configList.append(config5)
 
-    topLeft6 = dai.Point2f(0.42, 0.49)
-    bottomRight6 = dai.Point2f(0.58, 0.56)
+    topLeft6 = dai.Point2f(0.42, anim_topLeft1_y)
+    bottomRight6 = dai.Point2f(0.58, anim_bottomRight1_y)
 
     config6 = dai.SpatialLocationCalculatorConfigData()
     config6.depthThresholds.lowerThreshold = 1000
@@ -141,8 +160,8 @@ def getPipeline():
 
     configList.append(config6)
 
-    topLeft7 = dai.Point2f(0.42, 0.48)
-    bottomRight7 = dai.Point2f(0.58, 0.55)
+    topLeft7 = dai.Point2f(0.42, anim_topLeft1_y)
+    bottomRight7 = dai.Point2f(0.58, anim_bottomRight1_y)
 
     config7 = dai.SpatialLocationCalculatorConfigData()
     config7.depthThresholds.lowerThreshold = 1000
@@ -151,8 +170,8 @@ def getPipeline():
 
     configList.append(config7)
 
-    topLeft8 = dai.Point2f(0.19, 0.49)
-    bottomRight8 = dai.Point2f(0.35, 0.56)
+    topLeft8 = dai.Point2f(0.19, anim_topLeft1_y)
+    bottomRight8 = dai.Point2f(0.35, anim_bottomRight1_y)
 
     config8 = dai.SpatialLocationCalculatorConfigData()
     config8.depthThresholds.lowerThreshold = 1000
@@ -161,8 +180,8 @@ def getPipeline():
 
     configList.append(config8)
 
-    topLeft9 = dai.Point2f(0.17, 0.49)
-    bottomRight9 = dai.Point2f(0.33, 0.56)
+    topLeft9 = dai.Point2f(0.17, anim_topLeft1_y)
+    bottomRight9 = dai.Point2f(0.33, anim_bottomRight1_y)
 
     config9 = dai.SpatialLocationCalculatorConfigData()
     config9.depthThresholds.lowerThreshold = 1000
@@ -174,8 +193,8 @@ def getPipeline():
     # WALL 2
     # PROXIMITY WALL 2
     #conserving
-    topLeft10 = dai.Point2f(0.62, 0.12)
-    bottomRight10 = dai.Point2f(0.72, 0.32)
+    topLeft10 = dai.Point2f(0.62, prox_topLeft2_y)
+    bottomRight10 = dai.Point2f(0.72, prox_bottomRight2_y)
 
     config10 = dai.SpatialLocationCalculatorConfigData()
     config10.depthThresholds.lowerThreshold = 1000
@@ -185,8 +204,8 @@ def getPipeline():
     configList.append(config10)
 
     # friendship
-    topLeft11 = dai.Point2f(0.47, 0.12)
-    bottomRight11 = dai.Point2f(0.57, 0.32)
+    topLeft11 = dai.Point2f(0.47, prox_topLeft2_y)
+    bottomRight11 = dai.Point2f(0.57, prox_bottomRight2_y)
 
     config11 = dai.SpatialLocationCalculatorConfigData()
     config11.depthThresholds.lowerThreshold = 1000
@@ -196,8 +215,8 @@ def getPipeline():
     configList.append(config11)
 
     # real estate
-    topLeft12 = dai.Point2f(0.32, 0.12)
-    bottomRight12 = dai.Point2f(0.42, 0.32)
+    topLeft12 = dai.Point2f(0.32, prox_topLeft2_y)
+    bottomRight12 = dai.Point2f(0.42, prox_bottomRight2_y)
 
     config12 = dai.SpatialLocationCalculatorConfigData()
     config12.depthThresholds.lowerThreshold = 1000
@@ -207,8 +226,8 @@ def getPipeline():
     configList.append(config12)
 
     # grape investments
-    topLeft13 = dai.Point2f(0.22, 0.12)
-    bottomRight13 = dai.Point2f(0.32, 0.32)
+    topLeft13 = dai.Point2f(0.22, prox_topLeft2_y)
+    bottomRight13 = dai.Point2f(0.32, prox_bottomRight2_y)
 
     config13 = dai.SpatialLocationCalculatorConfigData()
     config13.depthThresholds.lowerThreshold = 1000
@@ -219,8 +238,8 @@ def getPipeline():
 
     # ANIMATIONS WALL 2
     #conserving 
-    topLeft14 = dai.Point2f(0.61, 0.49)
-    bottomRight14 = dai.Point2f(0.77, 0.56)
+    topLeft14 = dai.Point2f(0.61, anim_topLeft2_y)
+    bottomRight14 = dai.Point2f(0.77, anim_bottomRight2_y)
 
     config14 = dai.SpatialLocationCalculatorConfigData()
     config14.depthThresholds.lowerThreshold = 1000
@@ -230,8 +249,8 @@ def getPipeline():
     configList.append(config14)
 
     #friendship
-    topLeft15 = dai.Point2f(0.47, 0.49)
-    bottomRight15 = dai.Point2f(0.63, 0.56)
+    topLeft15 = dai.Point2f(0.47, anim_topLeft2_y)
+    bottomRight15 = dai.Point2f(0.63, anim_bottomRight2_y)
 
     config15 = dai.SpatialLocationCalculatorConfigData()
     config15.depthThresholds.lowerThreshold = 1000
@@ -241,8 +260,8 @@ def getPipeline():
     configList.append(config15)
 
     #real estate
-    topLeft16 = dai.Point2f(0.26, 0.49)
-    bottomRight16 = dai.Point2f(0.42, 0.56)
+    topLeft16 = dai.Point2f(0.26, anim_topLeft2_y)
+    bottomRight16 = dai.Point2f(0.42, anim_bottomRight2_y)
 
     config16 = dai.SpatialLocationCalculatorConfigData()
     config16.depthThresholds.lowerThreshold = 1000
@@ -252,8 +271,8 @@ def getPipeline():
     configList.append(config16)
 
     # grape investments
-    topLeft17 = dai.Point2f(0.16, 0.49)
-    bottomRight17 = dai.Point2f(0.32, 0.56)
+    topLeft17 = dai.Point2f(0.16, anim_topLeft2_y)
+    bottomRight17 = dai.Point2f(0.32, anim_bottomRight2_y)
 
     config17 = dai.SpatialLocationCalculatorConfigData()
     config17.depthThresholds.lowerThreshold = 1000
@@ -265,8 +284,8 @@ def getPipeline():
     # WALL 3
     # PROXIMITY WALL 3
     # ceos
-    topLeft18 = dai.Point2f(0.70, 0.12)
-    bottomRight18 = dai.Point2f(0.80, 0.32)
+    topLeft18 = dai.Point2f(0.70, prox_topLeft3_y)
+    bottomRight18 = dai.Point2f(0.80, prox_bottomRight3_y)
 
     config18 = dai.SpatialLocationCalculatorConfigData()
     config18.depthThresholds.lowerThreshold = 1000
@@ -276,8 +295,8 @@ def getPipeline():
     configList.append(config18)
 
     # girls in tech
-    topLeft19 = dai.Point2f(0.53, 0.12)
-    bottomRight19 = dai.Point2f(0.63, 0.32)
+    topLeft19 = dai.Point2f(0.53, prox_topLeft3_y)
+    bottomRight19 = dai.Point2f(0.63, prox_bottomRight3_y)
 
     config19 = dai.SpatialLocationCalculatorConfigData()
     config19.depthThresholds.lowerThreshold = 1000
@@ -287,8 +306,8 @@ def getPipeline():
     configList.append(config19)
 
     # empowering abilities
-    topLeft20 = dai.Point2f(0.48, 0.12)
-    bottomRight20 = dai.Point2f(0.58, 0.32)
+    topLeft20 = dai.Point2f(0.48, prox_topLeft3_y)
+    bottomRight20 = dai.Point2f(0.58, prox_bottomRight3_y)
 
     config20 = dai.SpatialLocationCalculatorConfigData()
     config20.depthThresholds.lowerThreshold = 1000
@@ -298,8 +317,8 @@ def getPipeline():
     configList.append(config20)
 
     # financial literacy
-    topLeft21 = dai.Point2f(0.29, 0.12)
-    bottomRight21 = dai.Point2f(0.39, 0.32)
+    topLeft21 = dai.Point2f(0.29, prox_topLeft3_y)
+    bottomRight21 = dai.Point2f(0.39, prox_bottomRight3_y)
 
     config21 = dai.SpatialLocationCalculatorConfigData()
     config21.depthThresholds.lowerThreshold = 1000
@@ -309,8 +328,8 @@ def getPipeline():
     configList.append(config21)
 
     # retiring inequality
-    topLeft22 = dai.Point2f(0.21, 0.12)
-    bottomRight22 = dai.Point2f(0.31, 0.32)
+    topLeft22 = dai.Point2f(0.21, prox_topLeft3_y)
+    bottomRight22 = dai.Point2f(0.31, prox_bottomRight3_y)
 
     config22 = dai.SpatialLocationCalculatorConfigData()
     config22.depthThresholds.lowerThreshold = 1000
@@ -321,8 +340,8 @@ def getPipeline():
 
     # ANIMATIONS WALL 3
     #ceos
-    topLeft23 = dai.Point2f(0.72, 0.49)
-    bottomRight23 = dai.Point2f(0.88, 0.56)
+    topLeft23 = dai.Point2f(0.72, anim_topLeft3_y)
+    bottomRight23 = dai.Point2f(0.88, anim_bottomRight3_y)
 
     config23 = dai.SpatialLocationCalculatorConfigData()
     config23.depthThresholds.lowerThreshold = 1000
@@ -332,8 +351,8 @@ def getPipeline():
     configList.append(config23)
 
     # girls in tech
-    topLeft24 = dai.Point2f(0.47, 0.49)
-    bottomRight24 = dai.Point2f(0.63, 0.56)
+    topLeft24 = dai.Point2f(0.47, anim_topLeft3_y)
+    bottomRight24 = dai.Point2f(0.63, anim_bottomRight3_y)
 
     config24 = dai.SpatialLocationCalculatorConfigData()
     config24.depthThresholds.lowerThreshold = 1000
@@ -343,8 +362,8 @@ def getPipeline():
     configList.append(config24)
 
     # empowering abilities
-    topLeft25 = dai.Point2f(0.44, 0.49)
-    bottomRight25 = dai.Point2f(0.60, 0.56)
+    topLeft25 = dai.Point2f(0.44, anim_topLeft3_y)
+    bottomRight25 = dai.Point2f(0.60, anim_bottomRight3_y)
 
     config25 = dai.SpatialLocationCalculatorConfigData()
     config25.depthThresholds.lowerThreshold = 1000
@@ -354,8 +373,8 @@ def getPipeline():
     configList.append(config25)
 
     # financial literacy
-    topLeft26 = dai.Point2f(0.14, 0.49)
-    bottomRight26 = dai.Point2f(0.30, 0.56)
+    topLeft26 = dai.Point2f(0.14, anim_topLeft3_y)
+    bottomRight26 = dai.Point2f(0.30, anim_bottomRight3_y)
 
     config26 = dai.SpatialLocationCalculatorConfigData()
     config26.depthThresholds.lowerThreshold = 1000
@@ -365,8 +384,8 @@ def getPipeline():
     configList.append(config26)
 
     # retiring inequality 
-    topLeft27 = dai.Point2f(0.15, 0.49)
-    bottomRight27 = dai.Point2f(0.31, 0.56)
+    topLeft27 = dai.Point2f(0.15, anim_topLeft3_y)
+    bottomRight27 = dai.Point2f(0.31, anim_bottomRight3_y)
 
     config27 = dai.SpatialLocationCalculatorConfigData()
     config27.depthThresholds.lowerThreshold = 1000
@@ -391,7 +410,7 @@ def getPipeline():
 
 with contextlib.ExitStack() as stack:
 
-    ips = ["192.168.1.114", "192.168.1.113","192.168.1.112"]
+    ips = ["192.168.71.201", "192.168.71.202","192.168.71.203"]
 
     devices = {}
     device_infos = [] 
