@@ -130,12 +130,12 @@ ipcMain.on("render-to-main", (event, arg) => {
 		file.Wall1Animation5.left = msgTemplate(arg[9]);
 		file.Wall1Animation5.top = msgTemplate(arg[10]);
 
-		fs.writeFile(
+		fs.writeFileSync(
 			"./config.json",
 			JSON.stringify(file, null, 2),
 			function writeJSON(err) {
 				if (err) return console.log(err);
-				console.log(JSON.stringify(file));
+				// console.log(JSON.stringify(file));
 			}
 		);
 	}
@@ -149,12 +149,12 @@ ipcMain.on("render-to-main", (event, arg) => {
 		file.Wall2Animation4.left = msgTemplate(arg[7]);
 		file.Wall2Animation4.top = msgTemplate(arg[8]);
 
-		fs.writeFile(
+		fs.writeFileSync(
 			"./config.json",
 			JSON.stringify(file, null, 2),
 			function writeJSON(err) {
 				if (err) return console.log(err);
-				console.log(JSON.stringify(file));
+				// console.log(JSON.stringify(file));
 			}
 		);
 	}
@@ -170,7 +170,7 @@ ipcMain.on("render-to-main", (event, arg) => {
 		file.Wall3Animation5.left = msgTemplate(arg[9]);
 		file.Wall3Animation5.top = msgTemplate(arg[10]);
 
-		fs.writeFile(
+		fs.writeFileSync(
 			"./config.json",
 			JSON.stringify(file, null, 2),
 			function writeJSON(err) {
