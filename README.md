@@ -12,15 +12,16 @@ npm install
 ### Running in development:
 1. Open Command Prompt and navigate to the tiaa-app folder with ``` cd documents/github/tiaa-app ```
  <br>
-  <img width="676" alt="1" src="https://github.com/ashT95/tiaa-app/assets/88211799/a1e4fc38-4c7d-4762-b719-b6d02ad5d4f1">
+<img width="676" alt="1" src="https://github.com/ashT95/tiaa-app/assets/88211799/ea082a6d-bc04-45b2-b30c-ac8ebfdd741d">
+
   <br> 
   <br>
 
   
 2. Start the app by running ``` npm start ```
 <br>
-<img width="683" alt="2" src="https://github.com/ashT95/tiaa-app/assets/88211799/60ecfad2-a015-43f3-999e-14c76f0ac0c3">
-<br>
+<img width="683" alt="2" src="https://github.com/ashT95/tiaa-app/assets/88211799/de11b324-aebf-45ac-8328-612ab084e8d5">
+
 <br>
 
 ### How to make changes during runtime: 
@@ -28,8 +29,7 @@ npm install
 - Select the window including the animations you want to make changes to by clicking anywhere inside the window.
 - Animations are labeled in a sequence of 1-5 (left to right, top to down- as shown in the picture).
   <br>
-  
-  <img width="1320" alt="3" src="https://github.com/ashT95/tiaa-app/assets/88211799/40008857-b277-4a1e-984b-1d1418d6078c">
+  <img width="1320" alt="3" src="https://github.com/ashT95/tiaa-app/assets/88211799/d1c1f599-eb81-4a1e-a016-3d7abf817fa0">
 
 - By default, the first animation is selected. To switch to the next animation, use ``` Tab ``` 
 - To re-position the selected animation, move it around with arrow keys ``` ↑ ↓ → ← ``` until it's at the desired position.
@@ -51,15 +51,27 @@ npm install
     - Try running just the camera feed by navigating to ``` cd OAKscripts/roi ``` and running ``` python roidata2.py``` 
 3. If you're having trouble with re-positioning the animations, you can go to the tiaa-app folder and look for the config JSON files, namely config and camConfig. 
 <br>
-<img width="748" alt="4" src="https://github.com/ashT95/tiaa-app/assets/88211799/7855cf88-7b60-40ef-906d-3ae51305ebaa">
+
+<img width="748" alt="4" src="https://github.com/ashT95/tiaa-app/assets/88211799/66187006-3b22-4221-90d0-2d5609d6b5cb">
 
 <br>
 config.json contains the positions (in pixels) for all the animations. <br>
 camConfig.json contains the tracking ROI box positions for the camera.
 <br>
 
+
+
 To open camConfig.json, right click on the file and select Open With -> Notepad <br>
-<img width="556" alt="8" src="https://github.com/ashT95/tiaa-app/assets/88211799/48fbde79-ffd6-4daf-b7b8-be7fca79c683">
+
+<img width="556" alt="8" src="https://github.com/ashT95/tiaa-app/assets/88211799/e794bfe6-5fdb-4ff9-bdfc-b702a84ee343">
+
+<br>
+
+The file would look like this: 
+
+<br>
+
+<img width="372" alt="9" src="https://github.com/ashT95/tiaa-app/assets/88211799/8a677b86-e38f-465b-9df4-e11a913a38ba">
 
 
 Reset camComfig to default values. Copy and paste the following in camConfig.json:
@@ -148,8 +160,7 @@ You can also reset config.json to default by opening config.json using the afore
 Ideally, when you look at the depth feed of all the cameras, you should see two rows of white boxes meshed together like this: 
 <br>
 
-<img width="480" alt="10" src="https://github.com/ashT95/tiaa-app/assets/88211799/6b9dd2cb-4875-49ad-b9f1-ee0f05483644">
-
+<img width="480" alt="10" src="https://github.com/ashT95/tiaa-app/assets/88211799/44440342-0d78-4f5d-96c4-d38d001d4836">
 
 
 
