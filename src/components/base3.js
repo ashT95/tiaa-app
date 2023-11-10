@@ -38,10 +38,11 @@ export default function Base3() {
 	const [empoweringAbilities, setEmpoweringAbilities] = useState(false);
 	const [girlsInTech, setGirlsInTech] = useState(false);
 	const [retiringInequality, setRetiringInequality] = useState(false);
-	const [loop0, setLoop0] = useState(true);
+	const [loop0, setLoop0] = useState(false);
 	const [loop1, setLoop1] = useState(false);
 	const [wipe0, setWipe0] = useState(false);
 	const [wipe1, setWipe1] = useState(false);
+	const [ceo, setCeo] = useState(false);
 
 	const [rocket, setRocket] = useState(false);
 
@@ -52,7 +53,6 @@ export default function Base3() {
 	const [presence5, setPresence5] = useState(false);
 
 	let data = require("../../config.json");
-	let camData = require("../../camConfig.json");
 
 	const [l1, setL1] = useState(Number(data["Wall3Animation1"]["left"]));
 	const [l2, setL2] = useState(Number(data["Wall3Animation2"]["left"]));
@@ -67,25 +67,18 @@ export default function Base3() {
 	const [t5, setT5] = useState(Number(data["Wall3Animation5"]["top"]));
 
 	const defaultVals = [55, 277, 477, 19, 554, 311, 1038, 20, 1116, 336];
-	const defaultCamVals = [0.12, 0.32, 0.49, 0.56];
 
 	const [count, setCount] = useState(1);
 	const [showBg, setShowBg] = useState(false);
 
 	const videoRefs = useRef([]);
 
-	const [anim3topLeft, setAnim3topLeft] = useState(
-		Number(camData["anim_topLeft3_y"].replace(/[^0-9\.]+/g, ""))
-	);
-	const [anim3bottomRight, setAnim3bottomRight] = useState(
-		Number(camData["anim_bottomRight3_y"].replace(/[^0-9\.]+/g, ""))
-	);
-	
 	const [audioOutput, setAudioOutput] = useState(null);
 
 	window.ipcRender.receive("main-to-render", (result) => {
 		//getting coordinates of users' hands
 		handleInteraction(result);
+
 	});
 
 	const getAudioDevs = async () => {
@@ -94,10 +87,9 @@ export default function Base3() {
 			.then((devices) => {
 				devices.forEach((device) => {
 					// console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-					if (device.deviceId == 'e5c10d868b2c6b3118ff27f9b9ad7e1c34ad2e524692088b2e15ee3d455ba4c2') {
+					if (device.deviceId == 'a39e5f3114a84192b2e26b497fd460f96fb65ae093b675a8597f0713b0447d56') {
 						setAudioOutput(device.deviceId);
-						console.log(audioOutput);
-						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d
+						// console.log(audioOutput);
 					}
 				});
 			})
@@ -116,7 +108,7 @@ export default function Base3() {
 		videoRefs.current[14].volume = 0;
 
 		if (presence1) {
-			!wipe1 && !wipe0 ? videoRefs.current[10].play() : null;
+			videoRefs.current[10].play()
 		}
 		if (presence2) {
 			!girlsInTech ? videoRefs.current[11].play() : null;
@@ -131,20 +123,6 @@ export default function Base3() {
 			!retiringInequality ? videoRefs.current[14].play() : null;
 		}
 
-		if (wipe0) {
-			setPresence1(false);
-			videoRefs.current[5].play();
-		}
-		if (loop1) {
-			videoRefs.current[6].play();
-		}
-		if (loop0) {
-			videoRefs.current[7].play();
-		}
-		if (wipe1) {
-			setPresence1(false);
-			videoRefs.current[8].play();
-		}
 
 		if (girlsInTech) {
 			setPresence2(false);
@@ -196,11 +174,7 @@ export default function Base3() {
 		empoweringAbilities,
 		girlsInTech,
 		retiringInequality,
-		loop0,
-		loop1,
-		wipe0,
-		wipe1,
-		rocket,
+		rocket
 	]);
 
 	useEffect(() => {
@@ -209,9 +183,39 @@ export default function Base3() {
 			videoRefs.current[2].setSinkId(audioOutput);
 			videoRefs.current[3].setSinkId(audioOutput);
 			videoRefs.current[4].setSinkId(audioOutput);
-			videoRefs.current[5].setSinkId(audioOutput);
+			if (ceo) {
+				videoRefs.current[5].setSinkId(audioOutput)
+			}
+			if (!ceo) {
+				videoRefs.current[8].setSinkId(audioOutput)
+			}
+
 		}
-	}, [audioOutput]);
+	}, [audioOutput, ceo]);
+
+	const [counter, setCounter] = useState(0);
+	const [canChange, setCanChange] = useState(true);
+
+	useEffect(() => {
+		let interval;
+
+		if (!canChange) {
+			if (counter < 4) {
+				setPresence1(false)
+				interval = setInterval(() => {
+					setCounter((counter) => counter + 1)
+				}, 1000);
+			} else if (counter >= 4) {
+				setPresence1(true)
+				setCounter(0)
+				setCanChange(true)
+			}
+		}
+
+
+		return () => { clearInterval(interval) }
+
+	}, [counter, canChange, presence1])
 
 	function handleInteraction(name) {
 		switch (name) {
@@ -237,28 +241,14 @@ export default function Base3() {
 			}
 
 			case "play10": {
-				setPresence1(false);
-				if (loop0) {
-					//loop 0
-					setLoop0(false);
-					setWipe0(true);
-				} else if (loop1) {
-					// loop 1
-					setLoop1(false);
-					setWipe1(true);
+				setPresence1(false)
+				if (canChange) {
+					setCeo(!ceo)
+					setCanChange(false)
 				}
-				break;
+				break
 			}
-			case "play111": {
-				setWipe0(false);
-				setLoop1(true);
 
-				break;
-			}
-			case "play112": {
-				setWipe1(false);
-				setLoop0(true);
-			}
 			case "play11": {
 				setPresence2(false);
 				setGirlsInTech(true);
@@ -282,6 +272,8 @@ export default function Base3() {
 			}
 		}
 	}
+
+
 
 	window.addEventListener(
 		"keydown",
@@ -458,40 +450,6 @@ export default function Base3() {
 					]);
 					break;
 				}
-				case "w": {
-					let temp1 = anim3topLeft - 0.01;
-					let temp2 = anim3bottomRight - 0.01;
-					setAnim3topLeft(temp1);
-					setAnim3bottomRight(temp2);
-					window.ipcRender.send("render-to-main", [
-						"cam3",
-						anim3topLeft,
-						anim3bottomRight,
-					]);
-					break;
-				}
-				case "s": {
-					let temp1 = anim3topLeft + 0.01;
-					let temp2 = anim3bottomRight + 0.01;
-					setAnim3topLeft(temp1);
-					setAnim3bottomRight(temp2);
-					window.ipcRender.send("render-to-main", [
-						"cam3",
-						anim3topLeft,
-						anim3bottomRight,
-					]);
-					break;
-				}
-				case "8": {
-					setAnim3topLeft(defaultCamVals[2]);
-					setAnim3bottomRight(defaultCamVals[3]);
-					window.ipcRender.send("render-to-main", [
-						"cam3",
-						anim3topLeft,
-						anim3bottomRight,
-					]);
-					break;
-				}
 			}
 		},
 		{ once: true }
@@ -590,11 +548,11 @@ export default function Base3() {
 						preload="auto"
 						autoPlay
 						loop
-						onMouseEnter={() => setPresence2(true)}
+						// onMouseEnter={() => setPresence2(true)}
 						style={{
 							transform: `translate(${l2}px, ${t2}px)`,
 						}}
-						onClick={() => handleInteraction("play11")}
+					// onClick={() => handleInteraction("play11")}
 					/>
 					<video
 						src={girlsInTech1}
@@ -618,7 +576,8 @@ export default function Base3() {
 						autoPlay
 						loop
 						hidden={financialLiteracy ? true : false}
-						onMouseEnter={() => setPresence4(true)}
+
+						// onMouseEnter={() => setPresence4(true)}
 						style={{
 							transform: `translate(${l4}px, ${t4}px)`,
 						}}
@@ -645,7 +604,7 @@ export default function Base3() {
 						autoPlay
 						loop
 						hidden={empoweringAbilities ? true : false}
-						onMouseEnter={() => setPresence3(true)}
+						// onMouseEnter={() => setPresence3(true)}
 						style={{
 							transform: `translate(${l3}px, ${t3}px)`,
 						}}
@@ -675,70 +634,103 @@ export default function Base3() {
 							transform: `translate(${l1}px, ${t1}px)`,
 						}}
 					/>
-					<video
-						src={ceoLoop0}
-						key={ceoLoop0}
-						id={"groundbreakingCEOs"}
-						preload="auto"
-						autoPlay={false}
-						loop
-						ref={(el) => (videoRefs.current[7] = el)}
-						hidden={loop0 ? false : true}
-						onMouseEnter={() => setPresence1(true)}
-						onClick={() => handleInteraction("play10")}
-						style={{
-							transform: `translate(${l1}px, ${t1}px)`,
-						}}
-					/>
-					<video
-						src={ceoWipe0}
-						key={ceoWipe0}
-						id={"groundbreakingCEOs"}
-						preload="auto"
-						autoPlay={false}
-						loop={false}
-						ref={(el) => (videoRefs.current[5] = el)}
-						hidden={wipe0 ? false : true}
-						onEnded={() => handleInteraction("play111")}
-						style={{
-							transform: `translate(${l1}px, ${t1}px)`,
-						}}
-					/>
-					<video
-						src={ceoLoop1}
-						key={ceoLoop1}
-						id={"groundbreakingCEOs"}
-						preload="auto"
-						autoPlay={false}
-						loop
-						ref={(el) => (videoRefs.current[6] = el)}
-						hidden={loop1 ? false : true}
-						onMouseEnter={() => setPresence1(true)}
-						onClick={() => handleInteraction("play10")}
-						style={{
-							transform: `translate(${l1}px, ${t1}px)`,
-						}}
-					/>
-					<video
-						src={ceoWipe1}
-						key={ceoWipe1}
-						id={"groundbreakingCEOs"}
-						preload="auto"
-						autoPlay={false}
-						loop={false}
-						ref={(el) => (videoRefs.current[8] = el)}
-						hidden={wipe1 ? false : true}
-						onEnded={() => handleInteraction("play112")}
-						style={{
-							transform: `translate(${l1}px, ${t1}px)`,
-						}}
-					/>
+					{ceo && (
+						<div style={{
+							opacity: `${ceo ? 1 : 0}`,
+							transition: "opacity, 2s ease-in-out"
+						}}>
+							<video
+								src={ceoWipe0}
+								key={ceoWipe0}
+								id={"groundbreakingCEOs"}
+								preload="auto"
+								autoPlay
+								loop={false}
+								// onEnded={() => setLoop1(true)}
+								// hidden={ceo && !loop1 ? false : true}
+								onClick={() => handleInteraction("play10")}
+								ref={(el) => (videoRefs.current[5] = el)}
+								onEnded={() => {
+									videoRefs.current[5].pause()
+									videoRefs.current[5].currentTime = 0
+									videoRefs.current[5].hidden = true
+									videoRefs.current[7].hidden = false
+								}}
+								style={{
+									transform: `translate(${l1}px, ${t1}px)`,
+									// opacity: `${ceo ? 1 : 0}`,
+									// transition: "opacity, 1s ease-in-out"
+								}}
+							/>
+							<video
+								src={ceoLoop1}
+								key={ceoLoop1}
+								id={"groundbreakingCEOs"}
+								preload="auto"
+								autoPlay
+								loop
+								ref={(el) => (videoRefs.current[7] = el)}
+								hidden={true}
+								style={{
+									transform: `translate(${l1}px, ${t1}px)`,
+								}}
+							/>
+
+
+						</div>
+					)}
+					{!ceo && (
+						<div style={{
+							opacity: `${!ceo ? 1 : 0}`,
+							transition: "opacity, 2s ease-in-out"
+						}}>
+							<video
+								src={ceoWipe1}
+								key={ceoWipe1}
+								id={"groundbreakingCEOs"}
+								preload="auto"
+								autoPlay
+								loop={false}
+								ref={(el) => (videoRefs.current[8] = el)}
+								onEnded={() => {
+									videoRefs.current[8].pause()
+									videoRefs.current[8].currentTime = 0
+									videoRefs.current[8].hidden = true
+									videoRefs.current[6].hidden = false
+								}}
+								onClick={() => handleInteraction("play10")}
+								style={{
+									transform: `translate(${l1}px, ${t1}px)`,
+									// opacity: `${!ceo ? 1 : 0}`,
+									// transition: "opacity, 1s ease-in-out"
+								}}
+							/>
+							<video
+								src={ceoLoop0}
+								key={ceoLoop0}
+								id={"groundbreakingCEOs"}
+								preload="auto"
+								autoPlay
+								loop
+
+								ref={(el) => (videoRefs.current[6] = el)}
+								hidden={true}
+
+								style={{
+									transform: `translate(${l1}px, ${t1}px)`,
+								}}
+							/>
+
+						</div>
+					)}
+
+			
 					<video
 						src={retiringInequalityLoop1}
 						key={retiringInequalityLoop1}
 						id={"retiringInequality"}
 						preload="auto"
-						autoPlay
+						autoPlay={false}
 						loop
 						style={{
 							transform: `translate(${l5}px, ${t5}px)`,
@@ -763,7 +755,7 @@ export default function Base3() {
 						autoPlay
 						loop
 						hidden={retiringInequality ? true : false}
-						onMouseEnter={() => setPresence5(true)}
+						// onMouseEnter={() => setPresence5(true)}
 						style={{
 							transform: `translate(${l5}px, ${t5}px)`,
 						}}

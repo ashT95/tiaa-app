@@ -59,9 +59,10 @@
 }
 
 #check {
-	width: 672px;
-	height: 672px;
-	transform: translate(658px, 513px);
+	width: 692px;
+	height: 692px;
+	transform: translate(658px, 513px) ;
+	rotate: -0.75deg;
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -121,6 +122,7 @@
 #canyonBird {
 	width: 1920px;
 	height: 1200px;
+	transform: translate(40px, -10px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -148,6 +150,7 @@
 #ratedHighest {
 	width: 672px;
 	height: 672px;
+	rotate: -0.5deg;
 	transform: translate(602px, 37px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -159,6 +162,7 @@
 #butterfly {
 	width: 1920px;
 	height: 1200px;
+	transform: translate(35px, 33px);
 	position: absolute;
 	mix-blend-mode: screen;
 	visibility: visible;
@@ -168,8 +172,8 @@
 
 
 #foundedOnPrinciple {
-	width: 672px;
-	height: 672px;
+	width: 682px;
+	height: 682px;
 	transform: translate(74px, 233px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -189,8 +193,8 @@
 }
 
 #conserving {
-	width: 672px;
-	height: 672px;
+	width: 684px;
+	height: 684px;
 	transform: translate(265px, 135px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -219,8 +223,8 @@
 }
 
 #empoweringAbilities {
-	width: 672px;
-	height: 672px;
+	width: 700px;
+	height: 700px;
 	transform: translate(554px, 311px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -229,8 +233,8 @@
 }
 
 #financialLiteracy {
-	width: 672px;
-	height: 672px;
+	width: 708px;
+	height: 708px;
 	transform: translate(1038px, 20px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -239,8 +243,8 @@
 }
 
 #ceoGlowLoop {
-	width: 672px;
-	height: 672px;
+	width: 700px;
+	height: 700px;
 	transform: translate(55px, 277px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -250,8 +254,8 @@
 }
 
 #groundbreakingCEOs {
-	width: 672px;
-	height: 672px;
+	width: 700px;
+	height: 700px;
 	transform: translate(55px, 277px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -272,8 +276,8 @@
 }
 
 #retiringInequality {
-	width: 672px;
-	height: 672px;
+	width: 692px;
+	height: 692px;
 	transform: translate(1116px, 336px);
 	position: absolute;
 	mix-blend-mode: screen;
@@ -409,7 +413,7 @@
 }
 
 #titleAnimation {
-	transform: translate(1260px, 52px);
+	transform: translate(1263px, 52px);
 	position: absolute;
 	mix-blend-mode: screen;
 }

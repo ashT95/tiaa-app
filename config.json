@@ -1,58 +1,58 @@
 {
   "Wall1Animation1": {
     "left": "74",
-    "top": "233"
+    "top": "265"
   },
   "Wall1Animation2": {
-    "left": "602",
-    "top": "37"
+    "left": "618",
+    "top": "84"
   },
   "Wall1Animation3": {
-    "left": "658",
-    "top": "513"
+    "left": "662",
+    "top": "562"
   },
   "Wall1Animation4": {
-    "left": "1066",
-    "top": "86"
+    "left": "1098",
+    "top": "112"
   },
   "Wall1Animation5": {
-    "left": "1224",
-    "top": "435"
+    "left": "1270",
+    "top": "484"
   },
   "Wall2Animation1": {
-    "left": "265",
-    "top": "135"
+    "left": "254",
+    "top": "128"
   },
   "Wall2Animation2": {
     "left": "663",
-    "top": "483"
+    "top": "487"
   },
   "Wall2Animation3": {
-    "left": "825",
-    "top": "39"
+    "left": "829",
+    "top": "38"
   },
   "Wall2Animation4": {
     "left": "1128",
-    "top": "401"
+    "top": "409"
   },
   "Wall3Animation1": {
-    "left": "55",
-    "top": "277"
+    "left": "29",
+    "top": "267"
   },
   "Wall3Animation2": {
-    "left": "477",
-    "top": "19"
+    "left": "479",
+    "top": "8"
   },
   "Wall3Animation3": {
-    "left": "554",
-    "top": "311"
+    "left": "546",
+    "top": "301"
   },
   "Wall3Animation4": {
-    "left": "1038",
-    "top": "20"
+    "left": "1042",
+    "top": "-11"
   },
   "Wall3Animation5": {
-    "left": "1116",
-    "top": "336"
+    "left": "1141",
+    "top": "331"
   }
 }

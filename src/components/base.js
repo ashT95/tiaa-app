@@ -45,7 +45,6 @@ export default function Base() {
 	const [audioOutput, setAudioOutput] = useState(null);
 
 	let data = require("../../config.json");
-	let camData = require("../../camConfig.json");
 
 	const [l1, setL1] = useState(Number(data["Wall1Animation1"]["left"]));
 	const [l2, setL2] = useState(Number(data["Wall1Animation2"]["left"]));
@@ -59,21 +58,13 @@ export default function Base() {
 	const [t4, setT4] = useState(Number(data["Wall1Animation4"]["top"]));
 	const [t5, setT5] = useState(Number(data["Wall1Animation5"]["top"]));
 
-
-	const [anim1topLeft, setAnim1topLeft] = useState(
-		Number(camData["anim_topLeft1_y"].replace(/[^0-9\.]+/g, ""))
-	);
-	const [anim1bottomRight, setAnim1bottomRight] = useState(
-		Number(camData["anim_bottomRight1_y"].replace(/[^0-9\.]+/g, ""))
-	);
-
 	const defaultVals = [74, 233, 602, 37, 658, 513, 1066, 86, 1224, 435];
-	const defaultCamVals = [0.12, 0.32, 0.49, 0.56];
 
 	const [count, setCount] = useState(1);
 	const [showBg, setShowBg] = useState(false);
 
 	const videoRefs = useRef([]);
+
 
 	const getAudioDevs = async () => {
 		await navigator.mediaDevices
@@ -81,10 +72,9 @@ export default function Base() {
 			.then((devices) => {
 				devices.forEach((device) => {
 					console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-					if (device.deviceId == '5276c24f4eb9a6b8e6d406d2bb61928755123a4b3c5ba606ea317efe0921b05a') {
+					if (device.deviceId == 'a15bbc7916953a7502641cd41c7e6aa210a9ba8190a92cd98fb440d5d9f13d7a') {
 						setAudioOutput(device.deviceId);
-						console.log(audioOutput);
-						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d
+						// console.log(audioOutput);
 					}
 				});
 			})
@@ -421,40 +411,7 @@ export default function Base() {
 					]);
 					break;
 				}
-				case "w": {
-					let temp1 = anim1topLeft - 0.01;
-					let temp2 = anim1bottomRight - 0.01;
-					setAnim1topLeft(temp1);
-					setAnim1bottomRight(temp2);
-					window.ipcRender.send("render-to-main", [
-						"cam1",
-						anim1topLeft,
-						anim1bottomRight,
-					]);
-					break;
-				}
-				case "s": {
-					let temp1 = anim1topLeft + 0.01;
-					let temp2 = anim1bottomRight + 0.01;
-					setAnim1topLeft(temp1);
-					setAnim1bottomRight(temp2);
-					window.ipcRender.send("render-to-main", [
-						"cam1",
-						anim1topLeft,
-						anim1bottomRight,
-					]);
-					break;
-				}
-				case "8": {
-					setAnim1topLeft(defaultCamVals[2]);
-					setAnim1bottomRight(defaultCamVals[3]);
-					window.ipcRender.send("render-to-main", [
-						"cam1",
-						anim1topLeft,
-						anim1bottomRight,
-					]);
-					break;
-				}
+				
 			}
 		},
 		{ once: true }
@@ -537,8 +494,8 @@ export default function Base() {
 						autoPlay
 						loop
 						hidden={foundedOnPrinciple ? true : false}
-						onMouseEnter={() => setPresence1(true)}
-						onClick={() => handleInteraction("play1")}
+						// onMouseEnter={() => setPresence1(true)}
+						// onClick={() => handleInteraction("play1")}
 						style={{
 							transform: `translate(${l1}px, ${t1}px)`,
 						}}
@@ -566,8 +523,8 @@ export default function Base() {
 						autoPlay
 						loop
 						hidden={notJustForTeachers ? true : false}
-						onMouseEnter={() => setPresence4(true)}
-						onClick={() => handleInteraction("play4")}
+						// onMouseEnter={() => setPresence4(true)}
+						// onClick={() => handleInteraction("play4")}
 						style={{
 							transform: `translate(${l4}px, ${t4}px)`,
 						}}
@@ -594,8 +551,8 @@ export default function Base() {
 						autoPlay
 						loop
 						hidden={ratedHighest ? true : false}
-						onMouseEnter={() => setPresence2(true)}
-						onClick={() => handleInteraction("play2")}
+						// onMouseEnter={() => setPresence2(true)}
+						// onClick={() => handleInteraction("play2")}
 						style={{
 							transform: `translate(${l2}px, ${t2}px)`,
 						}}
@@ -623,8 +580,8 @@ export default function Base() {
 						autoPlay
 						loop
 						hidden={mission ? true : false}
-						onMouseEnter={() => setPresence5(true)}
-						onClick={() => handleInteraction("play5")}
+						// onMouseEnter={() => setPresence5(true)}
+						// onClick={() => handleInteraction("play5")}
 						style={{
 							transform: `translate(${l5}px, ${t5}px)`,
 						}}
@@ -652,8 +609,8 @@ export default function Base() {
 						autoPlay
 						loop
 						hidden={check ? true : false}
-						onMouseEnter={() => setPresence3(true)}
-						onClick={() => handleInteraction("play3")}
+						// onMouseEnter={() => setPresence3(true)}
+						// onClick={() => handleInteraction("play3")}
 						style={{
 							transform: `translate(${l3}px, ${t3}px)`,
 						}}

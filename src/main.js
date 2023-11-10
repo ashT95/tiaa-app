@@ -19,9 +19,9 @@ const file2 = require("../camConfig.json");
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		// x: 1920 + 1920,
+		x: 0,
 		y: 0,
-		// frame: false,
+		frame: false,
 		show: false,
 		autoHideMenuBar: true,
 		webPreferences: {
@@ -30,9 +30,9 @@ const createWindow = () => {
 	});
 
 	mainWindow2 = new BrowserWindow({
-		// x: 1920 + 1920,
+		x: 1920,
 		y: 0,
-		// frame: false,
+		frame: false,
 		show: false,
 		autoHideMenuBar: true,
 		webPreferences: {
@@ -41,9 +41,9 @@ const createWindow = () => {
 	});
 
 	mainWindow3 = new BrowserWindow({
-		// x: 1920 + 1920,
+		x: 1920 + 1920,
 		y: 0,
-		// frame: false,
+		frame: false,
 		show: false,
 		autoHideMenuBar: true,
 		webPreferences: {
@@ -86,7 +86,7 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-	// mainWindow.setFullScreen(true);
+	mainWindow.setFullScreen(true);
 
 	mainWindow2.once("ready-to-show", () => {
 		mainWindow2.show();
@@ -95,6 +95,8 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow2.loadURL(MAIN_WINDOW2_WEBPACK_ENTRY);
+	mainWindow2.setFullScreen(true);
+	
 
 	mainWindow3.once("ready-to-show", () => {
 		mainWindow3.show();
@@ -103,6 +105,7 @@ const createWindow = () => {
 
 	// and load the index.html of the app.
 	mainWindow3.loadURL(MAIN_WINDOW3_WEBPACK_ENTRY);
+	mainWindow3.setFullScreen(true);
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools();

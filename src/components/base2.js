@@ -50,15 +50,7 @@ export default function Base2() {
 	const [t3, setT3] = useState(Number(data["Wall2Animation3"]["top"]));
 	const [t4, setT4] = useState(Number(data["Wall2Animation4"]["top"]));
 
-	const [anim2topLeft, setAnim2topLeft] = useState(
-		Number(camData["anim_topLeft2_y"].replace(/[^0-9\.]+/g, ""))
-	);
-	const [anim2bottomRight, setAnim2bottomRight] = useState(
-		Number(camData["anim_bottomRight2_y"].replace(/[^0-9\.]+/g, ""))
-	);
-
 	const defaultVals = [265, 135, 663, 483, 825, 39, 1128, 401];
-	const defaultCamVals = [0.12, 0.32, 0.49, 0.56];
 
 	const [count, setCount] = useState(1);
 	const [showBg, setShowBg] = useState(false);
@@ -71,10 +63,9 @@ export default function Base2() {
 			.then((devices) => {
 				devices.forEach((device) => {
 					// console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-					if (device.deviceId == '8ce06869c5d454244c3ed5f627c1f7fabb708e0dacf890c0ddcb1419494a80fe') {
+					if (device.deviceId == '8f1b91eb5ddbb44b983a3bd96fb6f95271415052a295cb952676075c7965f80f') {
 						setAudioOutput(device.deviceId);
-						console.log(audioOutput);
-						// 7144f4561d79cbeb7758d8c8233f00577e4d9d2132689a380399285f248ebe6d
+						// console.log(audioOutput);
 					}
 				});
 			})
@@ -357,40 +348,6 @@ export default function Base2() {
 					]);
 					break;
 				}
-				case "w": {
-					let temp1 = anim2topLeft - 0.01;
-					let temp2 = anim2bottomRight - 0.01;
-					setAnim2topLeft(temp1);
-					setAnim2bottomRight(temp2);
-					window.ipcRender.send("render-to-main", [
-						"cam2",
-						anim2topLeft,
-						anim2bottomRight,
-					]);
-					break;
-				}
-				case "s": {
-					let temp1 = anim2topLeft + 0.01;
-					let temp2 = anim2bottomRight + 0.01;
-					setAnim2topLeft(temp1);
-					setAnim2bottomRight(temp2);
-					window.ipcRender.send("render-to-main", [
-						"cam2",
-						anim2topLeft,
-						anim2bottomRight,
-					]);
-					break;
-				}
-				case "8": {
-					setAnim2topLeft(defaultCamVals[2]);
-					setAnim2bottomRight(defaultCamVals[3]);
-					window.ipcRender.send("render-to-main", [
-						"cam2",
-						anim2topLeft,
-						anim2bottomRight,
-					]);
-					break;
-				}
 			}
 		},
 		{ once: true }
@@ -405,6 +362,31 @@ export default function Base2() {
 			)}
 			{!showBg && (
 				<div>
+					<video
+						src={titleAnimation}
+						key={titleAnimation}
+						id={"titleAnimation"}
+						preload="auto"
+						autoPlay
+						loop
+					/>
+
+					<video
+						src={shootingStar}
+						key={shootingStar}
+						id={"shootingStar"}
+						preload="auto"
+						autoPlay
+						loop
+					/>
+					<video
+						src={bgAnim2}
+						key={bgAnim2}
+						id={"bgAnim2"}
+						preload="auto"
+						autoPlay
+						loop
+					/>
 					<video
 						src={proxVid1}
 						key="proximityLoop21"
@@ -442,31 +424,7 @@ export default function Base2() {
 						hidden={presence4 ? false : true}
 					/>
 
-					<video
-						src={titleAnimation}
-						key={titleAnimation}
-						id={"titleAnimation"}
-						preload="auto"
-						autoPlay
-						loop
-					/>
-
-					<video
-						src={shootingStar}
-						key={shootingStar}
-						id={"shootingStar"}
-						preload="auto"
-						autoPlay
-						loop
-					/>
-					<video
-						src={bgAnim2}
-						key={bgAnim2}
-						id={"bgAnim2"}
-						preload="auto"
-						autoPlay
-						loop
-					/>
+					
 
 					{/* interaction videos */}
 
@@ -478,8 +436,8 @@ export default function Base2() {
 						autoPlay
 						loop
 						hidden={friendship ? true : false}
-						onMouseEnter={() => setPresence2(true)}
-						onClick={() => handleInteraction("play7")}
+						// onMouseEnter={() => setPresence2(true)}
+						// onClick={() => handleInteraction("play7")}
 						style={{
 							transform: `translate(${l2}px, ${t2}px)`,
 						}}
@@ -506,8 +464,8 @@ export default function Base2() {
 						autoPlay
 						loop
 						hidden={responsibleRealEstate ? true : false}
-						onMouseEnter={() => setPresence3(true)}
-						onClick={() => handleInteraction("play8")}
+						// onMouseEnter={() => setPresence3(true)}
+						// onClick={() => handleInteraction("play8")}
 						style={{
 							transform: `translate(${l3}px, ${t3}px)`,
 						}}
@@ -534,8 +492,8 @@ export default function Base2() {
 						autoPlay
 						loop
 						hidden={conserving ? true : false}
-						onMouseEnter={() => setPresence1(true)}
-						onClick={() => handleInteraction("play6")}
+						// onMouseEnter={() => setPresence1(true)}
+						// onClick={() => handleInteraction("play6")}
 						style={{
 							transform: `translate(${l1}px, ${t1}px)`,
 						}}
@@ -562,8 +520,8 @@ export default function Base2() {
 						autoPlay
 						loop
 						hidden={grapeInvestments ? true : false}
-						onMouseEnter={() => setPresence4(true)}
-						onClick={() => handleInteraction("play9")}
+						// onMouseEnter={() => setPresence4(true)}
+						// onClick={() => handleInteraction("play9")}
 						style={{
 							transform: `translate(${l4}px, ${t4}px)`,
 						}}
