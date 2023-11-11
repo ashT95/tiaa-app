@@ -72,7 +72,7 @@ export default function Base() {
 			.then((devices) => {
 				devices.forEach((device) => {
 					console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-					if (device.deviceId == 'a15bbc7916953a7502641cd41c7e6aa210a9ba8190a92cd98fb440d5d9f13d7a') {
+					if (device.label == 'DVS Transmit  1-2 (Dante Virtual Soundcard)') {
 						setAudioOutput(device.deviceId);
 						// console.log(audioOutput);
 					}

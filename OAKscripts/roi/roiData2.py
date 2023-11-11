@@ -68,24 +68,24 @@ def getPipeline():
 
     configList = [] * 28
 
-    prox_topLeft1_y = proxTL1y[0]
-    prox_bottomRight1_y = proxBR1y[0]
+    prox_topLeft1_y = 0.02
+    prox_bottomRight1_y = 0.40
 
-    prox_topLeft2_y = proxTL2y[0]
-    prox_bottomRight2_y = proxBR2y[0]
+    prox_topLeft2_y = 0.02
+    prox_bottomRight2_y = 0.38
 
-    prox_topLeft3_y = proxTL3y[0]
-    prox_bottomRight3_y = proxBR3y[0]
+    prox_topLeft3_y = 0.02
+    prox_bottomRight3_y = 0.40
 
     
-    anim_topLeft1_y = animTL1y[0]
-    anim_bottomRight1_y = animBR1y[0]
+    anim_topLeft1_y = 0.44
+    anim_bottomRight1_y = 0.51
 
-    anim_topLeft2_y = animTL2y[0]
-    anim_bottomRight2_y = animBR2y[0]
+    anim_topLeft2_y = 0.48
+    anim_bottomRight2_y = 0.55
 
-    anim_topLeft3_y = animTL3y[0]
-    anim_bottomRight3_y = animBR3y[0]
+    anim_topLeft3_y = 0.45
+    anim_bottomRight3_y = 0.52
     
 
     # Config
@@ -262,8 +262,8 @@ def getPipeline():
     configList.append(config15)
 
     #real estate
-    topLeft16 = dai.Point2f(0.26, 0.46)
-    bottomRight16 = dai.Point2f(0.42, 0.53)
+    topLeft16 = dai.Point2f(0.26, 0.48)
+    bottomRight16 = dai.Point2f(0.42, 0.55)
 
     config16 = dai.SpatialLocationCalculatorConfigData()
     config16.depthThresholds.lowerThreshold = 1000
@@ -364,8 +364,8 @@ def getPipeline():
     configList.append(config24)
 
     # empowering abilities
-    topLeft25 = dai.Point2f(0.44, anim_topLeft3_y)
-    bottomRight25 = dai.Point2f(0.60, anim_bottomRight3_y)
+    topLeft25 = dai.Point2f(0.44, 0.46)
+    bottomRight25 = dai.Point2f(0.60, 0.53)
 
     config25 = dai.SpatialLocationCalculatorConfigData()
     config25.depthThresholds.lowerThreshold = 1000
@@ -410,54 +410,54 @@ def getPipeline():
 
     return pipeline
 
-line = sys.stdin.readline()
-values = json.loads(line)
+# line = sys.stdin.readline()
+# values = json.loads(line)
 
-proxTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft1_y"])
-proxTL1y = [float(i) for i in proxTL1y_str.split()]
+# proxTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft1_y"])
+# proxTL1y = [float(i) for i in proxTL1y_str.split()]
 
-proxBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight1_y"])
-proxBR1y = [float(i) for i in proxBR1y_str.split()]
+# proxBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight1_y"])
+# proxBR1y = [float(i) for i in proxBR1y_str.split()]
 
-proxTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft2_y"])
-proxTL2y = [float(i) for i in proxTL2y_str.split()]
+# proxTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft2_y"])
+# proxTL2y = [float(i) for i in proxTL2y_str.split()]
 
-proxBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight2_y"])
-proxBR2y = [float(i) for i in proxBR2y_str.split()]
+# proxBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight2_y"])
+# proxBR2y = [float(i) for i in proxBR2y_str.split()]
 
-proxTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft3_y"])
-proxTL3y = [float(i) for i in proxTL3y_str.split()]
+# proxTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft3_y"])
+# proxTL3y = [float(i) for i in proxTL3y_str.split()]
 
-proxBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight3_y"])
-proxBR3y = [float(i) for i in proxBR3y_str.split()]
+# proxBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight3_y"])
+# proxBR3y = [float(i) for i in proxBR3y_str.split()]
 
 
-animTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft1_y"])
-animTL1y = [float(i) for i in animTL1y_str.split()]
+# animTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft1_y"])
+# animTL1y = [float(i) for i in animTL1y_str.split()]
 
-animBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight1_y"])
-animBR1y = [float(i) for i in animBR1y_str.split()]
+# animBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight1_y"])
+# animBR1y = [float(i) for i in animBR1y_str.split()]
 
-animTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft2_y"])
-animTL2y = [float(i) for i in animTL2y_str.split()]
+# animTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft2_y"])
+# animTL2y = [float(i) for i in animTL2y_str.split()]
 
-animBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight2_y"])
-animBR2y = [float(i) for i in animBR2y_str.split()]
+# animBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight2_y"])
+# animBR2y = [float(i) for i in animBR2y_str.split()]
 
-animTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft3_y"])
-animTL3y = [float(i) for i in animTL3y_str.split()]
+# animTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft3_y"])
+# animTL3y = [float(i) for i in animTL3y_str.split()]
 
-animBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight3_y"])
-animBR3y = [float(i) for i in animBR3y_str.split()]
+# animBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight3_y"])
+# animBR3y = [float(i) for i in animBR3y_str.split()]
 
-if (values):
-    pipeline = getPipeline()
+# if (values):
+pipeline = getPipeline()
 
 
 with contextlib.ExitStack() as stack:
 
     ips = ["1844301081158F0F00", "18443010C10C580F00","18443010010F8F0F00"]
-    
+    # ips = ["192.168.71.203", "192.168.71.201", "192.168.71.202"]
 
     devices = {}
     device_infos = [] 
@@ -693,13 +693,13 @@ with contextlib.ExitStack() as stack:
                         print("play7")
 
                 # real estate
-                if (int(spatialData[16].spatialCoordinates.z) >= 1500 and int(spatialData[16].spatialCoordinates.z) < 2700):
+                if (int(spatialData[16].spatialCoordinates.z) >= 1000 and int(spatialData[16].spatialCoordinates.z) < 2600):
                     total = 0
                     temp = int(spatialData[16].spatialCoordinates.z)
                     for i in range(10):
                         total += temp 
                     avg = total / 10
-                    if (avg >= 1500 and avg < 2700):
+                    if (avg >= 1000 and avg < 2600):
                         print("play8")
                 
                 # grape investments
@@ -787,13 +787,13 @@ with contextlib.ExitStack() as stack:
                         print("play11")
                 
                 # empoweing abilities
-                if (int(spatialData[25].spatialCoordinates.z) >= 2400 and int(spatialData[25].spatialCoordinates.z) < 2900):
+                if (int(spatialData[25].spatialCoordinates.z) >= 2000 and int(spatialData[25].spatialCoordinates.z) < 2600):
                     total = 0
                     temp = int(spatialData[25].spatialCoordinates.z)
                     for i in range(10):
                         total += temp 
                     avg = total / 10
-                    if (avg >= 2400 and avg < 2900):
+                    if (avg >= 2000 and avg < 2600):
                         print("play12")
                 
                 # financial literacy
