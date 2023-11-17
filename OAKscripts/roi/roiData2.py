@@ -5,6 +5,7 @@ import sys
 import depthai as dai
 import contextlib
 import json
+import threading
 
 
 stepSize = 0.01
@@ -16,7 +17,18 @@ def getPipeline():
     # Create pipeline
     pipeline = dai.Pipeline()
 
-    # Define sources and outputs
+    # Rgb cam properties
+    # camRgb = pipeline.create(dai.node.ColorCamera)
+    # xoutRgb = pipeline.create(dai.node.XLinkOut)
+
+    # xoutRgb.setStreamName("rgb")
+  
+    # camRgb.setPreviewSize(1920, 1080)
+    # camRgb.setInterleaved(False)
+    # camRgb.setColorOrder(dai.ColorCameraProperties.ColorOrder.RGB)
+
+    # camRgb.video.link(xoutRgb.input)  
+
     monoLeft = pipeline.create(dai.node.MonoCamera)
     monoRight = pipeline.create(dai.node.MonoCamera)
     stereo = pipeline.create(dai.node.StereoDepth)
@@ -42,20 +54,17 @@ def getPipeline():
     stereo.setDefaultProfilePreset(dai.node.StereoDepth.PresetMode.HIGH_DENSITY)
     stereo.setLeftRightCheck(lrcheck)
 
-    camConfig = dai.Device.Config()
-    camConfig.board.network.mtu = 9000 # Jumbo frames. Default 1500
-    camConfig.board.network.xlinkTcpNoDelay = False # Default True
-    camConfig.board.sysctl.append("net.inet.tcp.delayed_ack=1") # configure sysctl settings. 0 by default.
+    # camConfig = dai.Device.Config()
+    # camConfig.board.network.mtu = 9000 # Jumbo frames. Default 1500
+    # camConfig.board.network.xlinkTcpNoDelay = False # Default True
+    # camConfig.board.sysctl.append("net.inet.tcp.delayed_ack=1") # configure sysctl settings. 0 by default.
 
-    monoLeft.setIsp3aFps(5)
-    monoRight.setIsp3aFps(5)
+    monoLeft.setIsp3aFps(30)
+    monoRight.setIsp3aFps(30)
 
-    monoLeft.setFps(10)
-    monoRight.setFps(10)
+    monoLeft.setFps(30)
+    monoRight.setFps(30)
 
-    # f1 = monoLeft.getFps()
-    # f2 = monoRight.getFps()
-    # print(f"{f1} {f2}")
 
     stereoConfig = stereo.initialConfig.get()
     stereoConfig.postProcessing.speckleFilter.enable = True
@@ -81,8 +90,8 @@ def getPipeline():
     anim_topLeft1_y = 0.44
     anim_bottomRight1_y = 0.51
 
-    anim_topLeft2_y = 0.48
-    anim_bottomRight2_y = 0.55
+    anim_topLeft2_y = 0.47
+    anim_bottomRight2_y = 0.54
 
     anim_topLeft3_y = 0.45
     anim_bottomRight3_y = 0.52
@@ -262,8 +271,8 @@ def getPipeline():
     configList.append(config15)
 
     #real estate
-    topLeft16 = dai.Point2f(0.26, 0.48)
-    bottomRight16 = dai.Point2f(0.42, 0.55)
+    topLeft16 = dai.Point2f(0.26, 0.46)
+    bottomRight16 = dai.Point2f(0.42, 0.53)
 
     config16 = dai.SpatialLocationCalculatorConfigData()
     config16.depthThresholds.lowerThreshold = 1000
@@ -273,8 +282,8 @@ def getPipeline():
     configList.append(config16)
 
     # grape investments
-    topLeft17 = dai.Point2f(0.16, 0.46)
-    bottomRight17 = dai.Point2f(0.32, 0.53)
+    topLeft17 = dai.Point2f(0.16, 0.45)
+    bottomRight17 = dai.Point2f(0.32, 0.52)
 
     config17 = dai.SpatialLocationCalculatorConfigData()
     config17.depthThresholds.lowerThreshold = 1000
@@ -410,47 +419,7 @@ def getPipeline():
 
     return pipeline
 
-# line = sys.stdin.readline()
-# values = json.loads(line)
 
-# proxTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft1_y"])
-# proxTL1y = [float(i) for i in proxTL1y_str.split()]
-
-# proxBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight1_y"])
-# proxBR1y = [float(i) for i in proxBR1y_str.split()]
-
-# proxTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft2_y"])
-# proxTL2y = [float(i) for i in proxTL2y_str.split()]
-
-# proxBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight2_y"])
-# proxBR2y = [float(i) for i in proxBR2y_str.split()]
-
-# proxTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_topLeft3_y"])
-# proxTL3y = [float(i) for i in proxTL3y_str.split()]
-
-# proxBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["prox_bottomRight3_y"])
-# proxBR3y = [float(i) for i in proxBR3y_str.split()]
-
-
-# animTL1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft1_y"])
-# animTL1y = [float(i) for i in animTL1y_str.split()]
-
-# animBR1y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight1_y"])
-# animBR1y = [float(i) for i in animBR1y_str.split()]
-
-# animTL2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft2_y"])
-# animTL2y = [float(i) for i in animTL2y_str.split()]
-
-# animBR2y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight2_y"])
-# animBR2y = [float(i) for i in animBR2y_str.split()]
-
-# animTL3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_topLeft3_y"])
-# animTL3y = [float(i) for i in animTL3y_str.split()]
-
-# animBR3y_str = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in values["anim_bottomRight3_y"])
-# animBR3y = [float(i) for i in animBR3y_str.split()]
-
-# if (values):
 pipeline = getPipeline()
 
 
@@ -465,12 +434,6 @@ with contextlib.ExitStack() as stack:
     device_infos.append(dai.DeviceInfo(ips[0]))
     device_infos.append(dai.DeviceInfo(ips[1]))
     device_infos.append(dai.DeviceInfo(ips[2]))
-
-    # device_infos.append(dai.DeviceInfo("18443010010F8F0F00"))
-    # device_infos.append(dai.DeviceInfo("18443010C10C580F00"))
-    # device_infos.append(dai.DeviceInfo("1844301081158F0F00"))
-
-    # print(device_infos[0])
 
     for device_info in device_infos:
        
@@ -499,20 +462,25 @@ with contextlib.ExitStack() as stack:
         devices[mxid] = {
             'depth': device.getOutputQueue(name="depth", maxSize=4, blocking=False),
             'spatialData': device.getOutputQueue(name="spatialData", maxSize=4, blocking=False),
+            # 'rgb': device.getOutputQueue(name="rgb", maxSize=4, blocking=False),
             'spatialCalcConfig': device.getInputQueue("spatialCalcConfig")
             }
 
         color = (255, 255, 255)
         color2 = (0, 0, 255)
 
+
+
     while True:
         for mxid, q in devices.items():
-            # if (mxid == "1844301081158F0F00"):
+            # inRgb = q["rgb"].get()
             depth = q['depth'].get()
             depthFrame = depth.getFrame()
             depthFrameColor = cv2.normalize(depthFrame, None, 255, 0, cv2.NORM_INF, cv2.CV_8UC1)
             depthFrameColor = cv2.equalizeHist(depthFrameColor) 
             depthFrameColor = cv2.applyColorMap(depthFrameColor, cv2.COLORMAP_HOT)
+
+            # frame = inRgb.getCvFrame()
 
             spatialData = q['spatialData'].get().getSpatialLocations()
                 
@@ -537,95 +505,113 @@ with contextlib.ExitStack() as stack:
                 if (int(spatialData[0].spatialCoordinates.z) >= 1500 and int(spatialData[0].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[0].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox1")
-
-                                
+                        
+                    
                 if (int(spatialData[1].spatialCoordinates.z) >= 1500 and int(spatialData[1].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[1].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox2")
+                        
+                    
                             
                 if (int(spatialData[2].spatialCoordinates.z) >= 1500 and int(spatialData[2].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[2].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox3")
+                        
+                    
                                 
                 if (int(spatialData[3].spatialCoordinates.z) >= 1500 and int(spatialData[3].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[3].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox4")
+                        
+                    
                             
                 if (int(spatialData[4].spatialCoordinates.z) >= 1500 and int(spatialData[4].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[4].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox5")
+                        
+                    
                             
                             
                 #interaction
                 if (int(spatialData[5].spatialCoordinates.z) >= 2000 and int(spatialData[5].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[5].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("play1")
+                        
+                    
                                 
                 if (int(spatialData[6].spatialCoordinates.z) >= 1300 and int(spatialData[6].spatialCoordinates.z) < 2100):
                     total = 0
                     temp = int(spatialData[6].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1300 and avg < 2100):
                         print("play2")
+                        
+                    
                                 
                 if (int(spatialData[7].spatialCoordinates.z) >= 2400 and int(spatialData[7].spatialCoordinates.z) < 2900):
                     total = 0
                     temp = int(spatialData[7].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2400 and avg < 2900):
                         print("play3")
+                        
+                    
                             
                 if (int(spatialData[8].spatialCoordinates.z) >= 1300 and int(spatialData[8].spatialCoordinates.z) < 2000):
                     total = 0
                     temp = int(spatialData[8].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1300 and avg < 2000):
                         print("play4")
+                        
+                    
                             
                 if (int(spatialData[9].spatialCoordinates.z) >= 2400 and int(spatialData[9].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[9].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2400 and avg < 2800):
                         print("play5")
+                        
+                    
 
         
             # WALL 2
@@ -635,82 +621,98 @@ with contextlib.ExitStack() as stack:
                 if (int(spatialData[10].spatialCoordinates.z) >= 1500 and int(spatialData[10].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[10].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox6")
+                        
+                    
 
                 # friendship
                 if (int(spatialData[11].spatialCoordinates.z) >= 1500 and int(spatialData[11].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[11].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox7")
+                        
+                    
 
                 # real estate
                 if (int(spatialData[12].spatialCoordinates.z) >= 1500 and int(spatialData[12].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[12].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox8")
+                        
+                    
                 
                 # grape investments
                 if (int(spatialData[13].spatialCoordinates.z) >= 1500 and int(spatialData[13].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[13].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox9")
+                        
+                    
                 
                 # ANIMATIONS
                 # conserving
                 if (int(spatialData[14].spatialCoordinates.z) >= 1300 and int(spatialData[14].spatialCoordinates.z) < 2700):
                     total = 0
                     temp = int(spatialData[14].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1300 and avg < 2700):
                         print("play6")
+                        
+                    
 
                 # friendship
-                if (int(spatialData[15].spatialCoordinates.z) >= 2200 and int(spatialData[15].spatialCoordinates.z) < 2900):
+                if (int(spatialData[15].spatialCoordinates.z) >= 2200 and int(spatialData[15].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[15].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
-                    if (avg >= 2200 and avg < 2900):
+                    avg = total / 30
+                    if (avg >= 2200 and avg < 2800):
                         print("play7")
+                        
+                    
 
                 # real estate
-                if (int(spatialData[16].spatialCoordinates.z) >= 1000 and int(spatialData[16].spatialCoordinates.z) < 2600):
+                if (int(spatialData[16].spatialCoordinates.z) >= 1000 and int(spatialData[16].spatialCoordinates.z) < 2700):
                     total = 0
                     temp = int(spatialData[16].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
-                    if (avg >= 1000 and avg < 2600):
+                    avg = total / 30
+                    if (avg >= 1000 and avg < 2700):
                         print("play8")
+                        
+                    
                 
                 # grape investments
                 if (int(spatialData[17].spatialCoordinates.z) >= 2400 and int(spatialData[17].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[17].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2400 and avg < 2800):
                         print("play9")
+                        
+                    
 
             if (mxid == ips[2]):
                 # WALL 3
@@ -719,143 +721,131 @@ with contextlib.ExitStack() as stack:
                 if (int(spatialData[18].spatialCoordinates.z) >= 1500 and int(spatialData[18].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[18].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox10")
+                        
+                    
                 
                 # girls in tech
                 if (int(spatialData[19].spatialCoordinates.z) >= 1500 and int(spatialData[19].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[19].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox11")
+                        
+                    
 
                 # empowering abilities
                 if (int(spatialData[20].spatialCoordinates.z) >= 2000 and int(spatialData[20].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[20].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("prox12")
+                        
+                    
                 
                 # financial literacy
                 if (int(spatialData[21].spatialCoordinates.z) >= 1500 and int(spatialData[21].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[21].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox13")
+                        
+                    
                 
                 # retiring inequality
                 if (int(spatialData[22].spatialCoordinates.z) >= 1500 and int(spatialData[22].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[22].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2800):
                         print("prox14")
+                        
+                    
 
                 # ANIMATIONS
                 # ceos 
                 if (int(spatialData[23].spatialCoordinates.z) >= 2000 and int(spatialData[23].spatialCoordinates.z) < 2800):
                     total = 0
                     temp = int(spatialData[23].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2800):
                         print("play10")
+                        
+                    
                 
                 # girls in tech
                 if (int(spatialData[24].spatialCoordinates.z) >= 1500 and int(spatialData[24].spatialCoordinates.z) < 2000):
                     total = 0
                     temp = int(spatialData[24].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1500 and avg < 2000):
                         print("play11")
+                        
+                    
                 
                 # empoweing abilities
                 if (int(spatialData[25].spatialCoordinates.z) >= 2000 and int(spatialData[25].spatialCoordinates.z) < 2600):
                     total = 0
                     temp = int(spatialData[25].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2000 and avg < 2600):
                         print("play12")
+                        
+                    
                 
                 # financial literacy
                 if (int(spatialData[26].spatialCoordinates.z) >= 1300 and int(spatialData[26].spatialCoordinates.z) < 1900):
                     total = 0
                     temp = int(spatialData[26].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 1300 and avg < 2000):
                         print("play13")
+                        
+                    
                 
                 # retiring inequality
                 if (int(spatialData[27].spatialCoordinates.z) >= 2300 and int(spatialData[27].spatialCoordinates.z) < 2900):
                     total = 0
                     temp = int(spatialData[27].spatialCoordinates.z)
-                    for i in range(10):
+                    for i in range(30):
                         total += temp 
-                    avg = total / 10
+                    avg = total / 30
                     if (avg >= 2300 and avg < 2900):
                         print("play14")
+                        
+                    
 
             sys.stdout.flush()
         
             # Show the frame
             # cv2.imshow("depth-" + mxid, depthFrameColor)
-    
+            # cv2.imshow("rgb" + mxid, frame)
 
             key = cv2.waitKey(1)
             if key == ord('q'):
                 break
 
-            # elif key == ord('w'):
-            #     if topLeft.y - stepSize >= 0:
-            #         topLeft.y -= stepSize
-            #         bottomRight.y -= stepSize
-            #         newConfig = True
-            # elif key == ord('a'):
-            #     if topLeft.x - stepSize >= 0:
-            #         topLeft.x -= stepSize
-            #         bottomRight.x -= stepSize
-            #         newConfig = True
-            # elif key == ord('s'):
-
-            #     if bottomRight.y + stepSize <= 1:
-            #         topLeft.y += stepSize
-            #         bottomRight.y += stepSize
-            #         newConfig = True
-            # elif key == ord('d'):
-            #     if bottomRight.x + stepSize <= 1:
-            #         topLeft.x += stepSize
-            #         bottomRight.x += stepSize
-            #         newConfig = True
-
-            # if newConfig:
-            #     config.roi = dai.Rect(topLeft, bottomRight)
-            #     config.calculationAlgorithm = dai.SpatialLocationCalculatorAlgorithm.AVERAGE
-            #     cfg = dai.SpatialLocationCalculatorConfig()
-            #     cfg.addROI(config)
-            #     spatialCalcConfigInQueue.send(cfg)
-            #     newConfig = False
-                    
-
-                    # print("{:.2f}".format(topLeft.x), "{:.2f}".format(topLeft.y), "{:.2f}".format(bottomRight.x), "{:.2f}".format(bottomRight.y))
-                    # sys.stdout.flush()
+  

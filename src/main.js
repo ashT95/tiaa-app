@@ -58,7 +58,7 @@ const createWindow = () => {
 		args: [],
 	});
 
-	shell.send(JSON.stringify(file2));
+	// shell.send(JSON.stringify(file2));
 
 	shell.on("message", function (message) {
 		// sending data to frontend window
@@ -117,74 +117,74 @@ const createWindow = () => {
 // Some APIs can only be used after this event occurs.
 app.on("ready", createWindow);
 
-ipcMain.on("render-to-main", (event, arg) => {
-	const msgTemplate = (pingPong) => `${pingPong}`;
+// ipcMain.on("render-to-main", (event, arg) => {
+// 	const msgTemplate = (pingPong) => `${pingPong}`;
 
-	if (msgTemplate(arg[0]) === "wall1") {
-		file.Wall1Animation1.left = msgTemplate(arg[1]);
-		file.Wall1Animation1.top = msgTemplate(arg[2]);
-		file.Wall1Animation2.left = msgTemplate(arg[3]);
-		file.Wall1Animation2.top = msgTemplate(arg[4]);
-		file.Wall1Animation3.left = msgTemplate(arg[5]);
-		file.Wall1Animation3.top = msgTemplate(arg[6]);
-		file.Wall1Animation4.left = msgTemplate(arg[7]);
-		file.Wall1Animation4.top = msgTemplate(arg[8]);
-		file.Wall1Animation5.left = msgTemplate(arg[9]);
-		file.Wall1Animation5.top = msgTemplate(arg[10]);
+// 	if (msgTemplate(arg[0]) === "wall1") {
+// 		file.Wall1Animation1.left = msgTemplate(arg[1]);
+// 		file.Wall1Animation1.top = msgTemplate(arg[2]);
+// 		file.Wall1Animation2.left = msgTemplate(arg[3]);
+// 		file.Wall1Animation2.top = msgTemplate(arg[4]);
+// 		file.Wall1Animation3.left = msgTemplate(arg[5]);
+// 		file.Wall1Animation3.top = msgTemplate(arg[6]);
+// 		file.Wall1Animation4.left = msgTemplate(arg[7]);
+// 		file.Wall1Animation4.top = msgTemplate(arg[8]);
+// 		file.Wall1Animation5.left = msgTemplate(arg[9]);
+// 		file.Wall1Animation5.top = msgTemplate(arg[10]);
 
-		fs.writeFileSync(
-			"./config.json",
-			JSON.stringify(file, null, 2),
-			function writeJSON(err) {
-				if (err) return console.log(err);
-				// console.log(JSON.stringify(file));
-			}
-		);
-	}
-	if (msgTemplate(arg[0]) === "wall2") {
-		file.Wall2Animation1.left = msgTemplate(arg[1]);
-		file.Wall2Animation1.top = msgTemplate(arg[2]);
-		file.Wall2Animation2.left = msgTemplate(arg[3]);
-		file.Wall2Animation2.top = msgTemplate(arg[4]);
-		file.Wall2Animation3.left = msgTemplate(arg[5]);
-		file.Wall2Animation3.top = msgTemplate(arg[6]);
-		file.Wall2Animation4.left = msgTemplate(arg[7]);
-		file.Wall2Animation4.top = msgTemplate(arg[8]);
+// 		fs.writeFileSync(
+// 			"./config.json",
+// 			JSON.stringify(file, null, 2),
+// 			function writeJSON(err) {
+// 				if (err) return console.log(err);
+// 				// console.log(JSON.stringify(file));
+// 			}
+// 		);
+// 	}
+// 	if (msgTemplate(arg[0]) === "wall2") {
+// 		file.Wall2Animation1.left = msgTemplate(arg[1]);
+// 		file.Wall2Animation1.top = msgTemplate(arg[2]);
+// 		file.Wall2Animation2.left = msgTemplate(arg[3]);
+// 		file.Wall2Animation2.top = msgTemplate(arg[4]);
+// 		file.Wall2Animation3.left = msgTemplate(arg[5]);
+// 		file.Wall2Animation3.top = msgTemplate(arg[6]);
+// 		file.Wall2Animation4.left = msgTemplate(arg[7]);
+// 		file.Wall2Animation4.top = msgTemplate(arg[8]);
 
-		fs.writeFileSync(
-			"./config.json",
-			JSON.stringify(file, null, 2),
-			function writeJSON(err) {
-				if (err) return console.log(err);
-				// console.log(JSON.stringify(file));
-			}
-		);
-	}
-	if (msgTemplate(arg[0]) === "wall3") {
-		file.Wall3Animation1.left = msgTemplate(arg[1]);
-		file.Wall3Animation1.top = msgTemplate(arg[2]);
-		file.Wall3Animation2.left = msgTemplate(arg[3]);
-		file.Wall3Animation2.top = msgTemplate(arg[4]);
-		file.Wall3Animation3.left = msgTemplate(arg[5]);
-		file.Wall3Animation3.top = msgTemplate(arg[6]);
-		file.Wall3Animation4.left = msgTemplate(arg[7]);
-		file.Wall3Animation4.top = msgTemplate(arg[8]);
-		file.Wall3Animation5.left = msgTemplate(arg[9]);
-		file.Wall3Animation5.top = msgTemplate(arg[10]);
+// 		fs.writeFileSync(
+// 			"./config.json",
+// 			JSON.stringify(file, null, 2),
+// 			function writeJSON(err) {
+// 				if (err) return console.log(err);
+// 				// console.log(JSON.stringify(file));
+// 			}
+// 		);
+// 	}
+// 	if (msgTemplate(arg[0]) === "wall3") {
+// 		file.Wall3Animation1.left = msgTemplate(arg[1]);
+// 		file.Wall3Animation1.top = msgTemplate(arg[2]);
+// 		file.Wall3Animation2.left = msgTemplate(arg[3]);
+// 		file.Wall3Animation2.top = msgTemplate(arg[4]);
+// 		file.Wall3Animation3.left = msgTemplate(arg[5]);
+// 		file.Wall3Animation3.top = msgTemplate(arg[6]);
+// 		file.Wall3Animation4.left = msgTemplate(arg[7]);
+// 		file.Wall3Animation4.top = msgTemplate(arg[8]);
+// 		file.Wall3Animation5.left = msgTemplate(arg[9]);
+// 		file.Wall3Animation5.top = msgTemplate(arg[10]);
 
-		fs.writeFileSync(
-			"./config.json",
-			JSON.stringify(file, null, 2),
-			function writeJSON(err) {
-				if (err) return console.log(err);
-				// console.log(JSON.stringify(file));
-			}
-		);
-	}
+// 		fs.writeFileSync(
+// 			"./config.json",
+// 			JSON.stringify(file, null, 2),
+// 			function writeJSON(err) {
+// 				if (err) return console.log(err);
+// 				// console.log(JSON.stringify(file));
+// 			}
+// 		);
+// 	}
 
 	
-	//   event.reply('ipc-example', msgTemplate('pong'));
-});
+// 	//   event.reply('ipc-example', msgTemplate('pong'));
+// });
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
